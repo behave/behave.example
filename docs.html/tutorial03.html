@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 3: Step Parameters &mdash; behave 1.1.0: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
+    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Tutorial 4: Scenario Outline" href="tutorial04.html" />
+    <link rel="prev" title="Tutorial 2: Natural Language" href="tutorial02.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial04.html" title="Tutorial 4: Scenario Outline"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial02.html" title="Tutorial 2: Natural Language"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" accesskey="U">Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-3-step-parameters">
+<span id="id-tutorial03"></span><h1>Tutorial 3: Step Parameters<a class="headerlink" href="#tutorial-3-step-parameters" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use step parameter to handover parameters to step functions.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial03_step_parameters.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Step Parameters (tutorial03)</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Blenders</span>
+<span class="k">    Given </span><span class="nf">I put &quot;</span><span class="s">apples</span><span class="nf">&quot; in a blender</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf"> I switch the blender on</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf"> it should transform into &quot;</span><span class="s">apple juice</span><span class="nf">&quot;</span>
+</pre></div>
+</div>
+<p>The feature description contains a number of parameters,
+where different values can be filled in. This also makes the test automation
+layer much simpler, because the number of step definitions is reduced.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last"><strong>BEST PRACTICE:</strong> Put parameters in <strong>double-quoted text</strong> to make
+variation-points visible. The test runner output does not have
+this problem, because it often marks these parameters as <strong>bold text</strong>.</p>
+</div>
+</div>
+<div class="section" id="provide-the-test-automation">
+<h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial03.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
+<span class="kn">from</span> <span class="nn">blender</span> <span class="kn">import</span> <span class="n">Blender</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I put &quot;{thing}&quot; in a blender&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">()</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I switch the blender on&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">switch_on</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;it should transform into &quot;{other_thing}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">other_thing</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">other_thing</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-domain-model">
+<h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/blender.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+
+<span class="k">class</span> <span class="nc">Blender</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="n">TRANSFORMATION_MAP</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;Red Tree Frog&quot;</span><span class="p">:</span> <span class="s">&quot;mush&quot;</span><span class="p">,</span>
+        <span class="s">&quot;apples&quot;</span><span class="p">:</span> <span class="s">&quot;apple juice&quot;</span><span class="p">,</span>
+        <span class="s">&quot;iPhone&quot;</span><span class="p">:</span> <span class="s">&quot;toxic waste&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Galaxy Nexus&quot;</span><span class="p">:</span> <span class="s">&quot;toxic waste&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thing</span>  <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">select_result_for</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">TRANSFORMATION_MAP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thing</span><span class="p">,</span> <span class="s">&quot;DIRT&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thing</span> <span class="o">=</span> <span class="n">thing</span>
+
+    <span class="k">def</span> <span class="nf">switch_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">select_result_for</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thing</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 3: Step Parameters</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial02.html"
+                        title="previous chapter">Tutorial 2: Natural Language</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial04.html"
+                        title="next chapter">Tutorial 4: Scenario Outline</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial03.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial04.html" title="Tutorial 4: Scenario Outline"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial02.html" title="Tutorial 2: Natural Language"
+             >previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" >Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-02-26.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

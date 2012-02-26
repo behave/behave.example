@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 12: Use another Spoken Language &mdash; behave 1.1.0: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
+    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Glossary" href="glossary.html" />
+    <link rel="prev" title="Tutorial 11: Use Tags" href="tutorial11.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial11.html" title="Tutorial 11: Use Tags"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" accesskey="U">Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-12-use-another-spoken-language">
+<span id="id-tutorial12"></span><h1>Tutorial 12: Use another Spoken Language<a class="headerlink" href="#tutorial-12-use-another-spoken-language" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">XXX Use step parameter to handover parameters to step functions.</td>
+</tr>
+</tbody>
+</table>
+<p>XXX (Internationalisation)</p>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial12_stoken_language.feature</span><span class="nf"></span>
+<span class="c"># language: de</span><span class="nf"></span>
+
+<span class="k">Funktionalität:</span><span class="nf"> Using Languages other than English (tutorial12)</span>
+
+<span class="nf">  Als Deutscher</span>
+<span class="nf">  will ich BDD-Tests auch in Deutsch schreiben und ausführen.</span>
+
+<span class="nf">    </span><span class="k">Szenario:</span><span class="nf"> Run a simple test with German Keywords</span>
+<span class="k">        Angenommen </span><span class="nf">we have behave installed</span>
+<span class="nf">        </span><span class="k">Wenn </span><span class="nf">we implement a test</span>
+<span class="nf">        </span><span class="k">Dann </span><span class="nf">behave will test it for us!</span>
+
+<span class="nf">    </span><span class="k">Szenario:</span><span class="nf"> Run a simple test completely in German</span>
+<span class="k">        Angenommen </span><span class="nf">wir haben &quot;</span><span class="s">behave</span><span class="nf">&quot; installiert</span>
+<span class="nf">        </span><span class="k">Wenn </span><span class="nf">wir einen Test implementieren</span>
+<span class="nf">        </span><span class="k">Dann </span><span class="nf">wird &quot;</span><span class="s">behave</span><span class="nf">&quot; ihn für uns testen!</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-test-automation">
+<h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial01.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;we have behave installed&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;we implement a test&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="bp">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;behave will test it for us!&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial12.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+<span class="c"># language: de</span>
+
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;wir haben &quot;behave&quot; installiert&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s">u&quot;we have behave installed&quot;</span><span class="p">)</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;wir einen Test implementieren&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s">u&quot;we implement a test&quot;</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;wird &quot;behave&quot; ihn für uns testen!&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s">u&#39;behave will test it for us!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="execute-the-feature-test">
+<h2>Execute the Feature Test<a class="headerlink" href="#execute-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>Automatic language selection (via feature-file language marker):</p>
+<pre class="ansi-block literal-block">
+$ behave --format=plain ../features/tutorial12_spoken_language.feature
+Funktionalität: Using Languages other than English (tutorial12)
+   Szenario: Run a simple test with German Keywords
+  Angenommen we have behave installed ... passed
+        Wenn we implement a test ... passed
+        Dann behave will test it for us! ... passed
+   Szenario: Run a simple test completely in German
+  Angenommen wir haben &quot;behave&quot; installiert ... passed
+        Wenn wir einen Test implementieren ... passed
+        Dann wird &quot;behave&quot; ihn für uns testen! ... passed
+
+
+SUMMARY:
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+6 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<p>Explicit language selection via command-line usage of <tt class="docutils literal"><span class="pre">--lang=${lang}</span></tt>:</p>
+<pre class="ansi-block literal-block">
+$ behave --lang=de --format=plain ../features/tutorial12_spoken_language.feature
+Funktionalität: Using Languages other than English (tutorial12)
+   Szenario: Run a simple test with German Keywords
+  Angenommen we have behave installed ... passed
+        Wenn we implement a test ... passed
+        Dann behave will test it for us! ... passed
+   Szenario: Run a simple test completely in German
+  Angenommen wir haben &quot;behave&quot; installiert ... passed
+        Wenn wir einen Test implementieren ... passed
+        Dann wird &quot;behave&quot; ihn für uns testen! ... passed
+
+
+SUMMARY:
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+6 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 12: Use another Spoken Language</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#execute-the-feature-test">Execute the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial11.html"
+                        title="previous chapter">Tutorial 11: Use Tags</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter">Glossary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial12.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial11.html" title="Tutorial 11: Use Tags"
+             >previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" >Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-02-26.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

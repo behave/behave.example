@@ -1,0 +1,216 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 11: Use Tags &mdash; behave 1.1.0: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
+    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Tutorial 12: Use another Spoken Language" href="tutorial12.html" />
+    <link rel="prev" title="Tutorial 10: User-provided Datatype" href="tutorial10.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial12.html" title="Tutorial 12: Use another Spoken Language"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial10.html" title="Tutorial 10: User-provided Datatype"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" accesskey="U">Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-11-use-tags">
+<span id="id-tutorial11"></span><h1>Tutorial 11: Use Tags<a class="headerlink" href="#tutorial-11-use-tags" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial11_tags.feature</span><span class="nf"></span>
+<span class="nt">@wip</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span>
+
+<span class="nf">    In order to increase the ninja survival rate,</span>
+<span class="nf">    As a ninja commander</span>
+<span class="nf">    I want my ninjas to decide whether to take on an opponent</span>
+<span class="nf">    based on their skill levels.</span>
+
+<span class="nf">    @ninja.any</span>
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Weaker opponent</span>
+<span class="k">        Given </span><span class="nf">the ninja has a third level black-belt</span>
+<span class="nf">        </span><span class="k">When </span><span class="nf">attacked by a samurai</span>
+<span class="nf">        </span><span class="k">Then </span><span class="nf">the ninja should engage the opponent</span>
+
+<span class="nf">    </span><span class="nt">@ninja.chuck</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Stronger opponent</span>
+<span class="k">        Given </span><span class="nf">the ninja has a third level black-belt</span>
+<span class="nf">        </span><span class="k">When </span><span class="nf">attacked by Chuck Norris</span>
+<span class="nf">        </span><span class="k">Then </span><span class="nf">the ninja should run for his life</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-feaure-test">
+<h2>Run the Feaure Test<a class="headerlink" href="#run-the-feaure-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file with disabled tag &#64;wip,
+then marked feature is skipped as well as all its scenarios.</p>
+<pre class="ansi-block literal-block">
+$ behave --format=plain --tags ~&#64;wip ../features/tutorial11_tags.feature
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)
+   Scenario: Weaker opponent
+   Scenario: Stronger opponent
+
+
+SUMMARY:
+0 features passed, 0 failed, 1 skipped
+0 scenarios passed, 0 failed, 2 skipped
+0 steps passed, 0 failed, 6 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Check the test summary for the skipped count for features and scenarios.</p>
+</div>
+<p>When you run the feature file with enabled tag &#64;ninja.chuck,
+then only the second scenario is executed and the first one is skipped.</p>
+<pre class="ansi-block literal-block">
+$ behave -c --tags &#64;ninja.chuck ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2) # ../features/tutorial11_tags.feature:2
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent                      # ../features/tutorial11_tags.feature:10
+    Given the ninja has a third level black-belt
+    When attacked by a samurai
+    Then the ninja should engage the opponent
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent                    # ../features/tutorial11_tags.feature:16
+    Given the ninja has a third level black-belt # ../features/steps/step_tutorial02.py:69
+    When attacked by Chuck Norris                # ../features/steps/step_tutorial02.py:77
+    Then the ninja should run for his life       # ../features/steps/step_tutorial02.py:81
+
+
+SUMMARY:
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 1 skipped
+3 steps passed, 0 failed, 3 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Check the test summary for the skipped count for scenarios
+and the expansion of the scenario.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 11: Use Tags</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#run-the-feaure-test">Run the Feaure Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial10.html"
+                        title="previous chapter">Tutorial 10: User-provided Datatype</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial12.html"
+                        title="next chapter">Tutorial 12: Use another Spoken Language</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial11.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial12.html" title="Tutorial 12: Use another Spoken Language"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial10.html" title="Tutorial 10: User-provided Datatype"
+             >previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" >Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-02-26.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

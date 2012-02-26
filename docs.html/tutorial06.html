@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 6: Setup Table &mdash; behave 1.1.0: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
+    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <link rel="next" title="Tutorial 7: Result Table" href="tutorial07.html" />
+    <link rel="prev" title="Tutorial 5: Step Data (Triple-Quoted Text)" href="tutorial05.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial07.html" title="Tutorial 7: Result Table"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tutorial05.html" title="Tutorial 5: Step Data (Triple-Quoted Text)"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" accesskey="U">Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tutorial-6-setup-table">
+<span id="id-tutorial06"></span><h1>Tutorial 6: Setup Table<a class="headerlink" href="#tutorial-6-setup-table" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use <em>setup tables</em> to simplify test setup.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial06_step_setup_table.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Step Setup Table (tutorial06)</span>
+
+<span class="nf">   </span><span class="k">Scenario:</span><span class="nf"> Setup Table</span>
+<span class="k">     Given </span><span class="nf">a set of specific users</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">      |</span><span class="s"> department</span><span class="k">  |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Barry</span><span class="k">     |</span><span class="s"> Beer Cans</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Pudey</span><span class="k">     |</span><span class="s"> Silly Walks</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Two-Lumps</span><span class="k"> |</span><span class="s"> Silly Walks</span><span class="k"> |</span>
+
+<span class="nf">    </span><span class="k">When </span><span class="nf">we count the number of people in each department</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">we will find two people in &quot;</span><span class="s">Silly Walks</span><span class="nf">&quot;</span>
+<span class="nf">     </span><span class="k">But </span><span class="nf">we will find one person in &quot;</span><span class="s">Beer Cans</span><span class="nf">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-test-automation">
+<h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial06.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
+<span class="kn">from</span> <span class="nn">company_model</span> <span class="kn">import</span> <span class="n">CompanyModel</span>
+<span class="kn">from</span> <span class="nn">testutil</span> <span class="kn">import</span> <span class="n">NamedNumber</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;a set of specific users&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s">&quot;model&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">CompanyModel</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">add_user</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">],</span> <span class="n">deparment</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s">&quot;department&quot;</span><span class="p">])</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;we count the number of people in each department&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">count_persons_per_department</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will find {count} people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">count</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+    <span class="n">count_</span> <span class="o">=</span> <span class="n">NamedNumber</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">count_</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_headcount_for</span><span class="p">(</span><span class="n">department</span><span class="p">)))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will find one person in &quot;{department}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">get_headcount_for</span><span class="p">(</span><span class="n">department</span><span class="p">)))</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/testutil.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># TEST SUPPORT:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">NamedNumber</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Map named numbers into numbers.&quot;&quot;&quot;</span>
+    <span class="n">MAP</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">&quot;one&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;two&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">&quot;three&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s">&quot;four&quot;</span><span class="p">:</span>  <span class="mi">4</span><span class="p">,</span>
+        <span class="s">&quot;five&quot;</span><span class="p">:</span>  <span class="mi">5</span><span class="p">,</span>
+        <span class="s">&quot;six&quot;</span><span class="p">:</span>   <span class="mi">6</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_string</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">named_number</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">named_number</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">MAP</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-domain-model">
+<h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/company_model.py</span>
+<span class="c"># -*- coding: UTF-8 -*</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># PROBLEM DOMAIN:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">members</span><span class="p">:</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="n">members</span>
+
+    <span class="k">def</span> <span class="nf">add_member</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span>
+
+<span class="k">class</span> <span class="nc">CompanyModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">departments</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">deparment</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">deparment</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">deparment</span><span class="p">]</span> <span class="o">=</span> <span class="n">Department</span><span class="p">(</span><span class="n">deparment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">deparment</span><span class="p">]</span><span class="o">.</span><span class="n">add_member</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">count_persons_per_department</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_headcount_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">department</span><span class="p">]</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 6: Setup Table</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial05.html"
+                        title="previous chapter">Tutorial 5: Step Data (Triple-Quoted Text)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial07.html"
+                        title="next chapter">Tutorial 7: Result Table</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tutorial06.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial07.html" title="Tutorial 7: Result Table"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tutorial05.html" title="Tutorial 5: Step Data (Triple-Quoted Text)"
+             >previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
+          <li><a href="tutorials.html" >Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-02-26.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>

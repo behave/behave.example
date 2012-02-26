@@ -1,0 +1,16 @@
+include MANIFEST.in
+include setup.py
+include pavement.py
+include *.cfg
+include *.ini
+include *.txt
+include .bzrignore
+include .coveragerc
+include .pythonrc.py
+include .pylintrc
+include .pycheckrc
+recursive-include bin           *.py *.cmd *.zip
+recursive-include docs          *.py *.rst *.css Makefile
+recursive-include features      *.feature *.py
+recursive-include paver_ext     *.py
+

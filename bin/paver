@@ -1,0 +1,10 @@
+#!/bin/sh
+# ==========================================================================
+# PAVER COMMAND (for local installation)
+# ==========================================================================
+
+HERE=`dirname $0`
+export PYTHONPATH=${HERE}/paver-minilib.zip:${PYTHONPATH}
+
+: ${PYTHON:=python}
+${PYTHON} ${HERE}/pavercmd.py ${@}

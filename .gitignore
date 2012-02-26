@@ -1,0 +1,15 @@
+*.egg-info
+*.pyc
+*.pyo
+build
+dist
+__pycache__
+.coverage
+.bzrignore
+.bzr/
+.idea/*
+.DS_Store
+_/
+_WORKSPACE/
+test_results/
+tmp/
