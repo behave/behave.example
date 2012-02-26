@@ -13,3 +13,4 @@ _/
 _WORKSPACE/
 test_results/
 tmp/
+.coveragerc
