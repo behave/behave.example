@@ -19,7 +19,7 @@ Provide the Test Automation
 .. literalinclude:: ../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-    :lines: 1, 23-26, 53-55, 69-
+    :lines: 1, 22-25, 52-54, 68-
 
 Provide the Domain Model
 -----------------------------
@@ -39,7 +39,7 @@ and you do not have to write it.
 .. literalinclude:: ../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-    :lines: 27-52
+    :lines: 26-51
 
 
 The Complete Picture

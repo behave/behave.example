@@ -25,6 +25,6 @@ Provide the Test Automation
 .. literalinclude:: ../features/steps/step_tutorial08.py
     :prepend:   # file:features/steps/step_tutorial08.py
     :language: python
-    :lines:  1, 19-
+    :lines:  1, 18-
 
 

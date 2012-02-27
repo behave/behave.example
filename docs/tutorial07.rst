@@ -66,7 +66,7 @@ Provide the Test Automation
 .. literalinclude:: ../features/steps/step_tutorial07.py
     :prepend:   # file:features/steps/step_tutorial07.py
     :language: python
-    :lines:  1, 37-
+    :lines:  1, 36-
 
 Provide the Domain Model
 -----------------------------

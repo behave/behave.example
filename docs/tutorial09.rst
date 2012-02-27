@@ -3,7 +3,8 @@
 Tutorial 9: Use Background
 ==============================================================================
 
-:Goal: XXX Use step parameter to handover parameters to step functions.
+:Goal: Use the ``Background`` concept to execute a number of steps before each scenario.
+
 
 Write the Feature Test
 ------------------------
@@ -20,7 +21,8 @@ Provide the Test Automation
     :prepend:   # file:features/steps/step_tutorial02.py
     :append:    ...
     :language: python
-    :lines:  1, 23-26, 53-68
+    :lines:  1, 22-25, 52-65
+
 
 Provide the Domain Model
 -----------------------------
@@ -28,7 +30,7 @@ Provide the Domain Model
 .. literalinclude:: ../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-    :lines:  27-51
+    :lines:  26-51
 
 Execute the Feature Test
 -----------------------------
