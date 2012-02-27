@@ -1,4 +1,5 @@
 # -*- coding: UTF-8 -*
+# MISSING-DOCSTRING: pylint: disable=C0111
 """
 Based on ``behave tutorial``
 
@@ -18,10 +19,8 @@ Feature: Fight or Flight (Natural Language)
         When attacked by Chuck Norris
         Then the ninja should run for his life
 """
-# MISSING-DOCSTRING: pylint: disable=C0111
-# WILDCARD-IMPORTS:  pylint: disable=W0401
 
-from behave import given, when, then
+from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 
 # ----------------------------------------------------------------------------

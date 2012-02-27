@@ -16,7 +16,7 @@ Funktionalität: Using Languages other than English (tutorial12)
         Dann wird "behave" ihn für uns testen!
 """
 
-from behave import *
+from behave import given, when, then
 
 # ----------------------------------------------------------------------------
 # STEPS:

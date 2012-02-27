@@ -16,10 +16,10 @@ Feature: Step Setup Table
      But we will find one person in "Beer Cans"
 """
 
-from behave import *
+from behave   import given, when, then
 from hamcrest import assert_that, equal_to
-from company_model import CompanyModel
 from testutil import NamedNumber
+from company_model import CompanyModel
 
 # ----------------------------------------------------------------------------
 # STEPS:

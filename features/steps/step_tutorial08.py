@@ -16,8 +16,8 @@ Feature: Step executes other Steps
      Then  I reach the next level
 """
 
-from behave import *
-from hamcrest import *
+from behave   import given, when, then
+from hamcrest import assert_that, greater_than
 
 # ----------------------------------------------------------------------------
 # STEPS:

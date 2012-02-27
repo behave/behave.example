@@ -3,7 +3,7 @@
 Based on ``behave tutorial``
 """
 
-from behave import *
+from behave import given, when, then
 
 # ----------------------------------------------------------------------------
 # STEPS:

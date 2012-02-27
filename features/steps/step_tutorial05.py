@@ -14,7 +14,7 @@ Feature: Step Data
     Then we will find it similar to English
 '''
 
-from behave import *
+from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 
 # ----------------------------------------------------------------------------

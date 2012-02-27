@@ -28,9 +28,9 @@ Feature: Scenario Outline
 
 """
 
-from behave import given, when, then
+from behave   import given, when, then
 from hamcrest import assert_that, equal_to
-from blender import Blender
+from blender  import Blender
 
 # ----------------------------------------------------------------------------
 # STEPS:
