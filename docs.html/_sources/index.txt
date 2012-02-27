@@ -8,7 +8,7 @@ This project provides tutorials and examples how to write tests by using
 
 I started this project mostly to verify that the basic concepts,
 provided by `behave`_, work and that I understand them correctly.
-I hope it this project helps people to get started with `behave`_ or
+I hope that this project helps other people to get started with `behave`_ or
 other :term:`Gherkin`-based test frameworks, like `cucumber`_ (Ruby),
 `jbehave`_ (Java), `lettuce`_ (Python) or `SpecFlow`_ (.NET).
 
