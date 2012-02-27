@@ -60,10 +60,53 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite.</td>
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite and optimize test runs.</td>
 </tr>
 </tbody>
 </table>
+<p>Several test frameworks support a concept of tags to mark a number of tests
+(<a class="reference external" href="http://pytest.org/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/experimental/categories/Categories.html">JUnit Categories</a>,
+<a class="reference external" href="http://www.nunit.org/index.php?p=category&amp;r=2.4">NUnit CategoryAttribute</a>).
+This provides a simple, flexible and effective mechanism to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>select  a number of tests</li>
+<li>exclude a number of tests</li>
+</ul>
+</div></blockquote>
+<p>for a test run. This mechanism is orthogonal to the
+static test package structure.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Predefined or often used tags:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="11%" />
+<col width="23%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tag</th>
+<th class="head">Kind</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;wip</td>
+<td>predefined</td>
+<td>&#8220;Work in Process&#8221; (under development).</td>
+</tr>
+<tr class="row-odd"><td>&#64;skip</td>
+<td>predefined</td>
+<td>Skip/disable a feature, scenario, ...</td>
+</tr>
+<tr class="row-even"><td>&#64;slow</td>
+<td>user-defined</td>
+<td>Mark slow, long-running tests.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial11_tags.feature</span><span class="nf"></span>
@@ -91,8 +134,8 @@
 </div>
 <div class="section" id="run-the-feaure-test">
 <h2>Run the Feaure Test<a class="headerlink" href="#run-the-feaure-test" title="Permalink to this headline">¶</a></h2>
-<p>When you run the feature file with disabled tag &#64;wip,
-then marked feature is skipped as well as all its scenarios.</p>
+<p>When you run the feature file by excluding the tag &#64;wip,
+then any feature marked with this tag is skipped as well as all of its scenarios.</p>
 <pre class="ansi-block literal-block">
 $ behave --format=plain --tags ~&#64;wip ../features/tutorial11_tags.feature
 Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)
@@ -110,7 +153,7 @@ Took 0m0.0s
 <p class="first admonition-title">Note</p>
 <p class="last">Check the test summary for the skipped count for features and scenarios.</p>
 </div>
-<p>When you run the feature file with enabled tag &#64;ninja.chuck,
+<p>When you run the feature file by selecting the tag &#64;ninja.chuck,
 then only the second scenario is executed and the first one is skipped.</p>
 <pre class="ansi-block literal-block">
 $ behave -c --tags &#64;ninja.chuck ../features/tutorial11_tags.feature
@@ -129,9 +172,9 @@ Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2) # ../f
 
   &#64;ninja.chuck
   Scenario: Stronger opponent                    # ../features/tutorial11_tags.feature:16
-    Given the ninja has a third level black-belt # ../features/steps/step_tutorial02.py:69
-    When attacked by Chuck Norris                # ../features/steps/step_tutorial02.py:77
-    Then the ninja should run for his life       # ../features/steps/step_tutorial02.py:81
+    Given the ninja has a third level black-belt # ../features/steps/step_tutorial02.py:68
+    When attacked by Chuck Norris                # ../features/steps/step_tutorial02.py:76
+    Then the ninja should run for his life       # ../features/steps/step_tutorial02.py:80
 
 
 SUMMARY:
@@ -209,7 +252,7 @@ and the expansion of the scenario.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-26.
+      Last updated on 2012-02-27.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

@@ -60,7 +60,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">XXX Use step parameter to handover parameters to step functions.</td>
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use the <tt class="docutils literal"><span class="pre">Background</span></tt> concept to execute a number of steps before each scenario.</td>
 </tr>
 </tbody>
 </table>
@@ -89,7 +89,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial02.py</span>
 <span class="c"># -*- coding: UTF-8 -*</span>
 
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -106,8 +106,6 @@
         <span class="c"># -- VERIFY: Double-call does not occur.</span>
         <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="p">,</span> <span class="ow">not</span><span class="p">(</span><span class="n">equal_to</span><span class="p">(</span><span class="bp">None</span><span class="p">)))</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="bp">None</span>
-
-
 <span class="o">...</span>
 </pre></div>
 </div>
@@ -234,7 +232,7 @@ Took 0m0.0s
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-26.
+      Last updated on 2012-02-27.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

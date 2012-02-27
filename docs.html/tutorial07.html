@@ -154,26 +154,26 @@ in two different scenarios.</p>
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial07.py</span>
 <span class="c"># -*- coding: UTF-8 -*</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">has_items</span>
 <span class="kn">from</span> <span class="nn">hamcrest.library.collection.issequence_containinginanyorder</span> \
      <span class="kn">import</span> <span class="n">contains_inanyorder</span>
-<span class="c"># from company_model import CompanyModel</span>
-
 
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c">#@given(&#39;a set of specific users&#39;)</span>
-<span class="c">#def step(context):</span>
+<span class="c"># SEE: step_tutorial06.py</span>
+<span class="c"># @given(&#39;a set of specific users&#39;)</span>
+<span class="c"># def step(context):</span>
 <span class="c">#    model = getattr(context, &quot;model&quot;, None)</span>
 <span class="c">#    if not model:</span>
 <span class="c">#        context.model = CompanyModel()</span>
 <span class="c">#    for row in context.table:</span>
 <span class="c">#        context.model.add_user(row[&quot;name&quot;], deparment=row[&quot;department&quot;])</span>
 <span class="c">#</span>
-<span class="c">#@when(&#39;we count the number of people in each department&#39;)</span>
-<span class="c">#def step(context):</span>
+<span class="c"># @when(&#39;we count the number of people in each department&#39;)</span>
+<span class="c"># def step(context):</span>
 <span class="c">#    context.model.count_persons_per_department()</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
@@ -318,7 +318,7 @@ in two different scenarios.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-26.
+      Last updated on 2012-02-27.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

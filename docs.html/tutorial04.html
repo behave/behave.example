@@ -64,6 +64,9 @@
 </tr>
 </tbody>
 </table>
+<p>A <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt> provides a <tt class="docutils literal"><span class="pre">parametrized</span> <span class="pre">scenario</span> <span class="pre">script</span></tt> (or template)
+for the feature file writer. The <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt> is executed for each
+example row in the <tt class="docutils literal"><span class="pre">Examples</span></tt> section below the <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt>.</p>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial04_scenario_outline.feature</span><span class="nf"></span>
@@ -90,9 +93,9 @@
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial03.py</span>
 <span class="c"># -*- coding: UTF-8 -*</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
-<span class="kn">from</span> <span class="nn">blender</span> <span class="kn">import</span> <span class="n">Blender</span>
+<span class="kn">from</span> <span class="nn">blender</span>  <span class="kn">import</span> <span class="n">Blender</span>
 
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
@@ -212,7 +215,7 @@
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-26.
+      Last updated on 2012-02-27.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>

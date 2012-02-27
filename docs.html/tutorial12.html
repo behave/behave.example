@@ -60,11 +60,36 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">XXX Use step parameter to handover parameters to step functions.</td>
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use another spoken language for testing (other than English)</td>
 </tr>
 </tbody>
 </table>
-<p>XXX (Internationalisation)</p>
+<p>Most <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> frameworks provide internationalisation support.
+The key part (but only the first step) is that the <tt class="docutils literal"><span class="pre">Given</span> <span class="pre">...</span> <span class="pre">When</span> <span class="pre">...</span> <span class="pre">Then</span></tt>
+keywords are provided in the native language, for example French or German.
+If this is the case, a developer can provide step definitions in another
+spoken language.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The list of supported languages can be displayed via:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">behave</span> <span class="o">--</span><span class="n">lang</span><span class="o">-</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>Feature files can be tagged for a specific language, like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># language: de</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>When this happens, the <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> framework selects the keywords for
+this language.
+The default language can be defined in the configuration file.
+<a class="reference external" href="http://packages.python.org/behave/">behave</a> uses either <tt class="docutils literal"><span class="pre">behave.ini</span></tt> or <tt class="docutils literal"><span class="pre">.behaverc</span></tt> as
+configuration file:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">behave</span><span class="p">]</span>
+<span class="n">lang</span> <span class="o">=</span> <span class="n">de</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial12_stoken_language.feature</span><span class="nf"></span>
@@ -92,7 +117,7 @@
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial01.py</span>
 <span class="c"># -*- coding: UTF-8 -*</span>
 
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
@@ -114,7 +139,7 @@
 <span class="c"># -*- coding: UTF-8 -*</span>
 <span class="c"># language: de</span>
 
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
@@ -240,7 +265,7 @@ Took 0m0.0s
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-26.
+      Last updated on 2012-02-27.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
