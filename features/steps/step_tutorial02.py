@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*
+# -*- coding: UTF-8 -*-
 # MISSING-DOCSTRING: pylint: disable=C0111
 """
 Based on ``behave tutorial``
