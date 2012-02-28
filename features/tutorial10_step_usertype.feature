@@ -1,7 +1,7 @@
 Feature: User-Defined Datatype as Step Parameter (tutorial10)
 
   As a test writer
-  I want that a step parameter is converted into  aspecific datatype
+  I want that a step parameter is converted into a specific datatype
   to simplify the programming of the step definition body.
 
   Scenario Outline: Calculator
