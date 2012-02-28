@@ -1,9 +1,14 @@
 .. _id.tutorial10:
 
-Tutorial 10: User-provided Datatype
+Tutorial 10: User-defined Datatype
 ==============================================================================
 
-:Goal: XXX Use step parameter to handover parameters to step functions.
+:Goal: Show how used-defined datatypes can be used in step parameters.
+
+User-defined datatypes simplify the processing in step definitions.
+The string parameters are automatically parsed and converted into the
+specific datatype.
+
 
 Write the Feature Test
 ------------------------
@@ -16,24 +21,17 @@ Write the Feature Test
 Provide the Test Automation
 -----------------------------
 
-XXX
-
-.. hidden:
-
-    .. literalinclude:: ../features/steps/step_tutorial10.py
-        :prepend:   # file:features/steps/step_tutorial10.py
-        :language: python
-        :lines:  1, 31-
+.. literalinclude:: ../features/steps/step_tutorial10.py
+    :prepend:   # file:features/steps/step_tutorial10.py
+    :language: python
+    :lines:  1, 19-22, 38-
 
 Provide the Domain Model
 -----------------------------
 
-XXX
+.. literalinclude:: ../features/steps/step_tutorial10.py
+    :prepend:   # file:features/steps/step_tutorial10.py
+    :language: python
+    :lines:  23-36
 
-.. hidden:
-
-    .. literalinclude:: ../features/steps/blender.py
-        :prepend:   # file:features/steps/blender.py
-        :language: python
-        :lines:  1, 21-
 
