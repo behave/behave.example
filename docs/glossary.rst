@@ -11,7 +11,7 @@ Glossary
     BDD
         Behaviour driven development:
 
-          * http://dannorth.net/introducing-bdd
+          * http://dannorth.net/introducing-bdd/
           * http://behaviour-driven.org/
           * http://en.wikipedia.org/wiki/Behavior_Driven_Development
 
