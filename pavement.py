@@ -1,7 +1,7 @@
 # ============================================================================
 # PAVER MAKEFILE (pavement.py)
 # ============================================================================
-# REQUIRES: paver >= 1.0.3
+# REQUIRES: paver >= 1.0.5
 # DESCRIPTION:
 #   Provides platform-neutral "Makefile" for simple, project-specific tasks.
 #
@@ -69,12 +69,10 @@ options(
         author_email="Jens_Engel@nowhere.net",
         license="BSD",
         description= DESCRIPTION,
-        # XXX long_description = ""
         keywords   = "utility",
         platforms  = [ 'any' ],
         classifiers= CLASSIFIERS.splitlines(),
         install_requires= INSTALL_REQUIRES,
-        # extra_requires= read_requirements("requirements-develop.txt"),
         include_package_data= True,
     ),
     sphinx=Bunch(
@@ -105,28 +103,26 @@ def init():
     path("build").makedirs()
 
 @task
-def docs_html():
-    """Generate the HTML-based documentation."""
-    # XXX call_task("prepare_docs")
-    sphinx_build("html")
+@consume_args
+def docs(args):
+    """Generate the documentation: html, pdf, ... (default: html)"""
+    builders = args
+    if not builders:
+        builders = [ "html" ]
+    for builder in builders:
+        sphinx_build(builder)
 
 @task
-def docs_pdf():
-    """Generate the PDF-based documentation."""
-    sphinx_build("pdf")
-    # sh("make -C docs pdf")
+def linkcheck():
+    """Check hyperlinks in HTML-based documentation."""
+    sphinx_build("linkcheck")
 
 @task
-def docs():
-    """Generate the documentation."""
-    call_task("docs_html")
-
-@task
-@needs("docs_html")
-def docs_save():
+@consume_args
+def docs_save(args):
     """Update the local documentation under docs.html/"""
-    # info("STEP: Generate docs in HTML format")
-    # call_task("docs_html")
+    info("STEP: Generate docs in HTML format")
+    call_task("docs")
 
     info("STEP: Save docs under docs.html/")
     docs_save = path("docs.html")
@@ -146,33 +142,13 @@ def docs_save():
 # ----------------------------------------------------------------------------
 @task
 @consume_args
+@needs("init")
 def test(args):
     """Execute tests with behave"""
     if not args:
         args = options.test.default_args
     for arg in args:
         behave(arg)
-
-# ----------------------------------------------------------------------------
-# TASK: test coverage
-# ----------------------------------------------------------------------------
-#@task
-#def coverage_report():
-#    """Generate coverage report from collected coverage data."""
-#    sh("coverage combine")
-#    sh("coverage report")
-#    sh("coverage html")
-#    # -- DISABLED: sh("coverage xml")
-#
-#@task
-#@consume_args
-#def coverage(args):
-#    """Execute all tests to collect code-coverage data, generate report."""
-#    tests = " ".join(args)
-#    sh("coverage run bin/pytest.py --cov=%s %s" % (NAME, tests),
-#       ignore_error=True)   #< Show coverage-report even if tests fail.
-#    call_task("coverage_report")
-#
 
 # ----------------------------------------------------------------------------
 # TASK: pychecker, pylint
@@ -199,21 +175,6 @@ def pychecker(args):
     for file_ in args:
         cmdline = file_
         sh("pychecker --config=.pycheckrc %s" % cmdline, ignore_error=True)
-
-# ----------------------------------------------------------------------------
-# TASK: bump_version
-# ----------------------------------------------------------------------------
-#@task
-#def bump_version(info, error):
-#    """Update VERSION.txt"""
-#    try:
-#        from xxx.version import VERSION
-#        info("VERSION: %s" % VERSION)
-#        file_ = open("VERSION.txt", "w+")
-#        file_.write("%s\n" % VERSION)
-#        file_.close()
-#    except StandardError, e:
-#        error("Update VERSION.txt FAILED: %s" % e)
 
 # ----------------------------------------------------------------------------
 # TASK: clean
@@ -253,17 +214,6 @@ def clean():
             f.remove()
 
 
-# ----------------------------------------------------------------------------
-# PLATFORM-SPECIFIC TASKS: win32
-# ----------------------------------------------------------------------------
-#if sys.platform == "win32":
-#    @task
-#    @consume_args
-#    def py2exe(args):
-#        """Run py2exe to build a win32 executable."""
-#        cmdline = " ".join(args)
-#        python("setup_py2exe.py py2exe %s" % cmdline)
-#
 # ----------------------------------------------------------------------------
 # UTILS:
 # ----------------------------------------------------------------------------
