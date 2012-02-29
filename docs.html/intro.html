@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Introduction &mdash; behave 1.1.0: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
+    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <link rel="prev" title="behave Examples and Tutorials" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorials.html" title="Tutorials"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="behave Examples and Tutorials"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="introduction">
+<span id="id-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="read-the-documentation">
+<h2>Read the Documentation<a class="headerlink" href="#read-the-documentation" title="Permalink to this headline">¶</a></h2>
+<p>Before you start reading this manual, you should have read the
+<a class="reference external" href="http://packages.python.org/behave/">behave documentation</a> to understand how <cite>behave</cite> works.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">The <a class="reference external" href="http://cukes.info/">cucumber</a> and <a class="reference external" href="htpp://jbehave.org/">jbehave</a> documentation might also be
+interesting for you, if you like to know where certain concepts originate.</p>
+</div>
+</div>
+<div class="section" id="given-when-then">
+<h2>Given, When, Then<a class="headerlink" href="#given-when-then" title="Permalink to this headline">¶</a></h2>
+<p>You should understand the <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> concepts.</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Title (one line describing the story/feature)</span>
+
+<span class="nf">    As a    [role]</span>
+<span class="nf">    I want  [feature]</span>
+<span class="nf">    So that [benefit]</span>
+
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Title1 (for Behaviour 1)</span>
+
+<span class="k">        Given </span><span class="nf">[context or setup]</span>
+<span class="nf">        </span><span class="k">And </span><span class="nf"> [some more context]...</span>
+<span class="nf">        </span><span class="k">When </span><span class="nf">[event occurs]</span>
+<span class="nf">        </span><span class="k">Then </span><span class="nf">[expected outcome]</span>
+<span class="nf">        </span><span class="k">And </span><span class="nf"> [another outcome]...</span>
+
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Title2 (for Behaviour 2)</span>
+<span class="nf">        ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select-a-matcher-library">
+<h2>Select a Matcher Library<a class="headerlink" href="#select-a-matcher-library" title="Permalink to this headline">¶</a></h2>
+<p>Before you start to use <a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> (or any other <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> framework)
+you should select an assertation matcher library that you want to use
+in your project.</p>
+<p>Python has a growing number of <em>matcher libraries</em> by now.
+Here is the list of some of these:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="81%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Matcher Library</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Native assert</td>
+<td>Starting point, but not enough information when assert fails.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://code.google.com/p/hamcrest/">hamcrest</a></td>
+<td>First assertation matcher library, now part of <a class="reference external" href="http://junit.org/">JUnit4</a>.
+Supports several programming languages:
+<a class="reference external" href="http://code.google.com/p/hamcrest/">http://code.google.com/p/hamcrest/</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://readthedocs.org/docs/nose/en/latest/testing_tools.html">nose.tools</a></td>
+<td>Part of the <a class="reference external" href="http://pypi.python.org/pypi/nose">nose</a> test framework</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.should-dsl.info/">should-dsl</a></td>
+<td>An interesting small matcher library,
+<a class="reference external" href="http://www.should-dsl.info/">http://www.should-dsl.info/</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/gabrielfalcao/sure">sure</a></td>
+<td>Provided by the maker of <a class="reference external" href="http://pypi.python.org/pypi/lettuce">lettuce</a>,
+<a class="reference external" href="https://github.com/gabrielfalcao/sure">https://github.com/gabrielfalcao/sure</a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://pypi.python.org/pypi/compare">compare</a></td>
+<td><a class="reference external" href="http://pypi.python.org/pypi/compare">http://pypi.python.org/pypi/compare</a></td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="http://pypi.python.org/pypi/describe">describe</a></td>
+<td><a class="reference external" href="http://pypi.python.org/pypi/describe">http://pypi.python.org/pypi/describe</a></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><a class="reference external" href="http://code.google.com/p/hamcrest/">hamcrest</a> is used as <em>matcher library</em> in the examples presented here.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Introduction</a><ul>
+<li><a class="reference internal" href="#read-the-documentation">Read the Documentation</a></li>
+<li><a class="reference internal" href="#given-when-then">Given, When, Then</a></li>
+<li><a class="reference internal" href="#select-a-matcher-library">Select a Matcher Library</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">behave Examples and Tutorials</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorials.html"
+                        title="next chapter">Tutorials</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/intro.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorials.html" title="Tutorials"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="behave Examples and Tutorials"
+             >previous</a> |</li>
+        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-02-29.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
