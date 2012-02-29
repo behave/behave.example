@@ -122,6 +122,8 @@ def linkcheck():
 def docs_save(args):
     """Update the local documentation under docs.html/"""
     info("STEP: Generate docs in HTML format")
+    if args and "html" not in args:
+        args.append("html")
     call_task("docs")
 
     info("STEP: Save docs under docs.html/")
@@ -205,7 +207,6 @@ def clean():
     # -- STEP: Remove temporary files.
     patterns = [
         "*.pyc", "*.pyo", "*.bak", "*.log", "*.tmp",
-        ".coverage", ".coverage.*",
         ".DS_Store", "*.~*~",   #< MACOSX
     ]
     for pattern in patterns:
