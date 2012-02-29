@@ -19,21 +19,7 @@ Feature: A Step uses a User-Defined Type as Step Parameter (tutorial10)
 
 from behave   import given, when, then, matchers
 from hamcrest import assert_that, equal_to
-
-# ----------------------------------------------------------------------------
-# Domain Model:
-# ----------------------------------------------------------------------------
-class Calculator(object):
-    def __init__(self, value=0):
-        self.result = value
-
-    def reset(self):
-        self.result = 0
-
-    def add2(self, x, y):
-        self.result += (x + y)
-        return self.result
-
+from calculator import Calculator
 
 # ----------------------------------------------------------------------------
 # STEPS:
