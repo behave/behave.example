@@ -41,3 +41,12 @@ Provide the Domain Model
 .. note::
 
     Domain model reused from :ref:`id.tutorial03`.
+
+Run the Feature Test
+-----------------------------
+
+When you run the feature file from above (with plain formatting):
+
+.. command-output:: behave --format=plain ../features/tutorial04_scenario_outline.feature
+    :shell:
+

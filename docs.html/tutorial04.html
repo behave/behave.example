@@ -151,6 +151,37 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 <p class="last">Domain model reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><em>Tutorial 3: Step Parameters</em></a>.</p>
 </div>
 </div>
+<div class="section" id="run-the-feature-test">
+<h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file from above (with plain formatting):</p>
+<pre class="ansi-block literal-block">
+$ behave --format=plain ../features/tutorial04_scenario_outline.feature
+Feature: Scenario Outline (tutorial04)
+Scenario Outline: Blenders
+       Given I put &quot;Red Tree Frog&quot; in a blender ... passed
+        When I switch the blender on ... passed
+        Then it should transform into &quot;mush&quot; ... passed
+Scenario Outline: Blenders
+       Given I put &quot;apples&quot; in a blender ... passed
+        When I switch the blender on ... passed
+        Then it should transform into &quot;apple juice&quot; ... passed
+Scenario Outline: Blenders
+       Given I put &quot;iPhone&quot; in a blender ... passed
+        When I switch the blender on ... passed
+        Then it should transform into &quot;toxic waste&quot; ... passed
+Scenario Outline: Blenders
+       Given I put &quot;Galaxy Nexus&quot; in a blender ... passed
+        When I switch the blender on ... passed
+        Then it should transform into &quot;toxic waste&quot; ... passed
+
+
+SUMMARY:
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
 </div>
 
 
@@ -165,6 +196,7 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 <li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
 <li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
 <li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
 </ul>
 </li>
 </ul>
@@ -215,7 +247,7 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-28.
+      Last updated on 2012-02-29.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
     </div>
   </body>
