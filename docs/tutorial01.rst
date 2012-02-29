@@ -44,5 +44,3 @@ As alternative you can run the feature with plain formatting
 .. command-output:: behave --format=plain ../features/tutorial01_basics.feature
     :shell:
 
-.. hidden:
-    :ellipsis: 8,-11

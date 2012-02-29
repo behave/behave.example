@@ -32,7 +32,7 @@ Provide the Domain Model
     :language: python
     :lines:  26-51
 
-Execute the Feature Test
+Run the Feature Test
 -----------------------------
 
 When you run this feature test with the background functionality:
