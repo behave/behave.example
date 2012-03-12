@@ -1,0 +1,13 @@
+TODO
+==============================================================================
+
+2012-02-29:
+    Provide ansi-coloring support for sphinxcontrib-programoutput in sphinx.
+    => Some quirks occured in sphinxcontrib-ansi w/ escape sequences.
+
+
+DONE
+------------------------------------------------------------------------------
+
+Nothing yet.
+
