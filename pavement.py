@@ -21,6 +21,7 @@ from paver.setuputils import setup, install_distutils_tasks
 # NOT-USED: import paver.doctools
 # -- PAVER-EXTENSIONS: More tasks and utilities...
 from paver_ext.python_requirements import read_requirements
+from paver_ext.pip_download import download_depends, localpi
 
 install_distutils_tasks()
 
@@ -82,6 +83,12 @@ options(
     ),
     minilib=Bunch(
         extra_files=[ 'doctools', 'virtual' ]
+    ),
+    develop=Bunch(
+        requirements_files=[
+            "requirements.txt",
+        ],
+        download_dir="downloads",
     ),
     test=Bunch(
         default_args=[ "features/" ]
