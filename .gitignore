@@ -13,5 +13,6 @@ downloads
 __pycache__
 _/
 _WORKSPACE/
+downloads/
 test_results/
 tmp/
