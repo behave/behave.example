@@ -32,6 +32,19 @@ static test package structure.
     @slow   user-defined    Mark slow, long-running tests.
     ======= =============== ============================================
 
+    Tags option:
+
+      * Enable a tag, like: ``--tags=TAG``
+      * Disable a tag by using a minus sign prefix: ``--tags=-TAG``
+      * Select multiple tags by using a comma-separated list: ``--tags=TAG1,TAG2``
+      * ALTERNATIVE: Use a sequence of tags options: ``--tags=TAG1 --tags=TAG2``
+
+    .. seealso::
+       `behave tags documentation`_
+
+.. _behave tags documentation: http://packages.python.org/behave/tutorial.html#controlling-things-with-tags
+
+
 Write the Feature Test
 ------------------------
 
@@ -46,7 +59,7 @@ Run the Feaure Test
 When you run the feature file by excluding the tag @wip,
 then any feature marked with this tag is skipped as well as all of its scenarios.
 
-.. command-output:: behave --format=plain --tags ~@wip ../features/tutorial11_tags.feature
+.. command-output:: behave --format=plain --tags=-wip ../features/tutorial11_tags.feature
     :shell:
 
 .. note::
@@ -57,7 +70,7 @@ then any feature marked with this tag is skipped as well as all of its scenarios
 When you run the feature file by selecting the tag @ninja.chuck,
 then only the second scenario is executed and the first one is skipped.
 
-.. command-output:: behave -c --tags @ninja.chuck ../features/tutorial11_tags.feature
+.. command-output:: behave -c --tags=ninja.chuck ../features/tutorial11_tags.feature
     :shell:
 
 .. note::

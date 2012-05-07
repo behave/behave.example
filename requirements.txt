@@ -26,3 +26,6 @@ sphinx >= 1.0
 sphinxcontrib-ansi >= 0.6
 sphinxcontrib-programoutput >= 0.6
 
+# -- OPTIONAL DOCUMENTATION: If PDF docs are needed.
+# rst2pdf >= 0.91
+

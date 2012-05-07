@@ -79,7 +79,7 @@ static test package structure.</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p>Predefined or often used tags:</p>
-<table border="1" class="last docutils">
+<table border="1" class="docutils">
 <colgroup>
 <col width="11%" />
 <col width="23%" />
@@ -106,6 +106,19 @@ static test package structure.</p>
 </tr>
 </tbody>
 </table>
+<p>Tags option:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Enable a tag, like: <tt class="docutils literal"><span class="pre">--tags=TAG</span></tt></li>
+<li>Disable a tag by using a minus sign prefix: <tt class="docutils literal"><span class="pre">--tags=-TAG</span></tt></li>
+<li>Select multiple tags by using a comma-separated list: <tt class="docutils literal"><span class="pre">--tags=TAG1,TAG2</span></tt></li>
+<li>ALTERNATIVE: Use a sequence of tags options: <tt class="docutils literal"><span class="pre">--tags=TAG1</span> <span class="pre">--tags=TAG2</span></tt></li>
+</ul>
+</div></blockquote>
+<div class="admonition-see-also last admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://packages.python.org/behave/tutorial.html#controlling-things-with-tags">behave tags documentation</a></p>
+</div>
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
@@ -137,7 +150,7 @@ static test package structure.</p>
 <p>When you run the feature file by excluding the tag &#64;wip,
 then any feature marked with this tag is skipped as well as all of its scenarios.</p>
 <pre class="ansi-block literal-block">
-$ behave --format=plain --tags ~&#64;wip ../features/tutorial11_tags.feature
+$ behave --format=plain --tags=-wip ../features/tutorial11_tags.feature
 Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)
    Scenario: Weaker opponent
    Scenario: Stronger opponent
@@ -156,7 +169,7 @@ Took 0m0.0s
 <p>When you run the feature file by selecting the tag &#64;ninja.chuck,
 then only the second scenario is executed and the first one is skipped.</p>
 <pre class="ansi-block literal-block">
-$ behave -c --tags &#64;ninja.chuck ../features/tutorial11_tags.feature
+$ behave -c --tags=ninja.chuck ../features/tutorial11_tags.feature
 &#64;wip
 Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2) # ../features/tutorial11_tags.feature:2
   In order to increase the ninja survival rate,
@@ -252,8 +265,8 @@ and the expansion of the scenario.</p>
     </div>
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-02-29.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+      Last updated on 2012-03-25.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
 </html>
