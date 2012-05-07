@@ -1,5 +1,5 @@
 # ============================================================================
-# PAVER MAKEFILE (pavement.py)
+# PAVER MAKEFILE (pavement.py) -- behave.example
 # ============================================================================
 # REQUIRES: paver >= 1.0.5
 # DESCRIPTION:
@@ -22,6 +22,7 @@ from paver.setuputils import setup, install_distutils_tasks
 # -- PAVER-EXTENSIONS: More tasks and utilities...
 from paver_ext.python_requirements import read_requirements
 from paver_ext.pip_download import download_depends, localpi
+from paver_ext.python_checker import pychecker, pylint
 
 install_distutils_tasks()
 
@@ -94,10 +95,10 @@ options(
         default_args=[ "features/" ]
     ),
     pychecker = Bunch(
-        default_dirs=[ "features/" ]
+        default_args=NAME
     ),
     pylint = Bunch(
-        default_dirs=[ "features/" ]
+        default_args=NAME
     )
 )
 
@@ -159,31 +160,6 @@ def test(args):
     for arg in args:
         behave(arg)
 
-# ----------------------------------------------------------------------------
-# TASK: pychecker, pylint
-# ----------------------------------------------------------------------------
-@task
-@consume_args
-def pylint(args):
-    """Run pylint on sources."""
-    if not args:
-        args = []
-        for dir_ in options.pylint.default_dirs:
-            args.extend(path(dir_).walkfiles("*.py"))
-    cmdline = " ".join(args)
-    sh("pylint --rcfile=.pylintrc %s" % cmdline, ignore_error=True)
-
-@task
-@consume_args
-def pychecker(args):
-    """Run pychecker on sources."""
-    if not args:
-        args = []
-        for dir_ in options.pylint.default_dirs:
-            args.extend(path(dir_).walkfiles("*.py"))
-    for file_ in args:
-        cmdline = file_
-        sh("pychecker --config=.pycheckrc %s" % cmdline, ignore_error=True)
 
 # ----------------------------------------------------------------------------
 # TASK: clean
@@ -200,6 +176,7 @@ def clean():
 
     # -- STEP: Remove temporary directory subtrees.
     patterns = [
+        "*.egg-info",
         "__pycache__",
     ]
     for pattern in patterns:
@@ -213,7 +190,10 @@ def clean():
 
     # -- STEP: Remove temporary files.
     patterns = [
-        "*.pyc", "*.pyo", "*.bak", "*.log", "*.tmp",
+        "*.pyc", "*.pyo", "*$py.class",
+        "*.bak", "*.log", "*.tmp",
+        ".coverage", ".coverage.*",
+        "pylint_*.txt", "pychecker_*.txt",
         ".DS_Store", "*.~*~",   #< MACOSX
     ]
     for pattern in patterns:
@@ -221,6 +201,14 @@ def clean():
         for f in files:
             f.remove()
 
+@task
+def clean_all():
+    """Clean everything.."""
+    # -- ORDERING: Is important
+    path("downloads").rmtree()
+
+    # -- MORE: Use normal cleanings, too.
+    call_task("clean")
 
 # ----------------------------------------------------------------------------
 # UTILS:
