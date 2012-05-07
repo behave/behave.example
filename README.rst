@@ -14,6 +14,13 @@ SEE ALSO:
   * behave:  http://pypi.python.org/pypi/behave/
   * cucumber: http://cukes.info/
 
+REPOSITORIES:
+  * https://github.com/jeamland/behave (master)
+  * https://github.com/jenisys/behave
+
+DOCUMENTATION:
+  * http://jenisys.github.com/behave.example (latest version)
+
 
 INSTALL
 ------------------------------------------------------------------------------
