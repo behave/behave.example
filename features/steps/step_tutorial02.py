@@ -21,7 +21,7 @@ Feature: Fight or Flight (Natural Language)
 """
 
 from behave   import given, when, then
-from hamcrest import assert_that, equal_to
+from hamcrest import assert_that, equal_to, is_not
 
 # ----------------------------------------------------------------------------
 # PROBLEM DOMAIN:
@@ -61,7 +61,7 @@ def step_the_ninja_encounters_another_opponent(context):
     # -- SETUP/TEARDOWN:
     if hasattr(context, "ninja_fight"):
         # -- VERIFY: Double-call does not occur.
-        assert_that(context.ninja_fight, not(equal_to(None)))
+        assert_that(context.ninja_fight, is_not(equal_to(None)))
     context.ninja_fight = None
 
 
