@@ -5,6 +5,13 @@ Tutorial 2: Natural Language
 
 :Goal: Use natural language when writing tests.
 
+.. hint::
+    This example is based on the `Ninja Survival Rate`_ examples
+    from [SecretNinja10]_.
+
+.. _`Ninja Survival Rate`: https://github.com/davedf/cuke4ninja/tree/master/src/ruby/NinjaSurvivalRate/features
+
+
 Write the Feature Test
 ------------------------
 

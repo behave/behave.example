@@ -20,6 +20,7 @@ Contents:
     intro
     tutorials
     glossary
+    refs
 
 Indices and tables
 ==================

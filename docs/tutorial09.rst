@@ -5,6 +5,12 @@ Tutorial 9: Use Background
 
 :Goal: Use the ``Background`` concept to execute a number of steps before each scenario.
 
+.. hint::
+    This example is based on the `Ninja Survival Rate`_ examples
+    from [SecretNinja10]_.
+
+.. _`Ninja Survival Rate`: https://github.com/davedf/cuke4ninja/tree/master/src/ruby/NinjaSurvivalRate/features
+
 
 Write the Feature Test
 ------------------------

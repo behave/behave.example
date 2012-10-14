@@ -19,18 +19,17 @@
 from paver.easy import *
 from paver.setuputils import setup, install_distutils_tasks
 # NOT-USED: import paver.doctools
+
 # -- PAVER-EXTENSIONS: More tasks and utilities...
+sys.path.insert(0, ".")
 from paver_ext.python_requirements import read_requirements
 from paver_ext.pip_download import download_depends, localpi
 from paver_ext.python_checker import pychecker, pylint
 
-install_distutils_tasks()
-
-
 # -- REQUIRED-FOR: setup, sdist, ...
 # NOTE: Adds a lot more python-project related tasks.
 install_distutils_tasks()
-sys.path.insert(0, ".")
+
 
 # ----------------------------------------------------------------------------
 # PROJECT CONFIGURATION (for sdist/setup mostly):
