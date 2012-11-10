@@ -55,8 +55,8 @@ When you run the feature file from above (with coloring enabled):
     under the hoods to parse parameters in step definitions.
     This leads to rather simple and readable parse expressions for step parameters.
 
-    See also :ref:`id.data_types.builtin_types` for more information.
-    In addition, see also :ref:`id.data_types` for more information on
+    See also :ref:`id.datatype.builtin_types` for more information.
+    In addition, see also :ref:`id.datatype` for more information on
     defining and using user-defined data types.
 
 .. _behave: http://pypi.python.org/pypi/behave

@@ -1,4 +1,4 @@
-.. _id.step_matchers.using_matchers:
+.. _id.step_matcher.using_matchers:
 
 ==============================================================================
 Using the Step Matchers

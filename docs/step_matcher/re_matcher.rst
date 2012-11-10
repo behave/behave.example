@@ -1,4 +1,4 @@
-.. _id.step_matchers.re_matcher:
+.. _id.step_matcher.re_matcher:
 
 ==============================================================================
 Use the Regular Expression Matcher (re)

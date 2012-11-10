@@ -1,4 +1,4 @@
-.. _id.user_defined_types.basics:
+.. _id.datatype.basics:
 
 Type Definition Basics
 ==============================================================================

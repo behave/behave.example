@@ -1,4 +1,4 @@
-.. _id.step_matchers.use_optional_part:
+.. _id.step_matcher.use_optional_part:
 
 ==============================================================================
 Use Optional Part in Step Definitions
@@ -95,7 +95,7 @@ cardinality field).
 
 .. hint::
 
-    See also :ref:`id.data_types.cardinality_zero_or_one` for more information.
+    See also :ref:`id.datatype.cardinality_zero_or_one` for more information.
 
 
 .. _parse:  http://pypi.python.org/pypi/parse

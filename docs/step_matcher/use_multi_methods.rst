@@ -1,4 +1,4 @@
-.. _id.step_matchers.use_multi_methods:
+.. _id.step_matcher.use_multi_methods:
 
 ==============================================================================
 Use Multi-Methods in Step Definitions

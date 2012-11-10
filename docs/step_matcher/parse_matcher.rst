@@ -1,4 +1,4 @@
-.. _id.step_matchers.parse_matcher:
+.. _id.step_matcher.parse_matcher:
 
 ==============================================================================
 Use the Parse Matcher (parse)
