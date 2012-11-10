@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 11: Use Tags &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Tutorials" href="index.html" />
+    <link rel="next" title="Tutorial 12: Use another Spoken Language" href="tutorial12.html" />
+    <link rel="prev" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Tutorial 11: Use Tags</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="tutorial10.html">Tutorial 10: User-defined Data Type</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial12.html">Tutorial 12: Use another Spoken Language</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 11: Use Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="tutorial-11-use-tags">
+<span id="id-tutorial11"></span><h1>Tutorial 11: Use Tags<a class="headerlink" href="#tutorial-11-use-tags" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite and optimize test runs.</td>
+</tr>
+</tbody>
+</table>
+<p>Several test frameworks support a concept of tags to mark a number of tests
+(<a class="reference external" href="http://pytest.org/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/experimental/categories/Categories.html">JUnit Categories</a>,
+<a class="reference external" href="http://www.nunit.org/index.php?p=category&amp;r=2.4">NUnit CategoryAttribute</a>).
+This provides a simple, flexible and effective mechanism to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>select  a number of tests</li>
+<li>exclude a number of tests</li>
+</ul>
+</div></blockquote>
+<p>for a test run. This mechanism is orthogonal to the
+static test package structure.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Predefined or often used tags:</p>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="11%" />
+<col width="23%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tag</th>
+<th class="head">Kind</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;wip</td>
+<td>predefined</td>
+<td>&#8220;Work in Process&#8221; (under development).</td>
+</tr>
+<tr class="row-odd"><td>&#64;skip</td>
+<td>predefined</td>
+<td>Skip/disable a feature, scenario, ...</td>
+</tr>
+<tr class="row-even"><td>&#64;slow</td>
+<td>user-defined</td>
+<td>Mark slow, long-running tests.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>Tag Logic:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="32%" />
+<col width="46%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Logic Operation</th>
+<th class="head">Command Options</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>select/enable</td>
+<td><a class="reference external" href="mailto:--tags=&#37;&#52;&#48;one">--tags=<span>&#64;</span>one</a></td>
+<td>Only items with this tag.</td>
+</tr>
+<tr class="row-odd"><td>not (minus)</td>
+<td><a class="reference external" href="mailto:--tags=-&#37;&#52;&#48;one">--tags=-<span>&#64;</span>one</a></td>
+<td>Only items without this tag.</td>
+</tr>
+<tr class="row-even"><td>either-or</td>
+<td><a class="reference external" href="mailto:--tags=&#37;&#52;&#48;one">--tags=<span>&#64;</span>one</a>,&#64;two</td>
+<td>If either &#64;one or &#64;two is present.</td>
+</tr>
+<tr class="row-odd"><td>and</td>
+<td><a class="reference external" href="mailto:--tags=&#37;&#52;&#48;one">--tags=<span>&#64;</span>one</a> <a class="reference external" href="mailto:--tags=&#37;&#52;&#48;two">--tags=<span>&#64;</span>two</a></td>
+<td>If both &#64;one and &#64;two are present.</td>
+</tr>
+</tbody>
+</table>
+<p>Notes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>The tag name prefix &#8216;&#64;&#8217; (AT) is optional in tag options</li>
+<li>Use <tt class="docutils literal"><span class="pre">--tags-help</span></tt> for a short description of the tag logic.</li>
+</ul>
+</div></blockquote>
+<p class="last">See also <a class="reference external" href="http://packages.python.org/behave/tutorial.html#controlling-things-with-tags">behave tags documentation</a> for more information on tags.</p>
+</div>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial11_tags.feature</span><span class="nf"></span>
+<span class="nt">@wip</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span>
+
+<span class="nf">    In order to increase the ninja survival rate,</span>
+<span class="nf">    As a ninja commander</span>
+<span class="nf">    I want my ninjas to decide whether to take on an opponent</span>
+<span class="nf">    based on their skill levels.</span>
+
+<span class="nf">    @ninja.any</span>
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Weaker opponent</span>
+<span class="k">        Given </span><span class="nf">the ninja has a third level black-belt</span>
+<span class="nf">        </span><span class="k">When </span><span class="nf">attacked by a samurai</span>
+<span class="nf">        </span><span class="k">Then </span><span class="nf">the ninja should engage the opponent</span>
+
+<span class="nf">    </span><span class="nt">@ninja.chuck</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Stronger opponent</span>
+<span class="k">        Given </span><span class="nf">the ninja has a third level black-belt</span>
+<span class="nf">        </span><span class="k">When </span><span class="nf">attacked by Chuck Norris</span>
+<span class="nf">        </span><span class="k">Then </span><span class="nf">the ninja should run for his life</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-feature-test">
+<h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file by excluding the tag &#64;wip,
+then any feature marked with this tag is skipped as well as all of its scenarios.</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=-wip ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-blue"> # ../features/tutorial11_tags.feature:2</span>
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent <span class="ansi-blue">                     # ../features/tutorial11_tags.feature:10</span>
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent <span class="ansi-blue">                   # ../features/tutorial11_tags.feature:16</span>
+
+0 features passed, 0 failed, 1 skipped
+0 scenarios passed, 0 failed, 2 skipped
+0 steps passed, 0 failed, 6 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Check the test summary for the skipped count for features and scenarios.</p>
+</div>
+<p>When you <strong>enable the tag</strong> &#64;ninja.chuck:</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=ninja.chuck ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-blue"> # ../features/tutorial11_tags.feature:2</span>
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent <span class="ansi-blue">                     # ../features/tutorial11_tags.feature:10</span>
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent <span class="ansi-blue">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">third level black-belt</span><span class="ansi-blue"> # ../features/steps/step_tutorial02.py:68</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold">Chuck Norris</span><span class="ansi-blue">                # ../features/steps/step_tutorial02.py:76</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green"></span><span class="ansi-bold">run for his life</span><span class="ansi-blue">       # ../features/steps/step_tutorial02.py:80</span>
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 1 skipped
+3 steps passed, 0 failed, 3 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now only the second scenario is executed and the first one is skipped.</p>
+</div>
+<p>When you <strong>disable the tag</strong> &#64;ninja.chuck:</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-blue"> # ../features/tutorial11_tags.feature:2</span>
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent <span class="ansi-blue">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">third level black-belt</span><span class="ansi-blue"> # ../features/steps/step_tutorial02.py:68</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-green"></span><span class="ansi-bold">samurai</span><span class="ansi-blue">                   # ../features/steps/step_tutorial02.py:72</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green"></span><span class="ansi-bold">engage the opponent</span><span class="ansi-blue">    # ../features/steps/step_tutorial02.py:80</span>
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent <span class="ansi-blue">                   # ../features/tutorial11_tags.feature:16</span>
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 1 skipped
+3 steps passed, 0 failed, 3 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now only the first scenario is executed and the second one is now skipped.</p>
+</div>
+<p>When you select items with <strong>either tag</strong> &#64;ninja.any <strong>or</strong> the tag
+&#64;ninja.chuck (<strong>tag-or</strong>):</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=&#64;ninja.any,&#64;ninja.chuck ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-blue"> # ../features/tutorial11_tags.feature:2</span>
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent <span class="ansi-blue">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">third level black-belt</span><span class="ansi-blue"> # ../features/steps/step_tutorial02.py:68</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-green"></span><span class="ansi-bold">samurai</span><span class="ansi-blue">                   # ../features/steps/step_tutorial02.py:72</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green"></span><span class="ansi-bold">engage the opponent</span><span class="ansi-blue">    # ../features/steps/step_tutorial02.py:80</span>
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent <span class="ansi-blue">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">third level black-belt</span><span class="ansi-blue"> # ../features/steps/step_tutorial02.py:68</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold">Chuck Norris</span><span class="ansi-blue">                # ../features/steps/step_tutorial02.py:76</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green"></span><span class="ansi-bold">run for his life</span><span class="ansi-blue">       # ../features/steps/step_tutorial02.py:80</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+6 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now both scenarios are executed.</p>
+</div>
+<p>When you select items that have the <strong>tag</strong> &#64;ninja.any <strong>and</strong> the
+tag &#64;ninja.chuck (<strong>tag-and</strong>):</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=&#64;ninja.any --tags=&#64;ninja.chuck ../features/tutorial11_tags.feature
+&#64;wip
+Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-blue"> # ../features/tutorial11_tags.feature:2</span>
+  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.
+
+  &#64;ninja.any
+  Scenario: Weaker opponent <span class="ansi-blue">                     # ../features/tutorial11_tags.feature:10</span>
+
+  &#64;ninja.chuck
+  Scenario: Stronger opponent <span class="ansi-blue">                   # ../features/tutorial11_tags.feature:16</span>
+
+0 features passed, 0 failed, 1 skipped
+0 scenarios passed, 0 failed, 2 skipped
+0 steps passed, 0 failed, 6 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now no scenario is executed, all are skipped.</p>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 11: Use Tags</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial10.html"
+                        title="previous chapter">Tutorial 10: User-defined Data Type</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial12.html"
+                        title="next chapter">Tutorial 12: Use another Spoken Language</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/tutorial11.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="tutorial10.html">Tutorial 10: User-defined Data Type</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial12.html">Tutorial 12: Use another Spoken Language</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

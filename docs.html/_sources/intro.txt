@@ -41,14 +41,14 @@ You should understand the :term:`BDD` concepts.
 
 
 
-Select a Matcher Library
+Select an Assertation Matcher Library
 -----------------------------------------
 
 Before you start to use `behave`_ (or any other :term:`BDD` framework)
 you should select an assertation matcher library that you want to use
 in your project.
 
-Python has a growing number of *matcher libraries* by now.
+Python has a growing number of assertation *matcher libraries* by now.
 Here is the list of some of these:
 
 =============== ===============================================================
@@ -69,7 +69,8 @@ Native assert   Starting point, but not enough information when assert fails.
 
 .. note::
 
-    `hamcrest`_ is used as *matcher library* in the examples presented here.
+    `hamcrest`_ is used as *assertation matcher library* in the examples
+    presented here.
 
 .. _behave:   http://pypi.python.org/pypi/behave
 .. _behave documentation:  http://packages.python.org/behave/

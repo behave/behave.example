@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>More Complex Data Types &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
+    <link rel="next" title="Step Matchers" href="../step_matcher/index.html" />
+    <link rel="prev" title="Enumeration (String-to-Value Mapping)" href="enum.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>More Complex Data Types</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="enum.html">Enumeration (String-to-Value Mapping)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../step_matcher/index.html">Step Matchers</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice.html">Choice (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice2.html">Choice2 (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumeration (String-to-Value Mapping)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">More Complex Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="more-complex-data-types">
+<span id="id-user-defined-types-more-complex-types"></span><h1>More Complex Data Types<a class="headerlink" href="#more-complex-data-types" title="Permalink to this headline">¶</a></h1>
+<p>Type-converters are not the only solution.
+Only so much information fits into a step.
+In additions, steps should remain readable and understandable.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">You should also consider to use tables especially if you want to
+to enter/compare a complicated data type with several/many attributes.</p>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="enum.html"
+                        title="previous chapter">Enumeration (String-to-Value Mapping)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../step_matcher/index.html"
+                        title="next chapter">Step Matchers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/datatype/more_complex_types.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="enum.html">Enumeration (String-to-Value Mapping)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="../step_matcher/index.html">Step Matchers</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

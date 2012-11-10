@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Use Optional Part in Step Definitions &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Step Matchers" href="index.html" />
+    <link rel="next" title="Use Multi-Methods in Step Definitions" href="use_multi_methods.html" />
+    <link rel="prev" title="Use the Regular Expression Matcher (re)" href="re_matcher.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Use Optional Part in Step Definitions</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="re_matcher.html">Use the Regular Expression Matcher (re)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="using_matchers.html">Using the Step Matchers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Use Optional Part in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="use-optional-part-in-step-definitions">
+<span id="id-step-matchers-use-optional-part"></span><h1>Use Optional Part in Step Definitions<a class="headerlink" href="#use-optional-part-in-step-definitions" title="Permalink to this headline">¶</a></h1>
+<p>It is a common case that optional parts occur in steps and step definitions.
+This happens often when you start writing steps and step definitionss.</p>
+<p><strong>EXAMPLE</strong>:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Case 1</span>
+<span class="k">        When </span><span class="nf">attacked by a samurai</span>
+<span class="nf">        ...</span>
+
+<span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Case 2</span>
+<span class="k">        When </span><span class="nf">attacked by Chuck Norris</span>
+<span class="nf">        ...</span>
+</pre></div>
+</div>
+<p>It would be nice if only one step definition would be sufficient for both cases.
+An other point is that the step definition implementation is also identical.</p>
+<div class="section" id="variant-1-use-cardinality-field">
+<h2>Variant 1: Use Cardinality Field<a class="headerlink" href="#variant-1-use-cardinality-field" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>parse</cite> expression format provides an optional cardinality field part
+after the type field. The &#8216;?&#8217; character is used to mark a step parameter
+as optional (cardinality: 0..1).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The cardinality field is optional and
+follows the type field &#8220;Person&#8221; in a parse expression, like:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="28%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cardinality</th>
+<th class="head">Example</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>&#8220;{person:Person}&#8221;</td>
+<td>One, implicit without cardinality field.</td>
+</tr>
+<tr class="row-odd"><td>0..1</td>
+<td>&#8220;{person:Person?}&#8221;</td>
+<td><strong>Zero or one:  For optional parts</strong>.</td>
+</tr>
+<tr class="row-even"><td>0..*</td>
+<td>&#8220;{persons:Person*}&#8221;</td>
+<td>Zero or more: For list&lt;T&gt; (many0).</td>
+</tr>
+<tr class="row-odd"><td>1..*</td>
+<td>&#8220;{persons:Person+}&#8221;</td>
+<td>One  or more: For list&lt;T&gt; (many).</td>
+</tr>
+</tbody>
+</table>
+<p class="last">Using the cardinality field in a parse expression is the
+preferred solution for the optional parameter problem.</p>
+</div>
+<div class="section" id="provide-the-step-definitions">
+<h3>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_in</span>
+
+<span class="c"># -- OPTIONAL-PART: {:a_?}</span>
+<span class="c"># By using cardinality field in parse expressions.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by {:a_?}{opponent}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
+    <span class="c"># -- VERIFY: Optional part feature.</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">a_</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]))</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">opponent</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;Chuck Norris&quot;</span><span class="p">,</span> <span class="s">&quot;samurai&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-data-type">
+<h3>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">import</span> <span class="nn">parse</span>
+
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">a_</span><span class="o">=</span><span class="n">parse_word_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-test">
+<h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
+<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt>:</p>
+<pre class="ansi-block literal-block">
+$ behave ../step_matcher.features/use_optional_part.feature
+Feature: Use Optional Part in Step Definitions<span class="ansi-blue"> # ../step_matcher.features/use_optional_part.feature:1</span>
+
+  Scenario: Case1 &quot;When attacked by a ...&quot; <span class="ansi-blue"> # ../step_matcher.features/use_optional_part.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">black-belt</span><span class="ansi-blue">        # ../step_matcher.features/steps/step_optional_part.py:47</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold">a </span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">samurai</span><span class="ansi-blue">              # ../step_matcher.features/steps/step_optional_part.py:35</span>
+
+  Scenario: Case2 &quot;When attacked by ...&quot; <span class="ansi-blue"> # ../step_matcher.features/use_optional_part.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">black-belt</span><span class="ansi-blue">      # ../step_matcher.features/steps/step_optional_part.py:47</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold">Chuck Norris</span><span class="ansi-blue">         # ../step_matcher.features/steps/step_optional_part.py:35</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+<div class="section" id="the-complete-picture">
+<h3>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Feature: Use Optional Part in Step Definitions</span>
+
+<span class="sd">  Scenario: Case 1 with &quot;a &quot;</span>
+<span class="sd">    Given ...</span>
+<span class="sd">    When attacked by a samurai</span>
+
+<span class="sd">  Scenario: Case 2 without &quot;a &quot;</span>
+<span class="sd">    Given ...</span>
+<span class="sd">    When attacked by Chuck Norris</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">import</span> <span class="nn">parse</span>
+
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">a_</span><span class="o">=</span><span class="n">parse_word_a</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_in</span>
+
+<span class="c"># -- OPTIONAL-PART: {:a_?}</span>
+<span class="c"># By using cardinality field in parse expressions.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by {:a_?}{opponent}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
+    <span class="c"># -- VERIFY: Optional part feature.</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">a_</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]))</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">opponent</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;Chuck Norris&quot;</span><span class="p">,</span> <span class="s">&quot;samurai&quot;</span><span class="p">]))</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">ninja_fight</span> <span class="kn">import</span> <span class="n">NinjaFight</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_has_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">achievement_level</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="n">NinjaFight</span><span class="p">(</span><span class="n">achievement_level</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_should</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">reaction</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">decision</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="variant-2-use-data-type-with-cardinality-0-1">
+<h2>Variant 2: Use Data Type with Cardinality 0..1<a class="headerlink" href="#variant-2-use-data-type-with-cardinality-0-1" title="Permalink to this headline">¶</a></h2>
+<p>A special data type must be defined and registered that has the cardinality
+<em>zero or one (0..1)</em>. This is similar to the solution above. But it requires
+that the developer performs this work. In the case above this task is
+implicitly done by <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> when it was needed (triggered by the
+cardinality field).</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">See also <a class="reference internal" href="../datatype/cardinality_zero_or_one.html#id-data-types-cardinality-zero-or-one"><em>Cardinality: Zero or One (Optional)</em></a> for more information.</p>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Use Optional Part in Step Definitions</a><ul>
+<li><a class="reference internal" href="#variant-1-use-cardinality-field">Variant 1: Use Cardinality Field</a><ul>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variant-2-use-data-type-with-cardinality-0-1">Variant 2: Use Data Type with Cardinality 0..1</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="re_matcher.html"
+                        title="previous chapter">Use the Regular Expression Matcher (re)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="use_multi_methods.html"
+                        title="next chapter">Use Multi-Methods in Step Definitions</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/step_matcher/use_optional_part.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="re_matcher.html">Use the Regular Expression Matcher (re)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

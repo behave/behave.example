@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 7: Result Table &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Tutorials" href="index.html" />
+    <link rel="next" title="Tutorial 8: Execute Other Steps" href="tutorial08.html" />
+    <link rel="prev" title="Tutorial 6: Setup Table" href="tutorial06.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Tutorial 7: Result Table</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="tutorial06.html">Tutorial 6: Setup Table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial08.html">Tutorial 8: Execute Other Steps</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 7: Result Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="tutorial-7-result-table">
+<span id="id-tutorial07"></span><h1>Tutorial 7: Result Table<a class="headerlink" href="#tutorial-7-result-table" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use <em>result tables</em> to simplify comparison of an expected dataset.</td>
+</tr>
+</tbody>
+</table>
+<p>The usage of <strong>result tables</strong> come in variations.
+It often depends what you want to compare.
+These variations in the <em>test automation layer</em> are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>ordered   dataset comparison</li>
+<li>unordered dataset comparison</li>
+<li>ordered   subset  comparison (result table contains subset)</li>
+<li>unordered subset  comparison (result table contains subset)</li>
+</ul>
+</div></blockquote>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The <a class="reference external" href="http://fit.c2.com/">FIT</a> test framework provides similar concepts via Fixtures.
+An extension of <a class="reference external" href="http://fit.c2.com/">FIT</a>, the <a class="reference external" href="http://fitlibrary.sourceforge.net/">FitLibrary</a>, provides even more
+advanced fixtures classes/tables.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="43%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Dataset</th>
+<th class="head">Unordered comparison</th>
+<th class="head">Ordered Comparison</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Subset</td>
+<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:subsetfixture">fitlibrary.SubsetFixture</a>,
+<a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.RowFixture">fit.RowFixture</a>
+(with table args)</td>
+<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:arrayfixture">fitlibrary.ArrayFixture</a>
+(variant)</td>
+</tr>
+<tr class="row-odd"><td>Complete</td>
+<td><a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.RowFixture">fit.RowFixture</a>,
+<a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:setfixture">fitlibrary.SetFixture</a></td>
+<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:arrayfixture">fitlibrary.ArrayFixture</a></td>
+</tr>
+</tbody>
+</table>
+<p class="last">Besides other descriptions of these Fixtures,
+the <a class="reference external" href="http://gojko.net/fitnesse/fixturegallery/">Fixture Gallery</a> project provides examples for these fixture
+in several languages.</p>
+</div>
+<p>Both, <strong>unordered dataset comparison</strong> and
+<strong>unordered subset comparison</strong> are used in this tutorial
+in two different scenarios.</p>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial07_step_result_table.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Step Result Table (tutorial07)</span>
+
+<span class="nf">   </span><span class="k">Scenario:</span><span class="nf"> Unordered Result Table Comparison (RowFixture Table)</span>
+<span class="k">     Given </span><span class="nf">a set of specific users</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">      |</span><span class="s"> department</span><span class="k">  |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Alice</span><span class="k">     |</span><span class="s"> Beer Cans</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Bob</span><span class="k">       |</span><span class="s"> Beer Cans</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Charly</span><span class="k">    |</span><span class="s"> Silly Walks</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Dodo</span><span class="k">      |</span><span class="s"> Silly Walks</span><span class="k"> |</span>
+
+<span class="nf">    </span><span class="k">Then </span><span class="nf">we will have the following people in &quot;</span><span class="s">Silly Walks</span><span class="nf">&quot;:</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">    |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Charly</span><span class="k">  |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Dodo</span><span class="k">    |</span>
+
+<span class="nf">    </span><span class="k">And </span><span class="nf">we will have the following people in &quot;</span><span class="s">Beer Cans</span><span class="nf">&quot;:</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">    |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Bob</span><span class="k">     |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Alice</span><span class="k">   |</span>
+
+
+<span class="nf">   </span><span class="k">Scenario:</span><span class="nf"> Subset Result Table Comparison</span>
+<span class="k">     Given </span><span class="nf">a set of specific users</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">      |</span><span class="s"> department</span><span class="k">       |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Alice</span><span class="k">     |</span><span class="s"> Super-sonic Cars</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Bob</span><span class="k">       |</span><span class="s"> Super-sonic Cars</span><span class="k"> |</span>
+
+<span class="nf">    </span><span class="k">Then </span><span class="nf">we will have at least the following people in &quot;</span><span class="s">Super-sonic Cars</span><span class="nf">&quot;:</span>
+<span class="k">        |</span><span class="s"> name</span><span class="k">    |</span><span class="nf"></span>
+<span class="k">        |</span><span class="s"> Alice</span><span class="k">   |</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-test-automation">
+<h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial07.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">has_items</span>
+<span class="kn">from</span> <span class="nn">hamcrest.library.collection.issequence_containinginanyorder</span> \
+     <span class="kn">import</span> <span class="n">contains_inanyorder</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># SEE: step_tutorial06.py</span>
+<span class="c"># @given(&#39;a set of specific users&#39;)</span>
+<span class="c"># def step(context):</span>
+<span class="c">#    model = getattr(context, &quot;model&quot;, None)</span>
+<span class="c">#    if not model:</span>
+<span class="c">#        context.model = CompanyModel()</span>
+<span class="c">#    for row in context.table:</span>
+<span class="c">#        context.model.add_user(row[&quot;name&quot;], deparment=row[&quot;department&quot;])</span>
+<span class="c">#</span>
+<span class="c"># @when(&#39;we count the number of people in each department&#39;)</span>
+<span class="c"># def step(context):</span>
+<span class="c">#    context.model.count_persons_per_department()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compares expected with actual persons in a department.</span>
+<span class="sd">    NOTE: Unordered comparison (ordering is not important).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">department_</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">departments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">department</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">department_</span><span class="p">:</span>
+        <span class="n">assert_that</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="s">&quot;Department </span><span class="si">%s</span><span class="s"> is unknown&quot;</span> <span class="o">%</span> <span class="n">department</span><span class="p">)</span>
+    <span class="c"># -- NORMAl-CASE:</span>
+    <span class="n">expected_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+    <span class="n">actual_persons</span>   <span class="o">=</span> <span class="n">department_</span><span class="o">.</span><span class="n">members</span>
+
+    <span class="c"># -- UNORDERED TABLE-COMPARISON (using: pyhamcrest)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">contains_inanyorder</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">),</span> <span class="n">actual_persons</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have at least the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compares subset of persons with actual persons in a department.</span>
+<span class="sd">    NOTE: Unordered subset comparison.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">department_</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">departments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">department</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">department_</span><span class="p">:</span>
+        <span class="n">assert_that</span><span class="p">(</span><span class="bp">False</span><span class="p">,</span> <span class="s">&quot;Department </span><span class="si">%s</span><span class="s"> is unknown&quot;</span> <span class="o">%</span> <span class="n">department</span><span class="p">)</span>
+        <span class="c"># -- NORMAl-CASE:</span>
+    <span class="n">expected_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+    <span class="n">actual_persons</span>   <span class="o">=</span> <span class="n">department_</span><span class="o">.</span><span class="n">members</span>
+
+    <span class="c"># -- TABLE-SUBSET-COMPARISON (using: pyhamcrest)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">has_items</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">),</span> <span class="n">actual_persons</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-domain-model">
+<h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/company_model.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># PROBLEM DOMAIN:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">members</span><span class="p">:</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">members</span> <span class="o">=</span> <span class="n">members</span>
+
+    <span class="k">def</span> <span class="nf">add_member</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">members</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">members</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span>
+
+<span class="k">class</span> <span class="nc">CompanyModel</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">users</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">departments</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">add_user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">deparment</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">users</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="o">.</span><span class="n">has_key</span><span class="p">(</span><span class="n">deparment</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">deparment</span><span class="p">]</span> <span class="o">=</span> <span class="n">Department</span><span class="p">(</span><span class="n">deparment</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">deparment</span><span class="p">]</span><span class="o">.</span><span class="n">add_member</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">count_persons_per_department</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">get_headcount_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">departments</span><span class="p">[</span><span class="n">department</span><span class="p">]</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-feature-test">
+<h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file from above (with coloring enabled):</p>
+<pre class="ansi-block literal-block">
+$ behave ../features/tutorial07_step_result_table.feature
+Feature: Step Result Table (tutorial07)<span class="ansi-blue"> # ../features/tutorial07_step_result_table.feature:1</span>
+
+  Scenario: Unordered Result Table Comparison (RowFixture Table) <span class="ansi-blue"> # ../features/tutorial07_step_result_table.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-blue">                                 # ../features/steps/step_tutorial06.py:27</span>
+      | name   | department  |
+      | Alice  | Beer Cans   |
+      | Bob    | Beer Cans   |
+      | Charly | Silly Walks |
+      | Dodo   | Silly Walks |
+    <span class="ansi-green">Then </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-blue">       # ../features/steps/step_tutorial07.py:58</span>
+      | name   |
+      | Charly |
+      | Dodo   |
+    <span class="ansi-green">And </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial07.py:58</span>
+      | name  |
+      | Bob   |
+      | Alice |
+
+  Scenario: Subset Result Table Comparison <span class="ansi-blue">                               # ../features/tutorial07_step_result_table.feature:22</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-blue">                                         # ../features/steps/step_tutorial06.py:27</span>
+      | name  | department       |
+      | Alice | Super-sonic Cars |
+      | Bob   | Super-sonic Cars |
+    <span class="ansi-green">Then </span><span class="ansi-green">we will have at least the following people in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Super-sonic Cars</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial07.py:74</span>
+      | name  |
+      | Alice |
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+5 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 7: Result Table</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial06.html"
+                        title="previous chapter">Tutorial 6: Setup Table</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial08.html"
+                        title="next chapter">Tutorial 8: Execute Other Steps</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/tutorial07.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="tutorial06.html">Tutorial 6: Setup Table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial08.html">Tutorial 8: Execute Other Steps</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
