@@ -18,9 +18,12 @@ Contents:
     :maxdepth: 2
 
     intro
-    tutorials
+    tutorials/index
+    datatype/index
+    step_matcher/index
     glossary
     refs
+
 
 Indices and tables
 ==================

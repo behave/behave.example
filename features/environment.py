@@ -23,4 +23,5 @@ def before_all(context):
         logging.basicConfig(level=logging.DEBUG)
 
 def after_all(context):
-    print "SUMMARY:"
+    # print "SUMMARY:"
+    pass

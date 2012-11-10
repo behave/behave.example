@@ -1,0 +1,95 @@
+{#
+    dotted/layout.html
+
+    ~~~~~~~~~~~~~~~~~~
+
+    Sphinx layout template for the dotted theme.
+
+    :copyright: Copyright 2011 by Sphinx-users.jp, see AUTHORS.
+    :license: MIT, see LICENSE for details.
+#}
+{% extends "basic/layout.html" %}
+{%- if theme_slidetoc|tobool %}
+{% set script_files = script_files + ['_static/dotted.js'] %}
+{%- endif %}
+
+{# do not display relbars #}
+{% block relbar1 %}{% endblock %}
+{% block relbar2 %}{% endblock %}
+
+{% macro nav() %}
+        <p>
+        {%- block dottedrel1 %}
+        {%- endblock %}
+        {%- if prev %}
+        &#171;&#160;&#160;<a href="{{ prev.link|e }}">{{ prev.title }}</a>
+        &#160;&#160;::&#160;&#160;
+        {%- endif %}
+        <a class="uplink" href="{{ pathto(master_doc) }}">{{ _('Contents') }}</a>
+        {%- if next %}
+        &#160;&#160;::&#160;&#160;
+        <a href="{{ next.link|e }}">{{ next.title }}</a>&#160;&#160;&#187;
+        {%- endif %}
+        {%- block dottedlrel2 %}
+        {%- endblock %}
+        </p>
+{% endmacro %}
+
+{% block content %}
+        <div class="header">
+          <div class="header-top">
+            {%- block dottedheader %}
+            {%- if theme_full_logo != "false" %}
+            <a href="{{ pathto('index') }}">
+              <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+            </a>
+            {%- else %}
+            {%- if logo -%}
+              <img class="rightlogo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+            {%- endif %}
+            <h1 class="heading"><a href="{{ pathto('index') }}">
+              <span>{{ shorttitle|e }}</span></a></h1>
+            <h2 class="heading"><span>{{ title|striptags|e }}</span></a></h2>
+            {%- endif %}
+            {%- endblock %}
+          </div>
+          <div class="topnav">
+            {{ nav() }}
+            <div class="globaltoc">
+              {{ toctree() }}
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">
+
+          {%- if theme_enablesidebar|tobool %}
+          {%- block sidebar1 %} {# possible location for sidebar #} {% endblock %}
+          {%- endif %}
+
+          <div class="document">
+            <div class="documentwrapper">
+
+          {%- if render_sidebar %}
+              <div class="bodywrapper">
+          {%- endif %}
+                <div class="body">
+                  {% block body %}{% endblock %}
+                </div>
+
+          {%- if render_sidebar %}
+              </div>
+          {%- endif %}
+
+            </div>
+          {%- if theme_enablesidebar|tobool %}
+          {%- block sidebar2 %}{{ sidebar() }}{% endblock %}
+          {%- endif %}
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          {{ nav() }}
+        </div>
+{% endblock %}

@@ -22,11 +22,21 @@ from hamcrest import assert_that, equal_to
 from calculator import Calculator
 
 # ----------------------------------------------------------------------------
+# USER-DEFINED TYPES:
+# ----------------------------------------------------------------------------
+def parse_number(text):
+    """
+    Convert parsed text into a number.
+    :param text: Parsed text, called by :py:meth:`parse.Parser.parse()`.
+    :return: Number instance (integer), created from parsed text.
+    """
+    return int(text)
+# -- REGISTER: User-defined type converter (parse_type).
+matchers.register_type(Number=parse_number)
+
+# ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
-# -- REGISTER USER-TYPE PARSER/CONVERTER:
-matchers.register_type(Number=int)
-
 @given('I have a calculator')
 def step(context):
     context.calculator = Calculator()

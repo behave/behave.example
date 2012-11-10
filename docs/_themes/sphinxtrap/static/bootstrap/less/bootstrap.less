@@ -1,0 +1,112 @@
+/*!
+ * Bootstrap v2.1.0
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+
+// CSS Reset
+@import "reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+
+// Grid system and page structure
+@import "scaffolding.less";
+@import "grid.less";
+@import "layouts.less";
+
+// Base CSS
+@import "type.less";
+@import "code.less";
+@import "forms.less";
+@import "tables.less";
+
+// Components: common
+@import "sprites.less";
+@import "dropdowns.less";
+@import "wells.less";
+@import "component-animations.less";
+@import "close.less";
+
+// Components: Buttons & Alerts
+@import "buttons.less";
+@import "button-groups.less";
+@import "alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "navs.less";
+@import "navbar.less";
+@import "breadcrumbs.less";
+@import "pagination.less";
+@import "pager.less";
+
+// Components: Popovers
+@import "modals.less";
+@import "tooltip.less";
+@import "popovers.less";
+
+// Components: Misc
+@import "thumbnails.less";
+@import "labels-badges.less";
+@import "progress-bars.less";
+@import "accordion.less";
+@import "carousel.less";
+@import "hero-unit.less";
+
+// Utility classes
+@import "utilities.less"; // Has to be last to override when necessary
+
+
+//site-specific
+.documentwrapper{ margin:20px;padding:40px; }
+
+a.headerlink{ 
+    color:@bodyBackground;
+    &:hover{color:darken(@bodyBackground, 10%) }
+ }
+
+.dropdown-menu ul>li{ list-style:none; }
+
+.highlighted{
+    background-color: #F3F1BA;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px #AA9393;
+}
+
+html, body {height: 99%;}
+
+.footer{ padding: 17px 0 18px 0; text-align:center}
+
+.wrapper {
+     min-height: 100%;
+     height: auto !important;
+     height: 100%;
+     margin: 0 auto -43px;
+}
+
+.push { height: 43px; }
+
+.admonition{
+    .alert()
+    }
+
+
+h2, h3, h4, h5, h6 { margin: 40px 0 20px 0; }
+
+.brand > img {
+    margin-top: -10px;
+    margin-left: -40px;
+    position: fixed;
+}
+
+a.brand { margin-left: 80px; }
+
+
+
+
+

@@ -76,14 +76,6 @@ options(
         install_requires= INSTALL_REQUIRES,
         include_package_data= True,
     ),
-    sphinx=Bunch(
-        docroot="docs",
-        sourcedir=".",
-        builddir="../build/docs"
-    ),
-    minilib=Bunch(
-        extra_files=[ 'doctools', 'virtual' ]
-    ),
     develop=Bunch(
         requirements_files=[
             "requirements.txt",
@@ -91,14 +83,29 @@ options(
         download_dir="downloads",
     ),
     test=Bunch(
-        default_args=[ "features/" ]
+        default_args=[
+            "features/",
+            "datatype.features/",
+            "step_matcher.features/",
+        ],
+        behave_cmdopts = "--tags=-@xfail",
+        behave_formatter = "progress",
     ),
-    pychecker = Bunch(
-        default_args=NAME
+    pychecker = Bunch(default_args=NAME),
+    pylint    = Bunch(default_args=NAME),
+    __XXX_sphinx=Bunch(
+        docroot="docs",
+        sourcedir=".",
+        builddir="../build/docs"
     ),
-    pylint = Bunch(
-        default_args=NAME
-    )
+    sphinx=Bunch(
+        # docroot=".",
+        sourcedir= "docs",
+        destdir  = "../build/docs"
+    ),
+    minilib=Bunch(
+        extra_files=[ 'doctools', 'virtual' ]
+    ),
 )
 
 # ----------------------------------------------------------------------------
@@ -156,8 +163,13 @@ def test(args):
     """Execute tests with behave"""
     if not args:
         args = options.test.default_args
+    behave_cmdopts = "-f {formatter} {opts}".format(
+        formatter=options.test.behave_formatter,
+        opts=options.test.behave_cmdopts,
+    )
+
     for arg in args:
-        behave(arg)
+        behave(arg, options=behave_cmdopts)
 
 
 # ----------------------------------------------------------------------------
@@ -176,7 +188,8 @@ def clean():
     # -- STEP: Remove temporary directory subtrees.
     patterns = [
         "*.egg-info",
-        "__pycache__",
+        ".cache",       #< py.test cache directory.
+        "__pycache__",  #< Python compiled objects cache.
     ]
     for pattern in patterns:
         dirs = path(".").walkdirs(pattern, errors="ignore")
@@ -202,8 +215,7 @@ def clean():
 
 @task
 def clean_all():
-    """Clean everything.."""
-    # -- ORDERING: Is important
+    """Clean everything, like in newly installed state."""
     path("downloads").rmtree()
 
     # -- MORE: Use normal cleanings, too.
@@ -212,7 +224,10 @@ def clean_all():
 # ----------------------------------------------------------------------------
 # UTILS:
 # ----------------------------------------------------------------------------
-BEHAVE = "behave"
+HERE   = path(__file__).dirname()
+BEHAVE = HERE.joinpath("bin/behave")
+if sys.platform == "win32":
+    BEHAVE = path(BEHAVE).normpath()
 
 def python(cmdline, cwd="."):
     """Execute a python script by using the current python interpreter."""
@@ -230,8 +245,8 @@ def sphinx_build(builder="html", cmdopts=None):
         # SEE ALSO: https://bitbucket.org/birkenfeld/sphinx-contrib (issues)
         cmdopts = "-E"
     sourcedir = options.sphinx.sourcedir
-    destdir   = options.sphinx.builddir
-    cmd = "sphinx-build {opts} -b {builder} {sourcedir} {destdir}/{builder}" \
+    destdir   = options.sphinx.destdir
+    command = "sphinx-build {opts} -b {builder} . {destdir}/{builder}" \
             .format(builder=builder, sourcedir=sourcedir, destdir=destdir,
                     opts=cmdopts)
-    sh(cmd, cwd=options.sphinx.docroot)
+    sh(command, cwd=sourcedir)
