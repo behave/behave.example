@@ -27,4 +27,12 @@ Provide the Test Automation
     :language: python
     :lines:  1, 18-
 
+Run the Feature Test
+-----------------------------
+
+When you run the feature file from above (with coloring enabled):
+
+.. command-output:: behave ../features/tutorial08_step_executes_steps.feature
+    :shell:
+
 

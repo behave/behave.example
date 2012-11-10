@@ -59,7 +59,7 @@ Run the Test
 
 Now we run this example with ``behave`` (and all steps are matched):
 
-.. command-output:: behave -f plain --tags=-xfail --no-skipped ../datatype.features/choice.feature
+.. command-output:: behave --tags=-xfail --no-skipped ../datatype.features/choice.feature
     :shell:
     :returncode: 0
 
@@ -78,7 +78,7 @@ are matched.
 
 When you run this example with ``behave`` the last step is not matched:
 
-.. command-output:: behave -f plain --tags=xfail --no-skipped ../datatype.features/choice.feature
+.. command-output:: behave --tags=xfail --no-skipped ../datatype.features/choice.feature
     :shell:
     :returncode: 1
 

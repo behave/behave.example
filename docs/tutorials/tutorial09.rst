@@ -43,5 +43,5 @@ Run the Feature Test
 
 When you run this feature test with the background functionality:
 
-.. command-output:: behave --format=plain ../features/tutorial09_background.feature
+.. command-output:: behave ../features/tutorial09_background.feature
     :shell:

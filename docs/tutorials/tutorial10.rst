@@ -39,6 +39,14 @@ Provide the Domain Model
     :language: python
 
 
+Run the Feature Test
+-----------------------------
+
+When you run the feature file from above (with coloring enabled):
+
+.. command-output:: behave ../features/tutorial10_step_usertype.feature
+    :shell:
+
 .. note::
 
     **Predefined Types**

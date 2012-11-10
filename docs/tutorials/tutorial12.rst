@@ -20,6 +20,7 @@ spoken language.
     Feature files can be tagged for a specific language, like::
 
         # language: de
+        # -- file:*.feature
         ...
 
     When this happens, the :term:`BDD` framework selects the keywords for
@@ -28,6 +29,7 @@ spoken language.
     `behave`_ uses either ``behave.ini`` or ``.behaverc`` as
     configuration file::
 
+        # -- file:behave.ini
         [behave]
         lang = de
 
@@ -56,15 +58,15 @@ Provide the Test Automation
     :language: python
     :lines:  1-2, 18-
 
-Execute the Feature Test
+Run the Feature Test
 -----------------------------
 
 Automatic language selection (via feature-file language marker):
 
-.. command-output:: behave --format=plain ../features/tutorial12_spoken_language.feature
+.. command-output:: behave ../features/tutorial12_spoken_language.feature
     :shell:
 
 Explicit language selection via command-line usage of ``--lang=${lang}``:
 
-.. command-output:: behave --lang=de --format=plain ../features/tutorial12_spoken_language.feature
+.. command-output:: behave --lang=de ../features/tutorial12_spoken_language.feature
     :shell:

@@ -47,6 +47,12 @@ Run the Feature Test
 
 When you run the feature file from above (with plain formatting):
 
-.. command-output:: behave --format=plain ../features/tutorial04_scenario_outline.feature
+.. command-output:: behave ../features/tutorial04_scenario_outline.feature
     :shell:
+
+.. hidden:
+    When you run the feature file from above (with plain formatting):
+
+    .. command-output:: behave --format=plain ../features/tutorial04_scenario_outline.feature
+        :shell:
 

@@ -94,7 +94,7 @@ Run the Test
 
 Now we run this example with ``behave``:
 
-.. command-output:: behave -c ../step_matcher.features/use_multi_methods.feature
+.. command-output:: behave ../step_matcher.features/use_multi_methods.feature
     :shell:
     :returncode: 0
 
@@ -113,4 +113,5 @@ The Complete Picture
 .. literalinclude:: ../../step_matcher.features/steps/step_multi_methods.py
     :prepend:   # file:step_matcher.features/steps/step_multi_methods.py
     :language: python
+    :linenos:
 

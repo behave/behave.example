@@ -38,3 +38,12 @@ Provide the Domain Model
     :language: python
     :lines:  1, 21-
 
+
+Run the Feature Test
+-----------------------------
+
+When you run the feature file from above (with coloring enabled):
+
+.. command-output:: behave ../features/tutorial03_step_parameters.feature
+    :shell:
+

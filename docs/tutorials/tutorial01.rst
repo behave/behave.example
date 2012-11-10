@@ -16,7 +16,7 @@ in the known ``Given ... When ... Then ...`` language style (BDD).
     :language: gherkin
 
 
-Provide the Automation Layer
+Provide the Test Automation
 -----------------------------
 
 To be able to execute the feature file, you need to provide a thin
@@ -33,14 +33,14 @@ with Python functions. These step functions provide the test automation layer
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring disabled):
-
-.. command-output:: behave -c ../features/tutorial01_basics.feature
-    :shell:
-
 When you run the feature file from above (with coloring enabled):
 
 .. command-output:: behave ../features/tutorial01_basics.feature
+    :shell:
+
+When you run the feature file from above (with coloring disabled):
+
+.. command-output:: behave -c ../features/tutorial01_basics.feature
     :shell:
 
 As alternative you can run the feature with plain formatting

@@ -55,13 +55,13 @@ Write the Feature Test
     :language: gherkin
 
 
-Run the Feaure Test
+Run the Feature Test
 -------------------------
 
 When you run the feature file by excluding the tag @wip,
 then any feature marked with this tag is skipped as well as all of its scenarios.
 
-.. command-output:: behave --format=plain --tags=-wip ../features/tutorial11_tags.feature
+.. command-output:: behave --tags=-wip ../features/tutorial11_tags.feature
     :shell:
 
 .. note::
@@ -71,7 +71,7 @@ then any feature marked with this tag is skipped as well as all of its scenarios
 
 When you **enable the tag** @ninja.chuck:
 
-.. command-output:: behave --format=plain --tags=ninja.chuck ../features/tutorial11_tags.feature
+.. command-output:: behave --tags=ninja.chuck ../features/tutorial11_tags.feature
     :shell:
 
 .. note::
@@ -80,7 +80,7 @@ When you **enable the tag** @ninja.chuck:
 
 When you **disable the tag** @ninja.chuck:
 
-.. command-output:: behave --format=plain --tags=-ninja.chuck ../features/tutorial11_tags.feature
+.. command-output:: behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
     :shell:
 
 .. note::
@@ -90,7 +90,7 @@ When you **disable the tag** @ninja.chuck:
 When you select items with **either tag** @ninja.any **or** the tag
 @ninja.chuck (**tag-or**):
 
-.. command-output:: behave --format=plain --tags=@ninja.any,@ninja.chuck ../features/tutorial11_tags.feature
+.. command-output:: behave --tags=@ninja.any,@ninja.chuck ../features/tutorial11_tags.feature
     :shell:
 
 .. note::
@@ -100,7 +100,7 @@ When you select items with **either tag** @ninja.any **or** the tag
 When you select items that have the **tag** @ninja.any **and** the
 tag @ninja.chuck (**tag-and**):
 
-.. command-output:: behave --format=plain --tags=@ninja.any --tags=ninja.chuck ../features/tutorial11_tags.feature
+.. command-output:: behave --tags=@ninja.any --tags=@ninja.chuck ../features/tutorial11_tags.feature
     :shell:
 
 .. note::

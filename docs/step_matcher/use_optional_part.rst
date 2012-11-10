@@ -72,7 +72,7 @@ Run the Test
 
 Now we run this example with ``behave``:
 
-.. command-output:: behave -f plain ../step_matcher.features/use_optional_part.feature
+.. command-output:: behave ../step_matcher.features/use_optional_part.feature
     :shell:
     :returncode: 0
 

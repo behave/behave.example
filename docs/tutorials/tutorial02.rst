@@ -49,10 +49,21 @@ and you do not have to write it.
     :lines: 26-51
 
 
+Run the Feature Test
+-----------------------------
+
+When you run the feature file from above (with coloring enabled):
+
+.. command-output:: behave ../features/tutorial02_natural_language.feature
+    :shell:
+
+
 The Complete Picture
 -----------------------------
 
 .. literalinclude:: ../../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
+
+
 
