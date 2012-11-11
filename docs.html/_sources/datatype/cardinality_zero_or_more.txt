@@ -36,7 +36,7 @@ Define the Data Type
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
     :language: python
-    :lines:  35-53
+    :lines:  23-41
 
 .. note::
 
@@ -52,7 +52,7 @@ Provide the Step Definitions
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
     :language: python
-    :lines:  54-
+    :lines:  42-
 
 
 Run the Test
