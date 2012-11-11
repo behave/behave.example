@@ -1,4 +1,4 @@
-.. _id.user_defined_types.enum:
+.. _id.datatype.enum:
 
 Enumeration (String-to-Value Mapping)
 ==============================================================================

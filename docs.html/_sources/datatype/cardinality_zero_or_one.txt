@@ -1,4 +1,4 @@
-.. _id.data_types.cardinality_zero_or_one:
+.. _id.datatype.cardinality_zero_or_one:
 
 Cardinality: Zero or One (Optional)
 ==============================================================================

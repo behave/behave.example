@@ -60,6 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -77,34 +78,294 @@
                 <div class="body">
                   
   <div class="section" id="using-the-step-matchers">
-<span id="id-step-matchers-using-matchers"></span><h1>Using the Step Matchers<a class="headerlink" href="#using-the-step-matchers" title="Permalink to this headline">¶</a></h1>
+<span id="id-step-matcher-using-matchers"></span><h1>Using the Step Matchers<a class="headerlink" href="#using-the-step-matchers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="default-matcher-strategy">
 <h2>Default Matcher Strategy<a class="headerlink" href="#default-matcher-strategy" title="Permalink to this headline">¶</a></h2>
 <p>The &#8220;parse&#8221; matcher is used per default.</p>
 </div>
 <div class="section" id="defining-an-own-default-matcher">
 <h2>Defining an own Default Matcher<a class="headerlink" href="#defining-an-own-default-matcher" title="Permalink to this headline">¶</a></h2>
-<p>Use <tt class="docutils literal"><span class="pre">environment.py</span></tt> file to define an own default matcher
+<p>Use the <tt class="docutils literal"><span class="pre">environment.py</span></tt> file to define an own default matcher
 that is used for all features in the <tt class="docutils literal"><span class="pre">features/</span></tt> directory.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-<span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/environment.py</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">step_matcher</span>
+
+<span class="c"># -- SELECT DEFAULT STEP MATCHER: Use &quot;re&quot; matcher as default.</span>
+<span class="c"># step_matcher(&quot;parse&quot;)</span>
+<span class="n">step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The step matcher strategy is reset to the default step matcher
+before each step is loaded. Therefore, if you use only one step matcher,
+it is sufficient to define it in the &#8220;environment.py&#8221; file.</p>
 </div>
-<div class="section" id="select-a-step-matcher">
-<h2>Select a Step Matcher<a class="headerlink" href="#select-a-step-matcher" title="Permalink to this headline">¶</a></h2>
-<p>XXX</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-<span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+</div>
+<div class="section" id="switch-between-step-matcher-strategy-in-a-step-definition-file">
+<h2>Switch between Step Matcher Strategy in a Step Definition File<a class="headerlink" href="#switch-between-step-matcher-strategy-in-a-step-definition-file" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to switch the step matcher several times in a <em>step definition</em>.
+But normally you group the step definitions according to their step matcher.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step.py</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">step_matcher</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># STEPS with Regular Expression Matcher (&quot;re&quot;)</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># -- SELECT STEP MATCHER: Before using it in step definitions.</span>
+<span class="n">step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I meet with &quot;(?P&lt;person&gt;Alice|Bob)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_meet</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">person</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># STEPS with Parse Matcher (&quot;parse&quot;)</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="n">step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;I have a lot of fun with &quot;{person}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_I_have_fun_with</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">person</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="switch-between-step-matchers-in-a-step-definition-file">
-<h2>Switch between Step Matchers in a Step Definition File<a class="headerlink" href="#switch-between-step-matchers-in-a-step-definition-file" title="Permalink to this headline">¶</a></h2>
-<p>XXX</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-<span class="n">set_step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+<hr class="docutils" />
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p>The following <em>behave self-test</em> provides you more detailed information:</p>
+<div class="last highlight-gherkin"><div class="highlight"><pre><span class="c"># file:issue.features/issue73.feature</span><span class="nf"></span>
+<span class="nt">@issue</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Issue #73: the current_matcher is not predictable</span>
+
+<span class="nf">    | behave provides 2 matchers: ParseMatcher (parse) and RegexpMatcher (re).</span>
+<span class="nf">    | The ParseMatcher is used per default when the test runner starts.</span>
+<span class="nf">    |</span>
+<span class="nf">    | A step definition file may change the matcher several times</span>
+<span class="nf">    | by calling `step_matcher(&quot;re&quot;)` or `step_matcher(&quot;parse&quot;)`.</span>
+<span class="nf">    | In order to make the writing of step definitions more predictable,</span>
+<span class="nf">    | the matcher should be reset to the default matcher</span>
+<span class="nf">    | before loading each step definition.</span>
+<span class="nf">    |</span>
+<span class="nf">    | A project can define its own default matcher by calling the</span>
+<span class="nf">    | `step_matcher(...)` in the &quot;environment.py&quot; hook.</span>
+<span class="nf">    | This matcher will be used as default before a step definition is loaded.</span>
+
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Verify that ParseMatcher is the default matcher</span>
+<span class="k">    Given </span><span class="nf">a new working directory</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/parse_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step</span>
+
+<span class="s">        @step(u&#39;a step {outcome:w}&#39;)</span>
+<span class="s">        def step_passes(context, outcome):</span>
+<span class="s">            assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/passing.feature</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        Feature:</span>
+<span class="s">          Scenario:</span>
+<span class="s">            Given a step passes</span>
+<span class="s">            When  a step passes</span>
+<span class="s">            Then  a step passes</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I run &quot;</span><span class="s">behave -f plain features/passing.feature</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">it should pass with</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        1 scenario passed, 0 failed, 0 skipped</span>
+<span class="s">        3 steps passed, 0 failed, 0 skipped, 0 undefined</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Use only RegexMatcher in Step Definitions</span>
+<span class="k">    Given </span><span class="nf">a new working directory</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/environment.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step_matcher</span>
+<span class="s">        step_matcher(&quot;re&quot;)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/regexp_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step</span>
+
+<span class="s">        @step(u&#39;a step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">        def step_passes(context, outcome):</span>
+<span class="s">            assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/passing.feature</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        Feature:</span>
+<span class="s">          Scenario:</span>
+<span class="s">            Given a step passes</span>
+<span class="s">            When  a step passes</span>
+<span class="s">            Then  a step passes</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I run &quot;</span><span class="s">behave -f plain features/passing.feature</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">it should pass with</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        1 scenario passed, 0 failed, 0 skipped</span>
+<span class="s">        3 steps passed, 0 failed, 0 skipped, 0 undefined</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Use ParseMatcher and RegexMatcher in Step Definitions (default=re)</span>
+<span class="k">    Given </span><span class="nf">a new working directory</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/environment.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step_matcher</span>
+<span class="s">        step_matcher(&quot;re&quot;)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/eparse_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">         </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">         from behave import step, step_matcher</span>
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+
+<span class="s">         @step(u&#39;an extraordinary step {outcome:w}&#39;)</span>
+<span class="s">         def step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">         </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/regexp_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step</span>
+
+<span class="s">        @step(u&#39;a step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">        def step_passes(context, outcome):</span>
+<span class="s">            assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/xparse_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">         </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">         from behave import step, step_matcher</span>
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+
+<span class="s">         @step(u&#39;another step {outcome:w}&#39;)</span>
+<span class="s">         def step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">         </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">   </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/passing3.feature</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        Feature:</span>
+<span class="s">          Scenario:</span>
+<span class="s">            Given a step passes</span>
+<span class="s">            When  another step passes</span>
+<span class="s">            Then  an extraordinary step passes</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I run &quot;</span><span class="s">behave -f plain features/passing3.feature</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">it should pass with</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        1 scenario passed, 0 failed, 0 skipped</span>
+<span class="s">        3 steps passed, 0 failed, 0 skipped, 0 undefined</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Mix ParseMatcher and RegexMatcher in Step Definitions (default=re)</span>
+<span class="k">    Given </span><span class="nf">a new working directory</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/environment.py</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        from behave import step_matcher</span>
+<span class="s">        step_matcher(&quot;re&quot;)</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/given_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">         </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">         from behave import step, step_matcher</span>
+
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+<span class="s">         @given(u&#39;a step {outcome:w}&#39;)</span>
+<span class="s">         def given_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;re&quot;)</span>
+<span class="s">         @given(u&#39;another step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">         def given_another_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+<span class="s">         @given(u&#39;an extraordinary step {outcome:w}&#39;)</span>
+<span class="s">         def given_extraordinary_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">         </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/when_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">         </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">         from behave import step, step_matcher</span>
+
+<span class="s">         @when(u&#39;a step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">         def when_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+<span class="s">         @when(u&#39;another step {outcome:w}&#39;)</span>
+<span class="s">         def when_another_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;re&quot;)</span>
+<span class="s">         @when(u&#39;an extraordinary step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">         def when_extraordinary_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">         </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/steps/then_steps.py</span><span class="nf">&quot; with:</span>
+<span class="nf">         </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">         from behave import step, step_matcher</span>
+
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+<span class="s">         @then(u&#39;a step {outcome:w}&#39;)</span>
+<span class="s">         def then_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;re&quot;)</span>
+<span class="s">         @then(u&#39;another step (?P</span><span class="nv">&lt;outcome&gt;</span><span class="s">passes|fails)&#39;)</span>
+<span class="s">         def then_another_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+
+<span class="s">         step_matcher(&quot;parse&quot;)</span>
+<span class="s">         @then(u&#39;an extraordinary step {outcome:w}&#39;)</span>
+<span class="s">         def then_extraordinary_step_passes(context, outcome):</span>
+<span class="s">             assert outcome == &quot;passes&quot;, &quot;FAIL: outcome={0}&quot;.format(outcome)</span>
+<span class="s">         </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">   </span><span class="k">And </span><span class="nf">  a file named &quot;</span><span class="s">features/passing3.feature</span><span class="nf">&quot; with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        Feature:</span>
+<span class="s">          Scenario: 1</span>
+<span class="s">            Given a step passes</span>
+<span class="s">            When  another step passes</span>
+<span class="s">            Then  an extraordinary step passes</span>
+
+<span class="s">          Scenario: 2</span>
+<span class="s">            Given another step passes</span>
+<span class="s">            When  an extraordinary step passes</span>
+<span class="s">            Then  a step passes</span>
+
+<span class="s">          Scenario: 3</span>
+<span class="s">            Given an extraordinary step passes</span>
+<span class="s">            When  a step passes</span>
+<span class="s">            Then  another step passes</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I run &quot;</span><span class="s">behave -c -f pretty --no-timings features/passing3.feature</span><span class="nf">&quot;</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">it should pass with:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        3 scenarios passed, 0 failed, 0 skipped</span>
+<span class="s">        9 steps passed, 0 failed, 0 skipped, 0 undefined</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
+<span class="nf">    </span><span class="k">And </span><span class="nf">the command output should contain:</span>
+<span class="nf">        </span><span class="k">&quot;&quot;&quot;</span><span class="s"></span>
+<span class="s">        Feature:  # features/passing3.feature:1</span>
+<span class="s">          Scenario: 1                         # features/passing3.feature:2</span>
+<span class="s">            Given a step passes               # features/steps/given_steps.py:4</span>
+<span class="s">            When another step passes          # features/steps/when_steps.py:8</span>
+<span class="s">            Then an extraordinary step passes # features/steps/then_steps.py:14</span>
+
+<span class="s">          Scenario: 2                         # features/passing3.feature:7</span>
+<span class="s">            Given another step passes         # features/steps/given_steps.py:9</span>
+<span class="s">            When an extraordinary step passes # features/steps/when_steps.py:13</span>
+<span class="s">            Then a step passes                # features/steps/then_steps.py:4</span>
+
+<span class="s">          Scenario: 3                          # features/passing3.feature:12</span>
+<span class="s">            Given an extraordinary step passes # features/steps/given_steps.py:14</span>
+<span class="s">            When a step passes                 # features/steps/when_steps.py:3</span>
+<span class="s">            Then another step passes           # features/steps/then_steps.py:9</span>
+<span class="s">        </span><span class="k">&quot;&quot;&quot;</span><span class="nf"></span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -121,8 +382,7 @@ that is used for all features in the <tt class="docutils literal"><span class="p
 <li><a class="reference internal" href="#">Using the Step Matchers</a><ul>
 <li><a class="reference internal" href="#default-matcher-strategy">Default Matcher Strategy</a></li>
 <li><a class="reference internal" href="#defining-an-own-default-matcher">Defining an own Default Matcher</a></li>
-<li><a class="reference internal" href="#select-a-step-matcher">Select a Step Matcher</a></li>
-<li><a class="reference internal" href="#switch-between-step-matchers-in-a-step-definition-file">Switch between Step Matchers in a Step Definition File</a></li>
+<li><a class="reference internal" href="#switch-between-step-matcher-strategy-in-a-step-definition-file">Switch between Step Matcher Strategy in a Step Definition File</a></li>
 </ul>
 </li>
 </ul>

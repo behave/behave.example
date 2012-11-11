@@ -60,6 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -77,15 +78,53 @@
                 <div class="body">
                   
   <div class="section" id="use-the-parse-matcher-parse">
-<span id="id-step-matchers-parse-matcher"></span><h1>Use the Parse Matcher (parse)<a class="headerlink" href="#use-the-parse-matcher-parse" title="Permalink to this headline">¶</a></h1>
-<p>XXX</p>
-<p><a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> provides 2 step matchers:</p>
+<span id="id-step-matcher-parse-matcher"></span><h1>Use the Parse Matcher (parse)<a class="headerlink" href="#use-the-parse-matcher-parse" title="Permalink to this headline">¶</a></h1>
+<p>The &#8220;parse&#8221; matcher is used in most examples that are provided here.
+It uses the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> for regular expressions matching and parsing.
+It provides:</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li>&#8220;parse&#8221; (ParseMatcher) by using the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module</li>
-<li>&#8220;re&#8221; (RegexMatcher) that uses regular expressions for matching parameters</li>
-</ol>
+<div><ul class="simple">
+<li>predefined types</li>
+<li>used-defined types and type-converters</li>
+</ul>
 </div></blockquote>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><em>Predefined Data Types in parse</em></a></li>
+<li><a class="reference internal" href="../datatype/index.html#id-datatype"><em>Data Types and User-defined Types</em></a></li>
+</ul>
+</div>
+<div class="section" id="step-definitions-example">
+<h2>Step Definitions Example<a class="headerlink" href="#step-definitions-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_parse_matcher.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">step_matcher</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_</span><span class="p">,</span> <span class="n">none</span>
+
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS: With &quot;parse&quot; matcher</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="n">step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">u&#39;I use the regular expression step matcher&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_use_regex_matcher</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;the parameter &quot;{name}&quot; is &quot;{expected_value}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_parameter_is_equal_to</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">):</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected_value</span><span class="p">))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;the parameter &quot;{name}&quot; is none&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_parameter_is_none</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">is_</span><span class="p">(</span><span class="n">none</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -95,6 +134,14 @@
             </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Use the Parse Matcher (parse)</a><ul>
+<li><a class="reference internal" href="#step-definitions-example">Step Definitions Example</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="using_matchers.html"
                         title="previous chapter">Using the Step Matchers</a></p>

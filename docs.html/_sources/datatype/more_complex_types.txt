@@ -1,4 +1,4 @@
-.. _id.user_defined_types.more_complex_types:
+.. _id.datatype.more_complex_types:
 
 More Complex Data Types
 ==============================================================================

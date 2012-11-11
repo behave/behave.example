@@ -60,6 +60,7 @@
 <li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="">Use Optional Part in Step Definitions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
@@ -77,7 +78,7 @@
                 <div class="body">
                   
   <div class="section" id="use-optional-part-in-step-definitions">
-<span id="id-step-matchers-use-optional-part"></span><h1>Use Optional Part in Step Definitions<a class="headerlink" href="#use-optional-part-in-step-definitions" title="Permalink to this headline">¶</a></h1>
+<span id="id-step-matcher-use-optional-part"></span><h1>Use Optional Part in Step Definitions<a class="headerlink" href="#use-optional-part-in-step-definitions" title="Permalink to this headline">¶</a></h1>
 <p>It is a common case that optional parts occur in steps and step definitions.
 This happens often when you start writing steps and step definitionss.</p>
 <p><strong>EXAMPLE</strong>:</p>
@@ -116,19 +117,19 @@ follows the type field &#8220;Person&#8221; in a parse expression, like:</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>1</td>
-<td>&#8220;{person:Person}&#8221;</td>
+<td>{person:Person}</td>
 <td>One, implicit without cardinality field.</td>
 </tr>
 <tr class="row-odd"><td>0..1</td>
-<td>&#8220;{person:Person?}&#8221;</td>
+<td>{person:Person?}</td>
 <td><strong>Zero or one:  For optional parts</strong>.</td>
 </tr>
 <tr class="row-even"><td>0..*</td>
-<td>&#8220;{persons:Person*}&#8221;</td>
+<td>{persons:Person*}</td>
 <td>Zero or more: For list&lt;T&gt; (many0).</td>
 </tr>
 <tr class="row-odd"><td>1..*</td>
-<td>&#8220;{persons:Person+}&#8221;</td>
+<td>{persons:Person+}</td>
 <td>One  or more: For list&lt;T&gt; (many).</td>
 </tr>
 </tbody>
@@ -264,7 +265,7 @@ implicitly done by <a class="reference external" href="http://pypi.python.org/py
 cardinality field).</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">See also <a class="reference internal" href="../datatype/cardinality_zero_or_one.html#id-data-types-cardinality-zero-or-one"><em>Cardinality: Zero or One (Optional)</em></a> for more information.</p>
+<p class="last">See also <a class="reference internal" href="../datatype/cardinality_zero_or_one.html#id-datatype-cardinality-zero-or-one"><em>Cardinality: Zero or One (Optional)</em></a> for more information.</p>
 </div>
 </div>
 </div>

@@ -1,4 +1,4 @@
-.. _id.data_types:
+.. _id.datatype:
 
 ==============================================================================
 Data Types and User-defined Types

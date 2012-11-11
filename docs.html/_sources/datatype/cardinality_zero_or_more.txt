@@ -1,4 +1,4 @@
-.. _id.user_defined_types.cardinality_zero_or_more:
+.. _id.datatype.cardinality_zero_or_more:
 
 Cardinality: Zero or More (List of Type)
 ==============================================================================

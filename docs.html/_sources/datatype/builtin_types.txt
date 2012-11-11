@@ -1,4 +1,4 @@
-.. _id.data_types.builtin_types:
+.. _id.datatype.builtin_types:
 
 Predefined Data Types in ``parse``
 ==============================================================================

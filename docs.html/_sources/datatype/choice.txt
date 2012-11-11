@@ -1,4 +1,4 @@
-.. _id.user_defined_types.choice:
+.. _id.datatype.choice:
 
 Choice (Word/String Alternatives)
 ==============================================================================
@@ -81,6 +81,11 @@ When you run this example with ``behave`` the last step is not matched:
 .. command-output:: behave --tags=xfail --no-skipped ../datatype.features/choice.feature
     :shell:
     :returncode: 1
+
+.. seealso:: :ref:`id.step_matcher.use_multi_methods`
+
+    For a solution of this problem.
+
 
 
 The Complete Picture

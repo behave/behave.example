@@ -1,4 +1,4 @@
-.. _id.step_matchers.use_optional_part:
+.. _id.step_matcher.use_optional_part:
 
 ==============================================================================
 Use Optional Part in Step Definitions
@@ -40,10 +40,10 @@ as optional (cardinality: 0..1).
     ============  ==================== ========================================
     Cardinality    Example             Description
     ============  ==================== ========================================
-       1          "{person:Person}"    One, implicit without cardinality field.
-       0..1       "{person:Person?}"   **Zero or one:  For optional parts**.
-       0..*       "{persons:Person*}"  Zero or more: For list<T> (many0).
-       1..*       "{persons:Person+}"  One  or more: For list<T> (many).
+       1          {person:Person}      One, implicit without cardinality field.
+       0..1       {person:Person?}     **Zero or one:  For optional parts**.
+       0..*       {persons:Person*}    Zero or more: For list<T> (many0).
+       1..*       {persons:Person+}    One  or more: For list<T> (many).
     ============  ==================== ========================================
 
     Using the cardinality field in a parse expression is the
@@ -95,7 +95,7 @@ cardinality field).
 
 .. hint::
 
-    See also :ref:`id.data_types.cardinality_zero_or_one` for more information.
+    See also :ref:`id.datatype.cardinality_zero_or_one` for more information.
 
 
 .. _parse:  http://pypi.python.org/pypi/parse

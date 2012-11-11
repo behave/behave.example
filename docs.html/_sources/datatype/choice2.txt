@@ -1,9 +1,9 @@
-.. _id.user_defined_types.choice2:
+.. _id.datatype.choice2:
 
 Choice2 (Word/String Alternatives)
 ==============================================================================
 
-This basically the same as :ref:`id.user_defined_types.choice`,
+This basically the same as :ref:`id.datatype.choice`,
 but the generated type-converter function (parse_choice2) returns a
 tuple::
 
