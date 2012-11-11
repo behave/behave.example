@@ -134,25 +134,24 @@ Note that the case for zero or more items is not so often needed.</p>
 <div class="section" id="define-the-data-type">
 <h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_more.py</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+
+<span class="k">def</span> <span class="nf">slurp_space</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span>
+<span class="n">slurp_space</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&quot;\s*&quot;</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">slurp_space</span><span class="o">=</span><span class="n">slurp_space</span><span class="p">)</span>
+
+<span class="n">parse_color</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;yellow&quot;</span> <span class="p">])</span>
 <span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Color</span><span class="o">=</span><span class="n">parse_color</span><span class="p">)</span>
 
 <span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
 <span class="c"># parse_colors = TypeBuilder.with_many0(parse_color, listsep=&quot;and&quot;)</span>
 <span class="n">parse_colors0</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_zero_or_more</span><span class="p">(</span><span class="n">parse_color</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
 <span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">OptionalColorAndMore</span><span class="o">=</span><span class="n">parse_colors0</span><span class="p">)</span>
-
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
-
-<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:Color*}&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_paint_with_colors</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
-        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
-
-<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -166,6 +165,18 @@ items by using the type-converter for one item (&#8220;Color&#8221;).</p>
 <div class="section" id="provide-the-step-definitions">
 <h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_more.py</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:Color*}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_paint_with_colors</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
 <span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:OptionalColorAndMore}&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_paint_with_color_and_more</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
