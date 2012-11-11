@@ -3,97 +3,66 @@
 Cardinality: Zero or One (Optional)
 ==============================================================================
 
-XXX
+There are some cases, when a text part may be present or not.
+Therefore, this text part is an optional and has cardinality zero or one (0..1).
 
-.. hidden:
-    Assume you need a user-defined data type with the following features:
+The :py:class:`parse.TypeBuilder` can be used to compute the type with
+cardinality zero or one based on data type with cardinality one.
 
-      * Only a limited number of words (or strings) should be matched
-      * All values are pre-defined (before the test)
+.. seealso::
 
-    Then the **Choice** type is a solution for your problem.
-    Common use cases for the choice type are:
-
-      * text-based enumerations (string enum)
-      * color names
-      * ...
+    :ref:`id.step_matcher.use_optional_part` for a simpler solution
+    to this problem by using the **cardinality field** in parse expressions.
 
 
-    Feature Example
-    -----------------------------
+Feature Example
+-----------------------------
 
-    Assuming you want to write something like this:
+Assuming you want to write something like this:
 
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1-10
-
-    Define the Data Type
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  16-26
-
-    .. note::
-
-        The ``TypeBuilder.make_choice()`` function performs the magic.
-        It computes a regular expression pattern for the given choice of
-        words/strings and stores them in ``parse_shop_item.pattern`` attribute.
-        This optional attribute is used by the ``parse`` module to improve
-        pattern matching for user-defined types.
-
-    .. hidden:
-        :emphasize-lines: 22-25
-
-    Provide the Step Definitions
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  28-
+.. literalinclude:: ../../datatype.features/cardinality.zero_or_one.feature
+    :prepend:   # file:datatype.features/cardinality.zero_or_one.feature
+    :language: gherkin
 
 
-    Run the Test
-    -----------------------------
+Define the Data Type
+-----------------------------
 
-    Now we run this example with ``behave`` (and all steps are matched):
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_one.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_one.py
+    :language: python
+    :lines:  14-29
 
-    .. command-output:: behave -f plain --tags=-xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 0
+.. note::
 
-
-    SAD Feature Example
-    ------------------------------------------------------------------------------
-
-    The following feature example shows that only supported choice values
-    are matched.
-
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1, 10-
+    The ``TypeBuilder.with_optional()`` function performs the magic.
+    It computes a regular expression pattern for the given choice of
+    words/strings and stores them in ``parse_optional_word_a.pattern`` attribute.
 
 
-    When you run this example with ``behave`` the last step is not matched:
+Provide the Step Definitions
+-----------------------------
 
-    .. command-output:: behave -f plain --tags=xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 1
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_one.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_one.py
+    :language: python
+    :lines:  30-
 
 
-    The Complete Picture
-    ------------------------------------------------------------------------------
+Run the Test
+-----------------------------
 
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
+Now we run this example with ``behave``:
 
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  1,16-
+.. command-output:: behave ../datatype.features/cardinality.zero_or_one.feature
+    :shell:
+    :returncode: 0
+
+
+The Complete Picture
+------------------------------------------------------------------------------
+
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_one.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_one.py
+    :language: python
+    :lines:  1,16-
