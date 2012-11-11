@@ -130,13 +130,15 @@ that occurs before the parameter is handed to the step definition function.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial10.py</span>
 <span class="c"># -*- coding: UTF-8 -*-</span>
 
-<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 <span class="kn">from</span> <span class="nn">calculator</span> <span class="kn">import</span> <span class="n">Calculator</span>
 
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+
 <span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Convert parsed text into a number.</span>
@@ -200,24 +202,24 @@ Feature: User-Defined Datatype as Step Parameter (tutorial10)<span class="ansi-b
   to simplify the programming of the step definition body.
 
   Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:40</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:44</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:50</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
 
   Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:40</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:44</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:50</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
 
   Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:40</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:44</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:50</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
 
   Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:40</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">7</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:44</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">9</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:50</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">7</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">9</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
 
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped

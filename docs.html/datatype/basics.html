@@ -82,7 +82,78 @@
                   
   <div class="section" id="type-definition-basics">
 <span id="id-datatype-basics"></span><h1>Type Definition Basics<a class="headerlink" href="#type-definition-basics" title="Permalink to this headline">¶</a></h1>
-<p>XXX</p>
+<div class="section" id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="Permalink to this headline">¶</a></h2>
+<p>Preparation/setup phase:</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li>The user registers a data type, for example in <tt class="docutils literal"><span class="pre">environment.py</span></tt>.</li>
+</ol>
+</div></blockquote>
+<p>The <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module is the workhorse:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>The <tt class="xref py py-class docutils literal"><span class="pre">parse.Parser</span></tt> class matches a string for a data type.</li>
+<li>Then it calls the type-converter function to convert the
+matched text into an object of this data type.</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="simple-example">
+<h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
+<p>The following example shows how a user-defined type can be provided.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial10.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+
+<span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert parsed text into a number.</span>
+<span class="sd">    :param text: Parsed text, called by :py:meth:`parse.Parser.parse()`.</span>
+<span class="sd">    :return: Number instance (integer), created from parsed text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="c"># -- REGISTER: User-defined type converter (parse_type).</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Number</span><span class="o">=</span><span class="n">parse_number</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../tutorials/tutorial10.html#id-tutorial10"><em>Tutorial 10: User-defined Data Type</em></a> for more information on this example.</p>
+</div>
+</div>
+<div class="section" id="example-with-regular-expression-pattern">
+<h2>Example with Regular Expression Pattern<a class="headerlink" href="#example-with-regular-expression-pattern" title="Permalink to this headline">¶</a></h2>
+<p>For better matching of user-defined data types, the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> supports
+an optional <tt class="docutils literal"><span class="pre">pattern</span></tt> attribute for type-converter functions.
+If this attribute is provided, it contains a textual regular expression
+for this data type. This regular expression pattern is used to match
+the data type.</p>
+<p>The regular expression pattern can be defined by using the
+<tt class="xref py py-func docutils literal"><span class="pre">parse.with_pattern()</span></tt> function decorator:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">import</span> <span class="nn">parse</span>
+
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">a_</span><span class="o">=</span><span class="n">parse_word_a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or by assigning the <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute, like:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&quot;a\s+&quot;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -92,6 +163,16 @@
             </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Type Definition Basics</a><ul>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+<li><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li><a class="reference internal" href="#example-with-regular-expression-pattern">Example with Regular Expression Pattern</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="index.html"
                         title="previous chapter">Data Types and User-defined Types</a></p>

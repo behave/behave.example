@@ -3,97 +3,58 @@
 Type Definition Basics
 ==============================================================================
 
-XXX
+Workflow
+---------------------
 
-.. hidden:
-    Assume you need a user-defined data type with the following features:
+Preparation/setup phase:
 
-      * Only a limited number of words (or strings) should be matched
-      * All values are pre-defined (before the test)
+    0. The user registers a data type, for example in ``environment.py``.
 
-    Then the **Choice** type is a solution for your problem.
-    Common use cases for the choice type are:
+The `parse`_ module is the workhorse:
 
-      * text-based enumerations (string enum)
-      * color names
-      * ...
+    1. The :py:class:`parse.Parser` class matches a string for a data type.
 
-
-    Feature Example
-    -----------------------------
-
-    Assuming you want to write something like this:
-
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1-10
-
-    Define the Data Type
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  16-26
-
-    .. note::
-
-        The ``TypeBuilder.make_choice()`` function performs the magic.
-        It computes a regular expression pattern for the given choice of
-        words/strings and stores them in ``parse_shop_item.pattern`` attribute.
-        This optional attribute is used by the ``parse`` module to improve
-        pattern matching for user-defined types.
-
-    .. hidden:
-        :emphasize-lines: 22-25
-
-    Provide the Step Definitions
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  28-
+    2. Then it calls the type-converter function to convert the
+       matched text into an object of this data type.
 
 
-    Run the Test
-    -----------------------------
+Simple Example
+---------------------
 
-    Now we run this example with ``behave`` (and all steps are matched):
+The following example shows how a user-defined type can be provided.
 
-    .. command-output:: behave -f plain --tags=-xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 0
+.. literalinclude:: ../../features/steps/step_tutorial10.py
+    :prepend:   # file:features/steps/step_tutorial10.py
+    :language: python
+    :lines:  1, 24-38
 
+.. seealso::
 
-    SAD Feature Example
-    ------------------------------------------------------------------------------
-
-    The following feature example shows that only supported choice values
-    are matched.
-
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1, 10-
+    :ref:`id.tutorial10` for more information on this example.
 
 
-    When you run this example with ``behave`` the last step is not matched:
+Example with Regular Expression Pattern
+----------------------------------------
 
-    .. command-output:: behave -f plain --tags=xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 1
+For better matching of user-defined data types, the `parse`_ supports
+an optional ``pattern`` attribute for type-converter functions.
+If this attribute is provided, it contains a textual regular expression
+for this data type. This regular expression pattern is used to match
+the data type.
+
+The regular expression pattern can be defined by using the
+:py:func:`parse.with_pattern` function decorator:
+
+.. literalinclude:: ../../step_matcher.features/steps/step_optional_part.py
+    :prepend:   # file:step_matcher.features/steps/step_optional_part.py
+    :language: python
+    :lines:  14-26
+
+or by assigning the :py:attr:`pattern` attribute, like:
+
+.. code-block:: python
+
+    parse_word_a.pattern = r"a\s+"
 
 
-    The Complete Picture
-    ------------------------------------------------------------------------------
-
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  1,16-
+.. _parse:  http://pypi.python.org/pypi/parse

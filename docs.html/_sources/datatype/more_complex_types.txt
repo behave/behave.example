@@ -4,10 +4,13 @@ More Complex Data Types
 ==============================================================================
 
 Type-converters are not the only solution.
-Only so much information fits into a step.
-In additions, steps should remain readable and understandable.
 
 .. hint::
 
-    You should also consider to use tables especially if you want to
-    to enter/compare a complicated data type with several/many attributes.
+    You should consider to use tables for more complex data types.
+    This especially true if:
+
+      * a complicated data type has many attributes.
+
+    Tables provide can provide view to data types (objects).
+    This means that not everything must be shown or compared.

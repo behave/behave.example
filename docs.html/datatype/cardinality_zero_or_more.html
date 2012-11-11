@@ -82,7 +82,244 @@
                   
   <div class="section" id="cardinality-zero-or-more-list-of-type">
 <span id="id-datatype-cardinality-zero-or-more"></span><h1>Cardinality: Zero or More (List of Type)<a class="headerlink" href="#cardinality-zero-or-more-list-of-type" title="Permalink to this headline">¶</a></h1>
-<p>XXX</p>
+<p>The solution to this problem is basically the same like with
+<a class="reference internal" href="cardinality_one_or_more.html#id-datatype-cardinality-one-or-more"><em>Cardinality: One or More (List of Type)</em></a>.
+Note that the case for zero or more items is not so often needed.</p>
+<p>Initially, a comma-separated list is processed, like:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"></span>
+<span class="k">    When </span><span class="nf">I paint with red, green</span>
+</pre></div>
+</div>
+<p>Next, a list that is separated with the word &#8220;and&#8221; is processed, like:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"></span>
+<span class="k">    When </span><span class="nf">I paint with red and green</span>
+</pre></div>
+</div>
+<div class="section" id="feature-example">
+<h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:datatype.features/cardinality.zero_or_more.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Data Type with Cardinality zero or more (MANY0, List&lt;T&gt;)</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Empty list, comma-separated</span>
+<span class="k">    Given </span><span class="nf">I am a painter</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I paint with</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">no colors are used</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> List with one item, comma-separated</span>
+<span class="k">    Given </span><span class="nf">I am a painter</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I paint with blue</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the following colors are used:</span>
+<span class="k">      |</span><span class="s"> color</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> blue</span><span class="k">  |</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Many list, comma-separated</span>
+<span class="k">    Given </span><span class="nf">I am a painter</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I paint with red, green</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the following colors are used:</span>
+<span class="k">      |</span><span class="s"> color</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> red</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> green</span><span class="k"> |</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Many list with list-separator &quot;and&quot;</span>
+<span class="k">    Given </span><span class="nf">I am a painter</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I paint with red and green and blue</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the following colors are used:</span>
+<span class="k">      |</span><span class="s"> color</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> red</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> green</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> blue</span><span class="k">  |</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-data-type">
+<h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_more.py</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Color</span><span class="o">=</span><span class="n">parse_color</span><span class="p">)</span>
+
+<span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
+<span class="c"># parse_colors = TypeBuilder.with_many0(parse_color, listsep=&quot;and&quot;)</span>
+<span class="n">parse_colors0</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_zero_or_more</span><span class="p">(</span><span class="n">parse_color</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">OptionalColorAndMore</span><span class="o">=</span><span class="n">parse_colors0</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:Color*}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_paint_with_colors</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.with_zero_and_more()</span></tt> function performs the magic.
+It computes a regular expression pattern for the list of items.
+Then it generates a type-converter function that processes the list of
+items by using the type-converter for one item (&#8220;Color&#8221;).</p>
+</div>
+</div>
+<div class="section" id="provide-the-step-definitions">
+<h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_more.py</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:OptionalColorAndMore}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_paint_with_color_and_more</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">contains</span><span class="p">,</span> <span class="n">has_length</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I am a painter&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_am_a_painter</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;no colors are used&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_no_colors_are_used</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="p">,</span> <span class="n">has_length</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the following colors are used&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_following_colors_are_used</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s">&quot;table&lt;color&gt; is required&quot;</span>
+    <span class="n">used_colors</span>     <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="p">)</span>
+    <span class="n">expected_colors</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+    <span class="c"># -- LIST-COMPARISON:</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">used_colors</span><span class="p">,</span> <span class="n">contains</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="n">expected_colors</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-test">
+<h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
+<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt>:</p>
+<pre class="ansi-block literal-block">
+$ behave ../datatype.features/cardinality.zero_or_more.feature
+Feature: Data Type with Cardinality zero or more (MANY0, List&lt;T&gt;)<span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_more.feature:1</span>
+
+  Scenario: Empty list, comma-separated <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_more.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I am a painter</span><span class="ansi-blue">                 # ../datatype.features/steps/step_cardinality_zero_or_more.py:64</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I paint with</span><span class="ansi-green"></span><span class="ansi-bold"></span><span class="ansi-blue">                    # ../datatype.features/steps/step_cardinality_zero_or_more.py:48</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">no colors are used</span><span class="ansi-blue">              # ../datatype.features/steps/step_cardinality_zero_or_more.py:68</span>
+
+  Scenario: List with one item, comma-separated <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_more.feature:8</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I am a painter</span><span class="ansi-blue">                         # ../datatype.features/steps/step_cardinality_zero_or_more.py:64</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I paint with</span><span class="ansi-green"></span><span class="ansi-bold"> </span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">blue</span><span class="ansi-blue">                       # ../datatype.features/steps/step_cardinality_zero_or_more.py:48</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following colors are used</span><span class="ansi-blue">           # ../datatype.features/steps/step_cardinality_zero_or_more.py:72</span>
+      | color |
+      | blue  |
+
+  Scenario: Many list, comma-separated <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_more.feature:15</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I am a painter</span><span class="ansi-blue">                # ../datatype.features/steps/step_cardinality_zero_or_more.py:64</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I paint with</span><span class="ansi-green"></span><span class="ansi-bold"> </span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">red, green</span><span class="ansi-blue">        # ../datatype.features/steps/step_cardinality_zero_or_more.py:48</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following colors are used</span><span class="ansi-blue">  # ../datatype.features/steps/step_cardinality_zero_or_more.py:72</span>
+      | color |
+      | red   |
+      | green |
+
+  Scenario: Many list with list-separator &quot;and&quot; <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_more.feature:23</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I am a painter</span><span class="ansi-blue">                         # ../datatype.features/steps/step_cardinality_zero_or_more.py:64</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I paint with</span><span class="ansi-green"></span><span class="ansi-bold"> </span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">red and green and blue</span><span class="ansi-blue">     # ../datatype.features/steps/step_cardinality_zero_or_more.py:54</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following colors are used</span><span class="ansi-blue">           # ../datatype.features/steps/step_cardinality_zero_or_more.py:72</span>
+      | color |
+      | red   |
+      | green |
+      | blue  |
+
+1 feature passed, 0 failed, 0 skipped
+4 scenarios passed, 0 failed, 0 skipped
+12 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+<div class="section" id="the-complete-picture">
+<h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_more.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Feature: Data Type with Cardinality zero or more (MANY0, List&lt;T&gt;)</span>
+
+<span class="sd">  Scenario: Many list, comma-separated</span>
+<span class="sd">    Given I am a painter</span>
+<span class="sd">    When I paint with red, green</span>
+<span class="sd">    Then the following colors are used:</span>
+<span class="sd">      | color |</span>
+<span class="sd">      | red   |</span>
+<span class="sd">      | green |</span>
+
+<span class="sd">  Scenario: Many list with list-separator &quot;and&quot;</span>
+<span class="sd">    Given I am a painter</span>
+<span class="sd">    When I paint with red and green and blue</span>
+<span class="sd">    Then the following colors are used:</span>
+<span class="sd">      | color |</span>
+<span class="sd">      | red   |</span>
+<span class="sd">      | green |</span>
+<span class="sd">      | blue  |</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+
+<span class="k">def</span> <span class="nf">slurp_space</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">text</span>
+<span class="n">slurp_space</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&quot;\s*&quot;</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">slurp_space</span><span class="o">=</span><span class="n">slurp_space</span><span class="p">)</span>
+
+<span class="n">parse_color</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">,</span> <span class="s">&quot;blue&quot;</span><span class="p">,</span> <span class="s">&quot;yellow&quot;</span> <span class="p">])</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Color</span><span class="o">=</span><span class="n">parse_color</span><span class="p">)</span>
+
+<span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
+<span class="c"># parse_colors = TypeBuilder.with_many0(parse_color, listsep=&quot;and&quot;)</span>
+<span class="n">parse_colors0</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_zero_or_more</span><span class="p">(</span><span class="n">parse_color</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">OptionalColorAndMore</span><span class="o">=</span><span class="n">parse_colors0</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:Color*}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_paint_with_colors</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I paint with{:slurp_space}{colors:OptionalColorAndMore}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_paint_with_color_and_more</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">colors</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">contains</span><span class="p">,</span> <span class="n">has_length</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I am a painter&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_am_a_painter</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">used_colors</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;no colors are used&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_no_colors_are_used</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="p">,</span> <span class="n">has_length</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the following colors are used&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_following_colors_are_used</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s">&quot;table&lt;color&gt; is required&quot;</span>
+    <span class="n">used_colors</span>     <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">used_colors</span><span class="p">)</span>
+    <span class="n">expected_colors</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+    <span class="c"># -- LIST-COMPARISON:</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">used_colors</span><span class="p">,</span> <span class="n">contains</span><span class="p">(</span><span class="o">*</span><span class="nb">sorted</span><span class="p">(</span><span class="n">expected_colors</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -92,6 +329,18 @@
             </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cardinality: Zero or More (List of Type)</a><ul>
+<li><a class="reference internal" href="#feature-example">Feature Example</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="cardinality_one_or_more.html"
                         title="previous chapter">Cardinality: One or More (List of Type)</a></p>
