@@ -82,7 +82,164 @@
                   
   <div class="section" id="cardinality-zero-or-one-optional">
 <span id="id-datatype-cardinality-zero-or-one"></span><h1>Cardinality: Zero or One (Optional)<a class="headerlink" href="#cardinality-zero-or-one-optional" title="Permalink to this headline">¶</a></h1>
-<p>XXX</p>
+<p>There are some cases, when a text part may be present or not.
+Therefore, this text part is an optional and has cardinality zero or one (0..1).</p>
+<p>The <tt class="xref py py-class docutils literal"><span class="pre">parse.TypeBuilder</span></tt> can be used to compute the type with
+cardinality zero or one based on data type with cardinality one.</p>
+<div class="admonition-see-also admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="../step_matcher/use_optional_part.html#id-step-matcher-use-optional-part"><em>Use Optional Part in Step Definitions</em></a> for a simpler solution
+to this problem by using the <strong>cardinality field</strong> in parse expressions.</p>
+</div>
+<div class="section" id="feature-example">
+<h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
+<p>Assuming you want to write something like this:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:datatype.features/cardinality.zero_or_one.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Data Type with Cardinality 0..1 (Optional Part)</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Case1 &quot;When attacked by a ...&quot;</span>
+<span class="k">    Given </span><span class="nf">the ninja has a black-belt</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">attacked by a samurai</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Case2 &quot;When attacked by ...&quot;</span>
+<span class="k">    Given </span><span class="nf">the ninja has a black-belt</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">attacked by Chuck Norris</span>
+
+<span class="c"># -- DESCRIPTION:</span><span class="nf"></span>
+<span class="c"># &quot;When attacked by ...&quot;: Once with &quot;a &quot;, once without it.</span><span class="nf"></span>
+<span class="c"># Only one step should be used.</span><span class="nf"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-data-type">
+<h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse</span> <span class="kn">import</span> <span class="n">TypeBuilder</span><span class="p">,</span> <span class="n">with_pattern</span>
+
+<span class="nd">@with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c"># -- SAME:</span>
+<span class="c"># parse_optional_word_a = TypeBuilder.with_zero_or_one(parse_word_a)</span>
+<span class="n">parse_optional_word_a</span>   <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_optional</span><span class="p">(</span><span class="n">parse_word_a</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.with_optional()</span></tt> function performs the magic.
+It computes a regular expression pattern for the given choice of
+words/strings and stores them in <tt class="docutils literal"><span class="pre">parse_optional_word_a.pattern</span></tt> attribute.</p>
+</div>
+</div>
+<div class="section" id="provide-the-step-definitions">
+<h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_in</span>
+
+<span class="c"># -- OPTIONAL-PART: {:optional_a_}</span>
+<span class="c"># By using data type with cardinality zero or one (0..1, optional).</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by {:optional_a_}{opponent}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
+    <span class="c"># -- VERIFY: Optional part feature.</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">a_</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]))</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">opponent</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;Chuck Norris&quot;</span><span class="p">,</span> <span class="s">&quot;samurai&quot;</span><span class="p">]))</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">ninja_fight</span> <span class="kn">import</span> <span class="n">NinjaFight</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_has_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">achievement_level</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="n">NinjaFight</span><span class="p">(</span><span class="n">achievement_level</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_should</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">reaction</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">decision</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-test">
+<h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
+<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt>:</p>
+<pre class="ansi-block literal-block">
+$ behave ../datatype.features/cardinality.zero_or_one.feature
+Feature: Data Type with Cardinality 0..1 (Optional Part)<span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_one.feature:1</span>
+
+  Scenario: Case1 &quot;When attacked by a ...&quot; <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_one.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">black-belt</span><span class="ansi-blue">        # ../datatype.features/steps/step_cardinality_zero_or_one.py:50</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold">a </span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">samurai</span><span class="ansi-blue">              # ../datatype.features/steps/step_cardinality_zero_or_one.py:38</span>
+
+  Scenario: Case2 &quot;When attacked by ...&quot; <span class="ansi-blue"> # ../datatype.features/cardinality.zero_or_one.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green"></span><span class="ansi-bold">black-belt</span><span class="ansi-blue">      # ../datatype.features/steps/step_cardinality_zero_or_one.py:50</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green"></span><span class="ansi-bold"></span><span class="ansi-green"></span><span class="ansi-green"></span><span class="ansi-bold">Chuck Norris</span><span class="ansi-blue">         # ../datatype.features/steps/step_cardinality_zero_or_one.py:38</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+<div class="section" id="the-complete-picture">
+<h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse</span> <span class="kn">import</span> <span class="n">TypeBuilder</span><span class="p">,</span> <span class="n">with_pattern</span>
+
+<span class="nd">@with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+<span class="c"># -- SAME:</span>
+<span class="c"># parse_optional_word_a = TypeBuilder.with_zero_or_one(parse_word_a)</span>
+<span class="n">parse_optional_word_a</span>   <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_optional</span><span class="p">(</span><span class="n">parse_word_a</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_in</span>
+
+<span class="c"># -- OPTIONAL-PART: {:optional_a_}</span>
+<span class="c"># By using data type with cardinality zero or one (0..1, optional).</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by {:optional_a_}{opponent}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">a_</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
+    <span class="c"># -- VERIFY: Optional part feature.</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">a_</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]))</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">opponent</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;Chuck Norris&quot;</span><span class="p">,</span> <span class="s">&quot;samurai&quot;</span><span class="p">]))</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">ninja_fight</span> <span class="kn">import</span> <span class="n">NinjaFight</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_has_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">achievement_level</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="n">NinjaFight</span><span class="p">(</span><span class="n">achievement_level</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_the_ninja_should</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">reaction</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">decision</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -92,6 +249,18 @@
             </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cardinality: Zero or One (Optional)</a><ul>
+<li><a class="reference internal" href="#feature-example">Feature Example</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
   <p class="topless"><a href="builtin_types.html"
                         title="previous chapter">Predefined Data Types in <tt class="docutils literal docutils literal docutils literal"><span class="pre">parse</span></tt></a></p>

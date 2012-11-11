@@ -3,97 +3,72 @@
 Cardinality: Zero or More (List of Type)
 ==============================================================================
 
-XXX
+The solution to this problem is basically the same like with
+:ref:`id.datatype.cardinality_one_or_more`.
+Note that the case for zero or more items is not so often needed.
 
-.. hidden:
-    Assume you need a user-defined data type with the following features:
+Initially, a comma-separated list is processed, like:
 
-      * Only a limited number of words (or strings) should be matched
-      * All values are pre-defined (before the test)
+.. code-block:: gherkin
 
-    Then the **Choice** type is a solution for your problem.
-    Common use cases for the choice type are:
+    Scenario:
+        When I paint with red, green
 
-      * text-based enumerations (string enum)
-      * color names
-      * ...
+Next, a list that is separated with the word "and" is processed, like:
 
+.. code-block:: gherkin
 
-    Feature Example
-    -----------------------------
-
-    Assuming you want to write something like this:
-
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1-10
-
-    Define the Data Type
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  16-26
-
-    .. note::
-
-        The ``TypeBuilder.make_choice()`` function performs the magic.
-        It computes a regular expression pattern for the given choice of
-        words/strings and stores them in ``parse_shop_item.pattern`` attribute.
-        This optional attribute is used by the ``parse`` module to improve
-        pattern matching for user-defined types.
-
-    .. hidden:
-        :emphasize-lines: 22-25
-
-    Provide the Step Definitions
-    -----------------------------
-
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  28-
+    Scenario:
+        When I paint with red and green
 
 
-    Run the Test
-    -----------------------------
+Feature Example
+-----------------------------
 
-    Now we run this example with ``behave`` (and all steps are matched):
-
-    .. command-output:: behave -f plain --tags=-xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 0
+.. literalinclude:: ../../datatype.features/cardinality.zero_or_more.feature
+    :prepend:   # file:datatype.features/cardinality.zero_or_more.feature
+    :language: gherkin
 
 
-    SAD Feature Example
-    ------------------------------------------------------------------------------
+Define the Data Type
+-----------------------------
 
-    The following feature example shows that only supported choice values
-    are matched.
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
+    :language: python
+    :lines:  35-53
 
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
-        :lines:  1, 10-
+.. note::
 
-
-    When you run this example with ``behave`` the last step is not matched:
-
-    .. command-output:: behave -f plain --tags=xfail --no-skipped ../features/usertype.choice.feature
-        :shell:
-        :returncode: 1
+    The ``TypeBuilder.with_zero_and_more()`` function performs the magic.
+    It computes a regular expression pattern for the list of items.
+    Then it generates a type-converter function that processes the list of
+    items by using the type-converter for one item ("Color").
 
 
-    The Complete Picture
-    ------------------------------------------------------------------------------
+Provide the Step Definitions
+-----------------------------
 
-    .. literalinclude:: ../../features/usertype.choice.feature
-        :prepend:   # file:features/usertype.choice.feature
-        :language: gherkin
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
+    :language: python
+    :lines:  54-
 
-    .. literalinclude:: ../../features/steps/step_usertype_choice.py
-        :prepend:   # file:features/steps/step_usertype_choice.py
-        :language: python
-        :lines:  1,16-
+
+Run the Test
+-----------------------------
+
+Now we run this example with ``behave``:
+
+.. command-output:: behave ../datatype.features/cardinality.zero_or_more.feature
+    :shell:
+    :returncode: 0
+
+
+The Complete Picture
+------------------------------------------------------------------------------
+
+.. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
+    :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
+    :language: python
+
