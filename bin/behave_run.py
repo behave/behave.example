@@ -7,29 +7,42 @@
 import os.path
 import sys
 
+DEBUG = False
+USE_LOCAL_BEHAVE = False
+
 # ----------------------------------------------------------------------------
 # SETUP PATHS:
 # ----------------------------------------------------------------------------
 # HERE = os.path.dirname(sys.argv[0])
 HERE = os.path.dirname(__file__)
+PYTHON_LIBDIR = os.path.normpath(os.path.join(HERE, "..", "lib",
+        "python%s" % sys.version_info.major ))
+BEHAVE_ZIP  = os.path.join(PYTHON_LIBDIR, "behave.zip")
 BEHAVE_HOME = os.path.normpath(os.path.join(HERE, "..", "..", "behave"))
-BEHAVE_HOME = os.path.abspath(BEHAVE_HOME)
 
-DEBUG = False
 if DEBUG:
     print "BEHAVE: HERE=%s" % HERE
     print "BEHAVE: BEHAVE_HOME=%s" % BEHAVE_HOME
 
-if os.path.isdir(BEHAVE_HOME):
+# -- LOCAL-PATH-SETUP: Use local libs if possible.
+if os.path.isdir(PYTHON_LIBDIR):
+    sys.path.insert(0, os.path.abspath(PYTHON_LIBDIR))
+if os.path.exists(BEHAVE_ZIP):
+    # sys.stdout.write("USING-BUNDLE: %s\n" % os.path.basename(BEHAVE_ZIP))
+    if DEBUG: sys.stdout.write("USING-BUNDLE: %s\n" % BEHAVE_ZIP)
+    sys.path.insert(0, os.path.realpath(BEHAVE_ZIP))
+if USE_LOCAL_BEHAVE and os.path.isdir(BEHAVE_HOME):
+    if DEBUG: sys.stdout.write("USING-LOCAL: %s\n" % BEHAVE_HOME)
     sys.path.insert(0, os.path.abspath(os.path.join(BEHAVE_HOME)))
 
 # ----------------------------------------------------------------------------
 # PREPARE BEHAVE:
 # ----------------------------------------------------------------------------
+# from behave.formatter.pretty1 import SimplePrettyAsPrettyFormatter
 from behave.formatter.pretty1 import Pretty1AsPrettyFormatter
-from behave.formatter.pretty1 import SimplePrettyAsPrettyFormatter
 from behave.reporter.summary import SummaryReporter
 from behave.formatter import ansi_escapes
+from behave.formatter import formatters
 
 def monkeypatch_behave():
     """
@@ -40,9 +53,8 @@ def monkeypatch_behave():
 
 if __name__ == "__main__":
     from behave.__main__ import main
-    from behave.reporter.summary import SummaryReporter
-    from behave.formatter import ansi_escapes
-    from behave.formatter import formatters
+    # from behave.reporter.summary import SummaryReporter
+    # from behave.formatter import ansi_escapes
     monkeypatch_behave()
     formatters.register(Pretty1AsPrettyFormatter)
     # XXX formatters.register(SimplePrettyAsPrettyFormatter)
