@@ -1,0 +1,249 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tutorial 8: Execute Other Steps in a Step &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Tutorials" href="index.html" />
+    <link rel="next" title="Tutorial 9: Use Background" href="tutorial09.html" />
+    <link rel="prev" title="Tutorial 7: Result Table" href="tutorial07.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Tutorial 8: Execute Other Steps in a Step</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="tutorial07.html">Tutorial 7: Result Table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial09.html">Tutorial 9: Use Background</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 8: Execute Other Steps in a Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="tutorial-8-execute-other-steps-in-a-step">
+<span id="id-tutorial08"></span><h1>Tutorial 8: Execute Other Steps in a Step<a class="headerlink" href="#tutorial-8-execute-other-steps-in-a-step" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use step execution in step implementations to avoid code duplication.</td>
+</tr>
+</tbody>
+</table>
+<p>In some case, you want to replace a number of steps in a scenario
+by one simple <strong>macro step</strong> (<em>macro functionality</em>).
+To avoid code duplication in the <em>test automation layer</em>,
+the <a class="reference internal" href="../glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> framework normally provides a functionality to easily call
+these steps from within a step defintion.</p>
+<div class="section" id="write-the-feature-test">
+<h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial08_step_executes_steps.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Step executes other Steps (tutorial08)</span>
+
+<span class="nf">   </span><span class="k">Scenario:</span><span class="nf"> Step by Step</span>
+<span class="k">     Given </span><span class="nf">I start a new game</span>
+<span class="nf">     </span><span class="k">When </span><span class="nf"> I press the big red button</span>
+<span class="nf">      </span><span class="k">And </span><span class="nf"> I duck</span>
+<span class="nf">     </span><span class="k">Then </span><span class="nf"> I reach the next level</span>
+
+<span class="nf">   </span><span class="k">Scenario:</span><span class="nf"> Execute multiple Steps in middle Step</span>
+<span class="k">     Given </span><span class="nf">I start a new game</span>
+<span class="nf">     </span><span class="k">When </span><span class="nf"> I do the same thing as before</span>
+<span class="nf">     </span><span class="k">Then </span><span class="nf"> I reach the next level</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="provide-the-test-automation">
+<h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial08.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">greater_than</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I start a new game&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">duck_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">red_button_pressed</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I press the big red button&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">red_button_pressed</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I duck&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">duck_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I do the same thing as before&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s">u&quot;&quot;&quot;</span>
+<span class="s">        when I press the big {button_color} button</span>
+<span class="s">         and I duck</span>
+<span class="s">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;I reach the next level&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">duck_count</span><span class="p">,</span> <span class="n">greater_than</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">red_button_pressed</span><span class="p">,</span> <span class="n">greater_than</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-feature-test">
+<h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file from above (with coloring enabled):</p>
+<pre class="ansi-block literal-block">
+$ behave ../features/tutorial08_step_executes_steps.feature
+Feature: Step executes other Steps (tutorial08)<span class="ansi-blue"> # ../features/tutorial08_step_executes_steps.feature:1</span>
+
+  Scenario: Step by Step <span class="ansi-blue">           # ../features/tutorial08_step_executes_steps.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-blue">        # ../features/steps/step_tutorial08.py:25</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I press the big red button</span><span class="ansi-blue"> # ../features/steps/step_tutorial08.py:30</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I duck</span><span class="ansi-blue">                      # ../features/steps/step_tutorial08.py:34</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-blue">     # ../features/steps/step_tutorial08.py:45</span>
+
+  Scenario: Execute multiple Steps in middle Step <span class="ansi-blue"> # ../features/tutorial08_step_executes_steps.feature:9</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-blue">                       # ../features/steps/step_tutorial08.py:25</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I do the same thing as before</span><span class="ansi-blue">             # ../features/steps/step_tutorial08.py:38</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-blue">                    # ../features/steps/step_tutorial08.py:45</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+7 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tutorial 8: Execute Other Steps in a Step</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial07.html"
+                        title="previous chapter">Tutorial 7: Result Table</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial09.html"
+                        title="next chapter">Tutorial 9: Use Background</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/tutorials/tutorial08.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="tutorial07.html">Tutorial 7: Result Table</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial09.html">Tutorial 9: Use Background</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

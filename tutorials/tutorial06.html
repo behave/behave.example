@@ -8,52 +8,81 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 6: Setup Table &mdash; behave 1.1.0: Examples and Tutorials</title>
+    <title>Tutorial 6: Setup Table &mdash; behave 1.2.2.x: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '1.1.0',
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
-    <link rel="up" title="Tutorials" href="tutorials.html" />
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 7: Result Table" href="tutorial07.html" />
-    <link rel="prev" title="Tutorial 5: Step Data (Triple-Quoted Text)" href="tutorial05.html" /> 
+    <link rel="prev" title="Tutorial 5: Multi-line Text (Step Data)" href="tutorial05.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="tutorial07.html" title="Tutorial 7: Result Table"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="tutorial05.html" title="Tutorial 5: Step Data (Triple-Quoted Text)"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
-          <li><a href="tutorials.html" accesskey="U">Tutorials</a> &raquo;</li> 
-      </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Tutorial 6: Setup Table</span></a></h2>
+          </div>
+          <div class="topnav">
             
+        <p>
+        &#171;&#160;&#160;<a href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial07.html">Tutorial 7: Result Table</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 6: Setup Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
   <div class="section" id="tutorial-6-setup-table">
 <span id="id-tutorial06"></span><h1>Tutorial 6: Setup Table<a class="headerlink" href="#tutorial-6-setup-table" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
@@ -184,38 +213,63 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="run-the-feature-test">
+<h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
+<p>When you run the feature file from above (with coloring enabled):</p>
+<pre class="ansi-block literal-block">
+$ behave ../features/tutorial06_step_setup_table.feature
+Feature: Step Setup Table (tutorial06)<span class="ansi-blue"> # ../features/tutorial06_step_setup_table.feature:1</span>
+
+  Scenario: Setup Table <span class="ansi-blue">                                  # ../features/tutorial06_step_setup_table.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-blue">                         # ../features/steps/step_tutorial06.py:27</span>
+      | name      | department  |
+      | Barry     | Beer Cans   |
+      | Pudey     | Silly Walks |
+      | Two-Lumps | Silly Walks |
+    <span class="ansi-green">When </span><span class="ansi-green">we count the number of people in each department</span><span class="ansi-blue"> # ../features/steps/step_tutorial06.py:35</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will find </span><span class="ansi-green"></span><span class="ansi-bold">two</span><span class="ansi-green"> people in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-blue">         # ../features/steps/step_tutorial06.py:39</span>
+    <span class="ansi-green">But </span><span class="ansi-green">we will find one person in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-blue">            # ../features/steps/step_tutorial06.py:44</span>
+
+1 feature passed, 0 failed, 0 skipped
+1 scenario passed, 0 failed, 0 skipped
+4 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
 </div>
 
 
-          </div>
-        </div>
-      </div>
+                </div>
+              </div>
+
+            </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tutorial 6: Setup Table</a><ul>
 <li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
 <li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
 <li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="tutorial05.html"
-                        title="previous chapter">Tutorial 5: Step Data (Triple-Quoted Text)</a></p>
+                        title="previous chapter">Tutorial 5: Multi-line Text (Step Data)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial07.html"
                         title="next chapter">Tutorial 7: Result Table</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/tutorial06.txt"
+    <li><a href="../_sources/tutorials/tutorial06.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
+    <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -228,27 +282,26 @@
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="tutorial07.html" title="Tutorial 7: Result Table"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="tutorial05.html" title="Tutorial 5: Step Data (Triple-Quoted Text)"
-             >previous</a> |</li>
-        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li>
-          <li><a href="tutorials.html" >Tutorials</a> &raquo;</li> 
-      </ul>
-    </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorial07.html">Tutorial 7: Result Table</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-03-25.
+      Last updated on 2012-11-11.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

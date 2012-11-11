@@ -8,16 +8,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Introduction &mdash; behave 1.1.0: Examples and Tutorials</title>
+    <title>Introduction &mdash; behave 1.2.2.x: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/ansi.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '',
-        VERSION:     '1.1.0',
+        VERSION:     '1.2.2.x',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,32 +26,53 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="behave 1.1.0: Examples and Tutorials" href="index.html" />
-    <link rel="next" title="Tutorials" href="tutorials.html" />
+    <script type="text/javascript" src="_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="index.html" />
+    <link rel="next" title="Tutorials" href="tutorials/index.html" />
     <link rel="prev" title="behave Examples and Tutorials" href="index.html" /> 
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="tutorials.html" title="Tutorials"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="behave Examples and Tutorials"
-             accesskey="P">previous</a> |</li>
-        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li> 
-      </ul>
-    </div>  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Introduction</span></a></h2>
+          </div>
+          <div class="topnav">
             
+        <p>
+        &#171;&#160;&#160;<a href="index.html">behave Examples and Tutorials</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorials/index.html">Tutorials</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#read-the-documentation">Read the Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#given-when-then">Given, When, Then</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-an-assertation-matcher-library">Select an Assertation Matcher Library</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
   <div class="section" id="introduction">
 <span id="id-introduction"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="read-the-documentation">
@@ -86,12 +107,12 @@ interesting for you, if you like to know where certain concepts originate.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="select-a-matcher-library">
-<h2>Select a Matcher Library<a class="headerlink" href="#select-a-matcher-library" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="select-an-assertation-matcher-library">
+<h2>Select an Assertation Matcher Library<a class="headerlink" href="#select-an-assertation-matcher-library" title="Permalink to this headline">¶</a></h2>
 <p>Before you start to use <a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> (or any other <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> framework)
 you should select an assertation matcher library that you want to use
 in your project.</p>
-<p>Python has a growing number of <em>matcher libraries</em> by now.
+<p>Python has a growing number of assertation <em>matcher libraries</em> by now.
 Here is the list of some of these:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -133,15 +154,17 @@ Supports several programming languages:
 </table>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><a class="reference external" href="http://code.google.com/p/hamcrest/">hamcrest</a> is used as <em>matcher library</em> in the examples presented here.</p>
+<p class="last"><a class="reference external" href="http://code.google.com/p/hamcrest/">hamcrest</a> is used as <em>assertation matcher library</em> in the examples
+presented here.</p>
 </div>
 </div>
 </div>
 
 
-          </div>
-        </div>
-      </div>
+                </div>
+              </div>
+
+            </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
@@ -149,7 +172,7 @@ Supports several programming languages:
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#read-the-documentation">Read the Documentation</a></li>
 <li><a class="reference internal" href="#given-when-then">Given, When, Then</a></li>
-<li><a class="reference internal" href="#select-a-matcher-library">Select a Matcher Library</a></li>
+<li><a class="reference internal" href="#select-an-assertation-matcher-library">Select an Assertation Matcher Library</a></li>
 </ul>
 </li>
 </ul>
@@ -158,7 +181,7 @@ Supports several programming languages:
   <p class="topless"><a href="index.html"
                         title="previous chapter">behave Examples and Tutorials</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="tutorials.html"
+  <p class="topless"><a href="tutorials/index.html"
                         title="next chapter">Tutorials</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
@@ -180,26 +203,26 @@ Supports several programming languages:
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="tutorials.html" title="Tutorials"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="index.html" title="behave Examples and Tutorials"
-             >previous</a> |</li>
-        <li><a href="index.html">behave 1.1.0: Examples and Tutorials</a> &raquo;</li> 
-      </ul>
-    </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="index.html">behave Examples and Tutorials</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="tutorials/index.html">Tutorials</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-03-25.
+      Last updated on 2012-11-11.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

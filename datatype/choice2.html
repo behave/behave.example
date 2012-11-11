@@ -1,0 +1,197 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Choice2 (Word/String Alternatives) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
+    <link rel="next" title="Enumeration (String-to-Value Mapping)" href="enum.html" />
+    <link rel="prev" title="Choice (Word/String Alternatives)" href="choice.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Choice2 (Word/String Alternatives)</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="choice.html">Choice (Word/String Alternatives)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="enum.html">Enumeration (String-to-Value Mapping)</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice.html">Choice (Word/String Alternatives)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Choice2 (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumeration (String-to-Value Mapping)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_complex_types.html">More Complex Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="choice2-word-string-alternatives">
+<span id="id-datatype-choice2"></span><h1>Choice2 (Word/String Alternatives)<a class="headerlink" href="#choice2-word-string-alternatives" title="Permalink to this headline">¶</a></h1>
+<p>This basically the same as <a class="reference internal" href="choice.html#id-datatype-choice"><em>Choice (Word/String Alternatives)</em></a>,
+but the generated type-converter function (parse_choice2) returns a
+tuple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">(</span><span class="n">selected_index</span><span class="p">,</span> <span class="n">selected_text</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>instead of <tt class="docutils literal"><span class="pre">selected_text</span></tt> (as string).
+This is sometimes useful in step definitions if you need to use the
+selected item index for other operations.</p>
+<div class="section" id="define-the-data-type">
+<h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- FILE: features/environment.py (location 1, global types)</span>
+<span class="c">#    FILE: features/steps/step.py  (location 2, more locally used types)</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># -- CHOICE2: Constrain to a list of supported items (as string).</span>
+<span class="n">offered_shop_items</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;apples&quot;</span><span class="p">,</span> <span class="s">&quot;beef&quot;</span><span class="p">,</span> <span class="s">&quot;potatoes&quot;</span><span class="p">,</span> <span class="s">&quot;pork&quot;</span> <span class="p">]</span>
+<span class="n">parse_shop_item2</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice2</span><span class="p">(</span><span class="n">offered_shop_items</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">ShopItem2</span><span class="o">=</span><span class="n">parse_shop_item2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.make_choice2()</span></tt> function performs the magic, as before.</p>
+</div>
+</div>
+<div class="section" id="provide-the-step-definitions">
+<h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- FILE: features/steps/step.py</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&quot;I buy {shop_item:ShopItem2}&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">shop_item</span><span class="p">):</span>
+    <span class="c"># EXAMPLE: &quot;potatoes&quot; =&gt; (selected_index=2, selected_text=&quot;potatoes&quot;)</span>
+    <span class="n">selected_index</span><span class="p">,</span> <span class="n">selected_text</span> <span class="o">=</span> <span class="n">shop_item</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">select_index</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">offered_shop_items</span><span class="p">)</span>
+    <span class="n">shop_item_id</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">shop_item_index2id</span><span class="p">(</span><span class="n">selected_index</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">shop_item_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Choice2 (Word/String Alternatives)</a><ul>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="choice.html"
+                        title="previous chapter">Choice (Word/String Alternatives)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="enum.html"
+                        title="next chapter">Enumeration (String-to-Value Mapping)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/datatype/choice2.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="choice.html">Choice (Word/String Alternatives)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="enum.html">Enumeration (String-to-Value Mapping)</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

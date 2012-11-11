@@ -1,0 +1,256 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Predefined Data Types in parse &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
+    <link rel="next" title="Cardinality: Zero or One (Optional)" href="cardinality_zero_or_one.html" />
+    <link rel="prev" title="Type Definition Basics" href="basics.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Predefined Data Types in parse</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="basics.html">Type Definition Basics</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice.html">Choice (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice2.html">Choice2 (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumeration (String-to-Value Mapping)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_complex_types.html">More Complex Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="predefined-data-types-in-parse">
+<span id="id-datatype-builtin-types"></span><h1>Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt><a class="headerlink" href="#predefined-data-types-in-parse" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> uses the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module (inverse of Python <a class="reference external" href="http://docs.python.org/library/string.html#format-string-syntax">string.format</a>)
+under the hoods to parse parameters in step definitions.
+This leads to rather simple and readable parse expressions for step parameters.</p>
+<p>Therefore, the following <tt class="docutils literal"><span class="pre">parse</span> <span class="pre">types</span></tt> are already supported
+in step definitions without registration of any <em>user-defined type</em>:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="77%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Characters Matched</th>
+<th class="head">Output</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>w</td>
+<td>Letters and underscore</td>
+<td>str</td>
+</tr>
+<tr class="row-odd"><td>W</td>
+<td>Non-letter and underscore</td>
+<td>str</td>
+</tr>
+<tr class="row-even"><td>s</td>
+<td>Whitespace</td>
+<td>str</td>
+</tr>
+<tr class="row-odd"><td>S</td>
+<td>Non-whitespace</td>
+<td>str</td>
+</tr>
+<tr class="row-even"><td>d</td>
+<td>Digits (effectively integer numbers)</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>D</td>
+<td>Non-digit</td>
+<td>str</td>
+</tr>
+<tr class="row-even"><td>n</td>
+<td>Numbers with thousands separators (, or .)</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>%</td>
+<td>Percentage (converted to value/100.0)</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>f</td>
+<td>Fixed-point numbers</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>e</td>
+<td>Floating-point numbers with exponent
+e.g. 1.1e-10, NAN (all case insensitive)</td>
+<td>float</td>
+</tr>
+<tr class="row-even"><td>g</td>
+<td>General number format (either d, f or e)</td>
+<td>float</td>
+</tr>
+<tr class="row-odd"><td>b</td>
+<td>Binary numbers</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>o</td>
+<td>Octal numbers</td>
+<td>int</td>
+</tr>
+<tr class="row-odd"><td>x</td>
+<td>Hexadecimal numbers (lower and upper case)</td>
+<td>int</td>
+</tr>
+<tr class="row-even"><td>ti</td>
+<td>ISO 8601 format date/time
+e.g. 1972-01-20T10:21:36Z</td>
+<td>datetime</td>
+</tr>
+<tr class="row-odd"><td>te</td>
+<td>RFC2822 e-mail format date/time
+e.g. Mon, 20 Jan 1972 10:21:36 +1000</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>tg</td>
+<td>Global (day/month) format date/time
+e.g. 20/1/1972 10:21:36 AM +1:00</td>
+<td>datetime</td>
+</tr>
+<tr class="row-odd"><td>ta</td>
+<td>US (month/day) format date/time
+e.g. 1/20/1972 10:21:36 PM +10:30</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>tc</td>
+<td>ctime() format date/time
+e.g. Sun Sep 16 01:03:52 1973</td>
+<td>datetime</td>
+</tr>
+<tr class="row-odd"><td>th</td>
+<td>HTTP log format date/time
+e.g. 21/Nov/2011:00:07:11 +0000</td>
+<td>datetime</td>
+</tr>
+<tr class="row-even"><td>tt</td>
+<td>Time
+e.g. 10:21:36 PM -5:30</td>
+<td>time</td>
+</tr>
+</tbody>
+</table>
+<p>XXX</p>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="basics.html"
+                        title="previous chapter">Type Definition Basics</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cardinality_zero_or_one.html"
+                        title="next chapter">Cardinality: Zero or One (Optional)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/datatype/builtin_types.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="basics.html">Type Definition Basics</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
