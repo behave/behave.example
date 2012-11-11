@@ -17,13 +17,15 @@ Feature: A Step uses a User-Defined Type as Step Parameter (tutorial10)
         |  2  |  7 |  9  |
 """
 
-from behave   import given, when, then, matchers
+from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 from calculator import Calculator
 
 # ----------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ----------------------------------------------------------------------------
+from behave import matchers
+
 def parse_number(text):
     """
     Convert parsed text into a number.
