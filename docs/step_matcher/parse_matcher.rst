@@ -4,12 +4,25 @@
 Use the Parse Matcher (parse)
 ==============================================================================
 
-XXX
+The "parse" matcher is used in most examples that are provided here.
+It uses the `parse`_ for regular expressions matching and parsing.
+It provides:
 
-`behave`_ provides 2 step matchers:
+  * predefined types
+  * used-defined types and type-converters
 
-  1. "parse" (ParseMatcher) by using the `parse`_ module
-  2. "re" (RegexMatcher) that uses regular expressions for matching parameters
+.. seealso::
+
+    * :ref:`id.datatype.builtin_types`
+    * :ref:`id.datatype`
+
+
+Step Definitions Example
+-------------------------------------------------------------------------------
+
+.. literalinclude:: ../../step_matcher.features/steps/step_parse_matcher.py
+    :prepend:   # file:step_matcher.features/steps/step_parse_matcher.py
+    :language: python
 
 
 .. _behave: http://pypi.python.org/pypi/behave

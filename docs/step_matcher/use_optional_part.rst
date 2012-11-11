@@ -40,10 +40,10 @@ as optional (cardinality: 0..1).
     ============  ==================== ========================================
     Cardinality    Example             Description
     ============  ==================== ========================================
-       1          "{person:Person}"    One, implicit without cardinality field.
-       0..1       "{person:Person?}"   **Zero or one:  For optional parts**.
-       0..*       "{persons:Person*}"  Zero or more: For list<T> (many0).
-       1..*       "{persons:Person+}"  One  or more: For list<T> (many).
+       1          {person:Person}      One, implicit without cardinality field.
+       0..1       {person:Person?}     **Zero or one:  For optional parts**.
+       0..*       {persons:Person*}    Zero or more: For list<T> (many0).
+       1..*       {persons:Person+}    One  or more: For list<T> (many).
     ============  ==================== ========================================
 
     Using the cardinality field in a parse expression is the

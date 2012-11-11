@@ -39,6 +39,7 @@ by the `parse`_ module.
     re_matcher
     use_optional_part
     use_multi_methods
+    regular_expressions
 
 
 .. _behave: http://pypi.python.org/pypi/behave

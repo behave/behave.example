@@ -1,9 +1,9 @@
 .. _id.tutorial08:
 
-Tutorial 8: Execute Other Steps
+Tutorial 8: Execute Other Steps in a Step
 ==============================================================================
 
-:Goal: Use step execution to avoid code duplication.
+:Goal: Use step execution in step implementations to avoid code duplication.
 
 In some case, you want to replace a number of steps in a scenario
 by one simple **macro step** (*macro functionality*).
