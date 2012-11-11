@@ -38,9 +38,9 @@ def step(context):
 @when('I do the same thing as before')
 def step(context):
     context.execute_steps(u"""
-        when I press the big red button
+        when I press the big {button_color} button
          and I duck
-    """)
+    """.format(button_color="red"))
 
 @then('I reach the next level')
 def step(context):

@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Cardinality: One or More (List of Type) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
+    <link rel="next" title="Cardinality: Zero or More (List of Type)" href="cardinality_zero_or_more.html" />
+    <link rel="prev" title="Cardinality: Zero or One (Optional)" href="cardinality_zero_or_one.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Cardinality: One or More (List of Type)</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Cardinality: One or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice.html">Choice (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="choice2.html">Choice2 (Word/String Alternatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumeration (String-to-Value Mapping)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_complex_types.html">More Complex Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="cardinality-one-or-more-list-of-type">
+<span id="id-datatype-cardinality-one-or-more"></span><h1>Cardinality: One or More (List of Type)<a class="headerlink" href="#cardinality-one-or-more-list-of-type" title="Permalink to this headline">¶</a></h1>
+<p>Sometimes a solution is needed where list of one or more items need to be parsed.
+Initially, we want process a comma-separated list, like:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"></span>
+<span class="k">    When </span><span class="nf">I meet Alice</span>
+<span class="nf">     </span><span class="k">And </span><span class="nf">I meet Alice, Bob, Charly</span>
+</pre></div>
+</div>
+<p>Then, we want process a list that is separated by the word &#8220;and&#8221;, like:</p>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"></span>
+<span class="k">    When </span><span class="nf">I meet Alice and Bob and Charly</span>
+</pre></div>
+</div>
+<div class="section" id="feature-example">
+<h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:datatype.features/cardinality.one_or_more.feature</span><span class="nf"></span>
+<span class="k">Feature:</span><span class="nf"> Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Many list, comma-separated</span>
+<span class="k">    Given </span><span class="nf">I go to a meeting</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I meet Alice, Bob, Dodo</span>
+<span class="nf">    </span><span class="k">And </span><span class="nf"> I meet Charly</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the following persons are present:</span>
+<span class="k">      |</span><span class="s"> name</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Alice</span><span class="k">  |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Bob</span><span class="k">    |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Charly</span><span class="k"> |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Dodo</span><span class="k">   |</span>
+
+<span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Many list with list-separator &quot;and&quot;</span>
+<span class="k">    Given </span><span class="nf">I go to a meeting</span>
+<span class="nf">    </span><span class="k">When </span><span class="nf">I meet Alice and Bob and Charly</span>
+<span class="nf">    </span><span class="k">Then </span><span class="nf">the following persons are present:</span>
+<span class="k">      |</span><span class="s"> name</span><span class="k">   |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Alice</span><span class="k">  |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Bob</span><span class="k">    |</span><span class="nf"></span>
+<span class="k">      |</span><span class="s"> Charly</span><span class="k"> |</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-data-type">
+<h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+
+<span class="n">company_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;Charly&quot;</span><span class="p">,</span> <span class="s">&quot;Dodo&quot;</span> <span class="p">]</span>
+<span class="n">parse_person</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">(</span><span class="n">company_persons</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
+
+<span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
+<span class="c"># parse_persons = TypeBuilder.with_one_or_more(parse_person, listsep=&quot;and&quot;)</span>
+<span class="n">parse_persons</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_many</span><span class="p">(</span><span class="n">parse_person</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.with_many()</span></tt> function performs the magic.
+It computes a regular expression pattern for the list of items.
+Then it generates a type-converter function that processes the list of
+items by using the type-converter for one item (&#8220;Person&#8221;).</p>
+</div>
+</div>
+<div class="section" id="provide-the-step-definitions">
+<h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+
+<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I meet {persons:Person+}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_meet_persons</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">persons</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I meet {persons:PersonAndMore}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_meet_person_and_more</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">persons</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">contains</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I go to a meeting&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_go_to_meeting</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">meeting</span> <span class="o">=</span> <span class="n">Meeting</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the following persons are present&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_following_persons_are_present</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s">&quot;table&lt;Person&gt; is required&quot;</span>
+    <span class="n">actual_persons</span>   <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="p">)</span>
+    <span class="n">expected_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>  <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+
+    <span class="c"># -- LIST-COMPARISON:</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_persons</span><span class="p">,</span> <span class="n">contains</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-test">
+<h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
+<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt>:</p>
+<pre class="ansi-block literal-block">
+$ behave ../datatype.features/cardinality.one_or_more.feature
+Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)<span class="ansi-blue"> # ../datatype.features/cardinality.one_or_more.feature:1</span>
+
+  Scenario: Many list, comma-separated <span class="ansi-blue">    # ../datatype.features/cardinality.one_or_more.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-blue">                # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Alice, Bob, Dodo</span><span class="ansi-blue">           # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Charly</span><span class="ansi-blue">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-blue"> # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
+      | name   |
+      | Alice  |
+      | Bob    |
+      | Charly |
+      | Dodo   |
+
+  Scenario: Many list with list-separator &quot;and&quot; <span class="ansi-blue"> # ../datatype.features/cardinality.one_or_more.feature:14</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-blue">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Alice and Bob and Charly</span><span class="ansi-blue">         # ../datatype.features/steps/step_cardinality_one_or_more.py:61</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-blue">       # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
+      | name   |
+      | Alice  |
+      | Bob    |
+      | Charly |
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+7 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.0s
+</pre>
+</div>
+<div class="section" id="the-complete-picture">
+<h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span>
+
+<span class="sd">  Scenario:</span>
+<span class="sd">    Given I go to a meeting</span>
+<span class="sd">    When I meet Alice, Bob, Charly</span>
+<span class="sd">    And  I meet Dodo</span>
+<span class="sd">    Then the following persons are present:</span>
+<span class="sd">      | name   |</span>
+<span class="sd">      | Alice  |</span>
+<span class="sd">      | Bob    |</span>
+<span class="sd">      | Charly |</span>
+<span class="sd">      | Dodo   |</span>
+
+<span class="sd">  Scenario: Many list with list-separator &quot;and&quot;</span>
+<span class="sd">    Given I go to a meeting</span>
+<span class="sd">    When I meet Alice and Bob and Charly</span>
+<span class="sd">    Then the following persons are present:</span>
+<span class="sd">      | name   |</span>
+<span class="sd">      | Bob    |</span>
+<span class="sd">      | Alice  |</span>
+<span class="sd">      | Charly |</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># DOMAIN MODEL:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="k">class</span> <span class="nc">Meeting</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">persons</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c"># USER-DEFINED TYPES:</span>
+<span class="c"># ------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+
+<span class="n">company_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;Charly&quot;</span><span class="p">,</span> <span class="s">&quot;Dodo&quot;</span> <span class="p">]</span>
+<span class="n">parse_person</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">(</span><span class="n">company_persons</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
+
+<span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
+<span class="c"># parse_persons = TypeBuilder.with_one_or_more(parse_person, listsep=&quot;and&quot;)</span>
+<span class="n">parse_persons</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_many</span><span class="p">(</span><span class="n">parse_person</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
+<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+
+
+<span class="c"># -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I meet {persons:Person+}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_meet_persons</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">persons</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c"># -- MANY-VARIANT 2: Use special many data type (&quot;and&quot;-separated)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I meet {persons:PersonAndMore}&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_meet_person_and_more</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">persons</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="ow">in</span> <span class="n">persons</span><span class="p">:</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">person</span><span class="p">)</span>
+
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">contains</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I go to a meeting&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_go_to_meeting</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">meeting</span> <span class="o">=</span> <span class="n">Meeting</span><span class="p">()</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the following persons are present&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_following_persons_are_present</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span><span class="p">,</span> <span class="s">&quot;table&lt;Person&gt; is required&quot;</span>
+    <span class="n">actual_persons</span>   <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">meeting</span><span class="o">.</span><span class="n">persons</span><span class="p">)</span>
+    <span class="n">expected_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="n">row</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span>  <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="p">]</span>
+
+    <span class="c"># -- LIST-COMPARISON:</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_persons</span><span class="p">,</span> <span class="n">contains</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Cardinality: One or More (List of Type)</a><ul>
+<li><a class="reference internal" href="#feature-example">Feature Example</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cardinality_zero_or_one.html"
+                        title="previous chapter">Cardinality: Zero or One (Optional)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cardinality_zero_or_more.html"
+                        title="next chapter">Cardinality: Zero or More (List of Type)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/datatype/cardinality_one_or_more.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

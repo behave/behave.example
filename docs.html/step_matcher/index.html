@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Step Matchers &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    
+    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.2.2.x',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="next" title="Using the Step Matchers" href="using_matchers.html" />
+    <link rel="prev" title="More Complex Data Types" href="../datatype/more_complex_types.html" /> 
+  </head>
+  <body>
+        <div class="header">
+          <div class="header-top">
+            <h1 class="heading"><a href="../index.html">
+              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+            <h2 class="heading"><span>Step Matchers</span></a></h2>
+          </div>
+          <div class="topnav">
+            
+        <p>
+        &#171;&#160;&#160;<a href="../datatype/more_complex_types.html">More Complex Data Types</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="using_matchers.html">Using the Step Matchers</a>&#160;&#160;&#187;
+        </p>
+
+            <div class="globaltoc">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Step Matchers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="using_matchers.html">Using the Step Matchers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+        <div class="wrapper">  
+
+          <div class="document">
+            <div class="documentwrapper">
+              <div class="bodywrapper">
+                <div class="body">
+                  
+  <div class="section" id="step-matchers">
+<span id="id-step-matcher"></span><h1>Step Matchers<a class="headerlink" href="#step-matchers" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> provides 2 step matchers:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>&#8220;parse&#8221; (ParseMatcher) by using the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module</li>
+<li>&#8220;re&#8221; (RegexMatcher) that uses regular expressions for matching parameters</li>
+</ol>
+</div></blockquote>
+<p>The &#8220;parse&#8221; matcher is the <strong>default step matcher</strong>.
+It is more commonly used because it is:</p>
+<blockquote>
+<div><ul class="simple">
+<li>easier to use, read and understand</li>
+<li>provides data types support with predefined and user-defined types</li>
+<li>reuses (hidden) regular expressions better by using data types (as alias)</li>
+<li>hides regular expression complexity</li>
+</ul>
+</div></blockquote>
+<p>The &#8220;re&#8221; matcher is used for the following reasons. It:</p>
+<blockquote>
+<div><ul class="simple">
+<li>addresses some cases that cannot be solved otherwise (currently)</li>
+<li>is backward compatible to <a class="reference external" href="http://cukes.info/">cucumber</a> (uses regular expressions)</li>
+<li>is less ambiguous compared to the &#8220;parse&#8221; matcher (currently)</li>
+</ul>
+</div></blockquote>
+<p>It should be noted that both step matchers use regular expressions.
+But most of the regular expressions (and their complexity) is hidden
+by the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module.</p>
+<hr class="docutils" />
+<p><strong>Contents:</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="using_matchers.html">Using the Step Matchers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
+</ul>
+</div>
+</div>
+
+
+                </div>
+              </div>
+
+            </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../datatype/more_complex_types.html"
+                        title="previous chapter">More Complex Data Types</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="using_matchers.html"
+                        title="next chapter">Using the Step Matchers</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/step_matcher/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+
+        <div class="bottomnav">
+          
+        <p>
+        &#171;&#160;&#160;<a href="../datatype/more_complex_types.html">More Complex Data Types</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="using_matchers.html">Using the Step Matchers</a>&#160;&#160;&#187;
+        </p>
+
+        </div>
+
+    <div class="footer">
+        &copy; Copyright 2012 by Jens Engel.
+      Last updated on 2012-11-11.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
