@@ -3,6 +3,8 @@
 Tutorial 12: Use another Spoken Language
 ==============================================================================
 
+.. index:: select-language
+
 :Goal: Use another spoken language for testing (other than English)
 
 Most :term:`BDD` frameworks provide internationalisation support.
@@ -63,10 +65,24 @@ Run the Feature Test
 
 Automatic language selection (via feature-file language marker):
 
-.. command-output:: behave ../features/tutorial12_spoken_language.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial12_spoken_language.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain ../features/tutorial12_spoken_language.feature
+        :shell:
 
 Explicit language selection via command-line usage of ``--lang=${lang}``:
 
-.. command-output:: behave --lang=de ../features/tutorial12_spoken_language.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --lang=de ../features/tutorial12_spoken_language.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain --lang=de ../features/tutorial12_spoken_language.feature
+        :shell:

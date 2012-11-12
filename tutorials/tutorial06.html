@@ -85,7 +85,7 @@
                   
   <div class="section" id="tutorial-6-setup-table">
 <span id="id-tutorial06"></span><h1>Tutorial 6: Setup Table<a class="headerlink" href="#tutorial-6-setup-table" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" id="index-0" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -215,20 +215,20 @@
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<p>When you run the feature file from above (with coloring enabled):</p>
+<p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial06_step_setup_table.feature
-Feature: Step Setup Table (tutorial06)<span class="ansi-blue"> # ../features/tutorial06_step_setup_table.feature:1</span>
+Feature: Step Setup Table (tutorial06)<span class="ansi-white"> # ../features/tutorial06_step_setup_table.feature:1</span>
 
-  Scenario: Setup Table <span class="ansi-blue">                                  # ../features/tutorial06_step_setup_table.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-blue">                         # ../features/steps/step_tutorial06.py:27</span>
+  Scenario: Setup Table <span class="ansi-white">                                  # ../features/tutorial06_step_setup_table.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                         # ../features/steps/step_tutorial06.py:27</span>
       | name      | department  |
       | Barry     | Beer Cans   |
       | Pudey     | Silly Walks |
       | Two-Lumps | Silly Walks |
-    <span class="ansi-green">When </span><span class="ansi-green">we count the number of people in each department</span><span class="ansi-blue"> # ../features/steps/step_tutorial06.py:35</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">we will find </span><span class="ansi-green"></span><span class="ansi-bold">two</span><span class="ansi-green"> people in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-blue">         # ../features/steps/step_tutorial06.py:39</span>
-    <span class="ansi-green">But </span><span class="ansi-green">we will find one person in &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-blue">            # ../features/steps/step_tutorial06.py:44</span>
+    <span class="ansi-green">When </span><span class="ansi-green">we count the number of people in each department</span><span class="ansi-white"> # ../features/steps/step_tutorial06.py:35</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will find </span><span class="ansi-green ansi-bold">two</span><span class="ansi-green"> people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">         # ../features/steps/step_tutorial06.py:39</span>
+    <span class="ansi-green">But </span><span class="ansi-green">we will find one person in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">            # ../features/steps/step_tutorial06.py:44</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
@@ -301,7 +301,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

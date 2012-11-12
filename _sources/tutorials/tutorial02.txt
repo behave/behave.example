@@ -52,10 +52,17 @@ and you do not have to write it.
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
-.. command-output:: behave ../features/tutorial02_natural_language.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial02_natural_language.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../features/tutorial02_natural_language.feature
+        :shell:
 
 
 The Complete Picture

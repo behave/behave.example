@@ -85,7 +85,7 @@
                   
   <div class="section" id="tutorial-8-execute-other-steps-in-a-step">
 <span id="id-tutorial08"></span><h1>Tutorial 8: Execute Other Steps in a Step<a class="headerlink" href="#tutorial-8-execute-other-steps-in-a-step" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" id="index-0" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -156,21 +156,21 @@ these steps from within a step defintion.</p>
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<p>When you run the feature file from above (with coloring enabled):</p>
+<p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial08_step_executes_steps.feature
-Feature: Step executes other Steps (tutorial08)<span class="ansi-blue"> # ../features/tutorial08_step_executes_steps.feature:1</span>
+Feature: Step executes other Steps (tutorial08)<span class="ansi-white"> # ../features/tutorial08_step_executes_steps.feature:1</span>
 
-  Scenario: Step by Step <span class="ansi-blue">           # ../features/tutorial08_step_executes_steps.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-blue">        # ../features/steps/step_tutorial08.py:25</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I press the big red button</span><span class="ansi-blue"> # ../features/steps/step_tutorial08.py:30</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I duck</span><span class="ansi-blue">                      # ../features/steps/step_tutorial08.py:34</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-blue">     # ../features/steps/step_tutorial08.py:45</span>
+  Scenario: Step by Step <span class="ansi-white">           # ../features/tutorial08_step_executes_steps.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-white">        # ../features/steps/step_tutorial08.py:25</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I press the big red button</span><span class="ansi-white"> # ../features/steps/step_tutorial08.py:30</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I duck</span><span class="ansi-white">                      # ../features/steps/step_tutorial08.py:34</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-white">     # ../features/steps/step_tutorial08.py:45</span>
 
-  Scenario: Execute multiple Steps in middle Step <span class="ansi-blue"> # ../features/tutorial08_step_executes_steps.feature:9</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-blue">                       # ../features/steps/step_tutorial08.py:25</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I do the same thing as before</span><span class="ansi-blue">             # ../features/steps/step_tutorial08.py:38</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-blue">                    # ../features/steps/step_tutorial08.py:45</span>
+  Scenario: Execute multiple Steps in middle Step <span class="ansi-white"> # ../features/tutorial08_step_executes_steps.feature:9</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I start a new game</span><span class="ansi-white">                       # ../features/steps/step_tutorial08.py:25</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I do the same thing as before</span><span class="ansi-white">             # ../features/steps/step_tutorial08.py:38</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">I reach the next level</span><span class="ansi-white">                    # ../features/steps/step_tutorial08.py:45</span>
 
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
@@ -242,7 +242,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

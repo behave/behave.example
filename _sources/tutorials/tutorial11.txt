@@ -3,6 +3,8 @@
 Tutorial 11: Use Tags
 ==============================================================================
 
+.. index:: tags, use-tags
+
 :Goal: Understand the usage of tags to organize the testsuite and optimize test runs.
 
 Several test frameworks support a concept of tags to mark a number of tests
@@ -30,14 +32,14 @@ static test package structure.
 
 .. hint:: Tag Logic:
 
-    ================ ======================== ==================================
-    Logic Operation  Command Options          Description
-    ================ ======================== ==================================
-    select/enable    --tags=@one              Only items with this tag.
-    not (minus)      --tags=-@one             Only items without this tag.
-    either-or        --tags=@one,@two         If either @one or @two is present.
-    and              --tags=@one --tags=@two  If both @one and @two are present.
-    ================ ======================== ==================================
+    ================ ============================ ==================================
+    Logic Operation  Command Options              Description
+    ================ ============================ ==================================
+    select/enable    ``--tags=@one``              Only items with this tag.
+    not (minus)      ``--tags=-@one``             Only items without this tag.
+    either-or        ``--tags=@one,@two``         If either @one or @two is present.
+    and              ``--tags=@one --tags=@two``  If both @one and @two are present.
+    ================ ============================ ==================================
 
     Notes:
 
@@ -61,8 +63,15 @@ Run the Feature Test
 When you run the feature file by excluding the tag @wip,
 then any feature marked with this tag is skipped as well as all of its scenarios.
 
-.. command-output:: behave --tags=-wip ../features/tutorial11_tags.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=-wip ../features/tutorial11_tags.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=-wip ../features/tutorial11_tags.feature
+        :shell:
 
 .. note::
 
@@ -71,8 +80,15 @@ then any feature marked with this tag is skipped as well as all of its scenarios
 
 When you **enable the tag** @ninja.chuck:
 
-.. command-output:: behave --tags=ninja.chuck ../features/tutorial11_tags.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
 
 .. note::
 
@@ -80,8 +96,15 @@ When you **enable the tag** @ninja.chuck:
 
 When you **disable the tag** @ninja.chuck:
 
-.. command-output:: behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=-ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
 
 .. note::
 
@@ -90,8 +113,15 @@ When you **disable the tag** @ninja.chuck:
 When you select items with **either tag** @ninja.any **or** the tag
 @ninja.chuck (**tag-or**):
 
-.. command-output:: behave --tags=@ninja.any,@ninja.chuck ../features/tutorial11_tags.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=@ninja.any,@ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=@ninja.any,@ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
 
 .. note::
 
@@ -100,8 +130,15 @@ When you select items with **either tag** @ninja.any **or** the tag
 When you select items that have the **tag** @ninja.any **and** the
 tag @ninja.chuck (**tag-and**):
 
-.. command-output:: behave --tags=@ninja.any --tags=@ninja.chuck ../features/tutorial11_tags.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=@ninja.any --tags=@ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=@ninja.any --tags=@ninja.chuck ../features/tutorial11_tags.feature
+        :shell:
 
 .. note::
 
