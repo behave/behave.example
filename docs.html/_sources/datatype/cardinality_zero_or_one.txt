@@ -3,6 +3,8 @@
 Cardinality: Zero or One (Optional)
 ==============================================================================
 
+.. index:: Cardinality: Zero or one, optional part
+
 There are some cases, when a text part may be present or not.
 Therefore, this text part is an optional and has cardinality zero or one (0..1).
 
@@ -35,9 +37,10 @@ Define the Data Type
 
 .. note::
 
-    The ``TypeBuilder.with_optional()`` function performs the magic.
+    The :py:meth:`TypeBuilder.with_optional()` function performs the magic.
     It computes a regular expression pattern for the given choice of
-    words/strings and stores them in ``parse_optional_word_a.pattern`` attribute.
+    words/strings and stores them in :py:attr:`parse_optional_word_a.pattern`
+    attribute.
 
 
 Provide the Step Definitions
@@ -54,9 +57,15 @@ Run the Test
 
 Now we run this example with ``behave``:
 
-.. command-output:: behave ../datatype.features/cardinality.zero_or_one.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../datatype.features/cardinality.zero_or_one.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../datatype.features/cardinality.zero_or_one.feature
+        :shell:
 
 
 The Complete Picture

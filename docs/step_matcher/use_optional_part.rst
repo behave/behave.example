@@ -4,8 +4,10 @@
 Use Optional Part in Step Definitions
 ==============================================================================
 
+.. index:: optional part
+
 It is a common case that optional parts occur in steps and step definitions.
-This happens often when you start writing steps and step definitionss.
+This happens often when you start writing steps and step definitions.
 
 **EXAMPLE**:
 
@@ -28,7 +30,7 @@ An other point is that the step definition implementation is also identical.
 Variant 1: Use Cardinality Field
 ===============================================================================
 
-The `parse` expression format provides an optional cardinality field part
+The `parse`_ expression format provides an optional cardinality field part
 after the type field. The '?' character is used to mark a step parameter
 as optional (cardinality: 0..1).
 
@@ -70,11 +72,20 @@ Define the Data Type
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
-.. command-output:: behave ../step_matcher.features/use_optional_part.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../step_matcher.features/use_optional_part.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../step_matcher.features/use_optional_part.feature
+        :shell:
+        :returncode: 0
+
 
 The Complete Picture
 ------------------------------------------------------------------------------

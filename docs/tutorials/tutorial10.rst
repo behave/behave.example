@@ -3,6 +3,8 @@
 Tutorial 10: User-defined Data Type
 ==============================================================================
 
+.. index:: data type, user-defined data type
+
 :Goal: Show how user-defined datatypes can be used in step parameters.
 
 User-defined datatypes simplify the processing in step definitions.
@@ -44,8 +46,15 @@ Run the Feature Test
 
 When you run the feature file from above (with coloring enabled):
 
-.. command-output:: behave ../features/tutorial10_step_usertype.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial10_step_usertype.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain ../features/tutorial10_step_usertype.feature
+        :shell:
 
 .. note::
 

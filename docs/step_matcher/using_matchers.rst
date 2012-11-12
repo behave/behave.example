@@ -4,6 +4,8 @@
 Using the Step Matchers
 ==============================================================================
 
+.. index:: step matcher, step_matcher()
+
 Default Matcher Strategy
 -------------------------
 

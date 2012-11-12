@@ -7,7 +7,7 @@ Read the Documentation
 ------------------------
 
 Before you start reading this manual, you should have read the
-`behave documentation`_ to understand how `behave` works.
+`behave documentation`_ to understand how `behave`_ works.
 
 .. hint::
 

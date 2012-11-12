@@ -3,6 +3,8 @@
 Tutorial 7: Result Table
 ==============================================================================
 
+.. index:: result-table, use-table, table
+
 :Goal: Use *result tables* to simplify comparison of an expected dataset.
 
 The usage of **result tables** come in variations.
@@ -81,5 +83,12 @@ Run the Feature Test
 
 When you run the feature file from above (with coloring enabled):
 
-.. command-output:: behave ../features/tutorial07_step_result_table.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial07_step_result_table.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../features/tutorial07_step_result_table.feature
+        :shell:

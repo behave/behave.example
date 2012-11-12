@@ -3,6 +3,8 @@
 Tutorial 5: Multi-line Text (Step Data)
 ==============================================================================
 
+.. index:: multi-line text, docstring, step data
+
 :Goal: Use multi-line text (with tripple-quoted text) for large text sections.
 
 Triple-quoted strings (ala Python docstrings) provide a possible to use
@@ -37,7 +39,14 @@ Provide the Domain Model
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
-.. command-output:: behave ../features/tutorial05_step_data.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial05_step_data.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../features/tutorial05_step_data.feature
+        :shell:

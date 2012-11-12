@@ -3,6 +3,8 @@
 Tutorial 4: Scenario Outline
 ==============================================================================
 
+.. index:: Scenario Outline
+
 :Goal: Use scenario outline to avoid writing too many similar scenarios.
 
 A ``Scenario Outline`` provides a ``parametrized scenario script`` (or template)
@@ -47,12 +49,13 @@ Run the Feature Test
 
 When you run the feature file from above (with plain formatting):
 
-.. command-output:: behave ../features/tutorial04_scenario_outline.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
 
-.. hidden:
-    When you run the feature file from above (with plain formatting):
+    .. command-output:: behave ../features/tutorial04_scenario_outline.feature
+        :shell:
 
-    .. command-output:: behave --format=plain ../features/tutorial04_scenario_outline.feature
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain ../features/tutorial04_scenario_outline.feature
         :shell:
 

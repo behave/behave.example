@@ -3,6 +3,8 @@
 Tutorial 8: Execute Other Steps in a Step
 ==============================================================================
 
+.. index:: execute_steps()
+
 :Goal: Use step execution in step implementations to avoid code duplication.
 
 In some case, you want to replace a number of steps in a scenario
@@ -30,9 +32,15 @@ Provide the Test Automation
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
-.. command-output:: behave ../features/tutorial08_step_executes_steps.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
 
+    .. command-output:: behave ../features/tutorial08_step_executes_steps.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain ../features/tutorial08_step_executes_steps.feature
+        :shell:
 

@@ -85,7 +85,7 @@
                   
   <div class="section" id="tutorial-10-user-defined-data-type">
 <span id="id-tutorial10"></span><h1>Tutorial 10: User-defined Data Type<a class="headerlink" href="#tutorial-10-user-defined-data-type" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" id="index-0" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -196,30 +196,30 @@ that occurs before the parameter is handed to the step definition function.</p>
 <p>When you run the feature file from above (with coloring enabled):</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial10_step_usertype.feature
-Feature: User-Defined Datatype as Step Parameter (tutorial10)<span class="ansi-blue"> # ../features/tutorial10_step_usertype.feature:1</span>
+Feature: User-Defined Datatype as Step Parameter (tutorial10)<span class="ansi-white"> # ../features/tutorial10_step_usertype.feature:1</span>
   As a test writer
   I want that a step parameter is converted into a specific datatype
   to simplify the programming of the step definition body.
 
-  Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
+  Scenario Outline: Calculator <span class="ansi-white">     # ../features/tutorial10_step_usertype.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-white">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial10.py:52</span>
 
-  Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
+  Scenario Outline: Calculator <span class="ansi-white">     # ../features/tutorial10_step_usertype.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-white">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green ansi-bold">1</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green ansi-bold">2</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial10.py:52</span>
 
-  Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
+  Scenario Outline: Calculator <span class="ansi-white">     # ../features/tutorial10_step_usertype.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-white">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green ansi-bold">1</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green ansi-bold">3</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial10.py:52</span>
 
-  Scenario Outline: Calculator <span class="ansi-blue">     # ../features/tutorial10_step_usertype.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-blue">       # ../features/steps/step_tutorial10.py:42</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green"></span><span class="ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green"></span><span class="ansi-bold">7</span><span class="ansi-green">&quot;</span><span class="ansi-blue">          # ../features/steps/step_tutorial10.py:46</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green"></span><span class="ansi-bold">9</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial10.py:52</span>
+  Scenario Outline: Calculator <span class="ansi-white">     # ../features/tutorial10_step_usertype.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I have a calculator</span><span class="ansi-white">       # ../features/steps/step_tutorial10.py:42</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I add &quot;</span><span class="ansi-green ansi-bold">2</span><span class="ansi-green">&quot; and &quot;</span><span class="ansi-green ansi-bold">7</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial10.py:46</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the calculator returns &quot;</span><span class="ansi-green ansi-bold">9</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial10.py:52</span>
 
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
@@ -302,7 +302,7 @@ defining and using user-defined data types.</p>
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

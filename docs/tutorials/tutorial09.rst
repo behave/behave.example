@@ -3,6 +3,8 @@
 Tutorial 9: Use Background
 ==============================================================================
 
+.. index:: use-background, Background
+
 :Goal: Use the ``Background`` concept to execute a number of steps before each scenario.
 
 .. hint::
@@ -43,5 +45,12 @@ Run the Feature Test
 
 When you run this feature test with the background functionality:
 
-.. command-output:: behave ../features/tutorial09_background.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial09_background.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -f plain ../features/tutorial09_background.feature
+        :shell:

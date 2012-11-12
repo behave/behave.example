@@ -85,7 +85,7 @@
                   
   <div class="section" id="tutorial-4-scenario-outline">
 <span id="id-tutorial04"></span><h1>Tutorial 4: Scenario Outline<a class="headerlink" href="#tutorial-4-scenario-outline" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
+<table class="docutils field-list" frame="void" id="index-0" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -185,27 +185,27 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 <p>When you run the feature file from above (with plain formatting):</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial04_scenario_outline.feature
-Feature: Scenario Outline (tutorial04)<span class="ansi-blue"> # ../features/tutorial04_scenario_outline.feature:1</span>
+Feature: Scenario Outline (tutorial04)<span class="ansi-white"> # ../features/tutorial04_scenario_outline.feature:1</span>
 
-  Scenario Outline: Blenders <span class="ansi-blue">                # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Red Tree Frog</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-blue"> # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-blue">             # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green"></span><span class="ansi-bold">mush</span><span class="ansi-green">&quot;</span><span class="ansi-blue">     # ../features/steps/step_tutorial03.py:47</span>
+  Scenario Outline: Blenders <span class="ansi-white">                # ../features/tutorial04_scenario_outline.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Red Tree Frog</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:38</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">             # ../features/steps/step_tutorial03.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">mush</span><span class="ansi-green">&quot;</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:47</span>
 
-  Scenario Outline: Blenders <span class="ansi-blue">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green"></span><span class="ansi-bold">apples</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-blue">           # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-blue">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green"></span><span class="ansi-bold">apple juice</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial03.py:47</span>
+  Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">apples</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:38</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">apple juice</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
 
-  Scenario Outline: Blenders <span class="ansi-blue">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green"></span><span class="ansi-bold">iPhone</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-blue">           # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-blue">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green"></span><span class="ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial03.py:47</span>
+  Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">iPhone</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:38</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
 
-  Scenario Outline: Blenders <span class="ansi-blue">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Galaxy Nexus</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-blue">     # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-blue">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green"></span><span class="ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-blue"> # ../features/steps/step_tutorial03.py:47</span>
+  Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Galaxy Nexus</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:38</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
 
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
@@ -278,7 +278,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

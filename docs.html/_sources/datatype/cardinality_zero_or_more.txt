@@ -3,6 +3,8 @@
 Cardinality: Zero or More (List of Type)
 ==============================================================================
 
+.. index:: Cardinality: Zero or more, many0
+
 The solution to this problem is basically the same like with
 :ref:`id.datatype.cardinality_one_or_more`.
 Note that the case for zero or more items is not so often needed.
@@ -40,7 +42,7 @@ Define the Data Type
 
 .. note::
 
-    The ``TypeBuilder.with_zero_and_more()`` function performs the magic.
+    The :py:meth:`TypeBuilder.with_zero_and_more()` function performs the magic.
     It computes a regular expression pattern for the list of items.
     Then it generates a type-converter function that processes the list of
     items by using the type-converter for one item ("Color").
@@ -60,9 +62,17 @@ Run the Test
 
 Now we run this example with ``behave``:
 
-.. command-output:: behave ../datatype.features/cardinality.zero_or_more.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../datatype.features/cardinality.zero_or_more.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../datatype.features/cardinality.zero_or_more.feature
+        :shell:
+        :returncode: 0
 
 
 The Complete Picture

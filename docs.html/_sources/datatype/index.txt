@@ -4,6 +4,8 @@
 Data Types and User-defined Types
 ==============================================================================
 
+.. index:: data type
+
 The following sections describe in more detail how user-defined data types
 are used in `behave`_. The type-converter functionality, that is described here,
 is only supported by the "parse" matcher.
@@ -33,18 +35,21 @@ is only supported by the "parse" matcher.
 
     The `parse`_ module is the inverse of Python `string.format`_ function.
 
+    .. index:: parse extensions
+
     **NEW FEATURES** (in `parse`_):
 
-      * Optional ``pattern`` attribute in user-defined type-converters.
+      * Optional :py:attr:`pattern` attribute in user-defined type-converters.
 
-            This ``pattern`` attribute contains a regular expression
+            This :py:attr:`pattern` attribute contains a regular expression
             for better pattern matching of the user-defined type (if present).
 
-      * The ``with_pattern(pattern)`` decorator for type-converters.
+      * The :py:func:`with_pattern(pattern)` decorator for type-converters.
 
-      * ``parse_type`` extensions (``TypeBuilder`` functionality).
+      * :py:mod:`parse_type` extensions (:py:class:`TypeBuilder` functionality).
 
-      * Optional cardinality part after type part in parse expression, like:
+      * Optional **cardinality field** part after type part in parse expression,
+        like:
 
         ============  ==================== ===================================
         Cardinality    Example             Description
