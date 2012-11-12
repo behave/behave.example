@@ -4,6 +4,8 @@
 Use Multi-Methods in Step Definitions
 ==============================================================================
 
+.. index:: multi-methods
+
 Assume you have a number of rather similar steps, like:
 
 .. hidden:
@@ -92,15 +94,24 @@ Define the Data Types
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
-.. command-output:: behave ../step_matcher.features/use_multi_methods.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../step_matcher.features/use_multi_methods.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../step_matcher.features/use_multi_methods.feature
+        :shell:
+        :returncode: 0
 
 .. note::
     Notice the difference in line numbers for each step.
     Each step matches a different step definition (implementation).
+
 
 The Complete Picture
 ------------------------------------------------------------------------------

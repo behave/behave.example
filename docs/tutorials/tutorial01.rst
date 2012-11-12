@@ -33,10 +33,12 @@ with Python functions. These step functions provide the test automation layer
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+.. ifconfig:: ansiterm_supported
 
-.. command-output:: behave ../features/tutorial01_basics.feature
-    :shell:
+    When you run the feature file from above (with coloring enabled):
+
+    .. command-output:: behave ../features/tutorial01_basics.feature
+        :shell:
 
 When you run the feature file from above (with coloring disabled):
 

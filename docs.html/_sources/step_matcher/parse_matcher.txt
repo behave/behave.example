@@ -4,6 +4,8 @@
 Use the Parse Matcher (parse)
 ==============================================================================
 
+.. index:: parse matcher, step matcher
+
 The "parse" matcher is used in most examples that are provided here.
 It uses the `parse`_ for regular expressions matching and parsing.
 It provides:

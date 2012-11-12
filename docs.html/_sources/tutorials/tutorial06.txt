@@ -3,6 +3,8 @@
 Tutorial 6: Setup Table
 ==============================================================================
 
+.. index:: setup-table, use-table, table
+
 :Goal: Use *setup tables* to simplify test setup.
 
 Write the Feature Test
@@ -38,7 +40,14 @@ Provide the Domain Model
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
-.. command-output:: behave ../features/tutorial06_step_setup_table.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../features/tutorial06_step_setup_table.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../features/tutorial06_step_setup_table.feature
+        :shell:

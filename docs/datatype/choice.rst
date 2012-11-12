@@ -3,6 +3,8 @@
 Choice (Word/String Alternatives)
 ==============================================================================
 
+.. index:: Choice, data type
+
 Assume you need a user-defined data type with the following features:
 
   * Only a limited number of words (or strings) should be matched
@@ -36,14 +38,12 @@ Define the Data Type
 
 .. note::
 
-    The ``TypeBuilder.make_choice()`` function performs the magic.
+    The :py:meth:`TypeBuilder.make_choice()` function performs the magic.
     It computes a regular expression pattern for the given choice of
-    words/strings and stores them in ``parse_shop_item.pattern`` attribute.
-    This optional attribute is used by the ``parse`` module to improve
+    words/strings and stores them in :py:attr:`parse_shop_item.pattern` attribute.
+    This optional attribute is used by the :py:mod:`parse` module to improve
     pattern matching for user-defined types.
 
-.. hidden:
-    :emphasize-lines: 22-25
 
 Provide the Step Definitions
 -----------------------------
@@ -57,11 +57,19 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave`` (and all steps are matched):
+Now we run this example with :py:mod:`behave` (and all steps are matched):
 
-.. command-output:: behave --tags=-xfail --no-skipped ../datatype.features/choice.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=-xfail --no-skipped ../datatype.features/choice.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=-xfail --no-skipped ../datatype.features/choice.feature
+        :shell:
+        :returncode: 0
 
 
 SAD Feature Example
@@ -76,11 +84,19 @@ are matched.
     :lines:  1, 10-
 
 
-When you run this example with ``behave`` the last step is not matched:
+When you run this example with :py:mod:`behave` the last step is not matched:
 
-.. command-output:: behave --tags=xfail --no-skipped ../datatype.features/choice.feature
-    :shell:
-    :returncode: 1
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --tags=xfail --no-skipped ../datatype.features/choice.feature
+        :shell:
+        :returncode: 1
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c --tags=xfail --no-skipped ../datatype.features/choice.feature
+        :shell:
+        :returncode: 1
 
 .. seealso:: :ref:`id.step_matcher.use_multi_methods`
 

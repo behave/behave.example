@@ -33,14 +33,6 @@
 #   seqdiag
 #
 # -------------------------------
-# import sphinxtrap
-#
-# html_theme = 'sphinxtrap'
-# html_theme_path = [sphinxtrap.get_theme_dir()]
-# # html_theme_options = {'analytics':"YOUR-ANALITICS-CODE "} #this is optional!
-# # html_logo = None #will fallback to the folder icon
-# # -- NOTE:If you customize the logo, make sure it is a 32x32 image.
-# -------------------------------
 # http://pypi.python.org/pypi/sphinxjp.themes.dotted/0.1.1
 # https://github.com/shkumagai/sphinxjp.themes.dotted
 # =============================================================================
@@ -57,6 +49,23 @@ TOP_BINDIR = os.path.normpath(os.path.join(HERE, "..", "bin"))
 os.environ["PATH"] = os.pathsep.join([
     os.path.abspath(TOP_BINDIR), os.environ.get("PATH", "") ])
 
+TOP_LIBDIR = os.path.normpath(os.path.join(HERE, "..", "lib", "python2"))
+BEHAVE_ZIP = os.path.join(TOP_LIBDIR, "behave.zip")
+sys.path.insert(0, os.path.abspath(TOP_LIBDIR))
+sys.path.insert(0, os.path.abspath(BEHAVE_ZIP))
+if os.path.exists(BEHAVE_ZIP):
+    print "BEHAVE_ZIP: %s" % BEHAVE_ZIP
+else:
+    print "NOT-BEHAVE_ZIP: %s (%s)" % (BEHAVE_ZIP, os.path.abspath(BEHAVE_ZIP))
+
+# -- PATCH FOR: sphinxcontrib-ansi (with behave ANSI color grey=90)
+os.environ["GHERKIN_COLORS"] = \
+    "executing={color}:comments={color}".format(color="white")
+
+# -- DIAG:
+# for p in sys.path:
+#    print p
+#
 # print "XXX-HERE: {0} (curdir: {1})".format(HERE, os.curdir)
 # -----------------------------------------------------------------------------
 # DISCOVER OPTIONAL EXTENSIONS:
@@ -78,27 +87,44 @@ except ImportError:
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.doctest',
-    'sphinx.ext.todo',
-    'sphinx.ext.coverage',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.viewcode',
+    "sphinx.ext.todo",
+    "sphinx.ext.ifconfig",
+    "sphinx.ext.extlinks",
+    "sphinxcontrib.programoutput",
+    # 'sphinx.ext.autodoc',
+    # 'sphinx.ext.doctest',
+    # 'sphinx.ext.coverage',
+    # 'sphinx.ext.intersphinx',
+    # 'sphinx.ext.viewcode',
     # 'sphinxjp.themecore',
 ]
-# 'sphinx.ext.intersphinx',
-USE_OPTIONAL_EXTENSIONS = True
-if USE_OPTIONAL_EXTENSIONS:
-    extensions.append("sphinxcontrib.ansi")
-    extensions.append("sphinxcontrib.programoutput")
+
 if HAVE_RST2PDF:
     extensions.append("rst2pdf.pdfbuilder")
 
-# -- EXTENSION: sphinxcontrib-programoutput
-programoutput_use_ansi  = True
+ansiterm_supported = True
+if ansiterm_supported:
+    # -- CONFIGURE EXTENSIONS:
+    #   sphinxcontrib-programoutput.programoutput_use_ansi
+    #   sphinxcontrib-ansi.html_ansi_stylesheet
+    #   html_ansi_stylesheet = "black-on-white.css"
+    extensions.append("sphinxcontrib.ansi")
+    programoutput_use_ansi = True
+    html_ansi_stylesheet = os.path.join(HERE, "_static/ansi_gherkin.css")
 
-# -- EXTENSION: sphinxcontrib-ansi
-html_ansi_stylesheet = "black-on-white.css"
+extlinks = {
+    "issue":
+        ("https://github.com/jenisys/behave.example/issue/%s", "issue #"),
+    "behave.issue":
+        ("https://github.com/jeamland/behave/issue/%s", "behave issue #"),
+}
+
+def setup(app):
+    """
+    Add own ifconfig configuration parameters to sphinx.
+    """
+    rebuild = True
+    app.add_config_value("ansiterm_supported", False, rebuild)
 
 # -----------------------------------------------------------------------------
 # GENERAL CONFIGURATION
@@ -111,6 +137,7 @@ templates_path = [ '_templates' ]
 
 # The suffix of source filenames.
 source_suffix = '.rst'
+# source_suffix = '.txt'
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
@@ -191,17 +218,12 @@ html_theme_options = {
 }
 
 # XXX-JE-EXPERIMENT:
-use_sphinxtrap_theme = False
-if use_sphinxtrap_theme:
+if html_theme == "sphinxtrap":
     # -- OVERRIDE HTML-THEME: Bootstrap-based theme for Sphinx.
     # import sphinxtrap
     # html_theme_path = [ sphinxtrap.get_theme_dir() ]
-    html_theme = 'sphinxtrap'
     html_theme_path = [ os.path.join(HERE, "_themes") ]
-    # html_theme_options = {'analytics':"YOUR-ANALITICS-CODE "} #this is optional!
-    html_logo = None #will fallback to the folder icon
     html_logo = "_static/Leaf32.png"
-    # -- NOTE:If you customize the logo, make sure it is a 32x32 image.
 
 if html_theme == "dotted":
     html_theme_path = [ os.path.join(HERE, "_themes") ]
@@ -486,3 +508,5 @@ pdf_splittables = False
 
 # Page template name for "regular" pages
 pdf_page_template = 'cutePage'
+
+

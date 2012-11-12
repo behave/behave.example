@@ -82,7 +82,7 @@
                   
   <div class="section" id="enumeration-string-to-value-mapping">
 <span id="id-datatype-enum"></span><h1>Enumeration (String-to-Value Mapping)<a class="headerlink" href="#enumeration-string-to-value-mapping" title="Permalink to this headline">¶</a></h1>
-<p>An enumeration maps a number of unique string-based words/strings to values.</p>
+<p id="index-0">An enumeration maps a number of unique string-based words/strings to values.</p>
 <div class="section" id="feature-example">
 <h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
 <p>Assuming you want to write something like this:</p>
@@ -119,9 +119,9 @@
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.make_enum()</span></tt> function performs the magic.
+<p class="last">The <tt class="xref py py-func docutils literal"><span class="pre">TypeBuilder.make_enum()</span></tt> function performs the magic.
 It computes a regular expression pattern for the given enumeration of
-words/strings and stores them in <tt class="docutils literal"><span class="pre">parse_yesno.pattern</span></tt> attribute.</p>
+words/strings and stores them in <tt class="xref py py-attr docutils literal"><span class="pre">parse_yesno.pattern</span></tt> attribute.</p>
 </div>
 </div>
 <div class="section" id="provide-the-step-definitions">
@@ -146,22 +146,22 @@ words/strings and stores them in <tt class="docutils literal"><span class="pre">
 </div>
 <div class="section" id="run-the-test">
 <h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
-<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt> (and all steps are matched):</p>
+<p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt> (and all steps are matched):</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/enum.feature
-Feature: User-Defined Enum Type (Name-to-Value Mapping)<span class="ansi-blue"> # ../datatype.features/enum.feature:1</span>
+Feature: User-Defined Enum Type (Name-to-Value Mapping)<span class="ansi-white"> # ../datatype.features/enum.feature:1</span>
 
-  Scenario:  <span class="ansi-blue">                                # ../datatype.features/enum.feature:3</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Do you love me</span><span class="ansi-green">?&quot;</span><span class="ansi-blue"> # ../datatype.features/steps/step_enum.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green"></span><span class="ansi-bold">yes</span><span class="ansi-green">&quot;</span><span class="ansi-blue">                 # ../datatype.features/steps/step_enum.py:47</span>
+  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:3</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you love me</span><span class="ansi-green">?&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">yes</span><span class="ansi-green">&quot;</span><span class="ansi-white">                 # ../datatype.features/steps/step_enum.py:47</span>
 
-  Scenario:  <span class="ansi-blue">                                # ../datatype.features/enum.feature:7</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Do you hate me</span><span class="ansi-green">?&quot;</span><span class="ansi-blue"> # ../datatype.features/steps/step_enum.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green"></span><span class="ansi-bold">no</span><span class="ansi-green">&quot;</span><span class="ansi-blue">                  # ../datatype.features/steps/step_enum.py:47</span>
+  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:7</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you hate me</span><span class="ansi-green">?&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">no</span><span class="ansi-green">&quot;</span><span class="ansi-white">                  # ../datatype.features/steps/step_enum.py:47</span>
 
-  Scenario:  <span class="ansi-blue">                                # ../datatype.features/enum.feature:11</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green"></span><span class="ansi-bold">Do you kiss me</span><span class="ansi-green">?&quot;</span><span class="ansi-blue"> # ../datatype.features/steps/step_enum.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green"></span><span class="ansi-bold">silence</span><span class="ansi-green">&quot;</span><span class="ansi-blue">             # ../datatype.features/steps/step_enum.py:47</span>
+  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:11</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you kiss me</span><span class="ansi-green">?&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:43</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">silence</span><span class="ansi-green">&quot;</span><span class="ansi-white">             # ../datatype.features/steps/step_enum.py:47</span>
 
 1 feature passed, 0 failed, 0 skipped
 3 scenarios passed, 0 failed, 0 skipped
@@ -290,7 +290,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

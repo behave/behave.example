@@ -4,6 +4,8 @@
 Use the Regular Expression Matcher (re)
 ==============================================================================
 
+.. index:: re matcher, step matcher
+
 This step matcher allows to use regular expressions in step definition.
 The named parameter syntax ``(?P<name>...)`` should be used to extract
 parameters from the step definition.
@@ -31,15 +33,25 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
-.. command-output:: behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../step_matcher.features/re_matcher.simple_param.feature
+        :shell:
+        :returncode: 0
 
 
 Optional Parameters
 ==============================================================================
+
+.. index:: optional part (re)
 
 Provide the Step Definitions
 -----------------------------
@@ -52,15 +64,25 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
-.. command-output:: behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../step_matcher.features/re_matcher.optional_param.feature
+        :shell:
+        :returncode: 0
 
 
 Nested Parameters
 ==============================================================================
+
+.. index:: nested parameters (re)
 
 Provide the Step Definitions
 -----------------------------
@@ -73,9 +95,16 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
-.. command-output:: behave ../step_matcher.features/re_matcher.nested_param.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
 
+    .. command-output:: behave ../step_matcher.features/re_matcher.nested_param.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../step_matcher.features/re_matcher.nested_param.feature
+        :shell:
+        :returncode: 0

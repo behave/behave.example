@@ -3,6 +3,8 @@
 Enumeration (String-to-Value Mapping)
 ==============================================================================
 
+.. index:: Enum, Enumeration, data type
+
 An enumeration maps a number of unique string-based words/strings to values.
 
 Feature Example
@@ -25,9 +27,9 @@ Define the Data Type
 
 .. note::
 
-    The ``TypeBuilder.make_enum()`` function performs the magic.
+    The :py:func:`TypeBuilder.make_enum()` function performs the magic.
     It computes a regular expression pattern for the given enumeration of
-    words/strings and stores them in ``parse_yesno.pattern`` attribute.
+    words/strings and stores them in :py:attr:`parse_yesno.pattern` attribute.
 
 
 Provide the Step Definitions
@@ -42,11 +44,19 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave`` (and all steps are matched):
+Now we run this example with :py:mod:`behave` (and all steps are matched):
 
-.. command-output:: behave ../datatype.features/enum.feature
-    :shell:
-    :returncode: 0
+.. ifconfig:: ansiterm_supported
+
+    .. command-output:: behave ../datatype.features/enum.feature
+        :shell:
+        :returncode: 0
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../datatype.features/enum.feature
+        :shell:
+        :returncode: 0
 
 
 The Complete Picture

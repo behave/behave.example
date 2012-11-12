@@ -4,6 +4,8 @@
 Regular Expressions
 ==============================================================================
 
+.. index:: regular expressions, regexp
+
 The following tables provide a overview of the `regular expressions`_ syntax.
 See also `Python regular expressions`_ description in the Python `re module`_.
 

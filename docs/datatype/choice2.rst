@@ -3,6 +3,8 @@
 Choice2 (Word/String Alternatives)
 ==============================================================================
 
+.. index:: Choice2, data type
+
 This basically the same as :ref:`id.datatype.choice`,
 but the generated type-converter function (parse_choice2) returns a
 tuple::
@@ -34,7 +36,8 @@ Define the Data Type
 
 .. note::
 
-    The ``TypeBuilder.make_choice2()`` function performs the magic, as before.
+    The :py:func:`TypeBuilder.make_choice2()` function performs the magic,
+    as before.
 
 
 Provide the Step Definitions

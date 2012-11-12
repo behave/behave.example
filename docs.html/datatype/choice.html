@@ -82,7 +82,7 @@
                   
   <div class="section" id="choice-word-string-alternatives">
 <span id="id-datatype-choice"></span><h1>Choice (Word/String Alternatives)<a class="headerlink" href="#choice-word-string-alternatives" title="Permalink to this headline">¶</a></h1>
-<p>Assume you need a user-defined data type with the following features:</p>
+<p id="index-0">Assume you need a user-defined data type with the following features:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Only a limited number of words (or strings) should be matched</li>
@@ -131,10 +131,10 @@ Common use cases for the choice type are:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.make_choice()</span></tt> function performs the magic.
+<p class="last">The <tt class="xref py py-meth docutils literal"><span class="pre">TypeBuilder.make_choice()</span></tt> function performs the magic.
 It computes a regular expression pattern for the given choice of
-words/strings and stores them in <tt class="docutils literal"><span class="pre">parse_shop_item.pattern</span></tt> attribute.
-This optional attribute is used by the <tt class="docutils literal"><span class="pre">parse</span></tt> module to improve
+words/strings and stores them in <tt class="xref py py-attr docutils literal"><span class="pre">parse_shop_item.pattern</span></tt> attribute.
+This optional attribute is used by the <tt class="xref py py-mod docutils literal"><span class="pre">parse</span></tt> module to improve
 pattern matching for user-defined types.</p>
 </div>
 </div>
@@ -159,17 +159,17 @@ pattern matching for user-defined types.</p>
 </div>
 <div class="section" id="run-the-test">
 <h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
-<p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt> (and all steps are matched):</p>
+<p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt> (and all steps are matched):</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=-xfail --no-skipped ../datatype.features/choice.feature
-Feature: User-Defined Choice Type<span class="ansi-blue"> # ../datatype.features/choice.feature:1</span>
+Feature: User-Defined Choice Type<span class="ansi-white"> # ../datatype.features/choice.feature:1</span>
   | The user-defined choice type supports only the following
   | choice of words:  apples, beef, potatoes, pork
 
-  Scenario: Good Case <span class="ansi-blue">                                 # ../datatype.features/choice.feature:6</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop to buy ingredients for a meal</span><span class="ansi-blue"> # ../datatype.features/steps/step_choice.py:33</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green"></span><span class="ansi-bold">apples</span><span class="ansi-blue">                                  # ../datatype.features/steps/step_choice.py:37</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green"></span><span class="ansi-bold">beef</span><span class="ansi-blue">                                     # ../datatype.features/steps/step_choice.py:37</span>
+  Scenario: Good Case <span class="ansi-white">                                 # ../datatype.features/choice.feature:6</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop to buy ingredients for a meal</span><span class="ansi-white"> # ../datatype.features/steps/step_choice.py:33</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">apples</span><span class="ansi-white">                                  # ../datatype.features/steps/step_choice.py:37</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">beef</span><span class="ansi-white">                                     # ../datatype.features/steps/step_choice.py:37</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 1 skipped
@@ -192,19 +192,19 @@ are matched.</p>
 <span class="nf">         </span><span class="k">And </span><span class="nf">I buy diamonds</span>
 </pre></div>
 </div>
-<p>When you run this example with <tt class="docutils literal"><span class="pre">behave</span></tt> the last step is not matched:</p>
+<p>When you run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt> the last step is not matched:</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=xfail --no-skipped ../datatype.features/choice.feature
-Feature: User-Defined Choice Type<span class="ansi-blue"> # ../datatype.features/choice.feature:1</span>
+Feature: User-Defined Choice Type<span class="ansi-white"> # ../datatype.features/choice.feature:1</span>
   | The user-defined choice type supports only the following
   | choice of words:  apples, beef, potatoes, pork
 
   &#64;xfail
-  Scenario: Bad Case -- Undefined step definition for &quot;diamonds&quot; <span class="ansi-blue"> # ../datatype.features/choice.feature:12</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop to buy ingredients for a meal</span><span class="ansi-blue">            # ../datatype.features/steps/step_choice.py:33</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green"></span><span class="ansi-bold">apples</span><span class="ansi-blue">                                             # ../datatype.features/steps/step_choice.py:37</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green"></span><span class="ansi-bold">pork</span><span class="ansi-blue">                                                # ../datatype.features/steps/step_choice.py:37</span>
-    <span class="ansi-yellow">And </span><span class="ansi-yellow">I buy diamonds</span><span class="ansi-blue"></span>
+  Scenario: Bad Case -- Undefined step definition for &quot;diamonds&quot; <span class="ansi-white"> # ../datatype.features/choice.feature:12</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop to buy ingredients for a meal</span><span class="ansi-white">            # ../datatype.features/steps/step_choice.py:33</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">apples</span><span class="ansi-white">                                             # ../datatype.features/steps/step_choice.py:37</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">pork</span><span class="ansi-white">                                                # ../datatype.features/steps/step_choice.py:37</span>
+    <span class="ansi-yellow">And </span><span class="ansi-yellow">I buy diamonds</span><span class="ansi-white"></span>
 <span class="ansi-yellow">
 You can implement step definitions for undefined steps with these snippets:
 
@@ -342,7 +342,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

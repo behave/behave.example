@@ -82,7 +82,7 @@
                   
   <div class="section" id="cardinality-one-or-more-list-of-type">
 <span id="id-datatype-cardinality-one-or-more"></span><h1>Cardinality: One or More (List of Type)<a class="headerlink" href="#cardinality-one-or-more-list-of-type" title="Permalink to this headline">¶</a></h1>
-<p>Sometimes a solution is needed where list of one or more items need to be parsed.
+<p id="index-0">Sometimes a solution is needed where list of one or more items need to be parsed.
 Initially, we want process a comma-separated list, like:</p>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Scenario:</span><span class="nf"></span>
 <span class="k">    When </span><span class="nf">I meet Alice</span>
@@ -142,7 +142,7 @@ Initially, we want process a comma-separated list, like:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">TypeBuilder.with_many()</span></tt> function performs the magic.
+<p class="last">The <tt class="xref py py-meth docutils literal"><span class="pre">TypeBuilder.with_many()</span></tt> function performs the magic.
 It computes a regular expression pattern for the list of items.
 Then it generates a type-converter function that processes the list of
 items by using the type-converter for one item (&#8220;Person&#8221;).</p>
@@ -194,23 +194,23 @@ items by using the type-converter for one item (&#8220;Person&#8221;).</p>
 <p>Now we run this example with <tt class="docutils literal"><span class="pre">behave</span></tt>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/cardinality.one_or_more.feature
-Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)<span class="ansi-blue"> # ../datatype.features/cardinality.one_or_more.feature:1</span>
+Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)<span class="ansi-white"> # ../datatype.features/cardinality.one_or_more.feature:1</span>
 
-  Scenario: Many list, comma-separated <span class="ansi-blue">    # ../datatype.features/cardinality.one_or_more.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-blue">                # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Alice, Bob, Dodo</span><span class="ansi-blue">           # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Charly</span><span class="ansi-blue">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-blue"> # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
+  Scenario: Many list, comma-separated <span class="ansi-white">    # ../datatype.features/cardinality.one_or_more.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Alice, Bob, Dodo</span><span class="ansi-white">           # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Charly</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:55</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white"> # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
       | name   |
       | Alice  |
       | Bob    |
       | Charly |
       | Dodo   |
 
-  Scenario: Many list with list-separator &quot;and&quot; <span class="ansi-blue"> # ../datatype.features/cardinality.one_or_more.feature:14</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-blue">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green"></span><span class="ansi-bold">Alice and Bob and Charly</span><span class="ansi-blue">         # ../datatype.features/steps/step_cardinality_one_or_more.py:61</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-blue">       # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
+  Scenario: Many list with list-separator &quot;and&quot; <span class="ansi-white"> # ../datatype.features/cardinality.one_or_more.feature:14</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:71</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Alice and Bob and Charly</span><span class="ansi-white">         # ../datatype.features/steps/step_cardinality_one_or_more.py:61</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white">       # ../datatype.features/steps/step_cardinality_one_or_more.py:75</span>
       | name   |
       | Alice  |
       | Bob    |
@@ -376,7 +376,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-11.
+      Last updated on 2012-11-13.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

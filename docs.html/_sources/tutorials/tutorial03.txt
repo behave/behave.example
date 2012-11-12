@@ -3,6 +3,8 @@
 Tutorial 3: Step Parameters
 ==============================================================================
 
+.. index:: step parameters
+
 :Goal: Use step parameter to handover parameters to step functions.
 
 Write the Feature Test
@@ -42,8 +44,14 @@ Provide the Domain Model
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
-.. command-output:: behave ../features/tutorial03_step_parameters.feature
-    :shell:
+.. ifconfig:: ansiterm_supported
 
+    .. command-output:: behave ../features/tutorial03_step_parameters.feature
+        :shell:
+
+.. ifconfig:: not ansiterm_supported
+
+    .. command-output:: behave -c ../features/tutorial03_step_parameters.feature
+        :shell:
