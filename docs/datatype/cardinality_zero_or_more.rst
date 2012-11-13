@@ -60,7 +60,7 @@ Provide the Step Definitions
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
 .. ifconfig:: ansiterm_supported
 

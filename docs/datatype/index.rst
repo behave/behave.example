@@ -44,7 +44,7 @@ is only supported by the "parse" matcher.
             This :py:attr:`pattern` attribute contains a regular expression
             for better pattern matching of the user-defined type (if present).
 
-      * The :py:func:`with_pattern(pattern)` decorator for type-converters.
+      * The :py:func:`with_pattern()` decorator for type-converters.
 
       * :py:mod:`parse_type` extensions (:py:class:`TypeBuilder` functionality).
 
