@@ -27,7 +27,7 @@ with Python functions. These step functions provide the test automation layer
 .. literalinclude:: ../../features/steps/step_tutorial01.py
     :prepend:   # file:features/steps/step_tutorial01.py
     :language: python
-    :lines:  1, 6-
+    :start-after: @mark.steps
 
 
 Run the Feature Test

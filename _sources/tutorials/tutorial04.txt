@@ -25,7 +25,7 @@ Provide the Test Automation
 .. literalinclude:: ../../features/steps/step_tutorial03.py
     :prepend:   # file:features/steps/step_tutorial03.py
     :language: python
-    :lines:  1, 31-
+    :start-after: @mark.steps
 
 .. note::
 
@@ -38,7 +38,7 @@ Provide the Domain Model
 .. literalinclude:: ../../features/steps/blender.py
     :prepend:   # file:features/steps/blender.py
     :language: python
-    :lines:  1, 21-
+    :start-after: @mark.domain_model
 
 .. note::
 

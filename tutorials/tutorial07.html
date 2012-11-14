@@ -182,28 +182,13 @@ in two different scenarios.</p>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial07.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
-
-<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
-<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">has_items</span>
-<span class="kn">from</span> <span class="nn">hamcrest.library.collection.issequence_containinginanyorder</span> \
-     <span class="kn">import</span> <span class="n">contains_inanyorder</span>
-
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># SEE: step_tutorial06.py</span>
-<span class="c"># @given(&#39;a set of specific users&#39;)</span>
-<span class="c"># def step(context):</span>
-<span class="c">#    model = getattr(context, &quot;model&quot;, None)</span>
-<span class="c">#    if not model:</span>
-<span class="c">#        context.model = CompanyModel()</span>
-<span class="c">#    for row in context.table:</span>
-<span class="c">#        context.model.add_user(row[&quot;name&quot;], deparment=row[&quot;department&quot;])</span>
-<span class="c">#</span>
-<span class="c"># @when(&#39;we count the number of people in each department&#39;)</span>
-<span class="c"># def step(context):</span>
-<span class="c">#    context.model.count_persons_per_department()</span>
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">has_items</span>
+<span class="kn">from</span> <span class="nn">hamcrest.library.collection.issequence_containinginanyorder</span> \
+    <span class="kn">import</span> <span class="n">contains_inanyorder</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
@@ -236,16 +221,31 @@ in two different scenarios.</p>
 
     <span class="c"># -- TABLE-SUBSET-COMPARISON (using: pyhamcrest)</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">has_items</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">),</span> <span class="n">actual_persons</span><span class="p">)</span>
+
+<span class="c"># @mark.more_steps</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># MORE STEPS: step_tutorial06.py</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># @given(&#39;a set of specific users&#39;)</span>
+<span class="c"># def step(context):</span>
+<span class="c">#    model = getattr(context, &quot;model&quot;, None)</span>
+<span class="c">#    if not model:</span>
+<span class="c">#        context.model = CompanyModel()</span>
+<span class="c">#    for row in context.table:</span>
+<span class="c">#        context.model.add_user(row[&quot;name&quot;], deparment=row[&quot;department&quot;])</span>
+<span class="c">#</span>
+<span class="c"># @when(&#39;we count the number of people in each department&#39;)</span>
+<span class="c"># def step(context):</span>
+<span class="c">#    context.model.count_persons_per_department()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/company_model.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># PROBLEM DOMAIN:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># DOMAIN-MODEL:</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">members</span><span class="p">:</span>
@@ -285,33 +285,33 @@ in two different scenarios.</p>
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<p>When you run the feature file from above (with coloring enabled):</p>
+<p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial07_step_result_table.feature
 Feature: Step Result Table (tutorial07)<span class="ansi-white"> # ../features/tutorial07_step_result_table.feature:1</span>
 
   Scenario: Unordered Result Table Comparison (RowFixture Table) <span class="ansi-white"> # ../features/tutorial07_step_result_table.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                 # ../features/steps/step_tutorial06.py:27</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                 # ../features/steps/step_tutorial06.py:28</span>
       | name   | department  |
       | Alice  | Beer Cans   |
       | Bob    | Beer Cans   |
       | Charly | Silly Walks |
       | Dodo   | Silly Walks |
-    <span class="ansi-green">Then </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">       # ../features/steps/step_tutorial07.py:58</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">       # ../features/steps/step_tutorial07.py:46</span>
       | name   |
       | Charly |
       | Dodo   |
-    <span class="ansi-green">And </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial07.py:58</span>
+    <span class="ansi-green">And </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial07.py:46</span>
       | name  |
       | Bob   |
       | Alice |
 
   Scenario: Subset Result Table Comparison <span class="ansi-white">                               # ../features/tutorial07_step_result_table.feature:22</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                         # ../features/steps/step_tutorial06.py:27</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                         # ../features/steps/step_tutorial06.py:28</span>
       | name  | department       |
       | Alice | Super-sonic Cars |
       | Bob   | Super-sonic Cars |
-    <span class="ansi-green">Then </span><span class="ansi-green">we will have at least the following people in &quot;</span><span class="ansi-green ansi-bold">Super-sonic Cars</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial07.py:74</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will have at least the following people in &quot;</span><span class="ansi-green ansi-bold">Super-sonic Cars</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial07.py:62</span>
       | name  |
       | Alice |
 
@@ -386,7 +386,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-13.
+      Last updated on 2012-11-14.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

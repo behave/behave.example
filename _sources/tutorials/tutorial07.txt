@@ -68,7 +68,7 @@ Provide the Test Automation
 .. literalinclude:: ../../features/steps/step_tutorial07.py
     :prepend:   # file:features/steps/step_tutorial07.py
     :language: python
-    :lines:  1, 36-
+    :start-after: @mark.steps
 
 Provide the Domain Model
 -----------------------------
@@ -76,12 +76,12 @@ Provide the Domain Model
 .. literalinclude:: ../../features/steps/company_model.py
     :prepend:   # file:features/steps/company_model.py
     :language: python
-    :lines:  1, 19-
+    :start-after: @mark.domain_model
 
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
 .. ifconfig:: ansiterm_supported
 

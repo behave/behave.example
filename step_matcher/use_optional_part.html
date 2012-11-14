@@ -183,12 +183,12 @@ $ behave ../step_matcher.features/use_optional_part.feature
 Feature: Use Optional Part in Step Definitions<span class="ansi-white"> # ../step_matcher.features/use_optional_part.feature:1</span>
 
   Scenario: Case1 &quot;When attacked by a ...&quot; <span class="ansi-white"> # ../step_matcher.features/use_optional_part.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">        # ../step_matcher.features/steps/step_optional_part.py:47</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">a </span><span class="ansi-green"></span><span class="ansi-green ansi-bold">samurai</span><span class="ansi-white">              # ../step_matcher.features/steps/step_optional_part.py:35</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">        # ../step_matcher.features/steps/step_optional_part.py:50</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">a </span><span class="ansi-green"></span><span class="ansi-green ansi-bold">samurai</span><span class="ansi-white">              # ../step_matcher.features/steps/step_optional_part.py:37</span>
 
   Scenario: Case2 &quot;When attacked by ...&quot; <span class="ansi-white"> # ../step_matcher.features/use_optional_part.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">      # ../step_matcher.features/steps/step_optional_part.py:47</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">Chuck Norris</span><span class="ansi-white">         # ../step_matcher.features/steps/step_optional_part.py:35</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">      # ../step_matcher.features/steps/step_optional_part.py:50</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">Chuck Norris</span><span class="ansi-white">         # ../step_matcher.features/steps/step_optional_part.py:37</span>
 
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
@@ -212,6 +212,7 @@ Took 0m0.0s
 <span class="sd">    When attacked by Chuck Norris</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="c"># @mark.user_defined_types</span>
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
@@ -225,6 +226,7 @@ Took 0m0.0s
 
 <span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">a_</span><span class="o">=</span><span class="n">parse_word_a</span><span class="p">)</span>
 
+<span class="c"># @mark.steps</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -240,6 +242,7 @@ Took 0m0.0s
     <span class="n">assert_that</span><span class="p">(</span><span class="n">a_</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">]))</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">opponent</span><span class="p">,</span> <span class="n">is_in</span><span class="p">([</span><span class="s">&quot;Chuck Norris&quot;</span><span class="p">,</span> <span class="s">&quot;samurai&quot;</span><span class="p">]))</span>
 
+<span class="c"># @mark.more_steps</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># MORE STEPS:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -337,7 +340,7 @@ cardinality field).</p>
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-13.
+      Last updated on 2012-11-14.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
