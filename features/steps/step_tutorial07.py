@@ -34,26 +34,14 @@ Feature: Step Result Table
         | Alice   |
 """
 
-from behave   import given, when, then
-from hamcrest import assert_that, has_items
-from hamcrest.library.collection.issequence_containinginanyorder \
-     import contains_inanyorder
-
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
-# SEE: step_tutorial06.py
-# @given('a set of specific users')
-# def step(context):
-#    model = getattr(context, "model", None)
-#    if not model:
-#        context.model = CompanyModel()
-#    for row in context.table:
-#        context.model.add_user(row["name"], deparment=row["department"])
-#
-# @when('we count the number of people in each department')
-# def step(context):
-#    context.model.count_persons_per_department()
+from behave   import given, when, then
+from hamcrest import assert_that, has_items
+from hamcrest.library.collection.issequence_containinginanyorder \
+    import contains_inanyorder
 
 @then('we will have the following people in "{department}"')
 def step(context, department):
@@ -86,3 +74,20 @@ def step(context, department):
 
     # -- TABLE-SUBSET-COMPARISON (using: pyhamcrest)
     assert_that(has_items(*expected_persons), actual_persons)
+
+# @mark.more_steps
+# ----------------------------------------------------------------------------
+# MORE STEPS: step_tutorial06.py
+# ----------------------------------------------------------------------------
+# @given('a set of specific users')
+# def step(context):
+#    model = getattr(context, "model", None)
+#    if not model:
+#        context.model = CompanyModel()
+#    for row in context.table:
+#        context.model.add_user(row["name"], deparment=row["department"])
+#
+# @when('we count the number of people in each department')
+# def step(context):
+#    context.model.count_persons_per_department()
+

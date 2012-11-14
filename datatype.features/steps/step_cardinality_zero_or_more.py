@@ -20,6 +20,7 @@ Feature: Data Type with Cardinality zero or more (MANY0, List<T>)
       | blue  |
 """
 
+# @mark.user_defined_types
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
@@ -39,6 +40,8 @@ matchers.register_type(Color=parse_color)
 parse_colors0 = TypeBuilder.with_zero_or_more(parse_color, listsep="and")
 matchers.register_type(OptionalColorAndMore=parse_colors0)
 
+
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
@@ -55,6 +58,7 @@ def step_when_I_paint_with_colors(context, _, colors):
 def step_when_I_paint_with_color_and_more(context, _, colors):
     for color in colors:
         context.used_colors.add(color)
+
 
 # ----------------------------------------------------------------------------
 # MORE STEPS:

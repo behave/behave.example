@@ -16,14 +16,15 @@ Feature: Step Setup Table
      But we will find one person in "Beer Cans"
 """
 
+# @mark.steps
+# ----------------------------------------------------------------------------
+# STEPS:
+# ----------------------------------------------------------------------------
 from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 from testutil import NamedNumber
 from company_model import CompanyModel
 
-# ----------------------------------------------------------------------------
-# STEPS:
-# ----------------------------------------------------------------------------
 @given('a set of specific users')
 def step(context):
     model = getattr(context, "model", None)

@@ -9,6 +9,7 @@ Feature: Use Multi-Methods in Step Definitions
          And I buy 4 diamonds
 """
 
+# @mark.domain_model
 # ------------------------------------------------------------------------
 # DOMAIN MODEL:
 # ------------------------------------------------------------------------
@@ -37,6 +38,7 @@ class Shop(object):
         price_per_unit = self.common_price_list[shop_item]
         return price_per_unit*amount
 
+# @mark.user_defined_types
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
@@ -49,6 +51,7 @@ matchers.register_type(Vegetable=parse_vegetable)
 parse_fruit = TypeBuilder.make_choice(["apples", "pears"])
 matchers.register_type(Fruit=parse_fruit)
 
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------

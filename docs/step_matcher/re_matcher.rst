@@ -24,10 +24,12 @@ Provide the Step Definitions
 .. literalinclude:: ../../step_matcher.features/steps/step_re_matcher_simple_param.py
     :prepend:   # file:step_matcher.features/steps/step_re_matcher_simple_param.py
     :language: python
+    :start-after: @mark.steps
 
 .. literalinclude:: ../../step_matcher.features/steps/step_parse_matcher.py
     :prepend:   # file:step_matcher.features/steps/step_parse_matcher.py
     :language: python
+    :start-after: @mark.steps
 
 
 Run the Test
@@ -59,6 +61,7 @@ Provide the Step Definitions
 .. literalinclude:: ../../step_matcher.features/steps/step_re_matcher_optional_param.py
     :prepend:   # file:step_matcher.features/steps/step_re_matcher_optional_param.py
     :language: python
+    :start-after: @mark.steps
 
 
 Run the Test
@@ -90,6 +93,7 @@ Provide the Step Definitions
 .. literalinclude:: ../../step_matcher.features/steps/step_re_matcher_nested_param.py
     :prepend:   # file:step_matcher.features/steps/step_re_matcher_nested_param.py
     :language: python
+    :start-after: @mark.steps
 
 
 Run the Test

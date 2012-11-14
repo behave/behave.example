@@ -26,7 +26,8 @@ The following example shows how a user-defined type can be provided.
 .. literalinclude:: ../../features/steps/step_tutorial10.py
     :prepend:   # file:features/steps/step_tutorial10.py
     :language: python
-    :lines:  1, 24-38
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 .. seealso::
 
@@ -48,7 +49,8 @@ The regular expression pattern can be defined by using the
 .. literalinclude:: ../../step_matcher.features/steps/step_optional_part.py
     :prepend:   # file:step_matcher.features/steps/step_optional_part.py
     :language: python
-    :lines:  14-26
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 or by assigning the :py:attr:`pattern` attribute, like:
 

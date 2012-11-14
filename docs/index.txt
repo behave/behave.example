@@ -15,6 +15,21 @@ in the known ``Given ... When ... Then ...`` language style (BDD).
     :prepend:   # file:features/tutorial01_basics.feature
     :language: gherkin
 
+.. literalinclude:: ../features/tutorial01_basics.feature
+    :prepend:   # file:features/tutorial01_basics.feature
+    :language: gherkin
+
+.. literalinclude:: ../datatype.features/steps/step_enum.py
+    :prepend:   # file:datatype.features/steps/step_enum.py
+    :language: python
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
+
+.. literalinclude:: ../datatype.features/steps/step_enum.py
+    :prepend:   # file:datatype.features/steps/step_enum.py
+    :language: python
+    :start-after: @mark.steps
+
 
 Run the Feature Test
 -----------------------------

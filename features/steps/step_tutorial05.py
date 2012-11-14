@@ -14,9 +14,7 @@ Feature: Step Data
     Then we will find it similar to English
 '''
 
-from behave   import given, when, then
-from hamcrest import assert_that, equal_to
-
+# @mark.domain_model
 # ----------------------------------------------------------------------------
 # PROBLEM DOMAIN:
 # ----------------------------------------------------------------------------
@@ -39,9 +37,13 @@ class Frobulator(object):
         else:
             return "UNKNOWN"
 
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
+from behave   import given, when, then
+from hamcrest import assert_that, equal_to
+
 @given('a sample text loaded into the frobulator')
 def step(context):
     frobulator = getattr(context, "frobulator", None)

@@ -30,6 +30,8 @@ class Meeting(object):
     def __init__(self):
         self.persons = set()
 
+
+# @mark.user_defined_types
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
@@ -45,11 +47,12 @@ matchers.register_type(Person=parse_person)
 parse_persons = TypeBuilder.with_many(parse_person, listsep="and")
 matchers.register_type(PersonAndMore=parse_persons)
 
+
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
 from behave import given, when, then
-
 
 # -- MANY-VARIANT 1: Use Cardinality field in parse expression (comma-separated)
 @when('I meet {persons:Person+}')

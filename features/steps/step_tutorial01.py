@@ -3,11 +3,12 @@
 Based on ``behave tutorial``
 """
 
-from behave import given, when, then
-
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
+from behave import given, when, then
+
 @given('we have behave installed')
 def step(context):
     pass

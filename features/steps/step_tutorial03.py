@@ -28,13 +28,14 @@ Feature: Scenario Outline
 
 """
 
+# @mark.steps
+# ----------------------------------------------------------------------------
+# STEPS:
+# ----------------------------------------------------------------------------
 from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 from blender  import Blender
 
-# ----------------------------------------------------------------------------
-# STEPS:
-# ----------------------------------------------------------------------------
 @given('I put "{thing}" in a blender')
 def step(context, thing):
     context.blender = Blender()

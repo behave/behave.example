@@ -17,10 +17,7 @@ Feature: A Step uses a User-Defined Type as Step Parameter (tutorial10)
         |  2  |  7 |  9  |
 """
 
-from behave   import given, when, then
-from hamcrest import assert_that, equal_to
-from calculator import Calculator
-
+# @mark.user_defined_types
 # ----------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ----------------------------------------------------------------------------
@@ -36,9 +33,14 @@ def parse_number(text):
 # -- REGISTER: User-defined type converter (parse_type).
 matchers.register_type(Number=parse_number)
 
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
+from behave   import given, when, then
+from hamcrest import assert_that, equal_to
+from calculator import Calculator
+
 @given('I have a calculator')
 def step(context):
     context.calculator = Calculator()

@@ -1,9 +1,9 @@
 # -*- coding: UTF-8 -*-
 
-from behave import given, then
-from behave import step_matcher
+from behave import given, then, step_matcher
 from hamcrest import assert_that, equal_to, is_, none
 
+# @mark.steps
 # -----------------------------------------------------------------------------
 # MORE STEPS: With "parse" matcher
 # -----------------------------------------------------------------------------
