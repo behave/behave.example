@@ -26,7 +26,9 @@ Provide the Test Automation
 .. literalinclude:: ../../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-    :lines: 1, 22-25, 52-54, 68-
+    :start-after: @mark.steps
+    :end-before:  @mark.background_steps
+
 
 Provide the Domain Model
 -----------------------------
@@ -46,7 +48,8 @@ and you do not have to write it.
 .. literalinclude:: ../../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-    :lines: 26-51
+    :start-after: @mark.domain_model
+    :end-before:  @mark.steps
 
 
 Run the Feature Test
@@ -71,6 +74,6 @@ The Complete Picture
 .. literalinclude:: ../../features/steps/step_tutorial02.py
     :prepend:   # file:features/steps/step_tutorial02.py
     :language: python
-
+    :end-before: @mark.background_steps
 
 

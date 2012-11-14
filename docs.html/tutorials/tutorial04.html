@@ -121,14 +121,13 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial03.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 <span class="kn">from</span> <span class="nn">blender</span>  <span class="kn">import</span> <span class="n">Blender</span>
 
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
 <span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I put &quot;{thing}&quot; in a blender&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">()</span>
@@ -151,8 +150,9 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/blender.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
-
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># DOMAIN-MODEL:</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Blender</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">TRANSFORMATION_MAP</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s">&quot;Red Tree Frog&quot;</span><span class="p">:</span> <span class="s">&quot;mush&quot;</span><span class="p">,</span>
@@ -188,24 +188,24 @@ $ behave ../features/tutorial04_scenario_outline.feature
 Feature: Scenario Outline (tutorial04)<span class="ansi-white"> # ../features/tutorial04_scenario_outline.feature:1</span>
 
   Scenario Outline: Blenders <span class="ansi-white">                # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Red Tree Frog</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">             # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">mush</span><span class="ansi-green">&quot;</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:47</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Red Tree Frog</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:39</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">             # ../features/steps/step_tutorial03.py:44</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">mush</span><span class="ansi-green">&quot;</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:48</span>
 
   Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">apples</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">apple juice</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">apples</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:39</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:44</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">apple juice</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:48</span>
 
   Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">iPhone</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">iPhone</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:39</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:44</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:48</span>
 
   Scenario Outline: Blenders <span class="ansi-white">                   # ../features/tutorial04_scenario_outline.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Galaxy Nexus</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:38</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:43</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:47</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-green ansi-bold">Galaxy Nexus</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">     # ../features/steps/step_tutorial03.py:39</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:44</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-green ansi-bold">toxic waste</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:48</span>
 
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
@@ -278,7 +278,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-13.
+      Last updated on 2012-11-14.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

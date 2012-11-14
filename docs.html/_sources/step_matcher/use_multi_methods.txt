@@ -21,7 +21,7 @@ Assume you have a number of rather similar steps, like:
 .. literalinclude:: ../../step_matcher.features/use_multi_methods.feature
     :prepend:   # file:step_matcher.features/use_multi_methods.feature
     :language: gherkin
-    :lines: 1-7
+    :end-before: @mark.description
 
 But you need different step definition implementations for some cases
 (data types, actually their regular expressions).
@@ -73,7 +73,7 @@ Provide the Step Definitions
 .. literalinclude:: ../../step_matcher.features/steps/step_multi_methods.py
     :prepend:   # file:step_matcher.features/steps/step_multi_methods.py
     :language: python
-    :lines:  52-
+    :start-after: @mark.steps
 
 .. hidden:
     .. note::
@@ -88,7 +88,8 @@ Define the Data Types
 .. literalinclude:: ../../step_matcher.features/steps/step_multi_methods.py
     :prepend:   # file:step_matcher.features/steps/step_multi_methods.py
     :language: python
-    :lines:  40-51
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 
 Run the Test
