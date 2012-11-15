@@ -58,7 +58,8 @@ Provide the Step Definitions
 .. literalinclude:: ../../step_matcher.features/steps/step_optional_part.py
     :prepend:   # file:step_matcher.features/steps/step_optional_part.py
     :language: python
-    :lines:  27-41
+    :start-after: @mark.steps
+    :end-before:  @mark.more_steps
 
 Define the Data Type
 -----------------------------
@@ -66,7 +67,8 @@ Define the Data Type
 .. literalinclude:: ../../step_matcher.features/steps/step_optional_part.py
     :prepend:   # file:step_matcher.features/steps/step_optional_part.py
     :language: python
-    :lines:  14-26
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 
 Run the Test

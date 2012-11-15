@@ -16,12 +16,13 @@ Feature: Step executes other Steps
      Then  I reach the next level
 """
 
-from behave   import given, when, then
-from hamcrest import assert_that, greater_than
-
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
+from behave   import given, when, then
+from hamcrest import assert_that, greater_than
+
 @given('I start a new game')
 def step(context):
     context.duck_count = 0

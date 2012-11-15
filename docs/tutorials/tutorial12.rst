@@ -42,9 +42,9 @@ Write the Feature Test
 ------------------------
 
 .. literalinclude:: ../../features/tutorial12_spoken_language.feature
-    :prepend:   # file:features/tutorial12_stoken_language.feature
+    :prepend:   # file:features/tutorial12_spoken_language.feature
     :language: gherkin
-    :lines:  1, 24-
+    :end-before:  @mark.description
 
 
 Provide the Test Automation
@@ -53,12 +53,15 @@ Provide the Test Automation
 .. literalinclude:: ../../features/steps/step_tutorial01.py
     :prepend:   # file:features/steps/step_tutorial01.py
     :language: python
-    :lines:  1, 5-
+    :start-after: @mark.steps
 
 .. literalinclude:: ../../features/steps/step_tutorial12.py
-    :prepend:   # file:features/steps/step_tutorial12.py
+    :prepend:
+        # file:features/steps/step_tutorial12.py
+        # -*- coding: UTF-8 -*-
+        # language: de
     :language: python
-    :lines:  1-2, 18-
+    :start-after: @mark.steps
 
 Run the Feature Test
 -----------------------------

@@ -16,11 +16,12 @@ Funktionalität: Using Languages other than English (tutorial12)
         Dann wird "behave" ihn für uns testen!
 """
 
-from behave import given, when, then
-
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
+from behave import given, when, then
+
 @given('wir haben "behave" installiert')
 def step(context):
     context.execute_steps(u"we have behave installed")

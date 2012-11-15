@@ -5,8 +5,8 @@ Cardinality: One or More (List of Type)
 
 .. index:: Cardinality: One or more, many
 
-Sometimes a solution is needed where list of one or more items need to be parsed.
-Initially, we want process a comma-separated list, like:
+Sometimes a solution is needed where a list of one or more items needs
+to be parsed. Initially, this should be a comma-separated list, like:
 
 .. code-block:: gherkin
 
@@ -14,7 +14,7 @@ Initially, we want process a comma-separated list, like:
         When I meet Alice
          And I meet Alice, Bob, Charly
 
-Then, we want process a list that is separated by the word "and", like:
+Then, a list should be processed that is separated by the word "and", like:
 
 .. code-block:: gherkin
 
@@ -36,7 +36,8 @@ Define the Data Type
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_one_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_one_or_more.py
     :language: python
-    :lines:  33-47
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 .. note::
 
@@ -52,13 +53,13 @@ Provide the Step Definitions
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_one_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_one_or_more.py
     :language: python
-    :lines:  48-
+    :start-after: @mark.steps
 
 
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
 .. ifconfig:: ansiterm_supported
 

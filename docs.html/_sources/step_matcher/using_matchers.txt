@@ -20,7 +20,7 @@ that is used for all features in the ``features/`` directory.
 
 .. code-block:: python
 
-    # file:features/environment.py
+    # -- FILE: features/environment.py
     from behave import step_matcher
 
     # -- SELECT DEFAULT STEP MATCHER: Use "re" matcher as default.
@@ -42,7 +42,7 @@ But normally you group the step definitions according to their step matcher.
 
 .. code-block:: python
 
-    # file:features/steps/step.py
+    # -- FILE: features/steps/step.py
     from behave import given, when, then
     from behave import step_matcher
     from hamcrest import assert_that, equal_to

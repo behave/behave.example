@@ -26,7 +26,8 @@ Assuming you want to write something like this:
 .. literalinclude:: ../../datatype.features/choice.feature
     :prepend:   # file:datatype.features/choice.feature
     :language: gherkin
-    :lines:  1-10
+    :end-before: @xfail
+
 
 Define the Data Type
 -----------------------------
@@ -34,7 +35,8 @@ Define the Data Type
 .. literalinclude:: ../../datatype.features/steps/step_choice.py
     :prepend:   # file:datatype.features/steps/step_choice.py
     :language: python
-    :lines:  16-26
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 .. note::
 
@@ -51,7 +53,7 @@ Provide the Step Definitions
 .. literalinclude:: ../../datatype.features/steps/step_choice.py
     :prepend:   # file:datatype.features/steps/step_choice.py
     :language: python
-    :lines:  28-
+    :start-after: @mark.steps
 
 
 Run the Test
@@ -79,9 +81,11 @@ The following feature example shows that only supported choice values
 are matched.
 
 .. literalinclude:: ../../datatype.features/choice.feature
-    :prepend:   # file:datatype.features/choice.feature
+    :prepend:
+        # file:datatype.features/choice.feature
+        Feature: User-Defined Choice Type
     :language: gherkin
-    :lines:  1, 10-
+    :start-after: @xfail
 
 
 When you run this example with :py:mod:`behave` the last step is not matched:
@@ -114,4 +118,3 @@ The Complete Picture
 .. literalinclude:: ../../datatype.features/steps/step_choice.py
     :prepend:   # file:datatype.features/steps/step_choice.py
     :language: python
-    :lines:  1,16-

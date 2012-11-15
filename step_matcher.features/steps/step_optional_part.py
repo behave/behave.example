@@ -11,6 +11,7 @@ Feature: Use Optional Part in Step Definitions
     When attacked by Chuck Norris
 """
 
+# @mark.user_defined_types
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
@@ -24,6 +25,7 @@ def parse_word_a(text):
 
 matchers.register_type(a_=parse_word_a)
 
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
@@ -39,6 +41,7 @@ def step_attacked_by(context, a_, opponent):
     assert_that(a_, is_in(["a", None]))
     assert_that(opponent, is_in(["Chuck Norris", "samurai"]))
 
+# @mark.more_steps
 # ----------------------------------------------------------------------------
 # MORE STEPS:
 # ----------------------------------------------------------------------------

@@ -38,7 +38,8 @@ Define the Data Type
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
     :language: python
-    :lines:  23-41
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
 
 .. note::
 
@@ -54,13 +55,13 @@ Provide the Step Definitions
 .. literalinclude:: ../../datatype.features/steps/step_cardinality_zero_or_more.py
     :prepend:   # file:datatype.features/steps/step_cardinality_zero_or_more.py
     :language: python
-    :lines:  42-
+    :start-after: @mark.steps
 
 
 Run the Test
 -----------------------------
 
-Now we run this example with ``behave``:
+Now we run this example with :py:mod:`behave`:
 
 .. ifconfig:: ansiterm_supported
 

@@ -182,10 +182,10 @@ $ behave ../step_matcher.features/use_multi_methods.feature
 Feature: Use Multi-Methods in Step Definitions<span class="ansi-white"> # ../step_matcher.features/use_multi_methods.feature:1</span>
 
   Scenario:  <span class="ansi-white">              # ../step_matcher.features/use_multi_methods.feature:2</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:57</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">2</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">cucumbers</span><span class="ansi-white"> # ../step_matcher.features/steps/step_multi_methods.py:63</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">3</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">apples</span><span class="ansi-white">     # ../step_matcher.features/steps/step_multi_methods.py:68</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">4</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">diamonds</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:73</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:60</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">2</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">cucumbers</span><span class="ansi-white"> # ../step_matcher.features/steps/step_multi_methods.py:66</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">3</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">apples</span><span class="ansi-white">     # ../step_matcher.features/steps/step_multi_methods.py:71</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">4</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">diamonds</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:76</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
@@ -276,7 +276,10 @@ Each step matches a different step definition (implementation).</p>
 74
 75
 76
-77</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_multi_methods.py</span>
+77
+78
+79
+80</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_multi_methods.py</span>
 <span class="c"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Feature: Use Multi-Methods in Step Definitions</span>
@@ -288,6 +291,7 @@ Each step matches a different step definition (implementation).</p>
 <span class="sd">         And I buy 4 diamonds</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="c"># @mark.domain_model</span>
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># DOMAIN MODEL:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
@@ -316,6 +320,7 @@ Each step matches a different step definition (implementation).</p>
         <span class="n">price_per_unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">common_price_list</span><span class="p">[</span><span class="n">shop_item</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">price_per_unit</span><span class="o">*</span><span class="n">amount</span>
 
+<span class="c"># @mark.user_defined_types</span>
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
@@ -328,6 +333,7 @@ Each step matches a different step definition (implementation).</p>
 <span class="n">parse_fruit</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s">&quot;apples&quot;</span><span class="p">,</span> <span class="s">&quot;pears&quot;</span><span class="p">])</span>
 <span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Fruit</span><span class="o">=</span><span class="n">parse_fruit</span><span class="p">)</span>
 
+<span class="c"># @mark.steps</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># STEPS:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -426,7 +432,7 @@ Each step matches a different step definition (implementation).</p>
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-13.
+      Last updated on 2012-11-14.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

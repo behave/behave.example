@@ -3,11 +3,11 @@
 Nested parameter examples with "re" matcher (regular expression step matcher).
 """
 
-from behave import step_matcher, when
-
+# @mark.steps
 # -----------------------------------------------------------------------------
 # STEPS: With "re" matcher
 # -----------------------------------------------------------------------------
+from behave import step_matcher, when
 step_matcher("re")
 
 # -- NESTED GROUP:

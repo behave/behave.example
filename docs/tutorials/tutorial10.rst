@@ -31,7 +31,7 @@ Provide the Test Automation
 .. literalinclude:: ../../features/steps/step_tutorial10.py
     :prepend:   # file:features/steps/step_tutorial10.py
     :language: python
-    :lines:  1, 19-
+    :start-after: @mark.steps
 
 Provide the Domain Model
 -----------------------------
@@ -39,12 +39,13 @@ Provide the Domain Model
 .. literalinclude:: ../../features/steps/calculator.py
     :prepend:   # file:features/steps/calculator.py
     :language: python
+    :start-after: @mark.domain_model
 
 
 Run the Feature Test
 -----------------------------
 
-When you run the feature file from above (with coloring enabled):
+When you run the feature file from above:
 
 .. ifconfig:: ansiterm_supported
 

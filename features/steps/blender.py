@@ -19,6 +19,10 @@ Based on ``behave tutorial``
 
 """
 
+# @mark.domain_model
+# -----------------------------------------------------------------------------
+# DOMAIN-MODEL:
+# -----------------------------------------------------------------------------
 class Blender(object):
     TRANSFORMATION_MAP = {
         "Red Tree Frog": "mush",

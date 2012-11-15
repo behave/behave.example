@@ -114,15 +114,14 @@
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial06.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># STEPS:</span>
+<span class="c"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 <span class="kn">from</span> <span class="nn">testutil</span> <span class="kn">import</span> <span class="n">NamedNumber</span>
 <span class="kn">from</span> <span class="nn">company_model</span> <span class="kn">import</span> <span class="n">CompanyModel</span>
 
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
 <span class="nd">@given</span><span class="p">(</span><span class="s">&#39;a set of specific users&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">model</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s">&quot;model&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
@@ -146,8 +145,6 @@
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/testutil.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
-
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># TEST SUPPORT:</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -172,10 +169,9 @@
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/company_model.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># PROBLEM DOMAIN:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
+<span class="c"># DOMAIN-MODEL:</span>
+<span class="c"># -----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Department</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">members</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">members</span><span class="p">:</span>
@@ -221,14 +217,14 @@ $ behave ../features/tutorial06_step_setup_table.feature
 Feature: Step Setup Table (tutorial06)<span class="ansi-white"> # ../features/tutorial06_step_setup_table.feature:1</span>
 
   Scenario: Setup Table <span class="ansi-white">                                  # ../features/tutorial06_step_setup_table.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                         # ../features/steps/step_tutorial06.py:27</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                         # ../features/steps/step_tutorial06.py:28</span>
       | name      | department  |
       | Barry     | Beer Cans   |
       | Pudey     | Silly Walks |
       | Two-Lumps | Silly Walks |
-    <span class="ansi-green">When </span><span class="ansi-green">we count the number of people in each department</span><span class="ansi-white"> # ../features/steps/step_tutorial06.py:35</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">we will find </span><span class="ansi-green ansi-bold">two</span><span class="ansi-green"> people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">         # ../features/steps/step_tutorial06.py:39</span>
-    <span class="ansi-green">But </span><span class="ansi-green">we will find one person in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">            # ../features/steps/step_tutorial06.py:44</span>
+    <span class="ansi-green">When </span><span class="ansi-green">we count the number of people in each department</span><span class="ansi-white"> # ../features/steps/step_tutorial06.py:36</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will find </span><span class="ansi-green ansi-bold">two</span><span class="ansi-green"> people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">         # ../features/steps/step_tutorial06.py:40</span>
+    <span class="ansi-green">But </span><span class="ansi-green">we will find one person in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">            # ../features/steps/step_tutorial06.py:45</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
@@ -301,7 +297,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012 by Jens Engel.
-      Last updated on 2012-11-13.
+      Last updated on 2012-11-14.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

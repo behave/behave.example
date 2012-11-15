@@ -11,6 +11,7 @@ Feature: Use Optional Part in Step Definitions
     When attacked by Chuck Norris
 """
 
+# @mark.user_defined_types
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
@@ -27,6 +28,8 @@ def parse_word_a(text):
 parse_optional_word_a   = TypeBuilder.with_optional(parse_word_a)
 matchers.register_type(optional_a_=parse_optional_word_a)
 
+
+# @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:
 # ----------------------------------------------------------------------------
