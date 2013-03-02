@@ -30,8 +30,8 @@ is only supported by the "parse" matcher.
 .. important::
 
     Part of the functionality, that is described here, is **experimental**.
-    It is currently not part of the official `parse`_ release.
-    Use the `jenisys/parse`_ fork, if you want to try it out.
+    Use the `jenisys/parse`_ fork (or its copy here),
+    if you want to try it out the exact functionality that is described here.
 
     The `parse`_ module is the inverse of Python `string.format`_ function.
 
@@ -58,6 +58,14 @@ is only supported by the "parse" matcher.
            0..*       "{persons:Person*}"  Zero or more: For list<T> (many0).
            1..*       "{persons:Person+}"  One  or more: For list<T> (many).
         ============  ==================== ===================================
+
+.. hint::
+
+    `parse`_ >= 1.6 supports now the following features:
+
+      * :py:attr:`pattern` attribute in user-defined type-converters.
+      * :py:func:`with_pattern()` decorator for type-converters.
+      * **cardinality field** for zero-or-one case.
 
 
 .. _behave: http://pypi.python.org/pypi/behave
