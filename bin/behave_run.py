@@ -16,7 +16,7 @@ USE_LOCAL_BEHAVE = False
 # HERE = os.path.dirname(sys.argv[0])
 HERE = os.path.dirname(__file__)
 PYTHON_LIBDIR = os.path.normpath(os.path.join(HERE, "..", "lib",
-        "python%s" % sys.version_info.major ))
+        "python%s" % sys.version_info[0] ))
 BEHAVE_ZIP  = os.path.join(PYTHON_LIBDIR, "behave.zip")
 BEHAVE_HOME = os.path.normpath(os.path.join(HERE, "..", "..", "behave"))
 
