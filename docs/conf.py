@@ -116,7 +116,7 @@ extlinks = {
     "issue":
         ("https://github.com/jenisys/behave.example/issue/%s", "issue #"),
     "behave.issue":
-        ("https://github.com/jeamland/behave/issue/%s", "behave issue #"),
+        ("https://github.com/behave/behave/issue/%s", "behave issue #"),
 }
 
 def setup(app):
@@ -147,7 +147,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'behave.example'
-copyright = u'2012 by Jens Engel'
+copyright = u'2012-2013 by Jens Engel'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -394,7 +394,7 @@ texinfo_documents = [
 epub_title = u'behave.example'
 epub_author = u'Jens Engel'
 epub_publisher = u'Jens Engel'
-epub_copyright = u'2012, Jens Engel'
+epub_copyright = u'2012-2013, Jens Engel'
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

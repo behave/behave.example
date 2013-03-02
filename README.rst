@@ -19,12 +19,12 @@ DOCUMENTATION:
   * http://jenisys.github.com/behave.example (latest version)
 
 REPOSITORIES:
-  * https://github.com/jeamland/behave (master)
+  * https://github.com/behave/behave (master)
   * https://github.com/jenisys/behave
   * https://github.com/jenisys/parse
 
 
-.. _behave: https://github.com/jeamland/behave
+.. _behave: https://github.com/behave/behave
 .. _parse:  https://github.com/jenisys/parse
 .. _`jenisys/behave`: https://github.com/jenisys/behave
 .. _`jenisys/parse`:  https://github.com/jenisys/parse

@@ -80,7 +80,8 @@ options(
         requirements_files=[
             "requirements.txt",
         ],
-        download_dir="downloads",
+        # download_dir="downloads",
+        download_dir= path("$HOME/.pip/downloads").expandvars(),
     ),
     test=Bunch(
         default_args=[
@@ -93,11 +94,6 @@ options(
     ),
     pychecker = Bunch(default_args=NAME),
     pylint    = Bunch(default_args=NAME),
-    __XXX_sphinx=Bunch(
-        docroot="docs",
-        sourcedir=".",
-        builddir="../build/docs"
-    ),
     sphinx=Bunch(
         # docroot=".",
         sourcedir= "docs",
