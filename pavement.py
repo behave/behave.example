@@ -1,7 +1,7 @@
 # ============================================================================
 # PAVER MAKEFILE (pavement.py) -- behave.example
 # ============================================================================
-# REQUIRES: paver >= 1.0.5
+# REQUIRES: paver >= 1.2
 # DESCRIPTION:
 #   Provides platform-neutral "Makefile" for simple, project-specific tasks.
 #
@@ -17,14 +17,18 @@
 # ============================================================================
 
 from paver.easy import *
-from paver.setuputils import setup, install_distutils_tasks
-# NOT-USED: import paver.doctools
+sys.path.insert(0, ".")
 
 # -- PAVER-EXTENSIONS: More tasks and utilities...
-sys.path.insert(0, ".")
+# NOT-USED: import paver.doctools
+from paver.setuputils import setup, install_distutils_tasks
 from paver_ext.python_requirements import read_requirements
 from paver_ext.pip_download import download_depends, localpi
 from paver_ext.python_checker import pychecker, pylint
+from paver_ext import paver_require, paver_patch
+
+paver_require.min_version("1.2")
+paver_patch.ensure_path_with_pmethods(path)
 
 # -- REQUIRED-FOR: setup, sdist, ...
 # NOTE: Adds a lot more python-project related tasks.
@@ -147,7 +151,7 @@ def docs_save(args):
         if partpath.isdir():
             partpath.rmtree()
         else:
-            partpath.remove()
+            partpath.remove_p()
 
 # ----------------------------------------------------------------------------
 # TASK: test
@@ -176,10 +180,10 @@ def clean():
     """Cleanup the project workspace."""
 
     # -- STEP: Remove build directories.
-    path("build").rmtree()
-    path("dist").rmtree()
-    path("test_results").rmtree()
-    path(".tox").rmtree()
+    path("build").rmtree_p()
+    path("dist").rmtree_p()
+    path("test_results").rmtree_p()
+    path(".tox").rmtree_p()
 
     # -- STEP: Remove temporary directory subtrees.
     patterns = [
@@ -190,11 +194,11 @@ def clean():
     for pattern in patterns:
         dirs = path(".").walkdirs(pattern, errors="ignore")
         for d in dirs:
-            d.rmtree()
+            d.rmtree_p()
 
     # -- STEP: Remove files.
-    path(".coverage").remove()
-    path("paver-minilib.zip").remove()
+    path(".coverage").remove_p()
+    path("paver-minilib.zip").remove_p()
 
     # -- STEP: Remove temporary files.
     patterns = [
@@ -207,12 +211,12 @@ def clean():
     for pattern in patterns:
         files = path(".").walkfiles(pattern)
         for f in files:
-            f.remove()
+            f.remove_p()
 
 @task
 def clean_all():
     """Clean everything, like in newly installed state."""
-    path("downloads").rmtree()
+    path("downloads").rmtree_p()
 
     # -- MORE: Use normal cleanings, too.
     call_task("clean")
