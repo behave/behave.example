@@ -12,6 +12,7 @@
 
 # from paver.easy import error
 import os.path
+import pkg_resources
 import sys
 
 def error(text):
@@ -35,11 +36,15 @@ def read_requirements(*filenames):
             error("REQUIREMENT-FILE %s not found" % filename)
             continue
         # -- NORMAL CASE:
-        requirements_file = open(filename, "r")
-        for line in requirements_file.readlines():
-            line = line.strip()
-            if not line or line.startswith("#"):
-                continue    #< SKIP: EMPTY-LINE or COMMENT-LINE
-            package_requirements.append(line)
-        requirements_file.close()
+        with open(filename, "r") as f:
+            requirements = pkg_resources.parse_requirements(f.read())
+            package_requirements.extend(requirements)
+#        # -- NORMAL CASE:
+#        requirements_file = open(filename, "r")
+#        for line in requirements_file.readlines():
+#            line = line.strip()
+#            if not line or line.startswith("#"):
+#                continue    #< SKIP: EMPTY-LINE or COMMENT-LINE
+#            package_requirements.append(line)
+#        requirements_file.close()
     return package_requirements
