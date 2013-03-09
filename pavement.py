@@ -29,6 +29,7 @@ from paver_ext import paver_require, paver_patch
 
 paver_require.min_version("1.2")
 paver_patch.ensure_path_with_pmethods(path)
+paver_patch.ensure_path_with_smethods(path)
 
 # -- REQUIRED-FOR: setup, sdist, ...
 # NOTE: Adds a lot more python-project related tasks.
@@ -149,7 +150,7 @@ def docs_save(args):
     for part in [ ".buildinfo", ".doctrees" ]:
         partpath = docs_save / part
         if partpath.isdir():
-            partpath.rmtree()
+            partpath.rmtree_p()
         else:
             partpath.remove_p()
 
@@ -180,10 +181,10 @@ def clean():
     """Cleanup the project workspace."""
 
     # -- STEP: Remove build directories.
-    path("build").rmtree_p()
-    path("dist").rmtree_p()
-    path("test_results").rmtree_p()
-    path(".tox").rmtree_p()
+    path("build").rmtree_s()
+    path("dist").rmtree_s()
+    path("test_results").rmtree_s()
+    path(".tox").rmtree_s()
 
     # -- STEP: Remove temporary directory subtrees.
     patterns = [
@@ -194,11 +195,11 @@ def clean():
     for pattern in patterns:
         dirs = path(".").walkdirs(pattern, errors="ignore")
         for d in dirs:
-            d.rmtree_p()
+            d.rmtree()
 
     # -- STEP: Remove files.
-    path(".coverage").remove_p()
-    path("paver-minilib.zip").remove_p()
+    path(".coverage").remove_s()
+    path("paver-minilib.zip").remove_s()
 
     # -- STEP: Remove temporary files.
     patterns = [
@@ -211,12 +212,12 @@ def clean():
     for pattern in patterns:
         files = path(".").walkfiles(pattern)
         for f in files:
-            f.remove_p()
+            f.remove()
 
 @task
 def clean_all():
     """Clean everything, like in newly installed state."""
-    path("downloads").rmtree_p()
+    path("downloads").rmtree_s()
 
     # -- MORE: Use normal cleanings, too.
     call_task("clean")
