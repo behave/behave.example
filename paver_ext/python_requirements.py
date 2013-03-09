@@ -10,8 +10,13 @@
 #  * http://www.blueskyonmars.com/projects/paver/
 # ============================================================================
 
-from paver.easy import error
+# from paver.easy import error
 import os.path
+import sys
+
+def error(text):
+    sys.stderr.write("ERROR: %s\n" % text)
+    sys.stderr.flush()
 
 # ----------------------------------------------------------------------------
 # UTILS:

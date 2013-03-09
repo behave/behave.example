@@ -10,6 +10,7 @@
 #  * http://www.blueskyonmars.com/projects/paver/
 # ============================================================================
 
+from __future__ import with_statement
 from paver.easy import path, task, options, debug, info, error
 import os
 
@@ -43,7 +44,7 @@ def bundle():
             if destdir.exists():
                 destdir.rmtree()
             basedir.copytree(destdir)
-        except StandardError, e:
+        except StandardError as e:
             info("FAILED %s: %s" % (package, e))
             errors += 1
 
