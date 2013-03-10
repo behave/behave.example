@@ -8,7 +8,7 @@ import os.path
 import sys
 
 DEBUG = False
-USE_LOCAL_BEHAVE = False
+USE_COLOCATED_BEHAVE = False
 
 # ----------------------------------------------------------------------------
 # SETUP PATHS:
@@ -31,7 +31,7 @@ if os.path.exists(BEHAVE_ZIP):
     # sys.stdout.write("USING-BUNDLE: %s\n" % os.path.basename(BEHAVE_ZIP))
     if DEBUG: sys.stdout.write("USING-BUNDLE: %s\n" % BEHAVE_ZIP)
     sys.path.insert(0, os.path.realpath(BEHAVE_ZIP))
-if USE_LOCAL_BEHAVE and os.path.isdir(BEHAVE_HOME):
+if USE_COLOCATED_BEHAVE and os.path.isdir(BEHAVE_HOME):
     if DEBUG: sys.stdout.write("USING-LOCAL: %s\n" % BEHAVE_HOME)
     sys.path.insert(0, os.path.abspath(os.path.join(BEHAVE_HOME)))
 

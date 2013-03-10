@@ -115,7 +115,7 @@ options(
 @task
 def init():
     """Initialze workspace."""
-    path("build").makedirs()
+    path("build").makedirs_s()
 
 @task
 @consume_args
