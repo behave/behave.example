@@ -50,6 +50,7 @@ def download_deps(args):
     """Alias for: download_depends"""
     call_task("download_depends")
 
+
 @task
 def localpi():
     """Make local package index (used by tox)."""
@@ -78,8 +79,8 @@ def pip_download(download_dir, cmdopts="", args=None, requirements_files=None):
     # -- NORMAL-CASE:
     # NOTE: --exists-action option requires pip >= 1.1
     download_dir = path(download_dir)
-    download_dir.makedirs()
-    pip_download_cmd  = "pip install --no-install --exists-action=i"
+    download_dir.makedirs_s()
+    pip_download_cmd  = "pip install --use-mirrors --exists-action=i"
     pip_download_cmd += " --download=%s" % download_dir
     for requirement in requirements:
         # sh("{pip_download} {cmdopts} {requirement}".format(
