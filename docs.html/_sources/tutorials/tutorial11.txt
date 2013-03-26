@@ -32,14 +32,14 @@ static test package structure.
 
 .. hint:: Tag Logic:
 
-    ================ ============================ ==================================
-    Logic Operation  Command Options              Description
-    ================ ============================ ==================================
-    select/enable    ``--tags=@one``              Only items with this tag.
-    not (minus)      ``--tags=-@one``             Only items without this tag.
-    either-or        ``--tags=@one,@two``         If either @one or @two is present.
-    and              ``--tags=@one --tags=@two``  If both @one and @two are present.
-    ================ ============================ ==================================
+    ================== ============================ ==================================
+    Logic Operation    Command Options              Description
+    ================== ============================ ==================================
+    select/enable      ``--tags=@one``              Only items with this tag.
+    not (tilde/minus)  ``--tags=~@one``             Only items without this tag.
+    logical-or         ``--tags=@one,@two``         If @one or @two is present.
+    logical-and        ``--tags=@one --tags=@two``  If both @one and @two are present.
+    ================== ============================ ==================================
 
     Notes:
 
