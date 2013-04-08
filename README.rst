@@ -1,7 +1,7 @@
 behave.example: Examples and Tutorials
 ==============================================================================
 
-:Date: 2012-11-13
+:Date: 2013-04-08
 :Category: BDD, testing
 :License:  BSD
 
@@ -96,15 +96,15 @@ SPECIAL:
    actually the subprocess.call() functionality with mixed
    stdout/stderr output collection.
 
-* A patched version of `sphinxcontrib-ansi`_ is needed to overcome problems
-  with the coloring schema in `behave`_. An alternative is to replace the
-  usage of the color "grey" in styles "executing", "coments",
-  by setting the environment variable::
+
+* The coloring schema in `behave`_ is adapted by setting the environment
+  variable::
 
     GHERKIN_COLORS="executing=white:comments=white"
 
-* To disable "ANSI coloring" support for Sphinx, for example on Windows,
+* To disable "ANSI coloring" support for Sphinx,
   set "ansiterm_supported = False" in "docs/conf.py".
+  Note that this is not necessary on Windows.
 
 
 KNOWN PROBLEMS
@@ -116,3 +116,7 @@ KNOWN PROBLEMS
     CSI{color}mCSI1m
 
   The color is reset in HTML output when set-bold is detected.
+
+  Behave has by now an configuration function
+  ``behave.fromatter.ansi_escapes.use_ansi_escape_colorbold_composites()``
+  to enable this behaviour needed for `sphinxcontrib-ansi`_ .
