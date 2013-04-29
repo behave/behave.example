@@ -22,9 +22,10 @@ sys.path.insert(0, ".")
 # -- PAVER-EXTENSIONS: More tasks and utilities...
 # NOT-USED: import paver.doctools
 from paver.setuputils import setup, install_distutils_tasks
-from paver_ext.python_requirements import read_requirements
-from paver_ext.pip_download import download_depends, localpi
+from paver_ext.pip_download import download_deps, localpi
 from paver_ext.python_checker import pychecker, pylint
+from paver_ext.python_requirements import read_requirements
+from paver_ext.paver_consume_args import Cmdline
 from paver_ext import paver_require, paver_patch
 
 paver_require.min_version("1.2")
@@ -81,7 +82,10 @@ options(
         install_requires= INSTALL_REQUIRES,
         include_package_data= True,
     ),
-    develop=Bunch(
+    minilib=Bunch(
+        extra_files=[ 'doctools', 'virtual' ]
+    ),
+    pip = Bunch(
         requirements_files=[
             "requirements.txt",
         ],
@@ -103,9 +107,6 @@ options(
         # docroot=".",
         sourcedir= "docs",
         destdir  = "../build/docs"
-    ),
-    minilib=Bunch(
-        extra_files=[ 'doctools', 'virtual' ]
     ),
 )
 
