@@ -17,7 +17,7 @@
 # nose   >= 1.0
 # pytest >= 1.0
 
-# behave >= 1.2.2.12
+# behave >= 1.2.2.17
 # parse  >= 1.5.3.4
 # -e lib/python2/behave.zip
 # -e lib/python2/parse.py
@@ -28,9 +28,12 @@
 # -- LOCAL REQUIREMENTS:
 # ../behave
 # ../parse
-
-paver  >= 1.2
+argparse
 PyHamcrest >= 1.6
+
+# -- BUILD-SUPPORT:
+paver >= 1.2
+tox >= 1.4.3
 
 # -- DOCUMENTATION: Tutorials with examples.
 sphinx >= 1.1
