@@ -25,6 +25,13 @@ def parse_word_a(text):
 
 matchers.register_type(a_=parse_word_a)
 
+# -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.
+# from parse_type import TypeBuilder
+# parse_opt_word_a = TypeBuilder.with_optional(parse_word_a)
+# type_dict = {"a_?": parse_opt_word_a}
+# matchers.register_type(**type_dict)
+
+
 # @mark.steps
 # ----------------------------------------------------------------------------
 # STEPS:

@@ -44,7 +44,7 @@ from hamcrest.library.collection.issequence_containinginanyorder \
     import contains_inanyorder
 
 @then('we will have the following people in "{department}"')
-def step(context, department):
+def step_impl(context, department):
     """
     Compares expected with actual persons in a department.
     NOTE: Unordered comparison (ordering is not important).
@@ -60,7 +60,7 @@ def step(context, department):
     assert_that(contains_inanyorder(*expected_persons), actual_persons)
 
 @then('we will have at least the following people in "{department}"')
-def step(context, department):
+def step_impl(context, department):
     """
     Compares subset of persons with actual persons in a department.
     NOTE: Unordered subset comparison.
@@ -80,7 +80,7 @@ def step(context, department):
 # MORE STEPS: step_tutorial06.py
 # ----------------------------------------------------------------------------
 # @given('a set of specific users')
-# def step(context):
+# def step_impl(context):
 #    model = getattr(context, "model", None)
 #    if not model:
 #        context.model = CompanyModel()
@@ -88,6 +88,6 @@ def step(context, department):
 #        context.model.add_user(row["name"], deparment=row["department"])
 #
 # @when('we count the number of people in each department')
-# def step(context):
+# def step_impl(context):
 #    context.model.count_persons_per_department()
 

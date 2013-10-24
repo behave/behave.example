@@ -21,11 +21,12 @@ that is used for all features in the ``features/`` directory.
 .. code-block:: python
 
     # -- FILE: features/environment.py
-    from behave import step_matcher
+    from behave import use_step_matcher
 
     # -- SELECT DEFAULT STEP MATCHER: Use "re" matcher as default.
-    # step_matcher("parse")
-    step_matcher("re")
+    # use_step_matcher("parse")
+    # use_step_matcher("cfparse")
+    use_step_matcher("re")
 
 .. note::
 
@@ -43,15 +44,14 @@ But normally you group the step definitions according to their step matcher.
 .. code-block:: python
 
     # -- FILE: features/steps/step.py
-    from behave import given, when, then
-    from behave import step_matcher
+    from behave import given, when, then, use_step_matcher
     from hamcrest import assert_that, equal_to
 
     # ------------------------------------------------------------------------
     # STEPS with Regular Expression Matcher ("re")
     # ------------------------------------------------------------------------
     # -- SELECT STEP MATCHER: Before using it in step definitions.
-    step_matcher("re")
+    use_step_matcher("re")
 
     @when(u'I meet with "(?P<person>Alice|Bob)"')
     def step_when_I_meet(context, person):
@@ -60,7 +60,7 @@ But normally you group the step definitions according to their step matcher.
     # ------------------------------------------------------------------------
     # STEPS with Parse Matcher ("parse")
     # ------------------------------------------------------------------------
-    step_matcher("parse")
+    use_step_matcher("parse")
 
     @then(u'I have a lot of fun with "{person}"')
     def step_then_I_have_fun_with(context, person):

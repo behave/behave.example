@@ -7,8 +7,8 @@ Nested parameter examples with "re" matcher (regular expression step matcher).
 # -----------------------------------------------------------------------------
 # STEPS: With "re" matcher
 # -----------------------------------------------------------------------------
-from behave import step_matcher, when
-step_matcher("re")
+from behave import use_step_matcher, when
+use_step_matcher("re")
 
 # -- NESTED GROUP:
 @when(u'I try to match nested "(?P<foo>foo(?P<bar>bar)?)"')

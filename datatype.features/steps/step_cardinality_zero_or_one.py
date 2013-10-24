@@ -15,10 +15,11 @@ Feature: Use Optional Part in Step Definitions
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
-from parse import TypeBuilder, with_pattern
+from behave import register_type
+from parse_type import TypeBuilder
+import parse
 
-@with_pattern(r"a\s+")
+@parse.with_pattern(r"a\s+")
 def parse_word_a(text):
     """Type converter for "a " (followed by one/more spaces)."""
     return text.strip()
@@ -26,7 +27,7 @@ def parse_word_a(text):
 # -- SAME:
 # parse_optional_word_a = TypeBuilder.with_zero_or_one(parse_word_a)
 parse_optional_word_a   = TypeBuilder.with_optional(parse_word_a)
-matchers.register_type(optional_a_=parse_optional_word_a)
+register_type(optional_a_=parse_optional_word_a)
 
 
 # @mark.steps

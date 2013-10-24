@@ -36,8 +36,10 @@ as optional (cardinality: 0..1).
 
 .. note::
 
-    The cardinality field is optional and
-    follows the type field "Person" in a parse expression, like:
+    You need to use the "cfparse" step matcher (`parse`_ with cardinality field
+    support based on a `parse_type`_ parser) to use this functionality.
+    The cardinality field is optional and follows the type field "Person"
+    in a parse expression, like:
 
     ============  ==================== ========================================
     Cardinality    Example             Description
@@ -112,4 +114,5 @@ cardinality field).
 
 
 .. _parse:  http://pypi.python.org/pypi/parse
+.. _parse_type:  http://pypi.python.org/pypi/parse_type
 

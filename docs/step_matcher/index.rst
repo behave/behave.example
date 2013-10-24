@@ -8,6 +8,7 @@ Step Matchers
 
   1. "parse" (ParseMatcher) by using the `parse`_ module
   2. "re" (RegexMatcher) that uses regular expressions for matching parameters
+  3. "cfparse" (extended ParseMatcher) that supports the cardinality field syntax
 
 The "parse" matcher is the **default step matcher**.
 It is more commonly used because it is:
@@ -17,15 +18,24 @@ It is more commonly used because it is:
   * reuses (hidden) regular expressions better by using data types (as alias)
   * hides regular expression complexity
 
+The "cfparse" matcher extends the "parse" patcher. It is intended to superceed
+the "parse" matcher as default matcher.
+It has the following features:
+
+  * extended parser that understands the cardinality field syntax
+  * automatically creates missing type converters for fields
+    with cardinality field part
+  * based on `parse_type`_
+
 The "re" matcher is used for the following reasons. It:
 
   * addresses some cases that cannot be solved otherwise (currently)
   * is backward compatible to `cucumber`_ (uses regular expressions)
   * is less ambiguous compared to the "parse" matcher (currently)
 
-It should be noted that both step matchers use regular expressions.
+It should be noted that all step matchers use regular expressions.
 But most of the regular expressions (and their complexity) is hidden
-by the `parse`_ module.
+by the `parse`_ module (or its cousin).
 
 ----
 
@@ -44,4 +54,5 @@ by the `parse`_ module.
 
 .. _behave: http://pypi.python.org/pypi/behave
 .. _parse:  http://pypi.python.org/pypi/parse
+.. _parse_type:  https://github.com/jenisys/parse_type
 .. _cucumber: http://cukes.info/

@@ -26,7 +26,7 @@ from testutil import NamedNumber
 from company_model import CompanyModel
 
 @given('a set of specific users')
-def step(context):
+def step_impl(context):
     model = getattr(context, "model", None)
     if not model:
         context.model = CompanyModel()
@@ -34,14 +34,14 @@ def step(context):
         context.model.add_user(row["name"], deparment=row["department"])
 
 @when('we count the number of people in each department')
-def step(context):
+def step_impl(context):
     context.model.count_persons_per_department()
 
 @then('we will find {count} people in "{department}"')
-def step(context, count, department):
+def step_impl(context, count, department):
     count_ = NamedNumber.from_string(count)
     assert_that(count_, equal_to(context.model.get_headcount_for(department)))
 
 @then('we will find one person in "{department}"')
-def step(context, department):
+def step_impl(context, department):
     assert_that(1, equal_to(context.model.get_headcount_for(department)))

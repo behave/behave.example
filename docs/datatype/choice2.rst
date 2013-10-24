@@ -26,13 +26,13 @@ Define the Data Type
     # ------------------------------------------------------------------------
     # USER-DEFINED TYPES:
     # ------------------------------------------------------------------------
-    from behave import matchers
+    from behave import register_type
     from parse_type import TypeBuilder
 
     # -- CHOICE2: Constrain to a list of supported items (as string).
     offered_shop_items = [ "apples", "beef", "potatoes", "pork" ]
     parse_shop_item2 = TypeBuilder.make_choice2(offered_shop_items)
-    matchers.register_type(ShopItem2=parse_shop_item2)
+    register_type(ShopItem2=parse_shop_item2)
 
 .. note::
 

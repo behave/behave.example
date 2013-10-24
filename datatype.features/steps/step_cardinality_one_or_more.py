@@ -35,17 +35,22 @@ class Meeting(object):
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 from parse_type import TypeBuilder
 
 company_persons = [ "Alice", "Bob", "Charly", "Dodo" ]
 parse_person = TypeBuilder.make_choice(company_persons)
-matchers.register_type(Person=parse_person)
+register_type(Person=parse_person)
 
 # -- MANY-TYPE: Persons := list<Person> with list-separator = "and"
 # parse_persons = TypeBuilder.with_one_or_more(parse_person, listsep="and")
 parse_persons = TypeBuilder.with_many(parse_person, listsep="and")
-matchers.register_type(PersonAndMore=parse_persons)
+register_type(PersonAndMore=parse_persons)
+
+# -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.
+# parse_persons2 = TypeBuilder.with_many(parse_person)
+# type_dict = {"Person+": parse_persons2}
+# register_type(**type_dict)
 
 
 # @mark.steps

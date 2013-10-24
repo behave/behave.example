@@ -7,8 +7,8 @@ Optional parameter examples with "re" matcher (regular expression step matcher).
 # -----------------------------------------------------------------------------
 # STEPS: With "re" matcher
 # -----------------------------------------------------------------------------
-from behave import step_matcher, when
-step_matcher("re")
+from behave import use_step_matcher, when
+use_step_matcher("re")
 
 # -- OPTIONAL 1: Optional param is captured and provided as parameter "an_".
 @when(u'I try to match (?P<an_>an )?optional "(?P<foo>foo)"')

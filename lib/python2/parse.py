@@ -21,15 +21,15 @@ Or to search a string for some pattern:
 
 Or find all the occurrances of some pattern in a string:
 
->>> ''.join(r.fixed[0] for r in findall(">{}<", "<p>some <b>bold</b> text</p>"))
-'some bold text'
+>>> ''.join(r.fixed[0] for r in findall(">{}<", "<p>the <b>bold</b> text</p>"))
+'the bold text'
 
 If you're going to use the same pattern to match lots of strings you can
 compile it once:
 
 >>> from parse import compile
 >>> p = compile("It's {}, I love it!")
->>> print p
+>>> print(p)
 <Parser "It's {}, I love it!">
 >>> p.parse("It's spam, I love it!")
 <Result ('spam',) {}>
@@ -61,57 +61,57 @@ Some simple parse() format string examples:
 >>> parse("Bring me a {}", "Bring me a shrubbery")
 <Result ('shrubbery',) {}>
 >>> r = parse("The {} who say {}", "The knights who say Ni!")
->>> print r
+>>> print(r)
 <Result ('knights', 'Ni!') {}>
->>> print r.fixed
+>>> print(r.fixed)
 ('knights', 'Ni!')
 >>> r = parse("Bring out the holy {item}", "Bring out the holy hand grenade")
->>> print r
+>>> print(r)
 <Result () {'item': 'hand grenade'}>
->>> print r.named
+>>> print(r.named)
 {'item': 'hand grenade'}
->>> print r['item']
+>>> print(r['item'])
 hand grenade
 
 Dotted names are possible though the application must make additional sense of
 the result:
 
 >>> r = parse("Mmm, {food.type}, I love it!", "Mmm, spam, I love it!")
->>> print r
+>>> print(r)
 <Result () {'food.type': 'spam'}>
->>> print r.named
+>>> print(r.named)
 {'food.type': 'spam'}
->>> print r['food.type']
+>>> print(r['food.type'])
 spam
 
 
 Format Specification
 --------------------
 
-Do remember that most often a straight format-less "{}" will suffice
-where a more complex format specification might have been used.
+Most often a straight format-less ``{}`` will suffice where a more complex
+format specification might have been used.
 
-Most of the `Format Specification Mini-Language`_ is supported::
+Most of `format()`'s `Format Specification Mini-Language`_ is supported:
 
    [[fill]align][0][width][type]
 
-The align operators will cause spaces (or specified fill character)
-to be stripped from the value. Similarly width is not enforced; it
-just indicates there may be whitespace or "0"s to strip.
+The differences between `parse()` and `format()` are:
 
-The "#" format character is handled automatically by d, b, o and x -
-that is: if there is a "0b", "0o" or "0x" prefix respectively, it's
-handled. For "d" any will be accepted, but for the others the correct
-prefix must be present if at all. Similarly number sign is handled
-automatically.
-
-The types supported are a slightly different mix to the format() types.  Some
-format() types come directly over: "d", "n", "%", "f", "e", "b", "o" and "x".
-In addition some regular expression character group types "D", "w", "W", "s" and
-"S" are also available.
-
-The "e" and "g" types are case-insensitive so there is not need for
-the "E" or "G" types.
+- The align operators will cause spaces (or specified fill character) to be
+  stripped from the parsed value. The width is not enforced; it just indicates
+  there may be whitespace or "0"s to strip.
+- Numeric parsing will automatically handle a "0b", "0o" or "0x" prefix.
+  That is, the "#" format character is handled automatically by d, b, o
+  and x formats. For "d" any will be accepted, but for the others the correct
+  prefix must be present if at all.
+- Numeric sign is handled automatically.
+- The thousands separator is handled automatically if the "n" type is used.
+- The types supported are a slightly different mix to the format() types.  Some
+  format() types come directly over: "d", "n", "%", "f", "e", "b", "o" and "x".
+  In addition some regular expression character group types "D", "w", "W", "s"
+  and "S" are also available.
+- The "e" and "g" types are case-insensitive so there is not need for
+  the "E" or "G" types.
 
 ===== =========================================== ========
 Type  Characters Matched                          Output
@@ -132,7 +132,8 @@ Type  Characters Matched                          Output
  o    Octal numbers                               int
  x    Hexadecimal numbers (lower and upper case)  int
  ti   ISO 8601 format date/time                   datetime
-      e.g. 1972-01-20T10:21:36Z
+      e.g. 1972-01-20T10:21:36Z ("T" and "Z"
+      optional)
  te   RFC2822 e-mail format date/time             datetime
       e.g. Mon, 20 Jan 1972 10:21:36 +1000
  tg   Global (day/month) format date/time         datetime
@@ -183,7 +184,11 @@ Some notes for the date and time types:
 - the AM/PM are optional, and if PM is found then 12 hours will be added
   to the datetime object's hours amount - even if the hour is greater
   than 12 (for consistency.)
-- except in ISO 8601 and e-mail format the timezone is optional.
+- in ISO 8601 the "Z" (UTC) timezone part may be a numeric offset
+- timezones are specified as "+HH:MM" or "-HH:MM". The hour may be one or two
+  digits (0-padded is OK.) Also, the ":" is optional.
+- the timezone is optional in all except the e-mail format (it defaults to
+  UTC.)
 - named timezones are not handled yet.
 
 Note: attempting to match too many datetime fields in a single parse() will
@@ -191,8 +196,10 @@ currently result in a resource allocation issue. A TooManyFields exception
 will be raised in this instance. The current limit is about 15. It is hoped
 that this limit will be removed one day.
 
-.. _`Format String Syntax`: http://docs.python.org/library/string.html#format-string-syntax
-.. _`Format Specification Mini-Language`: http://docs.python.org/library/string.html#format-specification-mini-language
+.. _`Format String Syntax`:
+  http://docs.python.org/library/string.html#format-string-syntax
+.. _`Format Specification Mini-Language`:
+  http://docs.python.org/library/string.html#format-specification-mini-language
 
 
 Result Objects
@@ -232,35 +239,50 @@ with the same identifier.
 >>> parse('{:shouty} world', 'hello world', dict(shouty=shouty))
 <Result ('HELLO',) {}>
 
-
-If the type-converter has the optional ``pattern`` attribute, it is used as
+If the type converter has the optional ``pattern`` attribute, it is used as
 regular expression for better pattern matching (instead of the default one).
-You can also use the ``with_pattern(pattern)`` decorator to add this
-information to a type-converter function:
 
->>> import parse
->>> @parse.with_pattern(r'\d+')
+>>> def parse_number(text):
+...    return int(text)
+>>> parse_number.pattern = r'\d+'
+>>> parse('Answer: {number:Number}', 'Answer: 42', dict(Number=parse_number))
+<Result () {'number': 42}>
+>>> _ = parse('Answer: {:Number}', 'Answer: Alice', dict(Number=parse_number))
+>>> assert _ is None, "MISMATCH"
+
+You can also use the ``with_pattern(pattern)`` decorator to add this
+information to a type converter function:
+
+>>> from parse import with_pattern
+>>> @with_pattern(r'\d+')
 ... def parse_number(text):
 ...    return int(text)
->>> assert parse_number.pattern == r'\d+'
->>> schema = 'Answer: {number:Number}'
->>> parse.parse(schema, 'Answer: 42', dict(Number=parse_number))
+>>> parse('Answer: {number:Number}', 'Answer: 42', dict(Number=parse_number))
 <Result () {'number': 42}>
->>> _ = parse.parse(schema, 'Answer: Alice', dict(Number=parse_number))
->>> assert _ is None, "EXPECT MISMATCH"
+
+A more complete example of a custom type might be:
+
+>>> yesno_mapping = {
+...     "yes":  True,   "no":    False,
+...     "on":   True,   "off":   False,
+...     "true": True,   "false": False,
+... }
+... @with_pattern(r"|".join(yesno_mapping))
+... def parse_yesno(text):
+...     return yesno_mapping[text.lower()]
+
 
 ----
 
-**Unreleased Changes**:
-
-- Add optional cardinality field support after type field in parse expressions.
-- Add Cardinality, TypeBuilder classes to support different cardinality.
-- Add parse_type module to simplify type creation for common use cases.
-- Add with_pattern() decorator for type-converter functions.
-- Add support for optional 'pattern' attribute in user-defined types.
-
 **Version history (in brief)**:
 
+- 1.6.3 handle repeated instances of named fields, fix bug in PM time
+  overflow
+- 1.6.2 fix logging to use local, not root logger (thanks Necku)
+- 1.6.1 be more flexible regarding matched ISO datetimes and timezones in
+  general, fix bug in timezones without ":" and improve docs
+- 1.6.0 add support for optional ``pattern`` attribute in user-defined types
+  (thanks Jens Engel)
 - 1.5.3 fix handling of question marks
 - 1.5.2 fix type conversion error with dotted names (thanks Sebastian Thiel)
 - 1.5.1 implement handling of named datetime fields
@@ -294,10 +316,10 @@ information to a type-converter function:
   and removed the restriction on mixing fixed-position and named fields
 - 1.0.0 initial release
 
-This code is copyright 2012 Richard Jones <richard@python.org>
+This code is copyright 2012-2013 Richard Jones <richard@python.org>
 See the end of the source file for the license of use.
 '''
-__version__ = '1.5.3.4'
+__version__ = '1.6.3'
 
 # yes, I now have two problems
 import re
@@ -306,9 +328,36 @@ from datetime import datetime, time, tzinfo, timedelta
 from functools import partial
 import logging
 
-__all__ = 'parse search findall'.split()
+__all__ = 'parse search findall with_pattern'.split()
 
 log = logging.getLogger(__name__)
+
+
+def with_pattern(pattern):
+    """Attach a regular expression pattern matcher to a custom type converter
+    function.
+
+    This annotates the type converter with the :attr:`pattern` attribute.
+
+    EXAMPLE:
+        >>> import parse
+        >>> @parse.with_pattern(r"\d+")
+        ... def parse_number(text):
+        ...     return int(text)
+
+    is equivalent to:
+
+        >>> def parse_number(text):
+        ...     return int(text)
+        >>> parse_number.pattern = r"\d+"
+
+    :param pattern: regular expression pattern (as text)
+    :return: wrapped function
+    """
+    def decorator(func):
+        func.pattern = pattern
+        return func
+    return decorator
 
 
 def int_convert(base):
@@ -321,6 +370,7 @@ def int_convert(base):
     It may also have other non-numeric characters that we can ignore.
     '''
     CHARS = '0123456789abcdefghijklmnopqrstuvwxyz'
+
     def f(string, match, base=base):
         if string[0] == '-':
             sign = -1
@@ -354,11 +404,12 @@ class FixedTzOffset(tzinfo):
     ZERO = timedelta(0)
 
     def __init__(self, offset, name):
-        self._offset = timedelta(minutes = offset)
+        self._offset = timedelta(minutes=offset)
         self._name = name
 
     def __repr__(self):
-        return '<%s %s %s>' % (self.__class__.__name__, self._name, self._offset)
+        return '<%s %s %s>' % (self.__class__.__name__, self._name,
+            self._offset)
 
     def utcoffset(self, dt):
         return self._offset
@@ -393,6 +444,7 @@ ALL_MONTHS_PAT = '(%s)' % '|'.join(MONTHS_MAP)
 TIME_PAT = r'(\d{1,2}:\d{1,2}(:\d{1,2}(\.\d+)?)?)'
 AM_PAT = r'(\s+[AP]M)'
 TZ_PAT = r'(\s+[-+]\d\d?:?\d\d)'
+
 
 def date_convert(string, match, ymd=None, mdy=None, dmy=None,
         d_m_y=None, hms=None, am=None, tz=None):
@@ -429,10 +481,14 @@ def date_convert(string, match, ymd=None, mdy=None, dmy=None,
         H = int(H)
         M = int(M)
 
+    day_incr = False
     if am is not None:
         am = groups[am]
         if am and am.strip() == 'PM':
             H += 12
+            if H > 23:
+                day_incr = True
+                H -= 24
 
     if tz is not None:
         tz = groups[tz]
@@ -447,6 +503,8 @@ def date_convert(string, match, ymd=None, mdy=None, dmy=None,
             sign = tz[0]
             if ':' in tz:
                 tzh, tzm = tz[1:].split(':')
+            elif len(tz) == 4:  # 'snnn'
+                tzh, tzm = tz[1], tz[2:4]
             else:
                 tzh, tzm = tz[1:3], tz[3:5]
             offset = int(tzm) + int(tzh) * 60
@@ -465,212 +523,29 @@ def date_convert(string, match, ymd=None, mdy=None, dmy=None,
         d = int(d)
         d = datetime(y, m, d, H, M, S, u, tzinfo=tz)
 
+    if day_incr:
+        d = d + timedelta(days=1)
+
     return d
 
 
 class TooManyFields(ValueError):
     pass
 
+
+class RepeatedNameError(ValueError):
+    pass
+
+
 # note: {} are handled separately
-REGEX_SAFETY = re.compile(r'([?\\.[\]()*+\^$!])')
+# note: I don't use r'' here because Sublime Text 2 syntax highlight has a fit
+REGEX_SAFETY = re.compile('([?\\\\.[\]()*+\^$!])')
 
 # allowed field types
 ALLOWED_TYPES = set(list('nbox%fegwWdDsS') +
-   ['t'+c for c in 'ieahgct'])
+    ['t' + c for c in 'ieahgct'])
 
-# -----------------------------------------------------------------------------
-# CLASS: Cardinality (Field Part)
-# -----------------------------------------------------------------------------
-class Cardinality(object):
-    """
-    Cardinality field for parse format expression, ala:
 
-        "... {person:Person?} ..."   -- OPTIONAL: Cardinality zero or one, 0..1
-        "... {persons:Person*} ..."  -- MANY0: Cardinality zero or more, 0..
-        "... {persons:Person+} ..."  -- MANY:  Cardinality one  or more, 1..
-    """
-    one = 1
-    zero_or_one  = 2
-    zero_or_more = 3
-    one_or_more  = 4
-
-    # -- ALIASES:
-    optional = zero_or_one
-    many = one_or_more
-
-    # -- MAPPING SUPPORT:
-    pattern_chars = "?*+"
-    from_char_map = {
-        '?': zero_or_one,
-        '*': zero_or_more,
-        '+': one_or_more,
-    }
-
-    @classmethod
-    def make_zero_or_one_pattern(cls, pattern):
-        return r"(%s)?" % pattern
-
-    @classmethod
-    def make_zero_or_more_pattern(cls, pattern, listsep=','):
-        return r"(%s)?(\s*%s\s*(%s))*" % (pattern, listsep, pattern)
-
-    @classmethod
-    def make_one_or_more_pattern(cls, pattern, listsep=','):
-        return r"(%s)(\s*%s\s*(%s))*" % (pattern, listsep, pattern)
-
-# -- OPTIONAL CODE:
-#    @classmethod
-#    def make_pattern_for(cls, cardinality, pattern, listsep=','):
-#        """
-#        Creates a new regular expression pattern for the cardinality.
-#
-#        :param cardinality: Cardinality case (zero_or_one, zero_or_more, ...)
-#        :param pattern:  Regex pattern for cardinality one (as text).
-#        :param listsep:  Optional list separator for many (default: comma ',').
-#        :return: New regular expression pattern for this cardinality case.
-#        """
-#        if cardinality == cls.zero_or_one:
-#            return cls.make_zero_or_one_pattern(pattern)
-#        elif cardinality == cls.zero_or_more:
-#            return cls.make_zero_or_more_pattern(pattern, listsep)
-#        elif cardinality == cls.one_or_more:
-#            return cls.make_one_or_more_pattern(pattern, listsep)
-#            # -- OTHERWISE, EXPECT: Cardinality one, otherwise OOPS.
-#        assert cls.is_one(cardinality), "Unknown value: %s" % cardinality
-#        return pattern
-#
-#    @classmethod
-#    def is_one(cls, cardinality):
-#        return cardinality == cls.one or cardinality is None
-#
-#    @classmethod
-#    def is_many(cls, cardinality):
-#        return cardinality == cls.one_or_more or cardinality == cls.zero_or_more
-#
-# -----------------------------------------------------------------------------
-# CLASS: TypeBuilder
-# -----------------------------------------------------------------------------
-class TypeBuilder(object):
-    """
-    Provides a utility class to build type-converters (parse_types) for parse.
-    It supports to build new type-converters for different cardinality
-    based on the type-converter for cardinality one.
-    """
-    default_pattern = r".+?"
-
-    @classmethod
-    def with_zero_or_one(cls, parse_type):
-        """
-        Creates a type-converter function for a T with 0..1 times
-        by using the type-converter for one item of T.
-
-        :param parse_type: Type-converter (function) for data type T.
-        :return: type-converter for optional<T> (T or None).
-        """
-        def parse_optional(text, m=None):
-            if text:
-                text = text.strip()
-            if not text:
-                return None
-            return parse_type(text)
-        pattern = getattr(parse_type, "pattern", cls.default_pattern)
-        new_pattern = Cardinality.make_zero_or_one_pattern(pattern)
-        parse_optional.pattern = new_pattern
-        return parse_optional
-
-    @classmethod
-    def with_zero_or_more(cls, parse_type, listsep=",", max_size=None):
-        """
-        Creates a type-converter function for a list<T> with 0..N items
-        by using the type-converter for one item of T.
-
-        :param parse_type: Type-converter (function) for data type T.
-        :param listsep:  Optional list separator between items (default: ',')
-        :param max_size: Optional max. number of items constraint (future).
-        :return: type-converter for list<T>
-        """
-        def parse_list0(text, m=None):
-            if text:
-                text = text.strip()
-            if not text:
-                return []
-            parts = [ parse_type(texti.strip())
-                      for texti in text.split(listsep) ]
-            return parts
-        pattern  = getattr(parse_type, "pattern", cls.default_pattern)
-        list_pattern = Cardinality.make_zero_or_more_pattern(pattern, listsep)
-        parse_list0.pattern  = list_pattern
-        parse_list0.max_size = max_size
-        return parse_list0
-
-    @classmethod
-    def with_one_or_more(cls, parse_type, listsep=",", max_size=None):
-        """
-        Creates a type-converter function for a list<T> with 1..N items
-        by using the type-converter for one item of T.
-
-        :param parse_type: Type-converter (function) for data type T.
-        :param listsep:  Optional list separator between items (default: ',')
-        :param max_size: Optional max. number of items constraint (future).
-        :return: type-converter for list<T>
-        """
-        def parse_list(text, m=None):
-            parts = [ parse_type(texti.strip())
-                      for texti in text.split(listsep) ]
-            return parts
-        pattern = getattr(parse_type, "pattern", cls.default_pattern)
-        list_pattern = Cardinality.make_one_or_more_pattern(pattern, listsep)
-        parse_list.pattern  = list_pattern
-        parse_list.max_size = max_size
-        return parse_list
-
-    # -- ALIAS METHODS:
-    @classmethod
-    def with_optional(cls, parse_type):
-        """Alias for :py:meth:`with_zero_or_one` method."""
-        return cls.with_zero_or_one(parse_type)
-
-    @classmethod
-    def with_many(cls, parse_type, **kwargs):
-        """Alias for :py:meth:`with_one_or_more` method."""
-        return cls.with_one_or_more(parse_type, **kwargs)
-
-    @classmethod
-    def with_many0(cls, parse_type, **kwargs):
-        """Alias for :py:meth:`with_zero_or_more` method."""
-        return cls.with_zero_or_more(parse_type, **kwargs)
-
-# -----------------------------------------------------------------------------
-# DECORATOR: with_pattern
-# -----------------------------------------------------------------------------
-def with_pattern(pattern):
-    """
-    Provides a decorator for type-converter (parse_type) functions.
-    Annotates the type converter with the :attr:`pattern` attribute.
-
-    EXAMPLE:
-        >>> import parse
-        >>> @parse.with_pattern(r"\d+")
-        ... def parse_number(text):
-        ...     return int(text)
-
-    is equivalent to:
-
-        >>> def parse_number(text):
-        ...     return int(text)
-        >>> parse_number.pattern = r"\d+"
-
-    :param pattern:  Regular expression pattern (as text).
-    :return: Wrapped function
-    """
-    def decorator(func):
-        func.pattern = pattern
-        return func
-    return decorator
-
-# -----------------------------------------------------------------------------
-# FUNCTIONS: Parse Helpers
-# -----------------------------------------------------------------------------
 def extract_format(format, extra_types):
     '''Pull apart the format [[fill]align][0][width][type]
     '''
@@ -694,14 +569,6 @@ def extract_format(format, extra_types):
             break
         width += format[0]
         format = format[1:]
-    # -- CARDINALITY-FIELD:
-    cardinality = None
-    if format and format[-1] in Cardinality.pattern_chars:
-        _cardinality_char = format[-1]
-        cardinality = Cardinality.from_char_map[_cardinality_char]
-        format = format[:-1]
-        assert format, "Type information is required for cardinality"
-    # -- CARDINALITY-FIELD END.
 
     # the rest is the type, if present
     type = format
@@ -711,17 +578,26 @@ def extract_format(format, extra_types):
     return locals()
 
 
-PARSE_RE = re.compile(r'({{|}}|{}|{:[^}]+?}|{\w+?(?:\.\w+?)*}|{\w+?(?:\.\w+?)*:[^}]+?})')
+PARSE_RE = re.compile(r'({{|}}|{}|{:[^}]+?}|{\w+?(?:\.\w+?)*}|'
+    r'{\w+?(?:\.\w+?)*:[^}]+?})')
 
 
 class Parser(object):
     '''Encapsulate a format string that may be used to parse other strings.
     '''
     def __init__(self, format, extra_types={}):
-        # a mapping of a name as in {hello.world} to a regex-group compatible name, like hello__world
-        # Its used to prevent the transformation of name-to-group and group to name to fail subtly, such
-        # as in: hello_.world-> hello___world->hello._world
+        # a mapping of a name as in {hello.world} to a regex-group compatible
+        # name, like hello__world Its used to prevent the transformation of
+        # name-to-group and group to name to fail subtly, such as in:
+        # hello_.world-> hello___world->hello._world
         self._group_to_name_map = {}
+        # also store the original field name to group name mapping to allow
+        # multiple instances of a name in the format string
+        self._name_to_group_map = {}
+        # and to sanity check the repeated instances store away the first
+        # field type specification for the named field
+        self._name_types = {}
+
         self._format = format
         self._extra_types = extra_types
         self._fixed_fields = []
@@ -732,23 +608,26 @@ class Parser(object):
         self.__search_re = None
         self.__match_re = None
 
-        logging.debug('format %r -> %r' % (format, self._expression))
+        log.debug('format %r -> %r' % (format, self._expression))
 
     def __repr__(self):
         if len(self._format) > 20:
-            return '<%s %r>' % (self.__class__.__name__, self._format[:17] + '...')
+            return '<%s %r>' % (self.__class__.__name__,
+                self._format[:17] + '...')
         return '<%s %r>' % (self.__class__.__name__, self._format)
 
     @property
     def _search_re(self):
         if self.__search_re is None:
             try:
-                self.__search_re = re.compile(self._expression, re.IGNORECASE|re.DOTALL)
+                self.__search_re = re.compile(self._expression,
+                    re.IGNORECASE | re.DOTALL)
             except AssertionError:
-                e = sys.exc_info()[1]   # to keep py3k and backward compat
-                if str(e).endswith('this version only supports 100 named groups'):
-                    raise TooManyFields('sorry, you are attempting to parse too '
-                        'many complex fields')
+                # access error through sys to keep py3k and backward compat
+                e = str(sys.exc_info()[1])
+                if e.endswith('this version only supports 100 named groups'):
+                    raise TooManyFields('sorry, you are attempting to parse '
+                        'too many complex fields')
         return self.__search_re
 
     @property
@@ -756,14 +635,18 @@ class Parser(object):
         if self.__match_re is None:
             expression = '^%s$' % self._expression
             try:
-                self.__match_re = re.compile(expression, re.IGNORECASE|re.DOTALL)
+                self.__match_re = re.compile(expression,
+                    re.IGNORECASE | re.DOTALL)
             except AssertionError:
-                e = sys.exc_info()[1]   # to keep py3k and backward compat
-                if str(e).endswith('this version only supports 100 named groups'):
-                    raise TooManyFields('sorry, you are attempting to parse too '
-                        'many complex fields')
+                # access error through sys to keep py3k and backward compat
+                e = str(sys.exc_info()[1])
+                if e.endswith('this version only supports 100 named groups'):
+                    raise TooManyFields('sorry, you are attempting to parse '
+                        'too many complex fields')
             except re.error:
-                raise NotImplementedError("Group names (e.g. (?P<name>) can cause failure, as they are not esacped properly: '%s'" % expression)
+                raise NotImplementedError("Group names (e.g. (?P<name>) can "
+                    "cause failure, as they are not escaped properly: '%s'" %
+                    expression)
         return self.__match_re
 
     def parse(self, string):
@@ -824,13 +707,15 @@ class Parser(object):
             korig = self._group_to_name_map[k]
             name_map[korig] = k
             if k in self._type_conversions:
-                named_fields[korig] = self._type_conversions[k](groupdict[k], m)
+                named_fields[korig] = self._type_conversions[k](groupdict[k],
+                    m)
             else:
                 named_fields[korig] = groupdict[k]
 
         # now figure the match spans
         spans = dict((n, m.span(name_map[n])) for n in named_fields)
-        spans.update((i, m.span(n+1)) for i, n in enumerate(self._fixed_fields))
+        spans.update((i, m.span(n + 1))
+            for i, n in enumerate(self._fixed_fields))
 
         # and that's our result
         return Result(fixed_fields, named_fields, spans)
@@ -861,17 +746,20 @@ class Parser(object):
         # though it might contain '.'
         group = field.replace('.', '_')
 
-        # make sure we don't collide
+        # make sure we don't collide ("a.b" colliding with "a_b")
         n = 1
         while group in self._group_to_name_map:
             n += 1
             if '.' in field:
-                group = field.replace('.', '_'*n)
+                group = field.replace('.', '_' * n)
+            elif '_' in field:
+                group = field.replace('_', '_' * n)
             else:
-                group = field.replace('_', '_'*n)
+                raise KeyError('duplicated group name %r' % (field, ))
 
         # save off the mapping
         self._group_to_name_map[group] = field
+        self._name_to_group_map[field] = group
         return group
 
     def _handle_field(self, field):
@@ -886,7 +774,17 @@ class Parser(object):
                 name, format = field.split(':')
             else:
                 name = field
-            group = self._to_group_name(name)
+            if name in self._name_to_group_map:
+                if self._name_types[name] != format:
+                    raise RepeatedNameError('field type %r for field "%s" '
+                        'does not match previous seen type %r' % (format,
+                        name, self._name_types[name]))
+                group = self._name_to_group_map[name]
+                # match previously-seen value
+                return '(?P=%s)' % group
+            else:
+                group = self._to_group_name(name)
+                self._name_types[name] = format
             self._named_fields.append(group)
             # this will become a group, which must not contain dots
             wrap = '(?P<%s>%%s)' % group
@@ -904,31 +802,16 @@ class Parser(object):
 
         # decode the format specification
         format = extract_format(format, self._extra_types)
-        cardinality = format["cardinality"]
 
         # figure type conversions, if any
         type = format['type']
         is_numeric = type and type in 'n%fegdobh'
         if type in self._extra_types:
             type_converter = self._extra_types[type]
-            s = getattr(type_converter, 'pattern', TypeBuilder.default_pattern)
-            if cardinality == Cardinality.one_or_more:
-                # -- CASE MANY one_or_more: list<T> as comma-separated list.
-                f = TypeBuilder.with_one_or_more(type_converter)
-                s = f.pattern
-            elif cardinality == Cardinality.zero_or_more:
-                # -- CASE MANY zero_or_more: list<T> as comma-separated list.
-                f = TypeBuilder.with_zero_or_more(type_converter)
-                s = f.pattern
-            elif cardinality == Cardinality.zero_or_one:
-                # -- CASE zero_or_one: optional<T> := T or None
-                f = TypeBuilder.with_zero_or_one(type_converter)
-                # -- NOT HERE: s = f.pattern
-                #    OPTIONAL case is better handled below.
-            else:
-                # -- CASE one: T
-                def f(string, m):
-                    return type_converter(string)
+            s = getattr(type_converter, 'pattern', r'.+?')
+
+            def f(string, m):
+                return type_converter(string)
             self._type_conversions[group] = f
         elif type == 'n':
             s = '\d{1,3}([,.]\d{3})*'
@@ -964,53 +847,54 @@ class Parser(object):
             s = r'\d+|0[xX][0-9a-fA-F]+|[0-9a-fA-F]+|0[bB][01]+|0[oO][0-7]+'
             self._type_conversions[group] = int_convert(10)
         elif type == 'ti':
-            s = r'(\d{4}-\d\d-\d\d)((\s+|T)%s)?(Z|[-+]\d\d:\d\d)?' % TIME_PAT
+            s = r'(\d{4}-\d\d-\d\d)((\s+|T)%s)?(Z|\s*[-+]\d\d:?\d\d)?' % \
+                TIME_PAT
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, ymd=n+1,
-                hms=n+4, tz=n+7)
+            self._type_conversions[group] = partial(date_convert, ymd=n + 1,
+                hms=n + 4, tz=n + 7)
             self._group_index += 7
         elif type == 'tg':
             s = r'(\d{1,2}[-/](\d{1,2}|%s)[-/]\d{4})(\s+%s)?%s?%s?' % (
                 ALL_MONTHS_PAT, TIME_PAT, AM_PAT, TZ_PAT)
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, dmy=n+1,
-                hms=n+5, am=n+8, tz=n+9)
+            self._type_conversions[group] = partial(date_convert, dmy=n + 1,
+                hms=n + 5, am=n + 8, tz=n + 9)
             self._group_index += 9
         elif type == 'ta':
             s = r'((\d{1,2}|%s)[-/]\d{1,2}[-/]\d{4})(\s+%s)?%s?%s?' % (
                 ALL_MONTHS_PAT, TIME_PAT, AM_PAT, TZ_PAT)
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, mdy=n+1,
-                hms=n+5, am=n+8, tz=n+9)
+            self._type_conversions[group] = partial(date_convert, mdy=n + 1,
+                hms=n + 5, am=n + 8, tz=n + 9)
             self._group_index += 9
         elif type == 'te':
             # this will allow microseconds through if they're present, but meh
             s = r'(%s,\s+)?(\d{1,2}\s+%s\s+\d{4})\s+%s%s' % (DAYS_PAT,
                 MONTHS_PAT, TIME_PAT, TZ_PAT)
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, dmy=n+3,
-                hms=n+5, tz=n+8)
+            self._type_conversions[group] = partial(date_convert, dmy=n + 3,
+                hms=n + 5, tz=n + 8)
             self._group_index += 8
         elif type == 'th':
             # slight flexibility here from the stock Apache format
             s = r'(\d{1,2}[-/]%s[-/]\d{4}):%s%s' % (MONTHS_PAT, TIME_PAT,
                 TZ_PAT)
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, dmy=n+1,
-                hms=n+3, tz=n+6)
+            self._type_conversions[group] = partial(date_convert, dmy=n + 1,
+                hms=n + 3, tz=n + 6)
             self._group_index += 6
         elif type == 'tc':
             s = r'(%s)\s+%s\s+(\d{1,2})\s+%s\s+(\d{4})' % (
                 DAYS_PAT, MONTHS_PAT, TIME_PAT)
             n = self._group_index
             self._type_conversions[group] = partial(date_convert,
-                d_m_y=(n+4,n+3,n+8), hms=n+5)
+                d_m_y=(n + 4, n + 3, n + 8), hms=n + 5)
             self._group_index += 8
         elif type == 'tt':
             s = r'%s?%s?%s?' % (TIME_PAT, AM_PAT, TZ_PAT)
             n = self._group_index
-            self._type_conversions[group] = partial(date_convert, hms=n+1,
-                am=n+4, tz=n+5)
+            self._type_conversions[group] = partial(date_convert, hms=n + 1,
+                am=n + 4, tz=n + 5)
             self._group_index += 5
         elif type:
             s = r'\%s+' % type
@@ -1038,11 +922,6 @@ class Parser(object):
         if not fill:
             fill = ' '
 
-        if cardinality == Cardinality.zero_or_one:
-            # -- CARDINALITY: Make field optional.
-            assert wrap, "Cardinality requires wrap"
-            wrap += '?'
-
         # Place into a group now - this captures the value we want to keep.
         # Everything else from now is just padding to be stripped off
         if wrap:
@@ -1051,8 +930,8 @@ class Parser(object):
 
         if format['width']:
             # all we really care about is that if the format originally
-            # specified a width then there will probably be padding - without an
-            # explicit alignment that'll mean right alignment with spaces
+            # specified a width then there will probably be padding - without
+            # an explicit alignment that'll mean right alignment with spaces
             # padding
             if not align:
                 align = '>'
@@ -1145,8 +1024,8 @@ def search(format, string, pos=0, endpos=None, extra_types={}):
     instead you wish for the format to exactly match the string
     use parse().
 
-    Optionally start the search at "pos" character index and limit the search to
-    a maximum index of endpos - equivalent to search(string[:endpos]).
+    Optionally start the search at "pos" character index and limit the search
+    to a maximum index of endpos - equivalent to search(string[:endpos]).
 
     The return value will be an Result instance with two attributes:
 
@@ -1168,8 +1047,8 @@ def findall(format, string, pos=0, endpos=None, extra_types={}):
     You will be returned an iterator that holds Result instances
     for each format match found.
 
-    Optionally start the search at "pos" character index and limit the search to
-    a maximum index of endpos - equivalent to search(string[:endpos]).
+    Optionally start the search at "pos" character index and limit the search
+    to a maximum index of endpos - equivalent to search(string[:endpos]).
 
     Each Result instance has two attributes:
 
@@ -1199,7 +1078,7 @@ def compile(format, extra_types={}):
     return Parser(format, extra_types=extra_types)
 
 
-# Copyright (c) 2012 Richard Jones <richard@python.org>
+# Copyright (c) 2012-2013 Richard Jones <richard@python.org>
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal

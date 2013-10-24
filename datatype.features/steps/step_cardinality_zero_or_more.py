@@ -24,21 +24,26 @@ Feature: Data Type with Cardinality zero or more (MANY0, List<T>)
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 from parse_type import TypeBuilder
 
 def slurp_space(text):
     return text
 slurp_space.pattern = r"\s*"
-matchers.register_type(slurp_space=slurp_space)
+register_type(slurp_space=slurp_space)
 
 parse_color = TypeBuilder.make_choice([ "red", "green", "blue", "yellow" ])
-matchers.register_type(Color=parse_color)
+register_type(Color=parse_color)
 
 # -- MANY-TYPE: Persons := list<Person> with list-separator = "and"
 # parse_colors = TypeBuilder.with_many0(parse_color, listsep="and")
-parse_colors0 = TypeBuilder.with_zero_or_more(parse_color, listsep="and")
-matchers.register_type(OptionalColorAndMore=parse_colors0)
+parse_colors0A= TypeBuilder.with_zero_or_more(parse_color, listsep="and")
+register_type(OptionalColorAndMore=parse_colors0A)
+
+# -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.
+# parse_colors0C = TypeBuilder.with_zero_or_more(parse_color)
+# type_dict = {"Color*": parse_colors0C}
+# register_type(**type_dict)
 
 
 # @mark.steps

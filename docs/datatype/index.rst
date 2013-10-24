@@ -8,7 +8,10 @@ Data Types and User-defined Types
 
 The following sections describe in more detail how user-defined data types
 are used in `behave`_. The type-converter functionality, that is described here,
-is only supported by the "parse" matcher.
+is only supported by the:
+
+  * "parse" matcher (based on: `parse`_ module)
+  * "cfparse" matcher (based on: `parse_type`_ module)
 
 ----
 
@@ -29,15 +32,16 @@ is only supported by the "parse" matcher.
 
 .. important::
 
-    Part of the functionality, that is described here, is **experimental**.
-    Use the `jenisys/parse`_ fork (or its copy here),
-    if you want to try it out the exact functionality that is described here.
+    Part of the functionality, that is described here, is based on
+    `parse_type`_, an extension of the excellent `parse`_ module.
 
     The `parse`_ module is the inverse of Python `string.format`_ function.
+    The `parse_type`_ module extends it to simplify the generation of types
+    (actually type converter functions for types).
 
     .. index:: parse extensions
 
-    **NEW FEATURES** (in `parse`_):
+    **FEATURES** (in `parse`_):
 
       * Optional :py:attr:`pattern` attribute in user-defined type-converters.
 
@@ -48,8 +52,12 @@ is only supported by the "parse" matcher.
 
       * :py:mod:`parse_type` extensions (:py:class:`TypeBuilder` functionality).
 
-      * Optional **cardinality field** part after type part in parse expression,
-        like:
+    **FEATURES** (in `parse_type`_):
+
+      * Simplifies the creation of type converters for some common cases
+      * Creates type converter variants based on cardinality
+      * Provides an extended parser with **cardinality field** support.
+        A cardinality field is a type suffix in parse expression, like:
 
         ============  ==================== ===================================
         Cardinality    Example             Description
@@ -59,16 +67,7 @@ is only supported by the "parse" matcher.
            1..*       "{persons:Person+}"  One  or more: For list<T> (many).
         ============  ==================== ===================================
 
-.. hint::
-
-    `parse`_ >= 1.6 supports now the following features:
-
-      * :py:attr:`pattern` attribute in user-defined type-converters.
-      * :py:func:`with_pattern()` decorator for type-converters.
-      * **cardinality field** for zero-or-one case.
-
-
 .. _behave: http://pypi.python.org/pypi/behave
 .. _parse:  http://pypi.python.org/pypi/parse
+.. _parse_type: https://github.com/jenisys/parse_type
 .. _string.format: http://docs.python.org/library/string.html#format-string-syntax
-.. _jenisys/parse: https://github.com/jenisys/parse

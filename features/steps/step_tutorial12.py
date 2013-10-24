@@ -23,13 +23,13 @@ Funktionalität: Using Languages other than English (tutorial12)
 from behave import given, when, then
 
 @given('wir haben "behave" installiert')
-def step(context):
-    context.execute_steps(u"we have behave installed")
+def step_impl(context):
+    context.execute_steps(u"Angenommen we have behave installed")
 
 @when('wir einen Test implementieren')
-def step(context):
-    context.execute_steps(u"we implement a test")
+def step_impl(context):
+    context.execute_steps(u"Wenn we implement a test")
 
 @then(u'wird "behave" ihn für uns testen!')
-def step(context):
-    context.execute_steps(u'behave will test it for us!')
+def step_impl(context):
+    context.execute_steps(u'Dann behave will test it for us!')

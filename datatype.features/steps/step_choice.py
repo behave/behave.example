@@ -17,13 +17,13 @@ Feature: User-Defined Choice Type (advanced tutorial01: choice)
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 from parse_type import TypeBuilder
 
 # -- CHOICE: Constrain to a list of supported items (as string).
 offered_shop_items = [ "apples", "beef", "potatoes", "pork" ]
 parse_shop_item = TypeBuilder.make_choice(offered_shop_items)
-matchers.register_type(ShopItem=parse_shop_item)
+register_type(ShopItem=parse_shop_item)
 
 # @mark.steps
 # ----------------------------------------------------------------------------

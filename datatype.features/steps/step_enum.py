@@ -28,12 +28,12 @@ answer_oracle = {
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 from parse_type import TypeBuilder
 
 # -- ENUM: Returns True (for "yes" and "jubilee"), False (for "no")
 parse_yesno = TypeBuilder.make_enum({"yes": True, "no": False, "jubilee": True })
-matchers.register_type(YesNo=parse_yesno)
+register_type(YesNo=parse_yesno)
 
 # @mark.steps
 # ----------------------------------------------------------------------------

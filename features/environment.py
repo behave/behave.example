@@ -16,12 +16,9 @@ before_tag(context, tag), after_tag(context, tag)
 
 """
 
-import logging
+# -- SETUP: Use cfparse as default matcher
+# from behave import use_step_matcher
+# step_matcher("cfparse")
 
 def before_all(context):
-    if not context.config.log_capture:
-        logging.basicConfig(level=logging.DEBUG)
-
-def after_all(context):
-    # print "SUMMARY:"
-    pass
+    context.config.setup_logging()
