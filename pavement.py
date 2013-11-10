@@ -61,8 +61,12 @@ Topic :: Documentation
 Topic :: Education
 """
 
-INSTALL_REQUIRES = read_requirements("requirements.txt")
-
+# INSTALL_REQUIRES = read_requirements("requirements.txt")
+INSTALL_REQUIRES = [
+    "behave >= 1.2.4a1",    # -- internal pre-release.
+    "parse >= 1.6.3",
+    "parse_type >= 0.3.4",
+]
 
 # ----------------------------------------------------------------------------
 # TASK CONFIGURATION:
@@ -206,6 +210,7 @@ def clean():
     patterns = [
         "*.pyc", "*.pyo", "*$py.class",
         "*.bak", "*.log", "*.tmp",
+        "*.output", "rerun.featureset",
         ".coverage", ".coverage.*",
         "pylint_*.txt", "pychecker_*.txt",
         ".DS_Store", "*.~*~",   #< MACOSX
