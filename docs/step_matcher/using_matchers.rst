@@ -66,12 +66,3 @@ But normally you group the step definitions according to their step matcher.
     def step_then_I_have_fun_with(context, person):
         assert_that(person, equal_to(context.person))
 
-----
-
-.. hint::
-    The following *behave self-test* provides you more detailed information:
-
-    .. literalinclude:: ../issue.features/issue73.feature
-        :prepend:   # file:issue.features/issue73.feature
-        :language: gherkin
-

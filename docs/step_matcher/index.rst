@@ -4,11 +4,11 @@
 Step Matchers
 ==============================================================================
 
-`behave`_ provides 2 step matchers:
+`behave`_ provides 3 step matchers:
 
   1. "parse" (ParseMatcher) by using the `parse`_ module
-  2. "re" (RegexMatcher) that uses regular expressions for matching parameters
-  3. "cfparse" (extended ParseMatcher) that supports the cardinality field syntax
+  2. "cfparse" (extended ParseMatcher) that supports the cardinality field syntax
+  3. "re" (RegexMatcher) that uses regular expressions for matching parameters
 
 The "parse" matcher is the **default step matcher**.
 It is more commonly used because it is:
@@ -18,8 +18,8 @@ It is more commonly used because it is:
   * reuses (hidden) regular expressions better by using data types (as alias)
   * hides regular expression complexity
 
-The "cfparse" matcher extends the "parse" patcher. It is intended to superceed
-the "parse" matcher as default matcher.
+The "cfparse" matcher extends the "parse" patcher (and is rather new).
+It is intended to superceed the "parse" matcher as default matcher.
 It has the following features:
 
   * extended parser that understands the cardinality field syntax

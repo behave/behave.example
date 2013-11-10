@@ -1,14 +1,13 @@
 behave.example: Examples and Tutorials
 ==============================================================================
 
-:Date: 2013-04-08
+:Date: 2013-11-09
 :Category: BDD, testing
 :License:  BSD
 
 `behave`_ is a BDD test framework and cucumber-clone for Python.
 This project provides tutorials and examples how to use `behave`_.
-It should extend the otherwise excellent document of `behave`_.
-
+It should extends the excellent documentation of `behave`_.
 
 SEE ALSO:
   * https://github.com/jenisys/behave.example
@@ -19,15 +18,12 @@ DOCUMENTATION:
   * http://jenisys.github.com/behave.example (latest version)
 
 REPOSITORIES:
-  * https://github.com/behave/behave (master)
-  * https://github.com/jenisys/behave
-  * https://github.com/jenisys/parse
+  * https://github.com/behave/behave
+  * https://github.com/jenisys/parse_type
 
 
 .. _behave: https://github.com/behave/behave
-.. _parse:  https://github.com/jenisys/parse
-.. _`jenisys/behave`: https://github.com/jenisys/behave
-.. _`jenisys/parse`:  https://github.com/jenisys/parse
+.. _parse_type:  https://github.com/jenisys/parse_type
 .. _paver: http://www.blueskyonmars.com/projects/paver/
 .. _sphinxcontrib-ansi: http://bitbucket.org/birkenfeld/sphinx-contrib
 .. _sphinxcontrib-programoutput: https://github.com/lunaryorn/sphinxcontrib-programoutput
@@ -36,19 +32,14 @@ REPOSITORIES:
 INSTALL
 ------------------------------------------------------------------------------
 
-The project provides only examples. Therefore, it should not be installed.
+The project provides tutorials and examples.
+Therefore, it should not be installed.
 To prepare the local installation, use the following command to install
 all prerequisites::
 
     pip install -r requirements.txt
 
-Note that some new and experimental features/extensions of `behave`_ and
-`parse`_ are currently used here. These features are not part of the official
-distributions (and repositories), yet.
-
-Use the `jenisys/behave`_ and `jenisys/parse`_ variants, if you want
-to run the ``*.feature`` files provided here.
-Snapshots of the `jenisys/behave`_ and `jenisys/parse`_ implementations
+Snapshots of the `behave`_ and `parse_type`_ implementations
 are provided in the directory ``lib/python2/``.  This directory is
 automatically used when you use ``bin/behave`` to run `behave`_.
 
@@ -80,25 +71,31 @@ If `paver`_ is not installed, use the following canned script instead::
     bin/paver command ...
 
 
-SPECIAL:
+SPECIAL CONFIGURATION
 ------------------------------------------------------------------------------
 
-* The `behave`_ PrettyFormatter formatter is replaced with Pretty1Formatter.
+* The `behave`_ PrettyFormatter is replaced with ``pretty2.SimplePrettyFormatter``.
 
   This formatter implementation avoids cursor-ups while processing steps.
   ANSI escape cursor-up sequences do not work with `sphinxcontrib-ansi`_
   when the sphinx-based documentation is generated
   (experimental feature for colorized behave output support).
 
-*  An adapted version of the SummaryReporter is used to select
-   SummaryReporter.use_output_stream = "stdout".
-   This improves output generation with `sphinxcontrib-programoutput`_,
-   actually the subprocess.call() functionality with mixed
-   stdout/stderr output collection.
+* `sphinxcontrib-ansi`_ does not process the following ANSI escape sequences
+  correctly (set-color, set-bold)::
 
+    CSI{color_code}mCSI1m
+
+  The color is reset in HTML output when set-bold is detected.
+  The following ANSI escape sequence should be used instead::
+
+    CSI{color_code};1m
+
+  The behave runner, that is used here, patches the original functionality
+  to use the second solution ("use_ansi_escape_colorbold_composites()").
 
 * The coloring schema in `behave`_ is adapted by setting the environment
-  variable::
+  variable ("grey" is replaced with "white")::
 
     GHERKIN_COLORS="executing=white:comments=white"
 
@@ -107,16 +104,3 @@ SPECIAL:
   Note that this is not necessary on Windows.
 
 
-KNOWN PROBLEMS
-------------------------------------------------------------------------------
-
-* `sphinxcontrib-ansi`_ does not process the following ANSI sequences
-  correctly (set-color, set-bold):
-
-    CSI{color}mCSI1m
-
-  The color is reset in HTML output when set-bold is detected.
-
-  Behave has by now an configuration function
-  ``behave.fromatter.ansi_escapes.use_ansi_escape_colorbold_composites()``
-  to enable this behaviour needed for `sphinxcontrib-ansi`_ .

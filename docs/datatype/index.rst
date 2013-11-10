@@ -41,21 +41,16 @@ is only supported by the:
 
     .. index:: parse extensions
 
-    **FEATURES** (in `parse`_):
+    `parse`_ *features*:
 
-      * Optional :py:attr:`pattern` attribute in user-defined type-converters.
-
-            This :py:attr:`pattern` attribute contains a regular expression
-            for better pattern matching of the user-defined type (if present).
-
+      * Optional :py:attr:`pattern` attribute (for regex) in user-defined type converters.
       * The :py:func:`with_pattern()` decorator for type-converters.
 
-      * :py:mod:`parse_type` extensions (:py:class:`TypeBuilder` functionality).
-
-    **FEATURES** (in `parse_type`_):
+    `parse_type`_ *features*:
 
       * Simplifies the creation of type converters for some common cases
       * Creates type converter variants based on cardinality
+      * :py:mod:`parse_type` extensions (:py:class:`TypeBuilder` functionality).
       * Provides an extended parser with **cardinality field** support.
         A cardinality field is a type suffix in parse expression, like:
 
