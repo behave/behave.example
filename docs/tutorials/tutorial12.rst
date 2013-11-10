@@ -36,7 +36,7 @@ spoken language.
         lang = de
 
 
-.. _behave: http://packages.python.org/behave/
+.. _behave: http://pythonhosted.org/behave/
 
 Write the Feature Test
 ------------------------

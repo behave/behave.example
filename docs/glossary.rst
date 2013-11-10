@@ -11,8 +11,7 @@ Glossary
     BDD
         Behaviour driven development:
 
-          * http://dannorth.net/introducing-bdd/
-          * http://behaviour-driven.org/
+          * http://dannorth.net/introducing-bdd
           * http://en.wikipedia.org/wiki/Behavior_Driven_Development
 
     FIT
@@ -33,6 +32,9 @@ Glossary
 .. _jbehave:  http://jbehave.org/
 .. _`wikipedia:Gherkin`: http://en.wikipedia.org/wiki/Gherkin
 
+.. broken:
+
+      * http://behaviour-driven.org/
 
 
 

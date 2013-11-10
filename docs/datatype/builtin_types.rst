@@ -3,7 +3,7 @@
 Predefined Data Types in ``parse``
 ==============================================================================
 
-`behave`_ uses the `parse`_ module (inverse of Python `string.format`_)
+:pypi:`behave` uses the :pypi:`parse` module (inverse of Python `string.format`_)
 under the hoods to parse parameters in step definitions.
 This leads to rather simple and readable parse expressions for step parameters.
 
@@ -45,6 +45,4 @@ Type  Characters Matched                          Output
 ===== =========================================== ========
 
 
-.. _behave: http://pypi.python.org/pypi/behave
-.. _parse:  http://pypi.python.org/pypi/parse
 .. _string.format: http://docs.python.org/library/string.html#format-string-syntax

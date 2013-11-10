@@ -7,11 +7,11 @@ Data Types and User-defined Types
 .. index:: data type
 
 The following sections describe in more detail how user-defined data types
-are used in `behave`_. The type-converter functionality, that is described here,
+are used in :pypi:`behave`. The type converter functionality, that is described here,
 is only supported by the:
 
-  * "parse" matcher (based on: `parse`_ module)
-  * "cfparse" matcher (based on: `parse_type`_ module)
+  * "parse" matcher (based on: :pypi:`parse` module)
+  * "cfparse" matcher (based on: :pypi:`parse_type` module)
 
 ----
 
@@ -33,20 +33,20 @@ is only supported by the:
 .. important::
 
     Part of the functionality, that is described here, is based on
-    `parse_type`_, an extension of the excellent `parse`_ module.
+    :pypi:`parse_type`, an extension of the excellent :pypi:`parse` module.
 
-    The `parse`_ module is the inverse of Python `string.format`_ function.
-    The `parse_type`_ module extends it to simplify the generation of types
+    The :pypi:`parse` module is the inverse of Python `string.format`_ function.
+    The :pypi:`parse_type` module extends it to simplify the generation of types
     (actually type converter functions for types).
 
     .. index:: parse extensions
 
-    `parse`_ *features*:
+    :pypi:`parse` *features*:
 
       * Optional :py:attr:`pattern` attribute (for regex) in user-defined type converters.
       * The :py:func:`with_pattern()` decorator for type-converters.
 
-    `parse_type`_ *features*:
+    :pypi:`parse_type` *features*:
 
       * Simplifies the creation of type converters for some common cases
       * Creates type converter variants based on cardinality
@@ -62,7 +62,4 @@ is only supported by the:
            1..*       "{persons:Person+}"  One  or more: For list<T> (many).
         ============  ==================== ===================================
 
-.. _behave: http://pypi.python.org/pypi/behave
-.. _parse:  http://pypi.python.org/pypi/parse
-.. _parse_type: https://github.com/jenisys/parse_type
 .. _string.format: http://docs.python.org/library/string.html#format-string-syntax

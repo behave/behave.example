@@ -30,14 +30,14 @@ An other point is that the step definition implementation is also identical.
 Variant 1: Use Cardinality Field
 ===============================================================================
 
-The `parse`_ expression format provides an optional cardinality field part
+The :pypi:`parse` expression format provides an optional cardinality field part
 after the type field. The '?' character is used to mark a step parameter
 as optional (cardinality: 0..1).
 
 .. note::
 
-    You need to use the "cfparse" step matcher (`parse`_ with cardinality field
-    support based on a `parse_type`_ parser) to use this functionality.
+    You need to use the "cfparse" step matcher (:pypi:`parse` with cardinality field
+    support based on a :pypi:`parse_type` parser) to use this functionality.
     The cardinality field is optional and follows the type field "Person"
     in a parse expression, like:
 
@@ -105,14 +105,10 @@ Variant 2: Use Data Type with Cardinality 0..1
 A special data type must be defined and registered that has the cardinality
 *zero or one (0..1)*. This is similar to the solution above. But it requires
 that the developer performs this work. In the case above this task is
-implicitly done by `parse`_ when it was needed (triggered by the
-cardinality field).
+implicitly done by :pypi:`parse` when it was needed
+(triggered by the cardinality field).
 
 .. hint::
 
     See also :ref:`id.datatype.cardinality_zero_or_one` for more information.
-
-
-.. _parse:  http://pypi.python.org/pypi/parse
-.. _parse_type:  http://pypi.python.org/pypi/parse_type
 

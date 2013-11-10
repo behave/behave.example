@@ -4,9 +4,9 @@
 Step Matchers
 ==============================================================================
 
-`behave`_ provides 3 step matchers:
+:pypi:`behave` provides 3 step matchers:
 
-  1. "parse" (ParseMatcher) by using the `parse`_ module
+  1. "parse" (ParseMatcher) by using the :pypi:`parse` module
   2. "cfparse" (extended ParseMatcher) that supports the cardinality field syntax
   3. "re" (RegexMatcher) that uses regular expressions for matching parameters
 
@@ -25,7 +25,7 @@ It has the following features:
   * extended parser that understands the cardinality field syntax
   * automatically creates missing type converters for fields
     with cardinality field part
-  * based on `parse_type`_
+  * based on :pypi:`parse_type`
 
 The "re" matcher is used for the following reasons. It:
 
@@ -35,7 +35,7 @@ The "re" matcher is used for the following reasons. It:
 
 It should be noted that all step matchers use regular expressions.
 But most of the regular expressions (and their complexity) is hidden
-by the `parse`_ module (or its cousin).
+by the :pypi:`parse` module (or its cousin).
 
 ----
 
@@ -52,7 +52,4 @@ by the `parse`_ module (or its cousin).
     regular_expressions
 
 
-.. _behave: http://pypi.python.org/pypi/behave
-.. _parse:  http://pypi.python.org/pypi/parse
-.. _parse_type:  https://github.com/jenisys/parse_type
 .. _cucumber: http://cukes.info/

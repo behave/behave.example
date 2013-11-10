@@ -38,15 +38,15 @@ These variations in the *test automation layer* are:
     in several languages.
 
 .. _FIT:        http://fit.c2.com/
-.. _FitLibrary: http://fitlibrary.sourceforge.net/
+.. _FitLibrary: http://sourceforge.net/projects/fitlibrary/
 .. _fitnesse:   http://fitnesse.org/
 .. _Fixture Gallery: http://gojko.net/fitnesse/fixturegallery/
 
 .. _fit.RowFixture:  http://fitnesse.org/FitNesse.UserGuide.RowFixture
-.. _fit.RowFixture2: http://www.fitnesse.info/fixturegallery:basicfitfixtures:rowfixture
-.. _fitlibrary.ArrayFixture:  http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:arrayfixture
-.. _fitlibrary.SetFixture:    http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:setfixture
-.. _fitlibrary.SubsetFixture: http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:subsetfixture
+.. _fit.RowFixture2: http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.BasicFitFixtures.RowFixture
+.. _fitlibrary.ArrayFixture:  http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture
+.. _fitlibrary.SetFixture:    http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture
+.. _fitlibrary.SubsetFixture: http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture
 
 
 Both, **unordered dataset comparison** and

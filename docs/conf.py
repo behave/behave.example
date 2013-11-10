@@ -101,6 +101,8 @@ if ansiterm_supported:
     html_ansi_stylesheet = os.path.join(HERE, "_static/ansi_gherkin.css")
 
 extlinks = {
+    "pypi": ("https://pypi.python.org/pypi/%s", ""),
+    "github": ("https://github.com/%s", "github:/"),
     "issue":
         ("https://github.com/jenisys/behave.example/issue/%s", "issue #"),
     "behave.issue":
