@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Enumeration (String-to-Value Mapping) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Enumeration (String-to-Value Mapping) &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="More Complex Data Types" href="more_complex_types.html" />
     <link rel="prev" title="Choice2 (Word/String Alternatives)" href="choice2.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Enumeration (String-to-Value Mapping)</span></a></h2>
           </div>
           <div class="topnav">
@@ -109,12 +109,12 @@
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
 <span class="c"># -- ENUM: Returns True (for &quot;yes&quot; and &quot;jubilee&quot;), False (for &quot;no&quot;)</span>
 <span class="n">parse_yesno</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_enum</span><span class="p">({</span><span class="s">&quot;yes&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">&quot;no&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&quot;jubilee&quot;</span><span class="p">:</span> <span class="bp">True</span> <span class="p">})</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">YesNo</span><span class="o">=</span><span class="n">parse_yesno</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">YesNo</span><span class="o">=</span><span class="n">parse_yesno</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -148,24 +148,24 @@ words/strings and stores them in <tt class="xref py py-attr docutils literal"><s
 <p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt> (and all steps are matched):</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/enum.feature
-Feature: User-Defined Enum Type (Name-to-Value Mapping)<span class="ansi-white"> # ../datatype.features/enum.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: User-Defined Enum Type (Name-to-Value Mapping)</span><span class="ansi-white">   # ../datatype.features/enum.feature:1</span>
 
-  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:3</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you love me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">yes</span><span class="ansi-green">&quot;</span><span class="ansi-white">                 # ../datatype.features/steps/step_enum.py:49</span>
+<span class="ansi-bold ansi-black">  Scenario:  </span><span class="ansi-white">                                # ../datatype.features/enum.feature:3</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-bold ansi-green">Do you love me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-bold ansi-green">yes</span><span class="ansi-green">&quot;</span><span class="ansi-white">                 # ../datatype.features/steps/step_enum.py:49</span>
 
-  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:7</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you hate me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">no</span><span class="ansi-green">&quot;</span><span class="ansi-white">                  # ../datatype.features/steps/step_enum.py:49</span>
+<span class="ansi-bold ansi-black">  Scenario:  </span><span class="ansi-white">                                # ../datatype.features/enum.feature:7</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-bold ansi-green">Do you hate me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-bold ansi-green">no</span><span class="ansi-green">&quot;</span><span class="ansi-white">                  # ../datatype.features/steps/step_enum.py:49</span>
 
-  Scenario:  <span class="ansi-white">                                # ../datatype.features/enum.feature:11</span>
-    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-green ansi-bold">Do you kiss me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-green ansi-bold">jubilee</span><span class="ansi-green">&quot;</span><span class="ansi-white">             # ../datatype.features/steps/step_enum.py:49</span>
+<span class="ansi-bold ansi-black">  Scenario:  </span><span class="ansi-white">                                # ../datatype.features/enum.feature:11</span>
+    <span class="ansi-green">When </span><span class="ansi-green">Romeo asks Julia: &quot;</span><span class="ansi-bold ansi-green">Do you kiss me?</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../datatype.features/steps/step_enum.py:45</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the answer is &quot;</span><span class="ansi-bold ansi-green">jubilee</span><span class="ansi-green">&quot;</span><span class="ansi-white">             # ../datatype.features/steps/step_enum.py:49</span>
 
 1 feature passed, 0 failed, 0 skipped
 3 scenarios passed, 0 failed, 0 skipped
 6 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 </div>
 <div class="section" id="the-complete-picture">
@@ -201,12 +201,12 @@ Took 0m0.0s
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
 <span class="c"># -- ENUM: Returns True (for &quot;yes&quot; and &quot;jubilee&quot;), False (for &quot;no&quot;)</span>
 <span class="n">parse_yesno</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_enum</span><span class="p">({</span><span class="s">&quot;yes&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">&quot;no&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">&quot;jubilee&quot;</span><span class="p">:</span> <span class="bp">True</span> <span class="p">})</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">YesNo</span><span class="o">=</span><span class="n">parse_yesno</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">YesNo</span><span class="o">=</span><span class="n">parse_yesno</span><span class="p">)</span>
 
 <span class="c"># @mark.steps</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
@@ -291,7 +291,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 7: Result Table &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Tutorial 7: Result Table &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 8: Execute Other Steps in a Step" href="tutorial08.html" />
     <link rel="prev" title="Tutorial 6: Setup Table" href="tutorial06.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 7: Result Table</span></a></h2>
           </div>
           <div class="topnav">
@@ -107,7 +107,7 @@ These variations in the <em>test automation layer</em> are:</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p>The <a class="reference external" href="http://fit.c2.com/">FIT</a> test framework provides similar concepts via Fixtures.
-An extension of <a class="reference external" href="http://fit.c2.com/">FIT</a>, the <a class="reference external" href="http://fitlibrary.sourceforge.net/">FitLibrary</a>, provides even more
+An extension of <a class="reference external" href="http://fit.c2.com/">FIT</a>, the <a class="reference external" href="http://sourceforge.net/projects/fitlibrary/">FitLibrary</a>, provides even more
 advanced fixtures classes/tables.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -123,16 +123,16 @@ advanced fixtures classes/tables.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>Subset</td>
-<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:subsetfixture">fitlibrary.SubsetFixture</a>,
+<td><a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture">fitlibrary.SubsetFixture</a>,
 <a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.RowFixture">fit.RowFixture</a>
 (with table args)</td>
-<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:arrayfixture">fitlibrary.ArrayFixture</a>
+<td><a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture">fitlibrary.ArrayFixture</a>
 (variant)</td>
 </tr>
 <tr class="row-odd"><td>Complete</td>
 <td><a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.RowFixture">fit.RowFixture</a>,
-<a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:setfixture">fitlibrary.SetFixture</a></td>
-<td><a class="reference external" href="http://www.fitnesse.info/fixturegallery:fitlibraryfixtures:arrayfixture">fitlibrary.ArrayFixture</a></td>
+<a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture">fitlibrary.SetFixture</a></td>
+<td><a class="reference external" href="http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture">fitlibrary.ArrayFixture</a></td>
 </tr>
 </tbody>
 </table>
@@ -188,7 +188,7 @@ in two different scenarios.</p>
     <span class="kn">import</span> <span class="n">contains_inanyorder</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compares expected with actual persons in a department.</span>
 <span class="sd">    NOTE: Unordered comparison (ordering is not important).</span>
@@ -204,7 +204,7 @@ in two different scenarios.</p>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">contains_inanyorder</span><span class="p">(</span><span class="o">*</span><span class="n">expected_persons</span><span class="p">),</span> <span class="n">actual_persons</span><span class="p">)</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will have at least the following people in &quot;{department}&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">department</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compares subset of persons with actual persons in a department.</span>
 <span class="sd">    NOTE: Unordered subset comparison.</span>
@@ -224,7 +224,7 @@ in two different scenarios.</p>
 <span class="c"># MORE STEPS: step_tutorial06.py</span>
 <span class="c"># ----------------------------------------------------------------------------</span>
 <span class="c"># @given(&#39;a set of specific users&#39;)</span>
-<span class="c"># def step(context):</span>
+<span class="c"># def step_impl(context):</span>
 <span class="c">#    model = getattr(context, &quot;model&quot;, None)</span>
 <span class="c">#    if not model:</span>
 <span class="c">#        context.model = CompanyModel()</span>
@@ -232,7 +232,7 @@ in two different scenarios.</p>
 <span class="c">#        context.model.add_user(row[&quot;name&quot;], deparment=row[&quot;department&quot;])</span>
 <span class="c">#</span>
 <span class="c"># @when(&#39;we count the number of people in each department&#39;)</span>
-<span class="c"># def step(context):</span>
+<span class="c"># def step_impl(context):</span>
 <span class="c">#    context.model.count_persons_per_department()</span>
 </pre></div>
 </div>
@@ -285,37 +285,37 @@ in two different scenarios.</p>
 <p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial07_step_result_table.feature
-Feature: Step Result Table (tutorial07)<span class="ansi-white"> # ../features/tutorial07_step_result_table.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Step Result Table (tutorial07)</span><span class="ansi-white">   # ../features/tutorial07_step_result_table.feature:1</span>
 
-  Scenario: Unordered Result Table Comparison (RowFixture Table) <span class="ansi-white"> # ../features/tutorial07_step_result_table.feature:3</span>
+<span class="ansi-bold ansi-black">  Scenario: Unordered Result Table Comparison (RowFixture Table) </span><span class="ansi-white"> # ../features/tutorial07_step_result_table.feature:3</span>
     <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                 # ../features/steps/step_tutorial06.py:28</span>
-      | name   | department  |
+<span class="ansi-blue">      | name   | department  |
       | Alice  | Beer Cans   |
       | Bob    | Beer Cans   |
       | Charly | Silly Walks |
       | Dodo   | Silly Walks |
-    <span class="ansi-green">Then </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">       # ../features/steps/step_tutorial07.py:46</span>
-      | name   |
+</span>    <span class="ansi-green">Then </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-bold ansi-green">Silly Walks</span><span class="ansi-green">&quot;</span><span class="ansi-white">       # ../features/steps/step_tutorial07.py:46</span>
+<span class="ansi-blue">      | name   |
       | Charly |
       | Dodo   |
-    <span class="ansi-green">And </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-green ansi-bold">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial07.py:46</span>
-      | name  |
+</span>    <span class="ansi-green">And </span><span class="ansi-green">we will have the following people in &quot;</span><span class="ansi-bold ansi-green">Beer Cans</span><span class="ansi-green">&quot;</span><span class="ansi-white">          # ../features/steps/step_tutorial07.py:46</span>
+<span class="ansi-blue">      | name  |
       | Bob   |
       | Alice |
-
-  Scenario: Subset Result Table Comparison <span class="ansi-white">                               # ../features/tutorial07_step_result_table.feature:20</span>
+</span>
+<span class="ansi-bold ansi-black">  Scenario: Subset Result Table Comparison </span><span class="ansi-white">                               # ../features/tutorial07_step_result_table.feature:20</span>
     <span class="ansi-green">Given </span><span class="ansi-green">a set of specific users</span><span class="ansi-white">                                         # ../features/steps/step_tutorial06.py:28</span>
-      | name  | department       |
+<span class="ansi-blue">      | name  | department       |
       | Alice | Super-sonic Cars |
       | Bob   | Super-sonic Cars |
-    <span class="ansi-green">Then </span><span class="ansi-green">we will have at least the following people in &quot;</span><span class="ansi-green ansi-bold">Super-sonic Cars</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial07.py:62</span>
-      | name  |
+</span>    <span class="ansi-green">Then </span><span class="ansi-green">we will have at least the following people in &quot;</span><span class="ansi-bold ansi-green">Super-sonic Cars</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial07.py:62</span>
+<span class="ansi-blue">      | name  |
       | Alice |
-
+</span>
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 5 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 </div>
 </div>
@@ -383,7 +383,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Data Types and User-defined Types &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Data Types and User-defined Types &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="next" title="Type Definition Basics" href="basics.html" />
     <link rel="prev" title="Tutorial 12: Use another Spoken Language" href="../tutorials/tutorial12.html" /> 
   </head>
@@ -35,7 +35,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Data Types and User-defined Types</span></a></h2>
           </div>
           <div class="topnav">
@@ -82,8 +82,14 @@
   <div class="section" id="data-types-and-user-defined-types">
 <span id="id-datatype"></span><h1>Data Types and User-defined Types<a class="headerlink" href="#data-types-and-user-defined-types" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">The following sections describe in more detail how user-defined data types
-are used in <a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a>. The type-converter functionality, that is described here,
-is only supported by the &#8220;parse&#8221; matcher.</p>
+are used in <a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a>. The type converter functionality, that is described here,
+is only supported by the:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;parse&#8221; matcher (based on: <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module)</li>
+<li>&#8220;cfparse&#8221; matcher (based on: <a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a> module)</li>
+</ul>
+</div></blockquote>
 <hr class="docutils" />
 <p><strong>Contents:</strong></p>
 <div class="toctree-wrapper compound">
@@ -101,25 +107,29 @@ is only supported by the &#8220;parse&#8221; matcher.</p>
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p>Part of the functionality, that is described here, is <strong>experimental</strong>.
-Use the <a class="reference external" href="https://github.com/jenisys/parse">jenisys/parse</a> fork (or its copy here),
-if you want to try it out the exact functionality that is described here.</p>
-<p>The <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module is the inverse of Python <a class="reference external" href="http://docs.python.org/library/string.html#format-string-syntax">string.format</a> function.</p>
-<p id="index-1"><strong>NEW FEATURES</strong> (in <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a>):</p>
+<p>Part of the functionality, that is described here, is based on
+<a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a>, an extension of the excellent <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module.</p>
+<p>The <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module is the inverse of Python <a class="reference external" href="http://docs.python.org/library/string.html#format-string-syntax">string.format</a> function.
+The <a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a> module extends it to simplify the generation of types
+(actually type converter functions for types).</p>
+<p id="index-1"><a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> <em>features</em>:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Optional <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute (for regex) in user-defined type converters.</li>
+<li>The <tt class="xref py py-func docutils literal"><span class="pre">with_pattern()</span></tt> decorator for type-converters.</li>
+</ul>
+</div></blockquote>
+<p><a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a> <em>features</em>:</p>
 <blockquote class="last">
 <div><ul>
-<li><p class="first">Optional <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute in user-defined type-converters.</p>
-<blockquote>
-<div><p>This <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute contains a regular expression
-for better pattern matching of the user-defined type (if present).</p>
-</div></blockquote>
+<li><p class="first">Simplifies the creation of type converters for some common cases</p>
 </li>
-<li><p class="first">The <tt class="xref py py-func docutils literal"><span class="pre">with_pattern()</span></tt> decorator for type-converters.</p>
+<li><p class="first">Creates type converter variants based on cardinality</p>
 </li>
 <li><p class="first"><tt class="xref py py-mod docutils literal"><span class="pre">parse_type</span></tt> extensions (<tt class="xref py py-class docutils literal"><span class="pre">TypeBuilder</span></tt> functionality).</p>
 </li>
-<li><p class="first">Optional <strong>cardinality field</strong> part after type part in parse expression,
-like:</p>
+<li><p class="first">Provides an extended parser with <strong>cardinality field</strong> support.
+A cardinality field is a type suffix in parse expression, like:</p>
 <table border="1" class="docutils">
 <colgroup>
 <col width="18%" />
@@ -127,50 +137,27 @@ like:</p>
 <col width="52%" />
 </colgroup>
 <thead valign="bottom">
-<tr class="row-odd"><th class="head"><p class="first last">Cardinality</p>
-</th>
-<th class="head"><p class="first last">Example</p>
-</th>
-<th class="head"><p class="first last">Description</p>
-</th>
+<tr class="row-odd"><th class="head">Cardinality</th>
+<th class="head">Example</th>
+<th class="head">Description</th>
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td><p class="first last">0..1</p>
-</td>
-<td><p class="first last">&#8220;{person:Person?}&#8221;</p>
-</td>
-<td><p class="first last">Zero or one:  For optional parts.</p>
-</td>
+<tr class="row-even"><td>0..1</td>
+<td>&#8220;{person:Person?}&#8221;</td>
+<td>Zero or one:  For optional parts.</td>
 </tr>
-<tr class="row-odd"><td><p class="first last">0..*</p>
-</td>
-<td><p class="first last">&#8220;{persons:Person*}&#8221;</p>
-</td>
-<td><p class="first last">Zero or more: For list&lt;T&gt; (many0).</p>
-</td>
+<tr class="row-odd"><td>0..*</td>
+<td>&#8220;{persons:Person*}&#8221;</td>
+<td>Zero or more: For list&lt;T&gt; (many0).</td>
 </tr>
-<tr class="row-even"><td><p class="first last">1..*</p>
-</td>
-<td><p class="first last">&#8220;{persons:Person+}&#8221;</p>
-</td>
-<td><p class="first last">One  or more: For list&lt;T&gt; (many).</p>
-</td>
+<tr class="row-even"><td>1..*</td>
+<td>&#8220;{persons:Person+}&#8221;</td>
+<td>One  or more: For list&lt;T&gt; (many).</td>
 </tr>
 </tbody>
 </table>
 </li>
-</ul>
-</div></blockquote>
-</div>
-<div class="admonition hint">
-<p class="first admonition-title">Hint</p>
-<p><a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> &gt;= 1.6 supports now the following features:</p>
-<blockquote class="last">
-<div><ul class="simple">
-<li><tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute in user-defined type-converters.</li>
-<li><tt class="xref py py-func docutils literal"><span class="pre">with_pattern()</span></tt> decorator for type-converters.</li>
-<li><strong>cardinality field</strong> for zero-or-one case.</li>
 </ul>
 </div></blockquote>
 </div>
@@ -228,7 +215,7 @@ like:</p>
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

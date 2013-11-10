@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cardinality: Zero or One (Optional) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Cardinality: Zero or One (Optional) &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Cardinality: One or More (List of Type)" href="cardinality_one_or_more.html" />
     <link rel="prev" title="Predefined Data Types in parse" href="builtin_types.html" /> 
@@ -36,13 +36,13 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Cardinality: Zero or One (Optional)</span></a></h2>
           </div>
           <div class="topnav">
             
         <p>
-        &#171;&#160;&#160;<a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal docutils literal docutils literal"><span class="pre">parse</span></tt></a>
+        &#171;&#160;&#160;<a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -117,10 +117,11 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
-<span class="kn">from</span> <span class="nn">parse</span> <span class="kn">import</span> <span class="n">TypeBuilder</span><span class="p">,</span> <span class="n">with_pattern</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+<span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -128,7 +129,7 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 <span class="c"># -- SAME:</span>
 <span class="c"># parse_optional_word_a = TypeBuilder.with_zero_or_one(parse_word_a)</span>
 <span class="n">parse_optional_word_a</span>   <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_optional</span><span class="p">(</span><span class="n">parse_word_a</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -177,20 +178,20 @@ attribute.</p>
 <p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/cardinality.zero_or_one.feature
-Feature: Data Type with Cardinality 0..1 (Optional Part)<span class="ansi-white"> # ../datatype.features/cardinality.zero_or_one.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Data Type with Cardinality 0..1 (Optional Part)</span><span class="ansi-white">   # ../datatype.features/cardinality.zero_or_one.feature:1</span>
 
-  Scenario: Case1 &quot;When attacked by a ...&quot; <span class="ansi-white"> # ../datatype.features/cardinality.zero_or_one.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">        # ../datatype.features/steps/step_cardinality_zero_or_one.py:53</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">a </span><span class="ansi-green"></span><span class="ansi-green ansi-bold">samurai</span><span class="ansi-white">              # ../datatype.features/steps/step_cardinality_zero_or_one.py:41</span>
+<span class="ansi-bold ansi-black">  Scenario: Case1 &quot;When attacked by a ...&quot; </span><span class="ansi-white"> # ../datatype.features/cardinality.zero_or_one.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">black-belt</span><span class="ansi-white">        # ../datatype.features/steps/step_cardinality_zero_or_one.py:54</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">              # ../datatype.features/steps/step_cardinality_zero_or_one.py:42</span>
 
-  Scenario: Case2 &quot;When attacked by ...&quot; <span class="ansi-white"> # ../datatype.features/cardinality.zero_or_one.feature:7</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">black-belt</span><span class="ansi-white">      # ../datatype.features/steps/step_cardinality_zero_or_one.py:53</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold"></span><span class="ansi-green"></span><span class="ansi-green ansi-bold">Chuck Norris</span><span class="ansi-white">         # ../datatype.features/steps/step_cardinality_zero_or_one.py:41</span>
+<span class="ansi-bold ansi-black">  Scenario: Case2 &quot;When attacked by ...&quot; </span><span class="ansi-white"> # ../datatype.features/cardinality.zero_or_one.feature:7</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">black-belt</span><span class="ansi-white">      # ../datatype.features/steps/step_cardinality_zero_or_one.py:54</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">         # ../datatype.features/steps/step_cardinality_zero_or_one.py:42</span>
 
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 4 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 </div>
 <div class="section" id="the-complete-picture">
@@ -213,10 +214,11 @@ Took 0m0.0s
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
-<span class="kn">from</span> <span class="nn">parse</span> <span class="kn">import</span> <span class="n">TypeBuilder</span><span class="p">,</span> <span class="n">with_pattern</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
+<span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
+<span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -224,7 +226,7 @@ Took 0m0.0s
 <span class="c"># -- SAME:</span>
 <span class="c"># parse_optional_word_a = TypeBuilder.with_zero_or_one(parse_word_a)</span>
 <span class="n">parse_optional_word_a</span>   <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_optional</span><span class="p">(</span><span class="n">parse_word_a</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">optional_a_</span><span class="o">=</span><span class="n">parse_optional_word_a</span><span class="p">)</span>
 
 
 <span class="c"># @mark.steps</span>
@@ -281,7 +283,7 @@ Took 0m0.0s
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="builtin_types.html"
-                        title="previous chapter">Predefined Data Types in <tt class="docutils literal docutils literal docutils literal"><span class="pre">parse</span></tt></a></p>
+                        title="previous chapter">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="cardinality_one_or_more.html"
                         title="next chapter">Cardinality: One or More (List of Type)</a></p>
@@ -313,7 +315,7 @@ Took 0m0.0s
         <div class="bottomnav">
           
         <p>
-        &#171;&#160;&#160;<a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal docutils literal docutils literal"><span class="pre">parse</span></tt></a>
+        &#171;&#160;&#160;<a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -324,7 +326,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

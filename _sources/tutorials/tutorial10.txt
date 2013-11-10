@@ -5,11 +5,11 @@ Tutorial 10: User-defined Data Type
 
 .. index:: data type, user-defined data type
 
-:Goal: Show how user-defined datatypes can be used in step parameters.
+:Goal: Show how user-defined data types can be used in step parameters.
 
-User-defined datatypes simplify the processing in step definitions.
+User-defined data types simplify the processing in step definitions.
 The string parameters are automatically parsed and converted into
-specific datatypes.
+specific data types.
 
 .. note::
 
@@ -61,7 +61,7 @@ When you run the feature file from above:
 
     **Predefined Types**
 
-    `behave`_ uses the `parse`_ module (inverse of Python `string.format`_)
+    :pypi:`behave` uses the :pypi:`parse` module (inverse of Python `string.format`_)
     under the hoods to parse parameters in step definitions.
     This leads to rather simple and readable parse expressions for step parameters.
 
@@ -69,6 +69,4 @@ When you run the feature file from above:
     In addition, see also :ref:`id.datatype` for more information on
     defining and using user-defined data types.
 
-.. _behave: http://pypi.python.org/pypi/behave
-.. _parse:  http://pypi.python.org/pypi/parse
 .. _string.format: http://docs.python.org/library/string.html#format-string-syntax

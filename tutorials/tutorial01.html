@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 1: First Steps &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Tutorial 1: First Steps &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 2: Natural Language" href="tutorial02.html" />
     <link rel="prev" title="Tutorials" href="index.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 1: First Steps</span></a></h2>
           </div>
           <div class="topnav">
@@ -120,15 +120,15 @@ with Python functions. These step functions provide the test automation layer
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
 <span class="nd">@given</span><span class="p">(</span><span class="s">&#39;we have behave installed&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="k">pass</span>
 
 <span class="nd">@when</span><span class="p">(</span><span class="s">&#39;we implement a test&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="k">assert</span> <span class="bp">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;behave will test it for us!&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 </div>
@@ -138,9 +138,9 @@ with Python functions. These step functions provide the test automation layer
 <p>When you run the feature file from above (with coloring enabled):</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial01_basics.feature
-Feature: Showing off behave (tutorial01)<span class="ansi-white"> # ../features/tutorial01_basics.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Showing off behave (tutorial01)</span><span class="ansi-white">   # ../features/tutorial01_basics.feature:1</span>
 
-  Scenario: Run a simple test <span class="ansi-white">       # ../features/tutorial01_basics.feature:3</span>
+<span class="ansi-bold ansi-black">  Scenario: Run a simple test </span><span class="ansi-white">       # ../features/tutorial01_basics.feature:3</span>
     <span class="ansi-green">Given </span><span class="ansi-green">we have behave installed</span><span class="ansi-white">   # ../features/steps/step_tutorial01.py:12</span>
     <span class="ansi-green">When </span><span class="ansi-green">we implement a test</span><span class="ansi-white">         # ../features/steps/step_tutorial01.py:16</span>
     <span class="ansi-green">Then </span><span class="ansi-green">behave will test it for us!</span><span class="ansi-white"> # ../features/steps/step_tutorial01.py:20</span>
@@ -148,37 +148,23 @@ Feature: Showing off behave (tutorial01)<span class="ansi-white"> # ../features/
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
-</pre>
-<p>When you run the feature file from above (with coloring disabled):</p>
-<pre class="ansi-block literal-block">
-$ behave -c ../features/tutorial01_basics.feature
-Feature: Showing off behave (tutorial01) # ../features/tutorial01_basics.feature:1
-
-  Scenario: Run a simple test        # ../features/tutorial01_basics.feature:3
-    Given we have behave installed   # ../features/steps/step_tutorial01.py:12
-    When we implement a test         # ../features/steps/step_tutorial01.py:16
-    Then behave will test it for us! # ../features/steps/step_tutorial01.py:20
-
-1 feature passed, 0 failed, 0 skipped
-1 scenario passed, 0 failed, 0 skipped
-3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 <p>As alternative you can run the feature with plain formatting
 (or another formatter):</p>
 <pre class="ansi-block literal-block">
-$ behave --format=plain ../features/tutorial01_basics.feature
+$ behave --format=plain --show-timings ../features/tutorial01_basics.feature
 Feature: Showing off behave (tutorial01)
-   Scenario: Run a simple test
-       Given we have behave installed ... passed
-        When we implement a test ... passed
-        Then behave will test it for us! ... passed
+
+  Scenario: Run a simple test
+    Given we have behave installed ... passed in 0.000s
+    When we implement a test ... passed in 0.000s
+    Then behave will test it for us! ... passed in 0.000s
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 </div>
 </div>
@@ -245,7 +231,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
