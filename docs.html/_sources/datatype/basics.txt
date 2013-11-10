@@ -10,7 +10,7 @@ Preparation/setup phase:
 
     0. The user registers a data type, for example in ``environment.py``.
 
-The `parse`_ module is the workhorse:
+The :pypi:`parse` module is the workhorse:
 
     1. The :py:class:`parse.Parser` class matches a string for a data type.
 
@@ -37,7 +37,7 @@ The following example shows how a user-defined type can be provided.
 Example with Regular Expression Pattern
 ----------------------------------------
 
-For better matching of user-defined data types, the `parse`_ supports
+For better matching of user-defined data types, the :pypi:`parse` supports
 an optional ``pattern`` attribute for type-converter functions.
 If this attribute is provided, it contains a textual regular expression
 for this data type. This regular expression pattern is used to match
@@ -57,6 +57,3 @@ or by assigning the :py:attr:`pattern` attribute, like:
 .. code-block:: python
 
     parse_word_a.pattern = r"a\s+"
-
-
-.. _parse:  http://pypi.python.org/pypi/parse

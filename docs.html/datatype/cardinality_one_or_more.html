@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Cardinality: One or More (List of Type) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Cardinality: One or More (List of Type) &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Cardinality: Zero or More (List of Type)" href="cardinality_zero_or_more.html" />
     <link rel="prev" title="Cardinality: Zero or One (Optional)" href="cardinality_zero_or_one.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Cardinality: One or More (List of Type)</span></a></h2>
           </div>
           <div class="topnav">
@@ -127,17 +127,22 @@ to be parsed. Initially, this should be a comma-separated list, like:</p>
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
 <span class="n">company_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;Charly&quot;</span><span class="p">,</span> <span class="s">&quot;Dodo&quot;</span> <span class="p">]</span>
 <span class="n">parse_person</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">(</span><span class="n">company_persons</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
 
 <span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
 <span class="c"># parse_persons = TypeBuilder.with_one_or_more(parse_person, listsep=&quot;and&quot;)</span>
 <span class="n">parse_persons</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_many</span><span class="p">(</span><span class="n">parse_person</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+
+<span class="c"># -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.</span>
+<span class="c"># parse_persons2 = TypeBuilder.with_many(parse_person)</span>
+<span class="c"># type_dict = {&quot;Person+&quot;: parse_persons2}</span>
+<span class="c"># register_type(**type_dict)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -193,32 +198,32 @@ items by using the type-converter for one item (&#8220;Person&#8221;).</p>
 <p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/cardinality.one_or_more.feature
-Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)<span class="ansi-white"> # ../datatype.features/cardinality.one_or_more.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span><span class="ansi-white">   # ../datatype.features/cardinality.one_or_more.feature:1</span>
 
-  Scenario: Many list, comma-separated <span class="ansi-white">    # ../datatype.features/cardinality.one_or_more.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                # ../datatype.features/steps/step_cardinality_one_or_more.py:74</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Alice, Bob, Dodo</span><span class="ansi-white">           # ../datatype.features/steps/step_cardinality_one_or_more.py:58</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Charly</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:58</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white"> # ../datatype.features/steps/step_cardinality_one_or_more.py:78</span>
-      | name   |
+<span class="ansi-bold ansi-black">  Scenario: Many list, comma-separated </span><span class="ansi-white">    # ../datatype.features/cardinality.one_or_more.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                # ../datatype.features/steps/step_cardinality_one_or_more.py:79</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-bold ansi-green">Alice, Bob, Dodo</span><span class="ansi-white">           # ../datatype.features/steps/step_cardinality_one_or_more.py:63</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I meet </span><span class="ansi-bold ansi-green">Charly</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:63</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white"> # ../datatype.features/steps/step_cardinality_one_or_more.py:83</span>
+<span class="ansi-blue">      | name   |
       | Alice  |
       | Bob    |
       | Charly |
       | Dodo   |
-
-  Scenario: Many list with list-separator &quot;and&quot; <span class="ansi-white"> # ../datatype.features/cardinality.one_or_more.feature:14</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:74</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-green ansi-bold">Alice and Bob and Charly</span><span class="ansi-white">         # ../datatype.features/steps/step_cardinality_one_or_more.py:64</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white">       # ../datatype.features/steps/step_cardinality_one_or_more.py:78</span>
-      | name   |
+</span>
+<span class="ansi-bold ansi-black">  Scenario: Many list with list-separator &quot;and&quot; </span><span class="ansi-white"> # ../datatype.features/cardinality.one_or_more.feature:14</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I go to a meeting</span><span class="ansi-white">                      # ../datatype.features/steps/step_cardinality_one_or_more.py:79</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I meet </span><span class="ansi-bold ansi-green">Alice and Bob and Charly</span><span class="ansi-white">         # ../datatype.features/steps/step_cardinality_one_or_more.py:69</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the following persons are present</span><span class="ansi-white">       # ../datatype.features/steps/step_cardinality_one_or_more.py:83</span>
+<span class="ansi-blue">      | name   |
       | Alice  |
       | Bob    |
       | Charly |
-
+</span>
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 7 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 </div>
 <div class="section" id="the-complete-picture">
@@ -261,17 +266,22 @@ Took 0m0.0s
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
 <span class="c"># ------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">matchers</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
 <span class="n">company_persons</span> <span class="o">=</span> <span class="p">[</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="s">&quot;Charly&quot;</span><span class="p">,</span> <span class="s">&quot;Dodo&quot;</span> <span class="p">]</span>
 <span class="n">parse_person</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">(</span><span class="n">company_persons</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">Person</span><span class="o">=</span><span class="n">parse_person</span><span class="p">)</span>
 
 <span class="c"># -- MANY-TYPE: Persons := list&lt;Person&gt; with list-separator = &quot;and&quot;</span>
 <span class="c"># parse_persons = TypeBuilder.with_one_or_more(parse_person, listsep=&quot;and&quot;)</span>
 <span class="n">parse_persons</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">with_many</span><span class="p">(</span><span class="n">parse_person</span><span class="p">,</span> <span class="n">listsep</span><span class="o">=</span><span class="s">&quot;and&quot;</span><span class="p">)</span>
-<span class="n">matchers</span><span class="o">.</span><span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">PersonAndMore</span><span class="o">=</span><span class="n">parse_persons</span><span class="p">)</span>
+
+<span class="c"># -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.</span>
+<span class="c"># parse_persons2 = TypeBuilder.with_many(parse_person)</span>
+<span class="c"># type_dict = {&quot;Person+&quot;: parse_persons2}</span>
+<span class="c"># register_type(**type_dict)</span>
 
 
 <span class="c"># @mark.steps</span>
@@ -378,7 +388,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

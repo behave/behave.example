@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Use Multi-Methods in Step Definitions &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Use Multi-Methods in Step Definitions &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Step Matchers" href="index.html" />
     <link rel="next" title="Regular Expressions" href="regular_expressions.html" />
     <link rel="prev" title="Use Optional Part in Step Definitions" href="use_optional_part.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Use Multi-Methods in Step Definitions</span></a></h2>
           </div>
           <div class="topnav">
@@ -179,18 +179,18 @@ these cases.</p>
 <p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../step_matcher.features/use_multi_methods.feature
-Feature: Use Multi-Methods in Step Definitions<span class="ansi-white"> # ../step_matcher.features/use_multi_methods.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Use Multi-Methods in Step Definitions</span><span class="ansi-white">   # ../step_matcher.features/use_multi_methods.feature:1</span>
 
-  Scenario:  <span class="ansi-white">              # ../step_matcher.features/use_multi_methods.feature:2</span>
+<span class="ansi-bold ansi-black">  Scenario:  </span><span class="ansi-white">              # ../step_matcher.features/use_multi_methods.feature:2</span>
     <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:60</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">2</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">cucumbers</span><span class="ansi-white"> # ../step_matcher.features/steps/step_multi_methods.py:66</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">3</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">apples</span><span class="ansi-white">     # ../step_matcher.features/steps/step_multi_methods.py:71</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-green ansi-bold">4</span><span class="ansi-green"> </span><span class="ansi-green ansi-bold">diamonds</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:76</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-bold ansi-green">2</span><span class="ansi-green"> </span><span class="ansi-bold ansi-green">cucumbers</span><span class="ansi-white"> # ../step_matcher.features/steps/step_multi_methods.py:66</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-bold ansi-green">3</span><span class="ansi-green"> </span><span class="ansi-bold ansi-green">apples</span><span class="ansi-white">     # ../step_matcher.features/steps/step_multi_methods.py:71</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-bold ansi-green">4</span><span class="ansi-green"> </span><span class="ansi-bold ansi-green">diamonds</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:76</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 4 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -432,7 +432,7 @@ Each step matches a different step definition (implementation).</p>
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

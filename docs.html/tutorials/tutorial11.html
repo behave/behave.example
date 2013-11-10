@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 11: Use Tags &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Tutorial 11: Use Tags &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 12: Use another Spoken Language" href="tutorial12.html" />
     <link rel="prev" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 11: Use Tags</span></a></h2>
           </div>
           <div class="topnav">
@@ -94,7 +94,7 @@
 </tbody>
 </table>
 <p>Several test frameworks support a concept of tags to mark a number of tests
-(<a class="reference external" href="http://pytest.org/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="http://kentbeck.github.com/junit/javadoc/latest/org/junit/experimental/categories/Categories.html">JUnit Categories</a>,
+(<a class="reference external" href="http://pytest.org/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="https://github.com/junit-team/junit/wiki/Categories">JUnit Categories</a>,
 <a class="reference external" href="http://www.nunit.org/index.php?p=category&amp;r=2.4">NUnit CategoryAttribute</a>).
 This provides a simple, flexible and effective mechanism to:</p>
 <blockquote>
@@ -210,23 +210,29 @@ static test package structure.</p>
 then any feature marked with this tag is skipped as well as all of its scenarios.</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=-wip ../features/tutorial11_tags.feature
-&#64;wip
-Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-white"> # ../features/tutorial11_tags.feature:2</span>
-  In order to increase the ninja survival rate,
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
-  based on their skill levels.
+  based on their skill levels.</span>
 
-  &#64;ninja.any
-  Scenario: Weaker opponent <span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by a samurai</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should engage the opponent</span>
 
-  &#64;ninja.chuck
-  Scenario: Stronger opponent <span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by Chuck Norris</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should run for his life</span>
 
 0 features passed, 0 failed, 1 skipped
 0 scenarios passed, 0 failed, 2 skipped
 0 steps passed, 0 failed, 6 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -235,26 +241,29 @@ Took 0m0.0s
 <p>When you <strong>enable the tag</strong> &#64;ninja.chuck:</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=ninja.chuck ../features/tutorial11_tags.feature
-&#64;wip
-Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-white"> # ../features/tutorial11_tags.feature:2</span>
-  In order to increase the ninja survival rate,
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
-  based on their skill levels.
+  based on their skill levels.</span>
 
-  &#64;ninja.any
-  Scenario: Weaker opponent <span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by a samurai</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should engage the opponent</span>
 
-  &#64;ninja.chuck
-  Scenario: Stronger opponent <span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green ansi-bold">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 1 skipped
 3 steps passed, 0 failed, 3 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -263,26 +272,29 @@ Took 0m0.0s
 <p>When you <strong>disable the tag</strong> &#64;ninja.chuck:</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
-&#64;wip
-Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-white"> # ../features/tutorial11_tags.feature:2</span>
-  In order to increase the ninja survival rate,
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
-  based on their skill levels.
+  based on their skill levels.</span>
 
-  &#64;ninja.any
-  Scenario: Weaker opponent <span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-green ansi-bold">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green ansi-bold">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
 
-  &#64;ninja.chuck
-  Scenario: Stronger opponent <span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by Chuck Norris</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should run for his life</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 1 skipped
 3 steps passed, 0 failed, 3 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -292,29 +304,29 @@ Took 0m0.0s
 &#64;ninja.chuck (<strong>tag-or</strong>):</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=&#64;ninja.any,&#64;ninja.chuck ../features/tutorial11_tags.feature
-&#64;wip
-Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-white"> # ../features/tutorial11_tags.feature:2</span>
-  In order to increase the ninja survival rate,
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
-  based on their skill levels.
+  based on their skill levels.</span>
 
-  &#64;ninja.any
-  Scenario: Weaker opponent <span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-green ansi-bold">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green ansi-bold">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
 
-  &#64;ninja.chuck
-  Scenario: Stronger opponent <span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-green ansi-bold">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
-    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-green ansi-bold">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-green ansi-bold">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
 
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 6 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.001s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -324,23 +336,29 @@ Took 0m0.0s
 tag &#64;ninja.chuck (<strong>tag-and</strong>):</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=&#64;ninja.any --tags=&#64;ninja.chuck ../features/tutorial11_tags.feature
-&#64;wip
-Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)<span class="ansi-white"> # ../features/tutorial11_tags.feature:2</span>
-  In order to increase the ninja survival rate,
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
-  based on their skill levels.
+  based on their skill levels.</span>
 
-  &#64;ninja.any
-  Scenario: Weaker opponent <span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by a samurai</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should engage the opponent</span>
 
-  &#64;ninja.chuck
-  Scenario: Stronger opponent <span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-cyan">Given </span><span class="ansi-cyan">the ninja has a third level black-belt</span>
+    <span class="ansi-cyan">When </span><span class="ansi-cyan">attacked by Chuck Norris</span>
+    <span class="ansi-cyan">Then </span><span class="ansi-cyan">the ninja should run for his life</span>
 
 0 features passed, 0 failed, 1 skipped
 0 scenarios passed, 0 failed, 2 skipped
 0 steps passed, 0 failed, 6 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -410,7 +428,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

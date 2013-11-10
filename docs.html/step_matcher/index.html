@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Step Matchers &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Step Matchers &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="next" title="Using the Step Matchers" href="using_matchers.html" />
     <link rel="prev" title="More Complex Data Types" href="../datatype/more_complex_types.html" /> 
   </head>
@@ -35,7 +35,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Step Matchers</span></a></h2>
           </div>
           <div class="topnav">
@@ -78,10 +78,11 @@
                   
   <div class="section" id="step-matchers">
 <span id="id-step-matcher"></span><h1>Step Matchers<a class="headerlink" href="#step-matchers" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="http://pypi.python.org/pypi/behave">behave</a> provides 2 step matchers:</p>
+<p><a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a> provides 3 step matchers:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>&#8220;parse&#8221; (ParseMatcher) by using the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module</li>
+<li>&#8220;parse&#8221; (ParseMatcher) by using the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module</li>
+<li>&#8220;cfparse&#8221; (extended ParseMatcher) that supports the cardinality field syntax</li>
 <li>&#8220;re&#8221; (RegexMatcher) that uses regular expressions for matching parameters</li>
 </ol>
 </div></blockquote>
@@ -95,6 +96,17 @@ It is more commonly used because it is:</p>
 <li>hides regular expression complexity</li>
 </ul>
 </div></blockquote>
+<p>The &#8220;cfparse&#8221; matcher extends the &#8220;parse&#8221; patcher (and is rather new).
+It is intended to superceed the &#8220;parse&#8221; matcher as default matcher.
+It has the following features:</p>
+<blockquote>
+<div><ul class="simple">
+<li>extended parser that understands the cardinality field syntax</li>
+<li>automatically creates missing type converters for fields
+with cardinality field part</li>
+<li>based on <a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a></li>
+</ul>
+</div></blockquote>
 <p>The &#8220;re&#8221; matcher is used for the following reasons. It:</p>
 <blockquote>
 <div><ul class="simple">
@@ -103,9 +115,9 @@ It is more commonly used because it is:</p>
 <li>is less ambiguous compared to the &#8220;parse&#8221; matcher (currently)</li>
 </ul>
 </div></blockquote>
-<p>It should be noted that both step matchers use regular expressions.
+<p>It should be noted that all step matchers use regular expressions.
 But most of the regular expressions (and their complexity) is hidden
-by the <a class="reference external" href="http://pypi.python.org/pypi/parse">parse</a> module.</p>
+by the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module (or its cousin).</p>
 <hr class="docutils" />
 <p><strong>Contents:</strong></p>
 <div class="toctree-wrapper compound">
@@ -172,7 +184,7 @@ by the <a class="reference external" href="http://pypi.python.org/pypi/parse">pa
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>

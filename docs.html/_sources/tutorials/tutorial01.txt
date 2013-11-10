@@ -40,14 +40,16 @@ Run the Feature Test
     .. command-output:: behave ../features/tutorial01_basics.feature
         :shell:
 
-When you run the feature file from above (with coloring disabled):
+.. ifconfig:: not ansiterm_supported
 
-.. command-output:: behave -c ../features/tutorial01_basics.feature
-    :shell:
+    When you run the feature file from above (with coloring disabled):
+
+    .. command-output:: behave -c ../features/tutorial01_basics.feature
+        :shell:
 
 As alternative you can run the feature with plain formatting
 (or another formatter):
 
-.. command-output:: behave --format=plain ../features/tutorial01_basics.feature
+.. command-output:: behave --format=plain --show-timings ../features/tutorial01_basics.feature
     :shell:
 

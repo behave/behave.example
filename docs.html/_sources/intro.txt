@@ -7,7 +7,7 @@ Read the Documentation
 ------------------------
 
 Before you start reading this manual, you should have read the
-`behave documentation`_ to understand how `behave`_ works.
+`behave documentation`_ to understand how :pypi:`behave` works.
 
 .. hint::
 
@@ -44,45 +44,39 @@ You should understand the :term:`BDD` concepts.
 Select an Assertation Matcher Library
 -----------------------------------------
 
-Before you start to use `behave`_ (or any other :term:`BDD` framework)
-you should select an assertation matcher library that you want to use
+Before you start to use :pypi:`behave` (or any other :term:`BDD` framework)
+you should select an assertion matcher library that you want to use
 in your project.
 
-Python has a growing number of assertation *matcher libraries* by now.
+Python has a growing number of assertion *matcher libraries* by now.
 Here is the list of some of these:
 
-=============== ===============================================================
-Matcher Library Description
-=============== ===============================================================
-Native assert   Starting point, but not enough information when assert fails.
-`hamcrest`_     First assertation matcher library, now part of `JUnit4`_.
-                Supports several programming languages:
-                http://code.google.com/p/hamcrest/
-`nose.tools`_   Part of the `nose`_ test framework
-`should-dsl`_   An interesting small matcher library,
-                http://www.should-dsl.info/
-`sure`_         Provided by the maker of `lettuce`_,
-                https://github.com/gabrielfalcao/sure
-`compare`_      http://pypi.python.org/pypi/compare
-`describe`_     http://pypi.python.org/pypi/describe
-=============== ===============================================================
+================ ===============================================================
+Matcher Library  Description
+================ ===============================================================
+Native assert    Starting point, but not enough information when assert fails.
+`hamcrest`_      First assertion matcher library, now part of `JUnit4`_.
+                 Supports several programming languages:
+                 http://code.google.com/p/hamcrest/
+`nose.tools`_    Part of the :pypi:`nose` test framework
+`should-dsl`_    An interesting small matcher library,
+                 http://www.should-dsl.info/
+:pypi:`sure`     Provided by the maker of :pypi:`lettuce`,
+                 :github:`gabrielfalcao/sure`
+:pypi:`compare`  http://pypi.python.org/pypi/compare
+:pypi:`describe` http://pypi.python.org/pypi/describe
+================ ===============================================================
 
 .. note::
 
-    `hamcrest`_ is used as *assertation matcher library* in the examples
+    `hamcrest`_ is used as *assertion matcher library* in the examples
     presented here.
 
-.. _behave:   http://pypi.python.org/pypi/behave
-.. _behave documentation:  http://packages.python.org/behave/
+.. _behave documentation:  http://pythonhosted.org/behave/
 .. _hamcrest:   http://code.google.com/p/hamcrest/
 .. _JUnit4:     http://junit.org/
-.. _lettuce:    http://pypi.python.org/pypi/lettuce
-.. _nose:       http://pypi.python.org/pypi/nose
 .. _nose.tools: http://readthedocs.org/docs/nose/en/latest/testing_tools.html
 .. _should-dsl: http://www.should-dsl.info/
-.. _sure:       https://github.com/gabrielfalcao/sure
-.. _compare:    http://pypi.python.org/pypi/compare
-.. _describe:   http://pypi.python.org/pypi/describe
 
 .. _cucumber: http://cukes.info/
 .. _jbehave:  htpp://jbehave.org/

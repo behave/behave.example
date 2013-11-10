@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 5: Multi-line Text (Step Data) &mdash; behave 1.2.2.x: Examples and Tutorials</title>
+    <title>Tutorial 5: Multi-line Text (Step Data) &mdash; behave 1.2.4: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.2.x',
+        VERSION:     '1.2.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.2.x: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 6: Setup Table" href="tutorial06.html" />
     <link rel="prev" title="Tutorial 4: Scenario Outline" href="tutorial04.html" /> 
@@ -36,7 +36,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.2.x: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 5: Multi-line Text (Step Data)</span></a></h2>
           </div>
           <div class="topnav">
@@ -122,18 +122,18 @@ on one line.</p>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 
 <span class="nd">@given</span><span class="p">(</span><span class="s">&#39;a sample text loaded into the frobulator&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">frobulator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s">&quot;frobulator&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">frobulator</span><span class="p">:</span>
         <span class="n">context</span><span class="o">.</span><span class="n">frobulator</span> <span class="o">=</span> <span class="n">Frobulator</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">frobulator</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">text</span>  <span class="c">#&lt; STEP-DATA from context.text</span>
 
 <span class="nd">@when</span><span class="p">(</span><span class="s">&#39;we activate the frobulator&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">frobulator</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s">&#39;we will find it similar to {language}&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">language</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">language</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">language</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">frobulator</span><span class="o">.</span><span class="n">seems_like_language</span><span class="p">()))</span>
 </pre></div>
 </div>
@@ -170,21 +170,21 @@ on one line.</p>
 <p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial05_step_data.feature
-Feature: Step Data (tutorial05)<span class="ansi-white"> # ../features/tutorial05_step_data.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Step Data (tutorial05)</span><span class="ansi-white">   # ../features/tutorial05_step_data.feature:1</span>
 
-  Scenario: Some scenario <span class="ansi-white">                         # ../features/tutorial05_step_data.feature:3</span>
+<span class="ansi-bold ansi-black">  Scenario: Some scenario </span><span class="ansi-white">                         # ../features/tutorial05_step_data.feature:3</span>
     <span class="ansi-green">Given </span><span class="ansi-green">a sample text loaded into the frobulator</span><span class="ansi-white"> # ../features/steps/step_tutorial05.py:47</span>
-      &quot;&quot;&quot;
+<span class="ansi-blue">      &quot;&quot;&quot;
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua.
       &quot;&quot;&quot;
-    <span class="ansi-green">When </span><span class="ansi-green">we activate the frobulator</span><span class="ansi-white">                # ../features/steps/step_tutorial05.py:54</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">we will find it similar to </span><span class="ansi-green ansi-bold">English</span><span class="ansi-white">        # ../features/steps/step_tutorial05.py:58</span>
+</span>    <span class="ansi-green">When </span><span class="ansi-green">we activate the frobulator</span><span class="ansi-white">                # ../features/steps/step_tutorial05.py:54</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">we will find it similar to </span><span class="ansi-bold ansi-green">English</span><span class="ansi-white">        # ../features/steps/step_tutorial05.py:58</span>
 
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.0s
+Took 0m0.000s
 </pre>
 </div>
 </div>
@@ -252,7 +252,7 @@ Took 0m0.0s
 
     <div class="footer">
         &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-03-27.
+      Last updated on 2013-11-10.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
     </div>
   </body>
