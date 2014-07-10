@@ -21,7 +21,7 @@ Feature: A Step uses a User-Defined Type as Step Parameter (tutorial10)
 # ----------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ----------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 
 def parse_number(text):
     """
@@ -31,7 +31,7 @@ def parse_number(text):
     """
     return int(text)
 # -- REGISTER: User-defined type converter (parse_type).
-matchers.register_type(Number=parse_number)
+register_type(Number=parse_number)
 
 # @mark.steps
 # ----------------------------------------------------------------------------

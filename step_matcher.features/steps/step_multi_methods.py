@@ -42,14 +42,14 @@ class Shop(object):
 # ------------------------------------------------------------------------
 # USER-DEFINED TYPES:
 # ------------------------------------------------------------------------
-from behave import matchers
+from behave import register_type
 from parse_type import TypeBuilder
 
 parse_vegetable = TypeBuilder.make_choice(["cucumbers", "lettuce"])
-matchers.register_type(Vegetable=parse_vegetable)
+register_type(Vegetable=parse_vegetable)
 
 parse_fruit = TypeBuilder.make_choice(["apples", "pears"])
-matchers.register_type(Fruit=parse_fruit)
+register_type(Fruit=parse_fruit)
 
 # @mark.steps
 # ----------------------------------------------------------------------------
