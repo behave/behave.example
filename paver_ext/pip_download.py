@@ -86,7 +86,7 @@ def pip_download(download_dir, cmdopts="", args=None, requirements_files=None):
     # NOTE: --exists-action option requires pip >= 1.1
     download_dir = path(download_dir)
     download_dir.makedirs_p()
-    pip_download_cmd  = "pip install --use-mirrors --exists-action=i"
+    pip_download_cmd  = "pip install --exists-action=i"
     pip_download_cmd += " --download=%s" % download_dir
     for requirement in requirements:
         # sh("{pip_download} {cmdopts} {requirement}".format(

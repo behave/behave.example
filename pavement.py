@@ -41,52 +41,12 @@ install_distutils_tasks()
 # ----------------------------------------------------------------------------
 # PROJECT CONFIGURATION (for sdist/setup mostly):
 # ----------------------------------------------------------------------------
-NAME    = "behave.example"
-VERSION = open("VERSION.txt").read().strip()
-DESCRIPTION = """\
-Some tutorials and examples to explore behave, a cucumber clone for Python.
-"""
-
-CLASSIFIERS = """\
-Development Status :: 4 - Beta
-Environment :: Console
-Framework :: behave
-Intended Audience :: Developers
-License :: OSI Approved :: BSD License
-Operating System :: OS Independent
-Programming Language :: Python
-Programming Language :: Python :: 2
-Programming Language :: Python :: 2.6
-Topic :: Software Development :: Testing
-Topic :: Documentation
-Topic :: Education
-"""
-
-# INSTALL_REQUIRES = read_requirements("requirements.txt")
-INSTALL_REQUIRES = [
-    "behave >= 1.2.4a1",    # -- internal pre-release.
-    "parse >= 1.6.3",
-    "parse_type >= 0.3.4",
-]
+NAME = "behave.example"
 
 # ----------------------------------------------------------------------------
 # TASK CONFIGURATION:
 # ----------------------------------------------------------------------------
 options(
-    setup= dict(
-        name= NAME,
-        version= VERSION,
-        url="http://pypi.python.org/pypi/%s/" % NAME,
-        author="Jens Engel",
-        author_email="Jens_Engel@nowhere.net",
-        license="BSD",
-        description= DESCRIPTION,
-        keywords   = "utility",
-        platforms  = [ 'any' ],
-        classifiers= CLASSIFIERS.splitlines(),
-        install_requires= INSTALL_REQUIRES,
-        include_package_data= True,
-    ),
     minilib=Bunch(
         extra_files=[ 'doctools', 'virtual' ]
     ),
@@ -167,6 +127,13 @@ def docs_save(args):
 @consume_args
 @needs("init")
 def test(args):
+    """Execute all tests"""
+    call_task("behave_test")
+
+@task
+@consume_args
+@needs("init")
+def behave_test(args):
     """Execute tests with behave"""
     if not args:
         args = options.test.default_args
@@ -177,7 +144,6 @@ def test(args):
 
     for arg in args:
         behave(arg, options=behave_cmdopts)
-
 
 # ----------------------------------------------------------------------------
 # TASK: clean

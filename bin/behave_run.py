@@ -11,6 +11,7 @@ import sys
 # PROJECT-SPECIFIC SETUP PATHS:
 # ----------------------------------------------------------------------------
 import project_sitecustomize
+from behave_ext.formatter import pretty2
 
 # ----------------------------------------------------------------------------
 # BEHAVE-PATCHES:
@@ -19,17 +20,18 @@ def monkeypatch_behave():
     """
     Apply patches to "behave" to make documenation runs work.
     """
-    from behave.formatter import pretty2
+    from behave_ext.terminal.ansiterm import AnsiStyle
+    from behave_ext.terminal import ansi_escapes as ansi_escapes2
     from behave.formatter import ansi_escapes
-    from behave.formatter import formatters
-    from behave.terminal.ansiterm import AnsiStyle
-    from behave.terminal import ansi_escapes as ansi_escapes2
     ansi_escapes.colors["grey"] = ansi_escapes.colors["white"]
     ansi_escapes.use_ansi_escape_colorbold_composites()
     ansi_escapes2.AnsiColor.grey = ansi_escapes2.AnsiColor.white
     ansi_escapes2.colors["grey"] = ansi_escapes.colors["white"]
     AnsiStyle.parse_style = staticmethod(AnsiStyle.parse_style2)
-    formatters.register_as(pretty2.SimplePrettyFormatter, "pretty")
+    # -- NOT-NEEDED-ANYMORE:
+    # from behave_ext.formatter import pretty2
+    # from behave.formatter._registry import register_as as format_register_as
+    # format_register_as("pretty", pretty2.SimplePrettyFormatter)
 
 def setup_behave():
     """

@@ -1,6 +1,8 @@
 behave Examples and Tutorials
 ==============================================================================
 
+|behave_logo|
+
 `behave`_ is :term:`BDD` framework and a `cucumber`_-clone for Python.
 This project provides tutorials and examples how to write tests by using
 `behave`_. The examples are mostly based on the excellent
@@ -32,6 +34,7 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`search`
 
+.. |behave_logo| image:: _static/behave_logo1.png
 .. _behave:   http://pypi.python.org/pypi/behave
 .. _behave documentation:  http://pythonhosted.org/behave/
 .. _cucumber: http://cukes.info/
@@ -39,3 +42,4 @@ Indices and tables
 .. _Gherkin:  https://github.com/cucumber/gherkin
 .. _jbehave:  htpp://jbehave.org/
 .. _SpecFlow: http://www.specflow.org/
+

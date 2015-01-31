@@ -1,3 +1,7 @@
+.. raw:: pdf
+
+    PageBreak
+
 .. _id.tutorial04:
 
 Tutorial 4: Scenario Outline
@@ -5,7 +9,7 @@ Tutorial 4: Scenario Outline
 
 .. index:: Scenario Outline
 
-:Goal: Use scenario outline to avoid writing too many similar scenarios.
+:Goal: Use scenario outline as a parametrized template (avoid too many similar scenarios).
 
 A ``Scenario Outline`` provides a ``parametrized scenario script`` (or template)
 for the feature file writer. The ``Scenario Outline`` is executed for each

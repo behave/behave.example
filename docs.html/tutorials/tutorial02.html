@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 2: Natural Language &mdash; behave 1.2.4: Examples and Tutorials</title>
+    <title>Tutorial 2: Natural Language &mdash; behave 1.2.5: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.4',
+        VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 3: Step Parameters" href="tutorial03.html" />
     <link rel="prev" title="Tutorial 1: First Steps" href="tutorial01.html" /> 
@@ -36,7 +35,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 2: Natural Language</span></a></h2>
           </div>
           <div class="topnav">
@@ -96,7 +95,7 @@
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p class="last">This example is based on the <a class="reference external" href="https://github.com/davedf/cuke4ninja/tree/master/src/ruby/NinjaSurvivalRate/features">Ninja Survival Rate</a> examples
-from <a class="reference internal" href="../refs.html#secretninja10">[SecretNinja10]</a>.</p>
+from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[SecretNinja10]</a>.</p>
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
@@ -196,18 +195,18 @@ and you do not have to write it.</p>
 <p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial02_natural_language.feature
-<span class="ansi-bold ansi-black">Feature: Fight or Flight (Natural Language, tutorial02)</span><span class="ansi-white">   # ../features/tutorial02_natural_language.feature:1</span>
-<span class="ansi-white">  In order to increase the ninja survival rate,
+<span class="ansi-black">Feature: Fight or Flight (Natural Language, tutorial02)</span><span class="ansi-white">   # ../features/tutorial02_natural_language.feature:1</span>
+<span class="ansi-black">  In order to increase the ninja survival rate,
   As a ninja commander
   I want my ninjas to decide whether to take on an opponent
   based on their skill levels.</span>
 
-<span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial02_natural_language.feature:8</span>
+<span class="ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial02_natural_language.feature:8</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
     <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
     <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
 
-<span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial02_natural_language.feature:13</span>
+<span class="ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial02_natural_language.feature:13</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
     <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
     <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
@@ -360,9 +359,9 @@ Took 0m0.001s
         </div>
 
     <div class="footer">
-        &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-11-10.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2012-2015 by Jens Engel.
+      Last updated on 2015-01-31.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

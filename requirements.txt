@@ -14,8 +14,9 @@
 #   nose:       for assertations: eq_(x, y)
 #   pytest:     for assertations
 # ============================================================================
-# ACTUALLY REQUIRES: behave >= 1.2.4a1
-behave >= 1.2.3
+# ACTUALLY REQUIRES: behave >= 1.2.5a1
+# behave
+behave >= 1.2.5
 parse >= 1.6.3
 parse_type >= 0.3.4
 

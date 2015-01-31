@@ -122,7 +122,7 @@ def setup(app):
 # General information about the project.
 project = u"behave.example"
 author  = u"Jens Engel"
-copyright = u'2012-2013 by %s' % author
+copyright = u'2012-2015 by %s' % author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -131,8 +131,8 @@ copyright = u'2012-2013 by %s' % author
 # The short X.Y version.
 version = '1.2'
 # The full version, including alpha/beta/rc tags.
-release = open("../VERSION.txt").read().strip()
-release = '1.2.4'
+release = open(os.path.join(HERE, "../VERSION.txt")).read().strip()
+release = '1.2.5'
 
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -384,7 +384,7 @@ texinfo_documents = [
 epub_title = project
 epub_author = author
 epub_publisher = author
-epub_copyright = u'2012-2013, %s' % author
+epub_copyright = u'2012-2015, %s' % author
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.

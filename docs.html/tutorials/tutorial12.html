@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,7 +7,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tutorial 12: Use another Spoken Language &mdash; behave 1.2.4: Examples and Tutorials</title>
+    <title>Tutorial 12: Use another Spoken Language &mdash; behave 1.2.5: Examples and Tutorials</title>
     
     <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +16,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '1.2.4',
+        VERSION:     '1.2.5',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/dotted.js"></script>
-    <link rel="top" title="behave 1.2.4: Examples and Tutorials" href="../index.html" />
+    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Data Types and User-defined Types" href="../datatype/index.html" />
     <link rel="prev" title="Tutorial 11: Use Tags" href="tutorial11.html" /> 
@@ -36,7 +35,7 @@
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.4: Examples and Tutorials</span></a></h1>
+              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
             <h2 class="heading"><span>Tutorial 12: Use another Spoken Language</span></a></h2>
           </div>
           <div class="topnav">
@@ -190,16 +189,16 @@ configuration file:</p>
 <p>Automatic language selection (via feature-file language marker):</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial12_spoken_language.feature
-<span class="ansi-bold ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
-<span class="ansi-white">  Als Deutscher
+<span class="ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
+<span class="ansi-black">  Als Deutscher
   will ich BDD-Tests auch in Deutsch schreiben und ausführen.</span>
 
-<span class="ansi-bold ansi-black">  Szenario: Run a simple test with German Keywords </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:7</span>
+<span class="ansi-black">  Szenario: Run a simple test with German Keywords </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:7</span>
     <span class="ansi-green">Angenommen </span><span class="ansi-green">we have behave installed</span><span class="ansi-white">             # ../features/steps/step_tutorial01.py:12</span>
     <span class="ansi-green">Wenn </span><span class="ansi-green">we implement a test</span><span class="ansi-white">                        # ../features/steps/step_tutorial01.py:16</span>
     <span class="ansi-green">Dann </span><span class="ansi-green">behave will test it for us!</span><span class="ansi-white">                # ../features/steps/step_tutorial01.py:20</span>
 
-<span class="ansi-bold ansi-black">  Szenario: Run a simple test completely in German </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:12</span>
+<span class="ansi-black">  Szenario: Run a simple test completely in German </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:12</span>
     <span class="ansi-green">Angenommen </span><span class="ansi-green">wir haben &quot;behave&quot; installiert</span><span class="ansi-white">       # ../features/steps/step_tutorial12.py:25</span>
     <span class="ansi-green">Wenn </span><span class="ansi-green">wir einen Test implementieren</span><span class="ansi-white">              # ../features/steps/step_tutorial12.py:29</span>
     <span class="ansi-green">Dann </span><span class="ansi-green">wird &quot;behave&quot; ihn für uns testen!</span><span class="ansi-white">          # ../features/steps/step_tutorial12.py:33</span>
@@ -212,16 +211,16 @@ Took 0m0.002s
 <p>Explicit language selection via command-line usage of <tt class="docutils literal"><span class="pre">--lang=${lang}</span></tt>:</p>
 <pre class="ansi-block literal-block">
 $ behave --lang=de ../features/tutorial12_spoken_language.feature
-<span class="ansi-bold ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
-<span class="ansi-white">  Als Deutscher
+<span class="ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
+<span class="ansi-black">  Als Deutscher
   will ich BDD-Tests auch in Deutsch schreiben und ausführen.</span>
 
-<span class="ansi-bold ansi-black">  Szenario: Run a simple test with German Keywords </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:7</span>
+<span class="ansi-black">  Szenario: Run a simple test with German Keywords </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:7</span>
     <span class="ansi-green">Angenommen </span><span class="ansi-green">we have behave installed</span><span class="ansi-white">             # ../features/steps/step_tutorial01.py:12</span>
     <span class="ansi-green">Wenn </span><span class="ansi-green">we implement a test</span><span class="ansi-white">                        # ../features/steps/step_tutorial01.py:16</span>
     <span class="ansi-green">Dann </span><span class="ansi-green">behave will test it for us!</span><span class="ansi-white">                # ../features/steps/step_tutorial01.py:20</span>
 
-<span class="ansi-bold ansi-black">  Szenario: Run a simple test completely in German </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:12</span>
+<span class="ansi-black">  Szenario: Run a simple test completely in German </span><span class="ansi-white"> # ../features/tutorial12_spoken_language.feature:12</span>
     <span class="ansi-green">Angenommen </span><span class="ansi-green">wir haben &quot;behave&quot; installiert</span><span class="ansi-white">       # ../features/steps/step_tutorial12.py:25</span>
     <span class="ansi-green">Wenn </span><span class="ansi-green">wir einen Test implementieren</span><span class="ansi-white">              # ../features/steps/step_tutorial12.py:29</span>
     <span class="ansi-green">Dann </span><span class="ansi-green">wird &quot;behave&quot; ihn für uns testen!</span><span class="ansi-white">          # ../features/steps/step_tutorial12.py:33</span>
@@ -295,9 +294,9 @@ Took 0m0.002s
         </div>
 
     <div class="footer">
-        &copy; Copyright 2012-2013 by Jens Engel.
-      Last updated on 2013-11-10.
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+        &copy; Copyright 2012-2015 by Jens Engel.
+      Last updated on 2015-01-31.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
     </div>
   </body>
 </html>

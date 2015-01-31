@@ -9,7 +9,7 @@ Tutorial 8: Execute Other Steps in a Step
 
 .. index:: execute_steps()
 
-:Goal: Use step execution in step implementations to avoid code duplication.
+:Goal: Reuse a sequence of existing steps as a step-macro.
 
 In some case, you want to replace a number of steps in a scenario
 by one simple **macro step** (*macro functionality*).
