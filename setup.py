@@ -23,10 +23,10 @@ from setuptools_behave import behave_test
 # -----------------------------------------------------------------------------
 # CONFIGURATION:
 # -----------------------------------------------------------------------------
-# REQUIRES: behave >= 1.2.5a1
+# REQUIRES: behave >= 1.2.5
 python_version = float("%s.%s" % sys.version_info[:2])
 requirements = [
-    "behave",
+    "behave>=1.2.5",
     "parse>=1.6.3", "parse_type>=0.3.4", "six",
 ]
 docs_requirements = [
@@ -59,7 +59,7 @@ INSTALL_REQUIRES = requirements
 # -----------------------------------------------------------------------------
 setup(
     name="behave.example",
-    version="1.2.5a1",
+    version="1.2.5",
     url="http://github.com/jenisys/behave.example",
     author="Jens Engel",
     author_email="Jens_Engel@nowhere.net",
