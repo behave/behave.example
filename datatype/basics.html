@@ -31,7 +31,7 @@
     <link rel="next" title="Predefined Data Types in parse" href="builtin_types.html" />
     <link rel="prev" title="Data Types and User-defined Types" href="index.html" /> 
   </head>
-  <body>
+  <body role="document">
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
@@ -45,7 +45,7 @@
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a>&#160;&#160;&#187;
+        <a href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a>&#160;&#160;&#187;
         </p>
 
             <div class="globaltoc">
@@ -54,7 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="">Type Definition Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
@@ -86,13 +86,13 @@
 <p>Preparation/setup phase:</p>
 <blockquote>
 <div><ol class="arabic simple" start="0">
-<li>The user registers a data type, for example in <tt class="docutils literal"><span class="pre">environment.py</span></tt>.</li>
+<li>The user registers a data type, for example in <code class="docutils literal"><span class="pre">environment.py</span></code>.</li>
 </ol>
 </div></blockquote>
 <p>The <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module is the workhorse:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>The <tt class="xref py py-class docutils literal"><span class="pre">parse.Parser</span></tt> class matches a string for a data type.</li>
+<li>The <code class="xref py py-class docutils literal"><span class="pre">parse.Parser</span></code> class matches a string for a data type.</li>
 <li>Then it calls the type-converter function to convert the
 matched text into an object of this data type.</li>
 </ol>
@@ -120,18 +120,18 @@ matched text into an object of this data type.</li>
 </div>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="../tutorials/tutorial10.html#id-tutorial10"><em>Tutorial 10: User-defined Data Type</em></a> for more information on this example.</p>
+<p class="last"><a class="reference internal" href="../tutorials/tutorial10.html#id-tutorial10"><span>Tutorial 10: User-defined Data Type</span></a> for more information on this example.</p>
 </div>
 </div>
 <div class="section" id="example-with-regular-expression-pattern">
 <h2>Example with Regular Expression Pattern<a class="headerlink" href="#example-with-regular-expression-pattern" title="Permalink to this headline">¶</a></h2>
 <p>For better matching of user-defined data types, the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> supports
-an optional <tt class="docutils literal"><span class="pre">pattern</span></tt> attribute for type-converter functions.
+an optional <code class="docutils literal"><span class="pre">pattern</span></code> attribute for type-converter functions.
 If this attribute is provided, it contains a textual regular expression
 for this data type. This regular expression pattern is used to match
 the data type.</p>
 <p>The regular expression pattern can be defined by using the
-<tt class="xref py py-func docutils literal"><span class="pre">parse.with_pattern()</span></tt> function decorator:</p>
+<code class="xref py py-func docutils literal"><span class="pre">parse.with_pattern()</span></code> function decorator:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
 <span class="c"># ------------------------------------------------------------------------</span>
 <span class="c"># USER-DEFINED TYPES:</span>
@@ -153,7 +153,7 @@ the data type.</p>
 <span class="c"># register_type(**type_dict)</span>
 </pre></div>
 </div>
-<p>or by assigning the <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute, like:</p>
+<p>or by assigning the <code class="xref py py-attr docutils literal"><span class="pre">pattern</span></code> attribute, like:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&quot;a\s+&quot;</span>
 </pre></div>
 </div>
@@ -165,7 +165,7 @@ the data type.</p>
               </div>
 
             </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
@@ -182,13 +182,15 @@ the data type.</p>
                         title="previous chapter">Data Types and User-defined Types</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="builtin_types.html"
-                        title="next chapter">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/datatype/basics.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+                        title="next chapter">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/datatype/basics.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -215,15 +217,15 @@ the data type.</p>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="../index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
-        <a href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a>&#160;&#160;&#187;
+        <a href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a>&#160;&#160;&#187;
         </p>
 
         </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-01-31.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Last updated on 2015-03-28.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

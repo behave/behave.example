@@ -31,7 +31,7 @@
     <link rel="next" title="Tutorial 5: Multi-line Text (Step Data)" href="tutorial05.html" />
     <link rel="prev" title="Tutorial 3: Step Parameters" href="tutorial03.html" /> 
   </head>
-  <body>
+  <body role="document">
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
@@ -92,9 +92,9 @@
 </tr>
 </tbody>
 </table>
-<p>A <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt> provides a <tt class="docutils literal"><span class="pre">parametrized</span> <span class="pre">scenario</span> <span class="pre">script</span></tt> (or template)
-for the feature file writer. The <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt> is executed for each
-example row in the <tt class="docutils literal"><span class="pre">Examples</span></tt> section below the <tt class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></tt>.</p>
+<p>A <code class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></code> provides a <code class="docutils literal"><span class="pre">parametrized</span> <span class="pre">scenario</span> <span class="pre">script</span></code> (or template)
+for the feature file writer. The <code class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></code> is executed for each
+example row in the <code class="docutils literal"><span class="pre">Examples</span></code> section below the <code class="docutils literal"><span class="pre">Scenario</span> <span class="pre">Outline</span></code>.</p>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial04_scenario_outline.feature</span><span class="nf"></span>
@@ -143,7 +143,7 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Test automation layer reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><em>Tutorial 3: Step Parameters</em></a>.</p>
+<p class="last">Test automation layer reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span>Tutorial 3: Step Parameters</span></a>.</p>
 </div>
 </div>
 <div class="section" id="provide-the-domain-model">
@@ -176,7 +176,7 @@ example row in the <tt class="docutils literal"><span class="pre">Examples</span
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Domain model reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><em>Tutorial 3: Step Parameters</em></a>.</p>
+<p class="last">Domain model reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span>Tutorial 3: Step Parameters</span></a>.</p>
 </div>
 </div>
 <div class="section" id="run-the-feature-test">
@@ -209,7 +209,7 @@ $ behave ../features/tutorial04_scenario_outline.feature
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
 12 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
+Took 0m0.007s
 </pre>
 </div>
 </div>
@@ -219,7 +219,7 @@ Took 0m0.001s
               </div>
 
             </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
@@ -238,12 +238,14 @@ Took 0m0.001s
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorial05.html"
                         title="next chapter">Tutorial 5: Multi-line Text (Step Data)</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/tutorials/tutorial04.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tutorials/tutorial04.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -275,10 +277,10 @@ Took 0m0.001s
 
         </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-01-31.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Last updated on 2015-03-28.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>
