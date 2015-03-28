@@ -31,7 +31,7 @@
     <link rel="next" title="Use Optional Part in Step Definitions" href="use_optional_part.html" />
     <link rel="prev" title="Use the Parse Matcher (parse)" href="parse_matcher.html" /> 
   </head>
-  <body>
+  <body role="document">
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
@@ -79,11 +79,11 @@
   <div class="section" id="use-the-regular-expression-matcher-re">
 <span id="id-step-matcher-re-matcher"></span><h1>Use the Regular Expression Matcher (re)<a class="headerlink" href="#use-the-regular-expression-matcher-re" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">This step matcher allows to use regular expressions in step definition.
-The named parameter syntax <tt class="docutils literal"><span class="pre">(?P&lt;name&gt;...)</span></tt> should be used to extract
+The named parameter syntax <code class="docutils literal"><span class="pre">(?P&lt;name&gt;...)</span></code> should be used to extract
 parameters from the step definition.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><em>Regular Expressions</em></a> for more information
+<p class="last"><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><span>Regular Expressions</span></a> for more information
 on regular expressions.</p>
 </div>
 <div class="section" id="simple-parameters">
@@ -137,7 +137,7 @@ on regular expressions.</p>
 </div>
 <div class="section" id="run-the-test">
 <h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
 <span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Simple Parameters</span>
@@ -188,7 +188,7 @@ Took 0m0.001s
 </div>
 <div class="section" id="id2">
 <h3>Run the Test<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
 <span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Optional Parameters</span>
@@ -218,7 +218,7 @@ $ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
 14 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
+Took 0m0.002s
 </pre>
 </div>
 </div>
@@ -248,7 +248,7 @@ Took 0m0.001s
 </div>
 <div class="section" id="id4">
 <h3>Run the Test<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <tt class="xref py py-mod docutils literal"><span class="pre">behave</span></tt>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../step_matcher.features/re_matcher.nested_param.feature
 <span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Nested Parameters</span><span class="ansi-white">   # ../step_matcher.features/re_matcher.nested_param.feature:1</span>
@@ -281,7 +281,7 @@ Took 0m0.001s
               </div>
 
             </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
@@ -311,12 +311,14 @@ Took 0m0.001s
   <h4>Next topic</h4>
   <p class="topless"><a href="use_optional_part.html"
                         title="next chapter">Use Optional Part in Step Definitions</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/step_matcher/re_matcher.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/step_matcher/re_matcher.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -348,10 +350,10 @@ Took 0m0.001s
 
         </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-01-31.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Last updated on 2015-03-28.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

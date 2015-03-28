@@ -30,7 +30,7 @@
     <link rel="next" title="Type Definition Basics" href="basics.html" />
     <link rel="prev" title="Tutorial 12: Use another Spoken Language" href="../tutorials/tutorial12.html" /> 
   </head>
-  <body>
+  <body role="document">
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="../index.html">
@@ -53,7 +53,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Data Types and User-defined Types</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
@@ -94,7 +94,7 @@ is only supported by the:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">Type Definition Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <tt class="docutils literal"><span class="pre">parse</span></tt></a></li>
+<li class="toctree-l1"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
@@ -114,8 +114,8 @@ The <a class="reference external" href="https://pypi.python.org/pypi/parse_type"
 <p id="index-1"><a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> <em>features</em>:</p>
 <blockquote>
 <div><ul class="simple">
-<li>Optional <tt class="xref py py-attr docutils literal"><span class="pre">pattern</span></tt> attribute (for regex) in user-defined type converters.</li>
-<li>The <tt class="xref py py-func docutils literal"><span class="pre">with_pattern()</span></tt> decorator for type-converters.</li>
+<li>Optional <code class="xref py py-attr docutils literal"><span class="pre">pattern</span></code> attribute (for regex) in user-defined type converters.</li>
+<li>The <code class="xref py py-func docutils literal"><span class="pre">with_pattern()</span></code> decorator for type-converters.</li>
 </ul>
 </div></blockquote>
 <p><a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a> <em>features</em>:</p>
@@ -125,7 +125,7 @@ The <a class="reference external" href="https://pypi.python.org/pypi/parse_type"
 </li>
 <li><p class="first">Creates type converter variants based on cardinality</p>
 </li>
-<li><p class="first"><tt class="xref py py-mod docutils literal"><span class="pre">parse_type</span></tt> extensions (<tt class="xref py py-class docutils literal"><span class="pre">TypeBuilder</span></tt> functionality).</p>
+<li><p class="first"><code class="xref py py-mod docutils literal"><span class="pre">parse_type</span></code> extensions (<code class="xref py py-class docutils literal"><span class="pre">TypeBuilder</span></code> functionality).</p>
 </li>
 <li><p class="first">Provides an extended parser with <strong>cardinality field</strong> support.
 A cardinality field is a type suffix in parse expression, like:</p>
@@ -167,7 +167,7 @@ A cardinality field is a type suffix in parse expression, like:</p>
               </div>
 
             </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
   <p class="topless"><a href="../tutorials/tutorial12.html"
@@ -175,12 +175,14 @@ A cardinality field is a type suffix in parse expression, like:</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="basics.html"
                         title="next chapter">Type Definition Basics</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../_sources/datatype/index.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/datatype/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
       <input type="text" name="q" />
@@ -212,10 +214,10 @@ A cardinality field is a type suffix in parse expression, like:</p>
 
         </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-01-31.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Last updated on 2015-03-28.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

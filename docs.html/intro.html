@@ -30,7 +30,7 @@
     <link rel="next" title="Tutorials" href="tutorials/index.html" />
     <link rel="prev" title="behave Examples and Tutorials" href="index.html" /> 
   </head>
-  <body>
+  <body role="document">
         <div class="header">
           <div class="header-top">
             <h1 class="heading"><a href="index.html">
@@ -52,7 +52,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#read-the-documentation">Read the Documentation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#given-when-then">Given, When, Then</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#select-an-assertation-matcher-library">Select an Assertation Matcher Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-an-assertion-matcher-library">Select an Assertion Matcher Library</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
@@ -86,7 +86,7 @@ interesting for you, if you like to know where certain concepts originate.</p>
 </div>
 <div class="section" id="given-when-then">
 <h2>Given, When, Then<a class="headerlink" href="#given-when-then" title="Permalink to this headline">¶</a></h2>
-<p>You should understand the <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> concepts.</p>
+<p>You should understand the <a class="reference internal" href="glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> concepts.</p>
 <div class="highlight-gherkin"><div class="highlight"><pre><span class="k">Feature:</span><span class="nf"> Title (one line describing the story/feature)</span>
 
 <span class="nf">    As a    [role]</span>
@@ -106,9 +106,9 @@ interesting for you, if you like to know where certain concepts originate.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="select-an-assertation-matcher-library">
-<h2>Select an Assertation Matcher Library<a class="headerlink" href="#select-an-assertation-matcher-library" title="Permalink to this headline">¶</a></h2>
-<p>Before you start to use <a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a> (or any other <a class="reference internal" href="glossary.html#term-bdd"><em class="xref std std-term">BDD</em></a> framework)
+<div class="section" id="select-an-assertion-matcher-library">
+<h2>Select an Assertion Matcher Library<a class="headerlink" href="#select-an-assertion-matcher-library" title="Permalink to this headline">¶</a></h2>
+<p>Before you start to use <a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a> (or any other <a class="reference internal" href="glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> framework)
 you should select an assertion matcher library that you want to use
 in your project.</p>
 <p>Python has a growing number of assertion <em>matcher libraries</em> by now.
@@ -164,14 +164,14 @@ presented here.</p>
               </div>
 
             </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Introduction</a><ul>
 <li><a class="reference internal" href="#read-the-documentation">Read the Documentation</a></li>
 <li><a class="reference internal" href="#given-when-then">Given, When, Then</a></li>
-<li><a class="reference internal" href="#select-an-assertation-matcher-library">Select an Assertation Matcher Library</a></li>
+<li><a class="reference internal" href="#select-an-assertion-matcher-library">Select an Assertion Matcher Library</a></li>
 </ul>
 </li>
 </ul>
@@ -182,12 +182,14 @@ presented here.</p>
   <h4>Next topic</h4>
   <p class="topless"><a href="tutorials/index.html"
                         title="next chapter">Tutorials</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/intro.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/intro.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
@@ -219,10 +221,10 @@ presented here.</p>
 
         </div>
 
-    <div class="footer">
+    <div class="footer" role="contentinfo">
         &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-01-31.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+      Last updated on 2015-03-28.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
   </body>
 </html>

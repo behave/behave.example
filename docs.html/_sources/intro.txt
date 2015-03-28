@@ -41,7 +41,7 @@ You should understand the :term:`BDD` concepts.
 
 
 
-Select an Assertation Matcher Library
+Select an Assertion Matcher Library
 -----------------------------------------
 
 Before you start to use :pypi:`behave` (or any other :term:`BDD` framework)
