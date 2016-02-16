@@ -164,9 +164,14 @@ def clean():
         ".cache",       #< py.test cache directory.
         "__pycache__",  #< Python compiled objects cache.
     ]
+    sys_prefix = path(sys.prefix).relpath()
     for pattern in patterns:
         dirs = path(".").walkdirs(pattern, errors="ignore")
         for d in dirs:
+            d = d.normpath()
+            if d.startswith(sys_prefix):
+                info("SKIP: %s" % d)
+                continue    # SKIP-SUICIDE: .venv*, .tox
             d.rmtree()
 
     # -- STEP: Remove files.
@@ -185,6 +190,9 @@ def clean():
     for pattern in patterns:
         files = path(".").walkfiles(pattern)
         for f in files:
+            f = f.normpath()
+            if f.startswith(sys_prefix):
+                continue    # SKIP-CLEANUP: .venv*, .tox
             f.remove()
 
 @task
