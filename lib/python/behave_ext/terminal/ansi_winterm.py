@@ -5,6 +5,7 @@ Use colorama as converter from ASCII escape codes to Windows text attributes.
 REQUIRES: colorama >= 0.2.7
 """
 
+from __future__ import absolute_import
 from .ansiterm import AnsiTerminalWriter
 import sys
 

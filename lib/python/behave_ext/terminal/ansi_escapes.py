@@ -12,6 +12,8 @@ Provides ANSI escape sequences and color map for ANSI terminals.
     * http://en.wikipedia.org/wiki/ANSI_escape_code
 """
 
+from __future__ import absolute_import
+from six.moves import range
 class AnsiColor(object):
     """ANSI foreground color codes."""
     black   = 30

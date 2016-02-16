@@ -4,9 +4,11 @@ This module provides functionality to automatically select the best
 matching terminal for your platform or operating system.
 """
 
+from __future__ import absolute_import
 from . import baseterm, style, win32
 from ctypes import byref
 import os
+import six
 
 __all__ = [ "WindowsStyle", "Terminal" ]
 
@@ -73,7 +75,7 @@ class WindowsTerminalWriter(baseterm.BaseTerminalWriter):
         self.__set_text_attribute(self._default_attribute)
 
     def set_color(self, color):
-        if isinstance(color, basestring):
+        if isinstance(color, six.string_types):
             color_value = getattr(win32.WinColor, color, None)
             if color_value is None:
                 raise AttributeError("unknown color='%s'" % color)

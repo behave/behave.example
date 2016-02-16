@@ -5,6 +5,7 @@
 Provides low-level Win32 API for Windows terminal output.
 """
 
+from __future__ import absolute_import
 from ctypes import Structure, c_short as short, c_ushort as ushort
 import sys
 

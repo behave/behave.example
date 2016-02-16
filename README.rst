@@ -40,7 +40,7 @@ all prerequisites::
     pip install -r requirements.txt
 
 Snapshots of the `behave`_ and `parse_type`_ implementations
-are provided in the directory ``lib/python2/``.  This directory is
+are provided in the directory ``lib/python/``.  This directory is
 automatically used when you use ``bin/behave`` to run `behave`_.
 
 

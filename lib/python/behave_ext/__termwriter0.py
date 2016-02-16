@@ -5,6 +5,7 @@ Terminal writer experiment using :mod:`py.io.terminalwriter`.
 REQUIRES: py >= 1.4.17 (actually: py.io.terminalwriter)
 """
 
+from __future__ import absolute_import
 from py._io import terminalwriter
 import os
 import sys
@@ -56,7 +57,7 @@ class TextStyle(object):
         cls.setup_style_descriptions_from_environment()
 
         # -- SETUP ARG-STYLE DESCRIPTIONS:
-        for style_name, description in cls.style_descriptions.items():
+        for style_name, description in list(cls.style_descriptions.items()):
             if style_name.endswith("_arg"):
                 continue
             arg_style_name = "{0}_arg".format(style_name)

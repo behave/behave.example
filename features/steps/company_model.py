@@ -45,7 +45,7 @@ class CompanyModel(object):
 
     def add_user(self, name, deparment):
         assert name not in self.users
-        if not self.departments.has_key(deparment):
+        if deparment not in self.departments:
             self.departments[deparment] = Department(deparment)
         self.departments[deparment].add_member(name)
 

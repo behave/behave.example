@@ -3,11 +3,13 @@
 Provides a PrettyFormatter that uses a terminal styles.
 """
 
+from __future__ import absolute_import
 from behave_ext.terminal import select_terminal_class, get_terminal_size
 from behave_ext.__termwriter0 import StyledTerminalWriter
 from behave.model_describe import ModelDescriptor
 from behave.formatter.base import Formatter
 from behave.textutil import indent, make_indentation
+import six
 
 
 class ModelPrinter(object):
@@ -78,7 +80,7 @@ class ModelPrinter(object):
         text = u"%s%s: %s" % (indentation, feature.keyword, feature.name)
         self.writer.write(text, style="feature")
         if self.show_source:
-            text = self.location_text(unicode(feature.location), 2)
+            text = self.location_text(six.text_type(feature.location), 2)
             self.writer.write(text, style="comments")
         self.writer.write("\n")
         indentation = self.indentations[self.INDENT_FEATURE_DESCRIPTION]
@@ -101,7 +103,7 @@ class ModelPrinter(object):
         if self.show_source:
             assert self.show_location
             indent_size = self.location_indentations.pop(0)
-            location = unicode(statement.location)
+            location = six.text_type(statement.location)
             text = self.location_text(location, indent_size)
             self.writer.write(text, style="comments")
         self.writer.write("\n")
@@ -136,7 +138,7 @@ class ModelPrinter(object):
         location = ""
         if match:
             arguments = match.arguments
-            location = unicode(match.location)
+            location = six.text_type(match.location)
 
         style = status
         arg_style  = "%s_arg" % style
@@ -147,7 +149,7 @@ class ModelPrinter(object):
         self.writer.write(step.keyword + ' ', style=style)
         line_length = 1 + len(indentation) + len(step.keyword)
 
-        step_name = unicode(step.name)
+        step_name = six.text_type(step.name)
         text_start = 0
         for arg in arguments:
             if arg.end <= text_start:
@@ -171,7 +173,7 @@ class ModelPrinter(object):
 
         if self.show_source:
             if self.show_timings and status in ('passed', 'failed'):
-                assert isinstance(location, unicode)
+                assert isinstance(location, six.text_type)
                 location += " in %0.3fs" % step.duration
             text = self.location_text(location, location_indentsize)
             self.writer.write(text, style="comments")
@@ -211,7 +213,7 @@ class ModelPrinter(object):
         self.step_lines += self.calculate_terminal_lines(text)
 
     def print_exception(self, exception):
-        exception_text = unicode(exception, encoding="utf-8")
+        exception_text = six.text_type(exception, encoding="utf-8")
         self.writer.write(exception_text + "\n", style="failed")
         self.writer.flush()
 

@@ -3,6 +3,7 @@
 This module provides a terminal with ANSI escape sequence support.
 """
 
+from __future__ import absolute_import
 from . import ansi_escapes, baseterm, style
 import logging
 import os

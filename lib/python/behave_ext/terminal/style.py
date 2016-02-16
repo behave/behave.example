@@ -3,6 +3,7 @@
 This module describes terminal/text styles in a platform independent way.
 """
 
+from __future__ import absolute_import
 import os
 import sys
 
@@ -73,7 +74,7 @@ class Stylesheet(dict):
 
     def update_arg_styles(self, stylesheet, override=True):
         # -- SETUP ARG-STYLE DESCRIPTIONS:
-        for style_name, style_description in stylesheet.items():
+        for style_name, style_description in list(stylesheet.items()):
             if ( style_name.endswith("_arg") or
                 (style_name not in self.styles_with_arg)):
                 continue

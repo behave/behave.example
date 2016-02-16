@@ -4,6 +4,7 @@ This module provides functionality to automatically select the best
 matching terminal for your platform or operating system.
 """
 
+from __future__ import absolute_import
 import sys
 
 

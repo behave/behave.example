@@ -11,7 +11,6 @@ import sys
 # PROJECT-SPECIFIC SETUP PATHS:
 # ----------------------------------------------------------------------------
 import project_sitecustomize
-from behave_ext.formatter import pretty2
 
 # ----------------------------------------------------------------------------
 # BEHAVE-PATCHES:
@@ -28,10 +27,6 @@ def monkeypatch_behave():
     ansi_escapes2.AnsiColor.grey = ansi_escapes2.AnsiColor.white
     ansi_escapes2.colors["grey"] = ansi_escapes.colors["white"]
     AnsiStyle.parse_style = staticmethod(AnsiStyle.parse_style2)
-    # -- NOT-NEEDED-ANYMORE:
-    # from behave_ext.formatter import pretty2
-    # from behave.formatter._registry import register_as as format_register_as
-    # format_register_as("pretty", pretty2.SimplePrettyFormatter)
 
 def setup_behave():
     """

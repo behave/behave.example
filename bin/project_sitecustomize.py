@@ -18,10 +18,11 @@ import sys
 # ----------------------------------------------------------------------------
 # PROJECT-SPECIFIC PATHS:
 # ----------------------------------------------------------------------------
+# -- NOTE: lib/python should be usable for py2 and py3
 py_version_major = sys.version_info[0]
 HERE = os.path.dirname(__file__)
 TOPA = os.path.abspath(os.path.join(HERE, ".."))
-PYTHON_LIBDIR  = os.path.join(TOPA, "lib", "python%s" % py_version_major)
+PYTHON_LIBDIR  = os.path.join(TOPA, "lib", "python")
 
 def print_(text):
     sys.stdout.write(text + "\n")
