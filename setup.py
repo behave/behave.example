@@ -59,7 +59,7 @@ INSTALL_REQUIRES = requirements
 # -----------------------------------------------------------------------------
 setup(
     name="behave.example",
-    version="1.2.5",
+    version="1.2.5.1",
     url="http://github.com/jenisys/behave.example",
     author="Jens Engel",
     author_email="Jens_Engel@nowhere.net",
