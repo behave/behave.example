@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Use the Regular Expression Matcher (re) &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,266 +26,68 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Step Matchers" href="index.html" />
     <link rel="next" title="Use Optional Part in Step Definitions" href="use_optional_part.html" />
-    <link rel="prev" title="Use the Parse Matcher (parse)" href="parse_matcher.html" /> 
+    <link rel="prev" title="Use the Parse Matcher (parse)" href="parse_matcher.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Use the Regular Expression Matcher (re)</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="parse_matcher.html">Use the Parse Matcher (parse)</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="use_optional_part.html">Use Optional Part in Step Definitions</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="using_matchers.html">Using the Step Matchers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Use the Regular Expression Matcher (re)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
-
-            </div>
-          </div>
-        </div>
-        <div class="wrapper">  
-
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
-  <div class="section" id="use-the-regular-expression-matcher-re">
-<span id="id-step-matcher-re-matcher"></span><h1>Use the Regular Expression Matcher (re)<a class="headerlink" href="#use-the-regular-expression-matcher-re" title="Permalink to this headline">¶</a></h1>
-<p id="index-0">This step matcher allows to use regular expressions in step definition.
-The named parameter syntax <code class="docutils literal"><span class="pre">(?P&lt;name&gt;...)</span></code> should be used to extract
-parameters from the step definition.</p>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><span>Regular Expressions</span></a> for more information
-on regular expressions.</p>
-</div>
-<div class="section" id="simple-parameters">
-<h2>Simple Parameters<a class="headerlink" href="#simple-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="provide-the-step-definitions">
-<h3>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_re_matcher_simple_param.py</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># STEPS: With &quot;re&quot; matcher</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-
-<span class="c"># -- SIMPLE GROUP: foo</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match &quot;(?P&lt;foo&gt;foo)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_foo</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
-
-<span class="c"># -- SIMPLE GROUP: bar</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match &quot;(?P&lt;bar&gt;bar)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_bar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
-
-<span class="c"># -- SIMPLE GROUP: anything else</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match &quot;(?P&lt;anything&gt;.*)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">anything</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">anything</span> <span class="o">=</span> <span class="n">anything</span>
-</pre></div>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_parse_matcher.py</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># MORE STEPS: With &quot;parse&quot; matcher</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
-
-<span class="nd">@given</span><span class="p">(</span><span class="s">u&#39;I use the regular expression step matcher&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_given_I_use_regex_matcher</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">pass</span>
-
-<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;the parameter &quot;{name}&quot; is &quot;{expected_value}&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_then_parameter_is_equal_to</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected_value</span><span class="p">))</span>
-
-<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;the parameter &quot;{name}&quot; is none&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_then_parameter_is_none</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
-    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">is_</span><span class="p">(</span><span class="n">none</span><span class="p">()))</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="run-the-test">
-<h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
-<span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Simple Parameters</span>
-
-<span class="ansi-black">  Scenario: Match simple parameter </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is none</span>
-
-<span class="ansi-black">  Scenario: Match two simple parameters </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">And </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-
-1 feature passed, 0 failed, 0 skipped
-2 scenarios passed, 0 failed, 0 skipped
-9 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
-</pre>
-</div>
-</div>
-<div class="section" id="optional-parameters">
-<h2>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="index-1">
-<span id="id1"></span><h3>Provide the Step Definitions<a class="headerlink" href="#index-1" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_re_matcher_optional_param.py</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># STEPS: With &quot;re&quot; matcher</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-
-<span class="c"># -- OPTIONAL 1: Optional param is captured and provided as parameter &quot;an_&quot;.</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match (?P&lt;an_&gt;an )?optional &quot;(?P&lt;foo&gt;foo)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_an_optional_foo</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">an_</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">an_</span> <span class="o">=</span> <span class="n">an_</span>
-
-<span class="c"># -- OPTIONAL 2: Optional param is matched, but not captured.</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match (?:an )?optional &quot;(?P&lt;bar&gt;bar)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_an_optional_bar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>Run the Test<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
-<span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Optional Parameters</span>
-
-<span class="ansi-black">  Scenario: Optional parameter 1 is missing </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match optional &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">an_</span><span class="ansi-green">&quot; is none</span>
-
-<span class="ansi-black">  Scenario: Optional parameter 1 is provided </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match </span><span class="ansi-bold ansi-green">an </span><span class="ansi-green">optional &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">an_</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">an </span><span class="ansi-green">&quot;</span>
-
-<span class="ansi-black">  Scenario: Optional parameter 2 is missing </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match optional &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-
-<span class="ansi-black">  Scenario: Optional parameter 2 is provided (not captured) </span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match an optional &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
-
-1 feature passed, 0 failed, 0 skipped
-4 scenarios passed, 0 failed, 0 skipped
-14 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.002s
-</pre>
-</div>
-</div>
-<div class="section" id="nested-parameters">
-<h2>Nested Parameters<a class="headerlink" href="#nested-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="index-2">
-<span id="id3"></span><h3>Provide the Step Definitions<a class="headerlink" href="#index-2" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_re_matcher_nested_param.py</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># STEPS: With &quot;re&quot; matcher</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
-
-<span class="c"># -- NESTED GROUP:</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match nested &quot;(?P&lt;foo&gt;foo(?P&lt;bar&gt;bar)?)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_nested_foobar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
-
-<span class="c"># -- SIMPLE GROUP: anything else</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I try to match nested &quot;(?P&lt;anything&gt;.*)&quot;&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">step_when_I_try_to_match_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">anything</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">anything</span> <span class="o">=</span> <span class="n">anything</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="id4">
-<h3>Run the Test<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave ../step_matcher.features/re_matcher.nested_param.feature
-<span class="ansi-black">Feature: Use &quot;re&quot; Step Matcher with Nested Parameters</span><span class="ansi-white">   # ../step_matcher.features/re_matcher.nested_param.feature:1</span>
-
-<span class="ansi-black">  Scenario: Nested parameter with nested match </span><span class="ansi-white">     # ../step_matcher.features/re_matcher.nested_param.feature:3</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span><span class="ansi-white"> # ../step_matcher.features/steps/step_parse_matcher.py:12</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match nested &quot;</span><span class="ansi-bold ansi-green">foobar</span><span class="ansi-green">&quot;</span><span class="ansi-white">             # ../step_matcher.features/steps/step_re_matcher_nested_param.py:14</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foobar</span><span class="ansi-green">&quot;</span><span class="ansi-white">            # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">anything</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">            # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
-
-<span class="ansi-black">  Scenario: Nested parameter with nested anything-else match </span><span class="ansi-white"> # ../step_matcher.features/re_matcher.nested_param.feature:10</span>
-    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span><span class="ansi-white">           # ../step_matcher.features/steps/step_parse_matcher.py:12</span>
-    <span class="ansi-green">When </span><span class="ansi-green">I try to match nested &quot;</span><span class="ansi-bold ansi-green">foo bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                      # ../step_matcher.features/steps/step_re_matcher_nested_param.py:20</span>
-    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">                          # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">                           # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
-    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">anything</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                 # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
-
-1 feature passed, 0 failed, 0 skipped
-2 scenarios passed, 0 failed, 0 skipped
-10 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
-</pre>
-</div>
-</div>
-</div>
-
-
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Use the Regular Expression Matcher (re)</a><ul>
 <li><a class="reference internal" href="#simple-parameters">Simple Parameters</a><ul>
 <li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
@@ -304,56 +107,269 @@ Took 0m0.001s
 </ul>
 </li>
 </ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="parse_matcher.html" title="Previous Chapter: Use the Parse Matcher (parse)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Use the Parse...</span>
+    </a>
+  </li>
+  <li>
+    <a href="use_optional_part.html" title="Next Chapter: Use Optional Part in Step Definitions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Use Optional ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/re_matcher.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="parse_matcher.html"
-                        title="previous chapter">Use the Parse Matcher (parse)</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="use_optional_part.html"
-                        title="next chapter">Use Optional Part in Step Definitions</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/step_matcher/re_matcher.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
           
-        <p>
-        &#171;&#160;&#160;<a href="parse_matcher.html">Use the Parse Matcher (parse)</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="use_optional_part.html">Use Optional Part in Step Definitions</a>&#160;&#160;&#187;
-        </p>
-
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="use-the-regular-expression-matcher-re">
+<span id="id-step-matcher-re-matcher"></span><h1>Use the Regular Expression Matcher (re)<a class="headerlink" href="#use-the-regular-expression-matcher-re" title="Permalink to this headline">¶</a></h1>
+<p id="index-0">This step matcher allows to use regular expressions in step definition.
+The named parameter syntax <code class="docutils literal"><span class="pre">(?P&lt;name&gt;...)</span></code> should be used to extract
+parameters from the step definition.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><span>Regular Expressions</span></a> for more information
+on regular expressions.</p>
+</div>
+<div class="section" id="simple-parameters">
+<h2>Simple Parameters<a class="headerlink" href="#simple-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="provide-the-step-definitions">
+<h3>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_re_matcher_simple_param.py</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS: With &quot;re&quot; matcher</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
+
+<span class="c1"># -- SIMPLE GROUP: foo</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match &quot;(?P&lt;foo&gt;foo)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_foo</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
+
+<span class="c1"># -- SIMPLE GROUP: bar</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match &quot;(?P&lt;bar&gt;bar)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_bar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
+
+<span class="c1"># -- SIMPLE GROUP: anything else</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match &quot;(?P&lt;anything&gt;.*)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">anything</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">anything</span> <span class="o">=</span> <span class="n">anything</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_parse_matcher.py</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># MORE STEPS: With &quot;parse&quot; matcher</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;parse&quot;</span><span class="p">)</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s1">u&#39;I use the regular expression step matcher&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_given_I_use_regex_matcher</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s1">u&#39;the parameter &quot;{name}&quot; is &quot;{expected_value}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_parameter_is_equal_to</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">):</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected_value</span><span class="p">))</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s1">u&#39;the parameter &quot;{name}&quot; is none&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_then_parameter_is_none</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">is_</span><span class="p">(</span><span class="n">none</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-test">
+<h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<pre class="ansi-block literal-block">
+$ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
+<span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Simple Parameters</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Match simple parameter </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is none</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Match two simple parameters </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">And </span><span class="ansi-green">I try to match &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+9 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.001s
+</pre>
+</div>
+</div>
+<div class="section" id="optional-parameters">
+<h2>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="index-1">
+<span id="id1"></span><h3>Provide the Step Definitions<a class="headerlink" href="#index-1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_re_matcher_optional_param.py</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS: With &quot;re&quot; matcher</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
+
+<span class="c1"># -- OPTIONAL 1: Optional param is captured and provided as parameter &quot;an_&quot;.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match (?P&lt;an_&gt;an )?optional &quot;(?P&lt;foo&gt;foo)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_an_optional_foo</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">an_</span><span class="p">,</span> <span class="n">foo</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">an_</span> <span class="o">=</span> <span class="n">an_</span>
+
+<span class="c1"># -- OPTIONAL 2: Optional param is matched, but not captured.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match (?:an )?optional &quot;(?P&lt;bar&gt;bar)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_an_optional_bar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Run the Test<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<pre class="ansi-block literal-block">
+$ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
+<span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Optional Parameters</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Optional parameter 1 is missing </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match optional &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">an_</span><span class="ansi-green">&quot; is none</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Optional parameter 1 is provided </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match </span><span class="ansi-bold ansi-green">an </span><span class="ansi-green">optional &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">an_</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">an </span><span class="ansi-green">&quot;</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Optional parameter 2 is missing </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match optional &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Optional parameter 2 is provided (not captured) </span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match an optional &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span>
+
+1 feature passed, 0 failed, 0 skipped
+4 scenarios passed, 0 failed, 0 skipped
+14 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.002s
+</pre>
+</div>
+</div>
+<div class="section" id="nested-parameters">
+<h2>Nested Parameters<a class="headerlink" href="#nested-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="index-2">
+<span id="id3"></span><h3>Provide the Step Definitions<a class="headerlink" href="#index-2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_re_matcher_nested_param.py</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS: With &quot;re&quot; matcher</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span><span class="p">,</span> <span class="n">when</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
+
+<span class="c1"># -- NESTED GROUP:</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match nested &quot;(?P&lt;foo&gt;foo(?P&lt;bar&gt;bar)?)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_nested_foobar</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">foo</span><span class="p">,</span> <span class="n">bar</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">foo</span> <span class="o">=</span> <span class="n">foo</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">bar</span> <span class="o">=</span> <span class="n">bar</span>
+
+<span class="c1"># -- SIMPLE GROUP: anything else</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I try to match nested &quot;(?P&lt;anything&gt;.*)&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_when_I_try_to_match_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">anything</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">anything</span> <span class="o">=</span> <span class="n">anything</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Run the Test<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<pre class="ansi-block literal-block">
+$ behave ../step_matcher.features/re_matcher.nested_param.feature
+<span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Nested Parameters</span><span class="ansi-white">   # ../step_matcher.features/re_matcher.nested_param.feature:1</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Nested parameter with nested match </span><span class="ansi-white">     # ../step_matcher.features/re_matcher.nested_param.feature:3</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span><span class="ansi-white"> # ../step_matcher.features/steps/step_parse_matcher.py:12</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match nested &quot;</span><span class="ansi-bold ansi-green">foobar</span><span class="ansi-green">&quot;</span><span class="ansi-white">             # ../step_matcher.features/steps/step_re_matcher_nested_param.py:14</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foobar</span><span class="ansi-green">&quot;</span><span class="ansi-white">            # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">anything</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">            # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
+
+<span class="ansi-bold ansi-black">  Scenario: Nested parameter with nested anything-else match </span><span class="ansi-white"> # ../step_matcher.features/re_matcher.nested_param.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">I use the regular expression step matcher</span><span class="ansi-white">           # ../step_matcher.features/steps/step_parse_matcher.py:12</span>
+    <span class="ansi-green">When </span><span class="ansi-green">I try to match nested &quot;</span><span class="ansi-bold ansi-green">foo bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                      # ../step_matcher.features/steps/step_re_matcher_nested_param.py:20</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">foo</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">                          # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">bar</span><span class="ansi-green">&quot; is none</span><span class="ansi-white">                           # ../step_matcher.features/steps/step_parse_matcher.py:21</span>
+    <span class="ansi-green">And </span><span class="ansi-green">the parameter &quot;</span><span class="ansi-bold ansi-green">anything</span><span class="ansi-green">&quot; is &quot;</span><span class="ansi-bold ansi-green">foo bar</span><span class="ansi-green">&quot;</span><span class="ansi-white">                 # ../step_matcher.features/steps/step_parse_matcher.py:16</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+10 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.001s
+</pre>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

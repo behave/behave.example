@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Type Definition Basics &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,60 +26,121 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Predefined Data Types in parse" href="builtin_types.html" />
-    <link rel="prev" title="Data Types and User-defined Types" href="index.html" /> 
+    <link rel="prev" title="Data Types and User-defined Types" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Type Definition Basics</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="index.html">Data Types and User-defined Types</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Type Definition Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_one.html">Cardinality: Zero or One (Optional)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cardinality_one_or_more.html">Cardinality: One or More (List of Type)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cardinality_zero_or_more.html">Cardinality: Zero or More (List of Type)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="choice.html">Choice (Word/String Alternatives)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="choice2.html">Choice2 (Word/String Alternatives)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enum.html">Enumeration (String-to-Value Mapping)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="more_complex_types.html">More Complex Data Types</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Type Definition Basics</a><ul>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+<li><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li><a class="reference internal" href="#example-with-regular-expression-pattern">Example with Regular Expression Pattern</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Data Types and User-defined Types"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Data Types an...</span>
+    </a>
+  </li>
+  <li>
+    <a href="builtin_types.html" title="Next Chapter: Predefined Data Types in parse"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Predefined Da... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/datatype/basics.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="type-definition-basics">
 <span id="id-datatype-basics"></span><h1>Type Definition Basics<a class="headerlink" href="#type-definition-basics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="workflow">
@@ -101,10 +163,10 @@ matched text into an object of this data type.</li>
 <div class="section" id="simple-example">
 <h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
 <p>The following example shows how a user-defined type can be provided.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial10.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># USER-DEFINED TYPES:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 
 <span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
@@ -114,8 +176,9 @@ matched text into an object of this data type.</li>
 <span class="sd">    :return: Number instance (integer), created from parsed text.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-<span class="c"># -- REGISTER: User-defined type converter (parse_type).</span>
+<span class="c1"># -- REGISTER: User-defined type converter (parse_type).</span>
 <span class="n">register_type</span><span class="p">(</span><span class="n">Number</span><span class="o">=</span><span class="n">parse_number</span><span class="p">)</span>
+
 </pre></div>
 </div>
 <div class="admonition seealso">
@@ -132,100 +195,53 @@ for this data type. This regular expression pattern is used to match
 the data type.</p>
 <p>The regular expression pattern can be defined by using the
 <code class="xref py py-func docutils literal"><span class="pre">parse.with_pattern()</span></code> function decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_optional_part.py</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># USER-DEFINED TYPES:</span>
-<span class="c"># ------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
 
 <span class="n">register_type</span><span class="p">(</span><span class="n">a_</span><span class="o">=</span><span class="n">parse_word_a</span><span class="p">)</span>
 
-<span class="c"># -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.</span>
-<span class="c"># from parse_type import TypeBuilder</span>
-<span class="c"># parse_opt_word_a = TypeBuilder.with_optional(parse_word_a)</span>
-<span class="c"># type_dict = {&quot;a_?&quot;: parse_opt_word_a}</span>
-<span class="c"># register_type(**type_dict)</span>
+<span class="c1"># -- NEEDED-UNTIL: parse_type.cfparse.Parser is used by behave.</span>
+<span class="c1"># from parse_type import TypeBuilder</span>
+<span class="c1"># parse_opt_word_a = TypeBuilder.with_optional(parse_word_a)</span>
+<span class="c1"># type_dict = {&quot;a_?&quot;: parse_opt_word_a}</span>
+<span class="c1"># register_type(**type_dict)</span>
+
+
 </pre></div>
 </div>
 <p>or by assigning the <code class="xref py py-attr docutils literal"><span class="pre">pattern</span></code> attribute, like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">r&quot;a\s+&quot;</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">r&quot;a\s+&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Type Definition Basics</a><ul>
-<li><a class="reference internal" href="#workflow">Workflow</a></li>
-<li><a class="reference internal" href="#simple-example">Simple Example</a></li>
-<li><a class="reference internal" href="#example-with-regular-expression-pattern">Example with Regular Expression Pattern</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Data Types and User-defined Types</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="builtin_types.html"
-                        title="next chapter">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/datatype/basics.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="index.html">Data Types and User-defined Types</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="builtin_types.html">Predefined Data Types in <code class="docutils literal"><span class="pre">parse</span></code></a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

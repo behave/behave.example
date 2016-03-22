@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Use Multi-Methods in Step Definitions &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,61 +26,130 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Step Matchers" href="index.html" />
     <link rel="next" title="Regular Expressions" href="regular_expressions.html" />
-    <link rel="prev" title="Use Optional Part in Step Definitions" href="use_optional_part.html" /> 
+    <link rel="prev" title="Use Optional Part in Step Definitions" href="use_optional_part.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Use Multi-Methods in Step Definitions</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="use_optional_part.html">Use Optional Part in Step Definitions</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="regular_expressions.html">Regular Expressions</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="using_matchers.html">Using the Step Matchers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Use Multi-Methods in Step Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Use Multi-Methods in Step Definitions</a><ul>
+<li><a class="reference internal" href="#variant-1-use-single-method">Variant 1: Use Single Method</a></li>
+<li><a class="reference internal" href="#variant-2-use-multi-methods">Variant 2: Use Multi-Methods</a><ul>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#define-the-data-types">Define the Data Types</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="use_optional_part.html" title="Previous Chapter: Use Optional Part in Step Definitions"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Use Optional ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="regular_expressions.html" title="Next Chapter: Regular Expressions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Regular Expre... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/use_multi_methods.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="use-multi-methods-in-step-definitions">
 <span id="id-step-matcher-use-multi-methods"></span><h1>Use Multi-Methods in Step Definitions<a class="headerlink" href="#use-multi-methods-in-step-definitions" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">Assume you have a number of rather similar steps, like:</p>
-<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:step_matcher.features/use_multi_methods.feature</span><span class="nf"></span>
+<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:step_matcher.features/use_multi_methods.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Use Multi-Methods in Step Definitions</span>
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"></span>
 <span class="k">    Given </span><span class="nf">I go to a shop</span>
@@ -105,12 +175,12 @@ step definitions.</p>
 <p>One step definition with a string-based data type is provided in this solution.
 The step definition implementation contains the logic how to distinguish
 between the different cases.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- FILE: step_matcher.features/steps/one_step.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: step_matcher.features/steps/one_step.py</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">&quot;I buy {amount:n} {shop_item:w}&quot;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">&quot;I buy {amount:n} {shop_item:w}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_shop_item</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">shop_item</span><span class="p">):</span>
-    <span class="k">pass</span>    <span class="c"># -- HERE comes the logic how to distinguish the cases.</span>
+    <span class="k">pass</span>    <span class="c1"># -- HERE comes the logic how to distinguish the cases.</span>
 </pre></div>
 </div>
 </div>
@@ -127,29 +197,29 @@ these cases.</p>
 </div>
 <div class="section" id="provide-the-step-definitions">
 <h3>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_multi_methods.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_multi_methods.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s">u&quot;I go to a shop&quot;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s2">u&quot;I go to a shop&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_given_I_go_to_a_shop</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shop</span> <span class="o">=</span> <span class="n">Shop</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 
-<span class="c"># -- STEP-ORDERING-IMPORTANT: Else step must be last.</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {vegetable:Vegetable}&quot;</span><span class="p">)</span>
+<span class="c1"># -- STEP-ORDERING-IMPORTANT: Else step must be last.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {vegetable:Vegetable}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_vegetable</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">vegetable</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for_vegetable</span><span class="p">(</span><span class="n">vegetable</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">vegetable</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {fruit:Fruit}&quot;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {fruit:Fruit}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_fruit</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for_fruit</span><span class="p">(</span><span class="n">fruit</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">fruit</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {anything_else:w}&quot;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {anything_else:w}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">anything_else</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for</span><span class="p">(</span><span class="n">anything_else</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">anything_else</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
@@ -158,18 +228,19 @@ these cases.</p>
 </div>
 <div class="section" id="define-the-data-types">
 <h3>Define the Data Types<a class="headerlink" href="#define-the-data-types" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_multi_methods.py</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># USER-DEFINED TYPES:</span>
-<span class="c"># ------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_multi_methods.py</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
-<span class="n">parse_vegetable</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s">&quot;cucumbers&quot;</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">])</span>
+<span class="n">parse_vegetable</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s2">&quot;cucumbers&quot;</span><span class="p">,</span> <span class="s2">&quot;lettuce&quot;</span><span class="p">])</span>
 <span class="n">register_type</span><span class="p">(</span><span class="n">Vegetable</span><span class="o">=</span><span class="n">parse_vegetable</span><span class="p">)</span>
 
-<span class="n">parse_fruit</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s">&quot;apples&quot;</span><span class="p">,</span> <span class="s">&quot;pears&quot;</span><span class="p">])</span>
+<span class="n">parse_fruit</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s2">&quot;apples&quot;</span><span class="p">,</span> <span class="s2">&quot;pears&quot;</span><span class="p">])</span>
 <span class="n">register_type</span><span class="p">(</span><span class="n">Fruit</span><span class="o">=</span><span class="n">parse_fruit</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -178,9 +249,9 @@ these cases.</p>
 <p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../step_matcher.features/use_multi_methods.feature
-<span class="ansi-black">Feature: Use Multi-Methods in Step Definitions</span><span class="ansi-white">   # ../step_matcher.features/use_multi_methods.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Use Multi-Methods in Step Definitions</span><span class="ansi-white">   # ../step_matcher.features/use_multi_methods.feature:1</span>
 
-<span class="ansi-black">  Scenario:  </span><span class="ansi-white">              # ../step_matcher.features/use_multi_methods.feature:2</span>
+<span class="ansi-bold ansi-black">  Scenario:  </span><span class="ansi-white">              # ../step_matcher.features/use_multi_methods.feature:2</span>
     <span class="ansi-green">Given </span><span class="ansi-green">I go to a shop</span><span class="ansi-white">   # ../step_matcher.features/steps/step_multi_methods.py:60</span>
     <span class="ansi-green">When </span><span class="ansi-green">I buy </span><span class="ansi-bold ansi-green">2</span><span class="ansi-green"> </span><span class="ansi-bold ansi-green">cucumbers</span><span class="ansi-white"> # ../step_matcher.features/steps/step_multi_methods.py:66</span>
     <span class="ansi-green">And </span><span class="ansi-green">I buy </span><span class="ansi-bold ansi-green">3</span><span class="ansi-green"> </span><span class="ansi-bold ansi-green">apples</span><span class="ansi-white">     # ../step_matcher.features/steps/step_multi_methods.py:71</span>
@@ -278,8 +349,8 @@ Each step matches a different step definition (implementation).</p>
 77
 78
 79
-80</pre></div></td><td class="code"><div class="highlight"><pre><span class="c"># file:step_matcher.features/steps/step_multi_methods.py</span>
-<span class="c"># -*- coding: UTF-8 -*-</span>
+80</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_multi_methods.py</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Feature: Use Multi-Methods in Step Definitions</span>
 
@@ -290,21 +361,21 @@ Each step matches a different step definition (implementation).</p>
 <span class="sd">         And I buy 4 diamonds</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="c"># @mark.domain_model</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># DOMAIN MODEL:</span>
-<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c1"># @mark.domain_model</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># DOMAIN MODEL:</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Shop</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">vegetable_price_list</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;cucumbers&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>   <span class="c"># Dollars per piece.</span>
-        <span class="s">&quot;lettuce&quot;</span><span class="p">:</span>   <span class="mf">0.8</span><span class="p">,</span>   <span class="c"># Dollars per piece.</span>
+        <span class="s2">&quot;cucumbers&quot;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span>   <span class="c1"># Dollars per piece.</span>
+        <span class="s2">&quot;lettuce&quot;</span><span class="p">:</span>   <span class="mf">0.8</span><span class="p">,</span>   <span class="c1"># Dollars per piece.</span>
     <span class="p">}</span>
     <span class="n">fruit_price_list</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;apples&quot;</span><span class="p">:</span>     <span class="mf">0.5</span><span class="p">,</span>  <span class="c"># Dollars per piece.</span>
-        <span class="s">&quot;pears&quot;</span><span class="p">:</span>      <span class="mf">0.6</span><span class="p">,</span>  <span class="c"># Dollars per piece.</span>
+        <span class="s2">&quot;apples&quot;</span><span class="p">:</span>     <span class="mf">0.5</span><span class="p">,</span>  <span class="c1"># Dollars per piece.</span>
+        <span class="s2">&quot;pears&quot;</span><span class="p">:</span>      <span class="mf">0.6</span><span class="p">,</span>  <span class="c1"># Dollars per piece.</span>
     <span class="p">}</span>
     <span class="n">common_price_list</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;diamonds&quot;</span><span class="p">:</span> <span class="mf">1000.</span>    <span class="c"># Dollars for one with 10 karat (only 1 size).</span>
+        <span class="s2">&quot;diamonds&quot;</span><span class="p">:</span> <span class="mf">1000.</span>    <span class="c1"># Dollars for one with 10 karat (only 1 size).</span>
     <span class="p">}</span>
 
     <span class="k">def</span> <span class="nf">calculate_price_for_fruit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fruit</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
@@ -319,42 +390,42 @@ Each step matches a different step definition (implementation).</p>
         <span class="n">price_per_unit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">common_price_list</span><span class="p">[</span><span class="n">shop_item</span><span class="p">]</span>
         <span class="k">return</span> <span class="n">price_per_unit</span><span class="o">*</span><span class="n">amount</span>
 
-<span class="c"># @mark.user_defined_types</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># USER-DEFINED TYPES:</span>
-<span class="c"># ------------------------------------------------------------------------</span>
+<span class="c1"># @mark.user_defined_types</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 
-<span class="n">parse_vegetable</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s">&quot;cucumbers&quot;</span><span class="p">,</span> <span class="s">&quot;lettuce&quot;</span><span class="p">])</span>
+<span class="n">parse_vegetable</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s2">&quot;cucumbers&quot;</span><span class="p">,</span> <span class="s2">&quot;lettuce&quot;</span><span class="p">])</span>
 <span class="n">register_type</span><span class="p">(</span><span class="n">Vegetable</span><span class="o">=</span><span class="n">parse_vegetable</span><span class="p">)</span>
 
-<span class="n">parse_fruit</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s">&quot;apples&quot;</span><span class="p">,</span> <span class="s">&quot;pears&quot;</span><span class="p">])</span>
+<span class="n">parse_fruit</span> <span class="o">=</span> <span class="n">TypeBuilder</span><span class="o">.</span><span class="n">make_choice</span><span class="p">([</span><span class="s2">&quot;apples&quot;</span><span class="p">,</span> <span class="s2">&quot;pears&quot;</span><span class="p">])</span>
 <span class="n">register_type</span><span class="p">(</span><span class="n">Fruit</span><span class="o">=</span><span class="n">parse_fruit</span><span class="p">)</span>
 
-<span class="c"># @mark.steps</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<span class="c1"># @mark.steps</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s">u&quot;I go to a shop&quot;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s2">u&quot;I go to a shop&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_given_I_go_to_a_shop</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shop</span> <span class="o">=</span> <span class="n">Shop</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span> <span class="o">=</span> <span class="p">[</span> <span class="p">]</span>
 
-<span class="c"># -- STEP-ORDERING-IMPORTANT: Else step must be last.</span>
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {vegetable:Vegetable}&quot;</span><span class="p">)</span>
+<span class="c1"># -- STEP-ORDERING-IMPORTANT: Else step must be last.</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {vegetable:Vegetable}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_vegetable</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">vegetable</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for_vegetable</span><span class="p">(</span><span class="n">vegetable</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">vegetable</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {fruit:Fruit}&quot;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {fruit:Fruit}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_fruit</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">fruit</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for_fruit</span><span class="p">(</span><span class="n">fruit</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">fruit</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&quot;I buy {amount:n} {anything_else:w}&quot;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s2">u&quot;I buy {amount:n} {anything_else:w}&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_buy_anything_else</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">anything_else</span><span class="p">):</span>
     <span class="n">price</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">shop</span><span class="o">.</span><span class="n">calculate_price_for</span><span class="p">(</span><span class="n">anything_else</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
     <span class="n">context</span><span class="o">.</span><span class="n">shopping_cart</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">anything_else</span><span class="p">,</span> <span class="n">amount</span><span class="p">,</span> <span class="n">price</span><span class="p">))</span>
@@ -365,76 +436,22 @@ Each step matches a different step definition (implementation).</p>
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Use Multi-Methods in Step Definitions</a><ul>
-<li><a class="reference internal" href="#variant-1-use-single-method">Variant 1: Use Single Method</a></li>
-<li><a class="reference internal" href="#variant-2-use-multi-methods">Variant 2: Use Multi-Methods</a><ul>
-<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
-<li><a class="reference internal" href="#define-the-data-types">Define the Data Types</a></li>
-<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
-<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="use_optional_part.html"
-                        title="previous chapter">Use Optional Part in Step Definitions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="regular_expressions.html"
-                        title="next chapter">Regular Expressions</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/step_matcher/use_multi_methods.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="use_optional_part.html">Use Optional Part in Step Definitions</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="regular_expressions.html">Regular Expressions</a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>
