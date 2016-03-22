@@ -29,6 +29,7 @@ from __future__ import print_function
 import os.path
 import sys
 
+
 # -----------------------------------------------------------------------------
 # SETUP PATH: Needed for sphinxcontrib-programoutput
 # -----------------------------------------------------------------------------
@@ -122,7 +123,7 @@ def setup(app):
 # General information about the project.
 project = u"behave.example"
 author  = u"Jens Engel"
-copyright = u'2012-2015 by %s' % author
+copyright = u'2012-2016 by %s' % author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -198,8 +199,9 @@ html_theme = 'default'
 html_theme = "sphinxdoc"
 html_theme = "haiku"
 html_theme = "default"
-html_theme = 'bw'
-html_theme = 'dotted'
+html_theme = "bw"
+html_theme = "dotted"
+html_theme = "bootstrap"
 
 html_theme_options = {
     # -- THEME=dotted
@@ -227,6 +229,18 @@ if html_theme == "bw":
     # http://pypi.python.org/pypi/bw_sphinxtheme/0.1.8
     html_theme_path = [ os.path.join(HERE, "_themes") ]
     html_theme_options["nosidebar"] = "true"
+
+if html_theme == "bootstrap":
+    # See sphinx-bootstrap-theme for documentation of these options
+    # https://github.com/ryan-roemer/sphinx-bootstrap-theme
+    import sphinx_bootstrap_theme
+    html_theme_options = {
+        'navbar_site_name': 'Document',
+        'navbar_pagenav': False
+    }
+
+    # Add any paths that contain custom themes here, relative to this directory.
+    html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # XXX-JE-EXPERIMENT-END:
 
@@ -384,7 +398,7 @@ texinfo_documents = [
 epub_title = project
 epub_author = author
 epub_publisher = author
-epub_copyright = u'2012-2015, %s' % author
+epub_copyright = copyright
 
 # The language of the text. It defaults to the language option
 # or en if the language is not set.
