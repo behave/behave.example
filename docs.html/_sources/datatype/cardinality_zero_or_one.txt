@@ -8,7 +8,7 @@ Cardinality: Zero or One (Optional)
 There are some cases, when a text part may be present or not.
 Therefore, this text part is an optional and has cardinality zero or one (0..1).
 
-The :py:class:`parse.TypeBuilder` can be used to compute the type with
+The :py:class:`parse_type.TypeBuilder` can be used to compute the type with
 cardinality zero or one based on data type with cardinality one.
 
 .. seealso::

@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Tutorials &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,62 +26,115 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="next" title="Tutorial 1: First Steps" href="tutorial01.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" /> 
+    <link rel="prev" title="Introduction" href="../intro.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Tutorials</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="../intro.html">Introduction</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial01.html">Tutorial 1: First Steps</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Tutorials</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../intro.html" title="Previous Chapter: Introduction"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Introduction</span>
+    </a>
+  </li>
+  <li>
+    <a href="tutorial01.html" title="Next Chapter: Tutorial 1: First Steps"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tutorial 1: F... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/tutorials/index.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="tutorials">
 <span id="id-tutorials"></span><h1>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
 <div class="toctree-wrapper compound">
@@ -103,7 +157,7 @@
 <p class="first admonition-title">Important</p>
 <p><strong>Directory Structure</strong></p>
 <p>The following directory structure is used in these tutorials:</p>
-<div class="last highlight-python"><div class="highlight"><pre>$PROJECT/
+<div class="last highlight-python"><div class="highlight"><pre><span></span>$PROJECT/
     +-- features/                   -- Contains all feature files.
     |       +-- steps/
     |       |     +-- step_*.py     -- Step definitions for features.
@@ -115,61 +169,22 @@
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../intro.html"
-                        title="previous chapter">Introduction</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="tutorial01.html"
-                        title="next chapter">Tutorial 1: First Steps</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/tutorials/index.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="../intro.html">Introduction</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial01.html">Tutorial 1: First Steps</a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

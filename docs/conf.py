@@ -236,7 +236,7 @@ if html_theme == "bootstrap":
     import sphinx_bootstrap_theme
     html_theme_options = {
         'navbar_site_name': 'Document',
-        'navbar_pagenav': False
+        'navbar_pagenav': True
     }
 
     # Add any paths that contain custom themes here, relative to this directory.

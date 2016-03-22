@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Tutorial 3: Step Parameters &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,63 +26,122 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 4: Scenario Outline" href="tutorial04.html" />
-    <link rel="prev" title="Tutorial 2: Natural Language" href="tutorial02.html" /> 
+    <link rel="prev" title="Tutorial 2: Natural Language" href="tutorial02.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Tutorial 3: Step Parameters</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="tutorial02.html">Tutorial 2: Natural Language</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial04.html">Tutorial 4: Scenario Outline</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 3: Step Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial09.html">Tutorial 9: Use Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Tutorial 3: Step Parameters</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="tutorial02.html" title="Previous Chapter: Tutorial 2: Natural Language"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 2: N...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tutorial04.html" title="Next Chapter: Tutorial 4: Scenario Outline"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tutorial 4: S... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/tutorials/tutorial03.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="tutorial-3-step-parameters">
 <span id="id-tutorial03"></span><h1>Tutorial 3: Step Parameters<a class="headerlink" href="#tutorial-3-step-parameters" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" id="index-0" rules="none">
@@ -94,7 +154,7 @@
 </table>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial03_step_parameters.feature</span><span class="nf"></span>
+<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial03_step_parameters.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Step Parameters (tutorial03)</span>
 
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Blenders</span>
@@ -115,24 +175,24 @@ this problem, because it often marks these parameters as <strong>bold text</stro
 </div>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial03.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial03.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 <span class="kn">from</span> <span class="nn">blender</span>  <span class="kn">import</span> <span class="n">Blender</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;I put &quot;{thing}&quot; in a blender&#39;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I put &quot;{thing}&quot; in a blender&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_given_put_thing_into_blender</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;I switch the blender on&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I switch the blender on&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_switch_blender_on</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">switch_on</span><span class="p">()</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;it should transform into &quot;{other_thing}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;it should transform into &quot;{other_thing}&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_should_transform_into</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">other_thing</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">other_thing</span><span class="p">))</span>
 </pre></div>
@@ -140,16 +200,16 @@ this problem, because it often marks these parameters as <strong>bold text</stro
 </div>
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/blender.py</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
-<span class="c"># DOMAIN-MODEL:</span>
-<span class="c"># -----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/blender.py</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
+<span class="c1"># DOMAIN-MODEL:</span>
+<span class="c1"># -----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Blender</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">TRANSFORMATION_MAP</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;Red Tree Frog&quot;</span><span class="p">:</span> <span class="s">&quot;mush&quot;</span><span class="p">,</span>
-        <span class="s">&quot;apples&quot;</span><span class="p">:</span> <span class="s">&quot;apple juice&quot;</span><span class="p">,</span>
-        <span class="s">&quot;iPhone&quot;</span><span class="p">:</span> <span class="s">&quot;toxic waste&quot;</span><span class="p">,</span>
-        <span class="s">&quot;Galaxy Nexus&quot;</span><span class="p">:</span> <span class="s">&quot;toxic waste&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Red Tree Frog&quot;</span><span class="p">:</span> <span class="s2">&quot;mush&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;apples&quot;</span><span class="p">:</span> <span class="s2">&quot;apple juice&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;iPhone&quot;</span><span class="p">:</span> <span class="s2">&quot;toxic waste&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Galaxy Nexus&quot;</span><span class="p">:</span> <span class="s2">&quot;toxic waste&quot;</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">thing</span>  <span class="o">=</span> <span class="bp">None</span>
@@ -157,13 +217,14 @@ this problem, because it often marks these parameters as <strong>bold text</stro
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">select_result_for</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">TRANSFORMATION_MAP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thing</span><span class="p">,</span> <span class="s">&quot;DIRT&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="o">.</span><span class="n">TRANSFORMATION_MAP</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">thing</span><span class="p">,</span> <span class="s2">&quot;DIRT&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">thing</span> <span class="o">=</span> <span class="n">thing</span>
 
     <span class="k">def</span> <span class="nf">switch_on</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">select_result_for</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">thing</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -172,9 +233,9 @@ this problem, because it often marks these parameters as <strong>bold text</stro
 <p>When you run the feature file from above:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial03_step_parameters.feature
-<span class="ansi-black">Feature: Step Parameters (tutorial03)</span><span class="ansi-white">   # ../features/tutorial03_step_parameters.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Step Parameters (tutorial03)</span><span class="ansi-white">   # ../features/tutorial03_step_parameters.feature:1</span>
 
-<span class="ansi-black">  Scenario: Blenders </span><span class="ansi-white">                           # ../features/tutorial03_step_parameters.feature:3</span>
+<span class="ansi-bold ansi-black">  Scenario: Blenders </span><span class="ansi-white">                           # ../features/tutorial03_step_parameters.feature:3</span>
     <span class="ansi-green">Given </span><span class="ansi-green">I put &quot;</span><span class="ansi-bold ansi-green">apples</span><span class="ansi-green">&quot; in a blender</span><span class="ansi-white">           # ../features/steps/step_tutorial03.py:39</span>
     <span class="ansi-green">When </span><span class="ansi-green">I switch the blender on</span><span class="ansi-white">                # ../features/steps/step_tutorial03.py:44</span>
     <span class="ansi-green">Then </span><span class="ansi-green">it should transform into &quot;</span><span class="ansi-bold ansi-green">apple juice</span><span class="ansi-green">&quot;</span><span class="ansi-white"> # ../features/steps/step_tutorial03.py:48</span>
@@ -182,78 +243,28 @@ $ behave ../features/tutorial03_step_parameters.feature
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.012s
+Took 0m0.000s
 </pre>
 </div>
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Tutorial 3: Step Parameters</a><ul>
-<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
-<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
-<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
-<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial02.html"
-                        title="previous chapter">Tutorial 2: Natural Language</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="tutorial04.html"
-                        title="next chapter">Tutorial 4: Scenario Outline</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/tutorials/tutorial03.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="tutorial02.html">Tutorial 2: Natural Language</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial04.html">Tutorial 4: Scenario Outline</a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

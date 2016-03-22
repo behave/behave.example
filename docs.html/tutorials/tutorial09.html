@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Tutorial 9: Use Background &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,63 +26,122 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" />
-    <link rel="prev" title="Tutorial 8: Execute Other Steps in a Step" href="tutorial08.html" /> 
+    <link rel="prev" title="Tutorial 8: Execute Other Steps in a Step" href="tutorial08.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Tutorial 9: Use Background</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial10.html">Tutorial 10: User-defined Data Type</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="tutorial01.html">Tutorial 1: First Steps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial02.html">Tutorial 2: Natural Language</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial03.html">Tutorial 3: Step Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial04.html">Tutorial 4: Scenario Outline</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial05.html">Tutorial 5: Multi-line Text (Step Data)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial06.html">Tutorial 6: Setup Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial07.html">Tutorial 7: Result Table</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="">Tutorial 9: Use Background</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial10.html">Tutorial 10: User-defined Data Type</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial11.html">Tutorial 11: Use Tags</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial12.html">Tutorial 12: Use another Spoken Language</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Tutorial 9: Use Background</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="tutorial08.html" title="Previous Chapter: Tutorial 8: Execute Other Steps in a Step"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 8: E...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tutorial10.html" title="Next Chapter: Tutorial 10: User-defined Data Type"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tutorial 10: ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/tutorials/tutorial09.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="tutorial-9-use-background">
 <span id="id-tutorial09"></span><h1>Tutorial 9: Use Background<a class="headerlink" href="#tutorial-9-use-background" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" id="index-0" rules="none">
@@ -99,7 +159,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span class="c"># file:features/tutorial09_background.feature</span><span class="nf"></span>
+<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial09_background.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Using Background -- Fight or Flight (Natural Language Part2, tutorial09)</span>
 
 <span class="nf">    </span><span class="k">Background:</span><span class="nf"> Ninja fight setup</span>
@@ -119,58 +179,60 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 </div>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial02.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># BACKGROUND-STEPS: Needed for tutorial09</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;the ninja encounters another opponent&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># BACKGROUND-STEPS: Needed for tutorial09</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;the ninja encounters another opponent&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_the_ninja_encounters_another_opponent</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    BACKGROUND steps are called at begin of each scenario before other steps.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># -- SETUP/TEARDOWN:</span>
-    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s">&quot;ninja_fight&quot;</span><span class="p">):</span>
-        <span class="c"># -- VERIFY: Double-call does not occur.</span>
+    <span class="c1"># -- SETUP/TEARDOWN:</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;ninja_fight&quot;</span><span class="p">):</span>
+        <span class="c1"># -- VERIFY: Double-call does not occur.</span>
         <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="p">,</span> <span class="n">is_not</span><span class="p">(</span><span class="n">equal_to</span><span class="p">(</span><span class="bp">None</span><span class="p">)))</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial02.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># STEPS:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_not</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_the_ninja_has_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">achievement_level</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="n">NinjaFight</span><span class="p">(</span><span class="n">achievement_level</span><span class="p">)</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by a {opponent_role}&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by a {opponent_role}&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_attacked_by_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">opponent_role</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent_role</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">&#39;attacked by {opponent}&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by {opponent}&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_the_ninja_should</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">reaction</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">decision</span><span class="p">()))</span>
+
+
 </pre></div>
 </div>
 </div>
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># file:features/steps/step_tutorial02.py</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
-<span class="c"># PROBLEM DOMAIN:</span>
-<span class="c"># ----------------------------------------------------------------------------</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># PROBLEM DOMAIN:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">NinjaFight</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Domain model for ninja fights.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c"># pylint: disable=R0903</span>
+    <span class="c1"># pylint: disable=R0903</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_ninja_level</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="o">=</span> <span class="n">with_ninja_level</span>
@@ -182,12 +244,13 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">==</span> <span class="s">&quot;Chuck Norris&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;run for his life&quot;</span>
-        <span class="k">if</span> <span class="s">&quot;black-belt&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;engage the opponent&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">==</span> <span class="s2">&quot;Chuck Norris&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;run for his life&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;black-belt&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;engage the opponent&quot;</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="s">&quot;run for his life&quot;</span>
+            <span class="k">return</span> <span class="s2">&quot;run for his life&quot;</span>
+
 </pre></div>
 </div>
 </div>
@@ -196,17 +259,17 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <p>When you run this feature test with the background functionality:</p>
 <pre class="ansi-block literal-block">
 $ behave ../features/tutorial09_background.feature
-<span class="ansi-black">Feature: Using Background -- Fight or Flight (Natural Language Part2, tutorial09)</span><span class="ansi-white">   # ../features/tutorial09_background.feature:1</span>
+<span class="ansi-bold ansi-black">Feature: Using Background -- Fight or Flight (Natural Language Part2, tutorial09)</span><span class="ansi-white">   # ../features/tutorial09_background.feature:1</span>
 
-<span class="ansi-black">  Background: Ninja fight setup </span><span class="ansi-white"> # ../features/tutorial09_background.feature:3</span>
+<span class="ansi-bold ansi-black">  Background: Ninja fight setup </span><span class="ansi-white"> # ../features/tutorial09_background.feature:3</span>
 
-<span class="ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial09_background.feature:6</span>
+<span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial09_background.feature:6</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja encounters another opponent</span><span class="ansi-white">  # ../features/steps/step_tutorial02.py:78</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
     <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
     <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
 
-<span class="ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                    # ../features/tutorial09_background.feature:11</span>
+<span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                    # ../features/tutorial09_background.feature:11</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja encounters another opponent</span><span class="ansi-white">   # ../features/steps/step_tutorial02.py:78</span>
     <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">second level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
     <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">                 # ../features/steps/step_tutorial02.py:65</span>
@@ -221,72 +284,22 @@ Took 0m0.001s
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Tutorial 9: Use Background</a><ul>
-<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
-<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
-<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
-<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="tutorial08.html"
-                        title="previous chapter">Tutorial 8: Execute Other Steps in a Step</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="tutorial10.html"
-                        title="next chapter">Tutorial 10: User-defined Data Type</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/tutorials/tutorial09.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="tutorial08.html">Tutorial 8: Execute Other Steps in a Step</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="tutorial10.html">Tutorial 10: User-defined Data Type</a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>

@@ -1,6 +1,4 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,9 +7,12 @@
     
     <title>Using the Step Matchers &mdash; behave 1.2.5: Examples and Tutorials</title>
     
-    <link rel="stylesheet" href="../_static/dotted.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -25,57 +26,121 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/dotted.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
     <link rel="up" title="Step Matchers" href="index.html" />
     <link rel="next" title="Use the Parse Matcher (parse)" href="parse_matcher.html" />
-    <link rel="prev" title="Step Matchers" href="index.html" /> 
+    <link rel="prev" title="Step Matchers" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
   </head>
   <body role="document">
-        <div class="header">
-          <div class="header-top">
-            <h1 class="heading"><a href="../index.html">
-              <span>behave 1.2.5: Examples and Tutorials</span></a></h1>
-            <h2 class="heading"><span>Using the Step Matchers</span></a></h2>
-          </div>
-          <div class="topnav">
-            
-        <p>
-        &#171;&#160;&#160;<a href="index.html">Step Matchers</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="parse_matcher.html">Use the Parse Matcher (parse)</a>&#160;&#160;&#187;
-        </p>
 
-            <div class="globaltoc">
-              <ul class="current">
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          behave.example</a>
+        <span class="navbar-text navbar-version pull-left"><b>1.2</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Document <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="">Using the Step Matchers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="parse_matcher.html">Use the Parse Matcher (parse)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="re_matcher.html">Use the Regular Expression Matcher (re)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_optional_part.html">Use Optional Part in Step Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="use_multi_methods.html">Use Multi-Methods in Step Definitions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regular_expressions.html">Regular Expressions</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Using the Step Matchers</a><ul>
+<li><a class="reference internal" href="#default-matcher-strategy">Default Matcher Strategy</a></li>
+<li><a class="reference internal" href="#defining-an-own-default-matcher">Defining an own Default Matcher</a></li>
+<li><a class="reference internal" href="#switch-between-step-matcher-strategy-in-a-step-definition-file">Switch between Step Matcher Strategy in a Step Definition File</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Step Matchers"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Step Matchers</span>
+    </a>
+  </li>
+  <li>
+    <a href="parse_matcher.html" title="Next Chapter: Use the Parse Matcher (parse)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Use the Parse... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/using_matchers.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
 
-            </div>
-          </div>
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
         </div>
-        <div class="wrapper">  
+    </div>
+  </div>
 
-          <div class="document">
-            <div class="documentwrapper">
-              <div class="bodywrapper">
-                <div class="body">
-                  
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
   <div class="section" id="using-the-step-matchers">
 <span id="id-step-matcher-using-matchers"></span><h1>Using the Step Matchers<a class="headerlink" href="#using-the-step-matchers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="default-matcher-strategy">
@@ -86,13 +151,13 @@
 <h2>Defining an own Default Matcher<a class="headerlink" href="#defining-an-own-default-matcher" title="Permalink to this headline">¶</a></h2>
 <p>Use the <code class="docutils literal"><span class="pre">environment.py</span></code> file to define an own default matcher
 that is used for all features in the <code class="docutils literal"><span class="pre">features/</span></code> directory.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- FILE: features/environment.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/environment.py</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span>
 
-<span class="c"># -- SELECT DEFAULT STEP MATCHER: Use &quot;re&quot; matcher as default.</span>
-<span class="c"># use_step_matcher(&quot;parse&quot;)</span>
-<span class="c"># use_step_matcher(&quot;cfparse&quot;)</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
+<span class="c1"># -- SELECT DEFAULT STEP MATCHER: Use &quot;re&quot; matcher as default.</span>
+<span class="c1"># use_step_matcher(&quot;parse&quot;)</span>
+<span class="c1"># use_step_matcher(&quot;cfparse&quot;)</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -106,26 +171,26 @@ it is sufficient to define it in the &#8220;environment.py&#8221; file.</p>
 <h2>Switch between Step Matcher Strategy in a Step Definition File<a class="headerlink" href="#switch-between-step-matcher-strategy-in-a-step-definition-file" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to switch the step matcher several times in a <em>step definition</em>.
 But normally you group the step definitions according to their step matcher.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># -- FILE: features/steps/step.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/steps/step.py</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">use_step_matcher</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># STEPS with Regular Expression Matcher (&quot;re&quot;)</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># -- SELECT STEP MATCHER: Before using it in step definitions.</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;re&quot;</span><span class="p">)</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># STEPS with Regular Expression Matcher (&quot;re&quot;)</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># -- SELECT STEP MATCHER: Before using it in step definitions.</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s">u&#39;I meet with &quot;(?P&lt;person&gt;Alice|Bob)&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I meet with &quot;(?P&lt;person&gt;Alice|Bob)&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_meet</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">person</span>
 
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="c"># STEPS with Parse Matcher (&quot;parse&quot;)</span>
-<span class="c"># ------------------------------------------------------------------------</span>
-<span class="n">use_step_matcher</span><span class="p">(</span><span class="s">&quot;parse&quot;</span><span class="p">)</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="c1"># STEPS with Parse Matcher (&quot;parse&quot;)</span>
+<span class="c1"># ------------------------------------------------------------------------</span>
+<span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;parse&quot;</span><span class="p">)</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s">u&#39;I have a lot of fun with &quot;{person}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="s1">u&#39;I have a lot of fun with &quot;{person}&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_I_have_fun_with</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">person</span><span class="p">))</span>
 </pre></div>
@@ -134,71 +199,22 @@ But normally you group the step definitions according to their step matcher.</p>
 </div>
 
 
-                </div>
-              </div>
-
-            </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Using the Step Matchers</a><ul>
-<li><a class="reference internal" href="#default-matcher-strategy">Default Matcher Strategy</a></li>
-<li><a class="reference internal" href="#defining-an-own-default-matcher">Defining an own Default Matcher</a></li>
-<li><a class="reference internal" href="#switch-between-step-matcher-strategy-in-a-step-definition-file">Switch between Step Matcher Strategy in a Step Definition File</a></li>
-</ul>
-</li>
-</ul>
-
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Step Matchers</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="parse_matcher.html"
-                        title="next chapter">Use the Parse Matcher (parse)</a></p>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="../_sources/step_matcher/using_matchers.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-
-            <div class="clearer"></div>
-          </div>
-        </div>
-
-        <div class="bottomnav">
-          
-        <p>
-        &#171;&#160;&#160;<a href="index.html">Step Matchers</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="parse_matcher.html">Use the Parse Matcher (parse)</a>&#160;&#160;&#187;
-        </p>
-
-        </div>
-
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2012-2015 by Jens Engel.
-      Last updated on 2015-03-28.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
     </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2012-2016 by Jens Engel.<br/>
+      Last updated on 2016-03-22.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+    </p>
+  </div>
+</footer>
   </body>
 </html>
