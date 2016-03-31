@@ -10,16 +10,16 @@ This project provides tutorials and examples how to use `behave`_.
 It should extends the excellent documentation of `behave`_.
 
 SEE ALSO:
-  * https://github.com/jenisys/behave.example
+  * https://github.com/behave/behave.example
   * behave:  http://pypi.python.org/pypi/behave/
   * cucumber: http://cukes.info/
 
 DOCUMENTATION:
-  * http://jenisys.github.com/behave.example (latest version)
+  * http://behave.github.com/behave.example (latest version)
 
 REPOSITORIES:
   * https://github.com/behave/behave
-  * https://github.com/jenisys/parse_type
+  * https://github.com/behave/parse_type
 
 
 .. _behave: https://github.com/behave/behave
@@ -102,5 +102,3 @@ SPECIAL CONFIGURATION
 * To disable "ANSI coloring" support for Sphinx,
   set "ansiterm_supported = False" in "docs/conf.py".
   Note that this is not necessary on Windows.
-
-

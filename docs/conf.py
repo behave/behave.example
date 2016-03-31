@@ -105,7 +105,7 @@ extlinks = {
     "pypi": ("https://pypi.python.org/pypi/%s", ""),
     "github": ("https://github.com/%s", "github:/"),
     "issue":
-        ("https://github.com/jenisys/behave.example/issue/%s", "issue #"),
+        ("https://github.com/behave/behave.example/issue/%s", "issue #"),
     "behave.issue":
         ("https://github.com/behave/behave/issue/%s", "behave issue #"),
 }
@@ -512,5 +512,3 @@ pdf_splittables = False
 
 # Page template name for "regular" pages
 pdf_page_template = 'cutePage'
-
-
