@@ -93,6 +93,7 @@
 <li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
 <li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
 <li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
 </ul>
 </li>
 </ul>
@@ -186,6 +187,26 @@ that occurs before the parameter is handed to the step definition function.</p>
 </div>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
+<p>First you need to provide the type converter for <code class="docutils literal"><span class="pre">Number</span></code> and register it:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
+
+<span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert parsed text into a number.</span>
+<span class="sd">    :param text: Parsed text, called by :py:meth:`parse.Parser.parse()`.</span>
+<span class="sd">    :return: Number instance (integer), created from parsed text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># -- REGISTER: User-defined type converter (parse_type).</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">Number</span><span class="o">=</span><span class="n">parse_number</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>Now you can use <code class="docutils literal"><span class="pre">Number</span></code> as type in step parameters for the step definitions:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
@@ -266,14 +287,77 @@ $ behave ../features/tutorial10_step_usertype.feature
 12 steps passed, 0 failed, 0 skipped, 0 undefined
 Took 0m0.001s
 </pre>
+</div>
+<div class="section" id="the-complete-picture">
+<h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
+<span class="c1"># -*- coding: UTF-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Based on ``behave tutorial``</span>
+
+<span class="sd">Feature: A Step uses a User-Defined Type as Step Parameter (tutorial10)</span>
+
+<span class="sd">  Scenario Outline: Calculator</span>
+<span class="sd">    Given I have a calculator</span>
+<span class="sd">    When I add &quot;&lt;x&gt;&quot; and &quot;&lt;y&gt;&quot;</span>
+<span class="sd">    Then the calculator returns &quot;&lt;sum&gt;&quot;</span>
+
+<span class="sd">    Examples: Add Numbers</span>
+<span class="sd">        |  x  |  y | sum |</span>
+<span class="sd">        |  1  |  1 |  2  |</span>
+<span class="sd">        |  1  |  2 |  3  |</span>
+<span class="sd">        |  2  |  1 |  3  |</span>
+<span class="sd">        |  2  |  7 |  9  |</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># @mark.user_defined_types</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># USER-DEFINED TYPES:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
+
+<span class="k">def</span> <span class="nf">parse_number</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert parsed text into a number.</span>
+<span class="sd">    :param text: Parsed text, called by :py:meth:`parse.Parser.parse()`.</span>
+<span class="sd">    :return: Number instance (integer), created from parsed text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="c1"># -- REGISTER: User-defined type converter (parse_type).</span>
+<span class="n">register_type</span><span class="p">(</span><span class="n">Number</span><span class="o">=</span><span class="n">parse_number</span><span class="p">)</span>
+
+<span class="c1"># @mark.steps</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="c1"># STEPS:</span>
+<span class="c1"># ----------------------------------------------------------------------------</span>
+<span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
+<span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
+<span class="kn">from</span> <span class="nn">calculator</span> <span class="kn">import</span> <span class="n">Calculator</span>
+
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I have a calculator&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">calculator</span> <span class="o">=</span> <span class="n">Calculator</span><span class="p">()</span>
+
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I add &quot;{x:Number}&quot; and &quot;{y:Number}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">calculator</span><span class="o">.</span><span class="n">add2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;the calculator returns &quot;{expected:Number}&quot;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">expected</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">calculator</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected</span><span class="p">))</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p><strong>Predefined Types</strong></p>
 <p><a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a> uses the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module (inverse of Python <a class="reference external" href="http://docs.python.org/library/string.html#format-string-syntax">string.format</a>)
 under the hoods to parse parameters in step definitions.
 This leads to rather simple and readable parse expressions for step parameters.</p>
-<p class="last">See also <a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span>Predefined Data Types in parse</span></a> for more information.
-In addition, see also <a class="reference internal" href="../datatype/index.html#id-datatype"><span>Data Types and User-defined Types</span></a> for more information on
+<p class="last">See also <a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span class="std std-ref">Predefined Data Types in parse</span></a> for more information.
+In addition, see also <a class="reference internal" href="../datatype/index.html#id-datatype"><span class="std std-ref">Data Types and User-defined Types</span></a> for more information on
 defining and using user-defined data types.</p>
 </div>
 </div>
@@ -292,8 +376,8 @@ defining and using user-defined data types.</p>
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2016-04-20.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
     </p>
   </div>
 </footer>

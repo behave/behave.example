@@ -32,10 +32,22 @@ Write the Feature Test
 Provide the Test Automation
 -----------------------------
 
+First you need to provide the type converter for ``Number`` and register it:
+
+.. literalinclude:: ../../features/steps/step_tutorial10.py
+    :prepend:   # file:features/steps/step_tutorial10.py
+    :language: python
+    :start-after: @mark.user_defined_types
+    :end-before:  @mark.steps
+
+Now you can use ``Number`` as type in step parameters for the step definitions:
+
 .. literalinclude:: ../../features/steps/step_tutorial10.py
     :prepend:   # file:features/steps/step_tutorial10.py
     :language: python
     :start-after: @mark.steps
+
+
 
 Provide the Domain Model
 -----------------------------
@@ -60,6 +72,15 @@ When you run the feature file from above:
 
     .. command-output:: behave -f plain ../features/tutorial10_step_usertype.feature
         :shell:
+
+
+The Complete Picture
+-----------------------------
+
+.. literalinclude:: ../../features/steps/step_tutorial10.py
+    :prepend:   # file:features/steps/step_tutorial10.py
+    :language: python
+
 
 .. note::
 
