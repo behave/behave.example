@@ -1,7 +1,7 @@
 behave.example: Examples and Tutorials
 ==============================================================================
 
-:Date: 2016-04-20
+:Date: 2016-10-22
 :Category: BDD, testing
 :License:  BSD
 
@@ -12,7 +12,7 @@ It should extends the excellent documentation of `behave`_.
 SEE ALSO:
   * https://github.com/behave/behave.example
   * behave:  http://pypi.python.org/pypi/behave/
-  * cucumber: http://cukes.info/
+  * cucumber: http://cucumber.io/
 
 DOCUMENTATION:
   * http://behave.github.com/behave.example (latest version)
@@ -24,7 +24,7 @@ REPOSITORIES:
 
 .. _behave: https://github.com/behave/behave
 .. _parse_type:  https://github.com/jenisys/parse_type
-.. _paver: http://www.blueskyonmars.com/projects/paver/
+.. _invoke: http://www.pyinvoke.org
 .. _sphinxcontrib-ansi: http://bitbucket.org/birkenfeld/sphinx-contrib
 .. _sphinxcontrib-programoutput: https://github.com/lunaryorn/sphinxcontrib-programoutput
 
@@ -49,11 +49,11 @@ HOWTO
 
 Cleanup local workspace::
 
-    paver clean
+    invoke clean
 
 Run `behave`_ tests::
 
-    paver test
+    invoke test
 
 or::
 
@@ -64,11 +64,11 @@ or::
 
 Build Sphinx-based documentation with tutorials::
 
-    paver docs
+    invoke docs
 
-If `paver`_ is not installed, use the following canned script instead::
+If `invoke`_ is not installed, use the following canned script instead::
 
-    bin/paver command ...
+    bin/invoke command ...
 
 
 SPECIAL CONFIGURATION
