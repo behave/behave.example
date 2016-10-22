@@ -42,16 +42,18 @@ These variations in the *test automation layer* are:
     in several languages.
 
 .. _FIT:        http://fit.c2.com/
-.. _FitLibrary: http://sourceforge.net/projects/fitlibrary/
+.. _FitLibrary: https://sourceforge.net/projects/fitlibrary/
 .. _fitnesse:   http://fitnesse.org/
-.. _Fixture Gallery: http://gojko.net/fitnesse/fixturegallery/
+.. _Fixture Gallery: https://sourceforge.net/projects/fixturegallery/
 
-.. _fit.RowFixture:  http://fitnesse.org/FitNesse.UserGuide.RowFixture
-.. _fit.RowFixture2: http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.BasicFitFixtures.RowFixture
-.. _fitlibrary.ArrayFixture:  http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture
-.. _fitlibrary.SetFixture:    http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture
-.. _fitlibrary.SubsetFixture: http://fitnesse.org/FitNesse.UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture
+.. _fit.RowFixture: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.FixtureGallery.BasicFitFixtures.RowFixture
+.. _fitlibrary.ArrayFixture:  http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.FixtureGallery.FitLibraryFixtures.ArrayFixture
+.. _fitlibrary.SetFixture:    http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.FixtureGallery.FitLibraryFixtures.SetFixture
+.. _fitlibrary.SubsetFixture: http://fitnesse.org/FitNesse.FullReferenceGuide.UserGuide.FixtureGallery.FitLibraryFixtures.SubsetFixture
 
+.. broken-links:
+
+    http://gojko.net/fitnesse/fixturegallery/
 
 Both, **unordered dataset comparison** and
 **unordered subset comparison** are used in this tutorial
