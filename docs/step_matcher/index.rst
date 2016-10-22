@@ -56,4 +56,4 @@ by the :pypi:`parse` module (or its cousin).
     regular_expressions
 
 
-.. _cucumber: http://cukes.info/
+.. _cucumber: https://cucumber.io/

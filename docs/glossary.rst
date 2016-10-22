@@ -11,8 +11,8 @@ Glossary
     BDD
         Behaviour driven development:
 
-          * http://dannorth.net/introducing-bdd
-          * http://en.wikipedia.org/wiki/Behavior_Driven_Development
+        * https://dannorth.net/introducing-bdd/
+        * https://en.wikipedia.org/wiki/Behavior_Driven_Development
 
     FIT
         Framework for Integrated Test, http://fit.c2.com
@@ -24,17 +24,18 @@ Glossary
 
         Actually, as I understand it, the usage of the name "Gherkin" is a joke:
         `The gherkin is a fruit similar in form and nutritional value to a cucumber. ...
-        <http://en.wikipedia.org/wiki/Gherkin>`_
+        <https://en.wikipedia.org/wiki/Gherkin>`_
         (according to `wikipedia:Gherkin`_).
 
-.. _cucumber: http://cukes.info/
+.. _cucumber: https://cucumber.io
 .. _Gherkin:  https://github.com/cucumber/cucumber/wiki/Gherkin
+.. _Gherkin3: https://github.com/cucumber/gherkin
 .. _jbehave:  http://jbehave.org/
-.. _`wikipedia:Gherkin`: http://en.wikipedia.org/wiki/Gherkin
+.. _`wikipedia:Gherkin`: https://en.wikipedia.org/wiki/Gherkin
 
 .. broken:
 
-      * http://behaviour-driven.org/
+      http://behaviour-driven.org/
 
 
 

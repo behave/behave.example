@@ -94,4 +94,5 @@ The Complete Picture
     In addition, see also :ref:`id.datatype` for more information on
     defining and using user-defined data types.
 
-.. _string.format: http://docs.python.org/library/string.html#format-string-syntax
+.. _string.format: https://docs.python.org/3/library/string.html#format-string-syntax
+

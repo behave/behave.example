@@ -47,6 +47,7 @@ Grouping                Description
 ``(?P<name>...)``       Matches pattern and stores it in parameter "name".
 ``(?P=name)``           Match whatever text was matched by earlier group "name".
 ``(?:...)``             Matches pattern, but does non capture any text.
+``(?!...)``             Matches not-pattern: Ignores anything with this pattern.
 ``(?#...)``             Comment (is ignored), describes pattern details.
 =====================  =========================================================
 
@@ -65,9 +66,9 @@ Cardinality            Description
 =====================  ==============================================================
 
 
-.. _`regular expressions`: http://en.wikipedia.org/wiki/Regular_expression
-.. _Python regular expressions: http://docs.python.org/2/library/re.html#module-re
-.. _re module: http://docs.python.org/2/library/re.html#module-re
+.. _`regular expressions`: https://en.wikipedia.org/wiki/Regular_expression
+.. _Python regular expressions: https://docs.python.org/2/library/re.html#module-re
+.. _re module: https://docs.python.org/2/library/re.html#module-re
 
 
 

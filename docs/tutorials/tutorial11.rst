@@ -149,9 +149,10 @@ tag @ninja.chuck (**tag-and**):
     Now no scenario is executed, all are skipped.
 
 
-.. _py.test markers:    http://pytest.org/latest/example/markers.html
+.. _py.test markers:    http://docs.pytest.org/en/latest/example/markers.html
 .. _TestNG test groups: http://testng.org/
-.. _JUnit Categories:   https://github.com/junit-team/junit/wiki/Categories
+.. _JUnit Categories:   https://github.com/junit-team/junit4/wiki/Categories
 .. _NUnit CategoryAttribute:   http://www.nunit.org/index.php?p=category&r=2.4
 .. _JUnit:  http://junit.org/
-.. _behave tags documentation: http://packages.python.org/behave/tutorial.html#controlling-things-with-tags
+.. _behave tags documentation: https://pythonhosted.org/behave/tutorial.html#controlling-things-with-tags
+

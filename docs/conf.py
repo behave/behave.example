@@ -133,7 +133,7 @@ copyright = u'2012-2016 by %s' % author
 version = '1.2'
 # The full version, including alpha/beta/rc tags.
 release = open(os.path.join(HERE, "../VERSION.txt")).read().strip()
-release = '1.2.5'
+release = '1.2.6'
 
 
 # If your documentation needs a minimal Sphinx version, state it here.
