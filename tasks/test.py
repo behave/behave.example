@@ -5,7 +5,6 @@ Invoke test tasks.
 
 from __future__ import print_function
 from invoke import task, Collection
-from pathlib import Path
 import os.path
 import sys
 
@@ -34,7 +33,7 @@ def behave(ctx, args="", format="", options=""):
     format  = format or ctx.behave_test.format
     options = options or ctx.behave_test.options
     args = args or ctx.behave_test.args
-    if Path("bin/behave").exists():
+    if os.path.exists("bin/behave"):
         behave = "{python} bin/behave".format(python=sys.executable)
     else:
         behave = "{python} -m behave".format(python=sys.executable)
