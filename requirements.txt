@@ -26,6 +26,7 @@ PyHamcrest >= 1.8
 
 # -- BUILD-SUPPORT:
 invoke >= 0.13.0
+path.py >= 8.2.1
 pathlib;    python_version <= '3.4'
 # -- DEPRECATING:
 Paver >= 1.2
