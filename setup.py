@@ -17,7 +17,7 @@ HERE = os.curdir
 sys.path.insert(0, os.path.abspath(HERE))
 
 from setuptools import find_packages, setup
-from setuptools_behave import behave_test
+# -- PREPARED: from setuptools_behave import behave_test
 
 
 # -----------------------------------------------------------------------------
@@ -31,6 +31,7 @@ requirements = [
 ]
 docs_requirements = [
     "Sphinx",
+    "sphinx_bootstrap_theme >= 0.4.12",
     "sphinxcontrib-ansi >= 0.6",
     "sphinxcontrib-programoutput >= 0.8",
     "PyHamcrest",
