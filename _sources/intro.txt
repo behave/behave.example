@@ -57,14 +57,14 @@ Matcher Library  Description
 Native assert    Starting point, but not enough information when assert fails.
 `hamcrest`_      First assertion matcher library, now part of `JUnit4`_.
                  Supports several programming languages:
-                 http://code.google.com/p/hamcrest/
+                 https://github.com/hamcrest/PyHamcrest
 `nose.tools`_    Part of the :pypi:`nose` test framework
 `should-dsl`_    An interesting small matcher library,
-                 http://www.should-dsl.info/
+                 https://pypi.python.org/pypi/should_dsl
 :pypi:`sure`     Provided by the maker of :pypi:`lettuce`,
                  :github:`gabrielfalcao/sure`
-:pypi:`compare`  http://pypi.python.org/pypi/compare
-:pypi:`describe` http://pypi.python.org/pypi/describe
+:pypi:`compare`  https://pypi.python.org/pypi/compare
+:pypi:`describe` https://pypi.python.org/pypi/describe
 ================ ===============================================================
 
 .. note::
@@ -73,12 +73,11 @@ Native assert    Starting point, but not enough information when assert fails.
     presented here.
 
 .. _behave documentation:  http://pythonhosted.org/behave/
-.. _hamcrest:   http://code.google.com/p/hamcrest/
+.. _hamcrest:   https://github.com/hamcrest/
 .. _JUnit4:     http://junit.org/
-.. _nose.tools: http://readthedocs.org/docs/nose/en/latest/testing_tools.html
-.. _should-dsl: http://www.should-dsl.info/
+.. _nose.tools: http://nose.readthedocs.io/en/latest/testing_tools.html
+.. _should-dsl: https://pypi.python.org/pypi/should_dsl
 
-.. _cucumber: http://cukes.info/
-.. _jbehave:  htpp://jbehave.org/
-
+.. _cucumber: https://cucumber.io/
+.. _jbehave:  http://jbehave.org/
 

@@ -35,11 +35,12 @@ Indices and tables
 * :ref:`search`
 
 .. |behave_logo| image:: _static/behave_logo1.png
-.. _behave:   http://pypi.python.org/pypi/behave
-.. _behave documentation:  http://pythonhosted.org/behave/
-.. _cucumber: http://cukes.info/
+.. _behave:   https://pypi.python.org/pypi/behave
+.. _behave documentation:  https://pythonhosted.org/behave/
+.. _`behave docs (latest)`: https://behave.readthedocs.io/en/latest/
+.. _cucumber: https://cucumber.io
 .. _cucumber.git: https://github.com/cucumber/cucumber
 .. _Gherkin:  https://github.com/cucumber/gherkin
-.. _jbehave:  htpp://jbehave.org/
-.. _SpecFlow: http://www.specflow.org/
+.. _jbehave:  http://jbehave.org/
+.. _SpecFlow: https://www.specflow.org
 
