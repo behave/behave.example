@@ -199,36 +199,7 @@ html_theme = 'default'
 html_theme = "sphinxdoc"
 html_theme = "haiku"
 html_theme = "default"
-html_theme = "bw"
-html_theme = "dotted"
 html_theme = "bootstrap"
-
-html_theme_options = {
-    # -- THEME=dotted
-    # "slidetoc": True,
-    # "enablesidebar": True,
-    # "rightsidebar": True,
-    # "relbarbgcolor": "black"
-}
-
-# XXX-JE-EXPERIMENT:
-if html_theme == "sphinxtrap":
-    # -- OVERRIDE HTML-THEME: Bootstrap-based theme for Sphinx.
-    # import sphinxtrap
-    # html_theme_path = [ sphinxtrap.get_theme_dir() ]
-    html_theme_path = [ os.path.join(HERE, "_themes") ]
-    html_logo = "_static/Leaf32.png"
-
-if html_theme == "dotted":
-    html_theme_path = [ os.path.join(HERE, "_themes") ]
-    html_theme_options["slidetoc"] = "true"
-    html_theme_options["enablesidebar"] = "true"
-    html_theme_options["rightsidebar"] = "true"
-
-if html_theme == "bw":
-    # http://pypi.python.org/pypi/bw_sphinxtheme/0.1.8
-    html_theme_path = [ os.path.join(HERE, "_themes") ]
-    html_theme_options["nosidebar"] = "true"
 
 if html_theme == "bootstrap":
     # See sphinx-bootstrap-theme for documentation of these options
@@ -241,8 +212,6 @@ if html_theme == "bootstrap":
 
     # Add any paths that contain custom themes here, relative to this directory.
     html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
-
-# XXX-JE-EXPERIMENT-END:
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
