@@ -51,21 +51,23 @@ in your project.
 Python has a growing number of assertion *matcher libraries* by now.
 Here is the list of some of these:
 
-================ ===============================================================
-Matcher Library  Description
-================ ===============================================================
-Native assert    Starting point, but not enough information when assert fails.
-`hamcrest`_      First assertion matcher library, now part of `JUnit4`_.
-                 Supports several programming languages:
-                 https://github.com/hamcrest/PyHamcrest
-`nose.tools`_    Part of the :pypi:`nose` test framework
-`should-dsl`_    An interesting small matcher library,
-                 https://pypi.python.org/pypi/should_dsl
-:pypi:`sure`     Provided by the maker of :pypi:`lettuce`,
-                 :github:`gabrielfalcao/sure`
-:pypi:`compare`  https://pypi.python.org/pypi/compare
-:pypi:`describe` https://pypi.python.org/pypi/describe
-================ ===============================================================
+======================= ===============================================================
+Matcher Library         Description
+======================= ===============================================================
+Native assert           Starting point, but not enough information when assert fails.
+`hamcrest`_             First assertion matcher library, now part of `JUnit4`_.
+                        Supports several programming languages:
+                        :github:`hamcrest/PyHamcrest`
+:pypi:`behave-pytest`   Enables `pytest`_ assertions in behave:
+                        :github:`ribozz/behave-pytest`
+`nose.tools`_           Part of the :pypi:`nose` test framework
+`should-dsl`_           An interesting small matcher library,
+                        https://pypi.python.org/pypi/should_dsl
+:pypi:`sure`            Provided by the maker of :pypi:`lettuce`,
+                        :github:`gabrielfalcao/sure`
+:pypi:`compare`         https://pypi.python.org/pypi/compare
+:pypi:`describe`        https://pypi.python.org/pypi/describe
+======================= ===============================================================
 
 .. note::
 
@@ -78,6 +80,6 @@ Native assert    Starting point, but not enough information when assert fails.
 .. _nose.tools: http://nose.readthedocs.io/en/latest/testing_tools.html
 .. _should-dsl: https://pypi.python.org/pypi/should_dsl
 
-.. _cucumber: https://cucumber.io/
-.. _jbehave:  http://jbehave.org/
-
+.. _cucumber:   https://cucumber.io/
+.. _jbehave:    http://jbehave.org/
+.. _pytest:     http://pytest.org/
