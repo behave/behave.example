@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Type Definition Basics &#8212; behave 1.2.6: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="behave 1.2.6: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Predefined Data Types in parse" href="builtin_types.html" />
     <link rel="prev" title="Data Types and User-defined Types" href="index.html" />
 <meta charset='utf-8'>
@@ -41,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -119,7 +102,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/datatype/basics.txt"
+  <a href="../_sources/datatype/basics.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -141,7 +124,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Type Definition Basics</a><ul>
+<li><a class="reference internal" href="#workflow">Workflow</a></li>
+<li><a class="reference internal" href="#simple-example">Simple Example</a></li>
+<li><a class="reference internal" href="#example-with-regular-expression-pattern">Example with Regular Expression Pattern</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="index.html" title="Previous Chapter: Data Types and User-defined Types"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Data Types an...</span>
+    </a>
+  </li>
+  <li>
+    <a href="builtin_types.html" title="Next Chapter: Predefined Data Types in parse"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Predefined Da... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/datatype/basics.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="type-definition-basics">
 <span id="id-datatype-basics"></span><h1>Type Definition Basics<a class="headerlink" href="#type-definition-basics" title="Permalink to this headline">¶</a></h1>
@@ -150,13 +164,13 @@
 <p>Preparation/setup phase:</p>
 <blockquote>
 <div><ol class="arabic simple" start="0">
-<li>The user registers a data type, for example in <code class="docutils literal"><span class="pre">environment.py</span></code>.</li>
+<li>The user registers a data type, for example in <code class="docutils literal notranslate"><span class="pre">environment.py</span></code>.</li>
 </ol>
 </div></blockquote>
 <p>The <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module is the workhorse:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>The <code class="xref py py-class docutils literal"><span class="pre">parse.Parser</span></code> class matches a string for a data type.</li>
+<li>The <code class="xref py py-class docutils literal notranslate"><span class="pre">parse.Parser</span></code> class matches a string for a data type.</li>
 <li>Then it calls the type-converter function to convert the
 matched text into an object of this data type.</li>
 </ol>
@@ -165,7 +179,7 @@ matched text into an object of this data type.</li>
 <div class="section" id="simple-example">
 <h2>Simple Example<a class="headerlink" href="#simple-example" title="Permalink to this headline">¶</a></h2>
 <p>The following example shows how a user-defined type can be provided.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial10.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -191,20 +205,20 @@ matched text into an object of this data type.</li>
 <div class="section" id="example-with-regular-expression-pattern">
 <h2>Example with Regular Expression Pattern<a class="headerlink" href="#example-with-regular-expression-pattern" title="Permalink to this headline">¶</a></h2>
 <p>For better matching of user-defined data types, the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> supports
-an optional <code class="docutils literal"><span class="pre">pattern</span></code> attribute for type-converter functions.
+an optional <code class="docutils literal notranslate"><span class="pre">pattern</span></code> attribute for type-converter functions.
 If this attribute is provided, it contains a textual regular expression
 for this data type. This regular expression pattern is used to match
 the data type.</p>
 <p>The regular expression pattern can be defined by using the
-<code class="xref py py-func docutils literal"><span class="pre">parse.with_pattern()</span></code> function decorator:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">parse.with_pattern()</span></code> function decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -220,8 +234,8 @@ the data type.</p>
 
 </pre></div>
 </div>
-<p>or by assigning the <code class="xref py py-attr docutils literal"><span class="pre">pattern</span></code> attribute, like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">r&quot;a\s+&quot;</span>
+<p>or by assigning the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pattern</span></code> attribute, like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parse_word_a</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -240,8 +254,8 @@ the data type.</p>
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-10-22.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

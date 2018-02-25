@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Cardinality: One or More (List of Type) &#8212; behave 1.2.6: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="behave 1.2.6: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Cardinality: Zero or More (List of Type)" href="cardinality_zero_or_more.html" />
     <link rel="prev" title="Cardinality: Zero or One (Optional)" href="cardinality_zero_or_one.html" />
 <meta charset='utf-8'>
@@ -41,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -121,7 +104,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/datatype/cardinality_one_or_more.txt"
+  <a href="../_sources/datatype/cardinality_one_or_more.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -143,25 +126,58 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Cardinality: One or More (List of Type)</a><ul>
+<li><a class="reference internal" href="#feature-example">Feature Example</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="cardinality_zero_or_one.html" title="Previous Chapter: Cardinality: Zero or One (Optional)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Cardinality: ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="cardinality_zero_or_more.html" title="Next Chapter: Cardinality: Zero or More (List of Type)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cardinality: ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/datatype/cardinality_one_or_more.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="cardinality-one-or-more-list-of-type">
 <span id="id-datatype-cardinality-one-or-more"></span><h1>Cardinality: One or More (List of Type)<a class="headerlink" href="#cardinality-one-or-more-list-of-type" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">Sometimes a solution is needed where a list of one or more items needs
 to be parsed. Initially, this should be a comma-separated list, like:</p>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="k">Scenario:</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="k">Scenario:</span><span class="nf"></span>
 <span class="k">    When </span><span class="nf">I meet Alice</span>
 <span class="nf">     </span><span class="k">And </span><span class="nf">I meet Alice, Bob, Charly</span>
 </pre></div>
 </div>
-<p>Then, a list should be processed that is separated by the word &#8220;and&#8221;, like:</p>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="k">Scenario:</span><span class="nf"></span>
+<p>Then, a list should be processed that is separated by the word “and”, like:</p>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="k">Scenario:</span><span class="nf"></span>
 <span class="k">    When </span><span class="nf">I meet Alice and Bob and Charly</span>
 </pre></div>
 </div>
 <div class="section" id="feature-example">
 <h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:datatype.features/cardinality.one_or_more.feature</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="c"># file:datatype.features/cardinality.one_or_more.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span>
 
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Many list, comma-separated</span>
@@ -188,7 +204,7 @@ to be parsed. Initially, this should be a comma-separated list, like:</p>
 </div>
 <div class="section" id="define-the-data-type">
 <h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
@@ -214,15 +230,15 @@ to be parsed. Initially, this should be a comma-separated list, like:</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="xref py py-meth docutils literal"><span class="pre">TypeBuilder.with_many()</span></code> function performs the magic.
+<p class="last">The <code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeBuilder.with_many()</span></code> function performs the magic.
 It computes a regular expression pattern for the list of items.
 Then it generates a type-converter function that processes the list of
-items by using the type-converter for one item (&#8220;Person&#8221;).</p>
+items by using the type-converter for one item (“Person”).</p>
 </div>
 </div>
 <div class="section" id="provide-the-step-definitions">
 <h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -262,7 +278,7 @@ items by using the type-converter for one item (&#8220;Person&#8221;).</p>
 </div>
 <div class="section" id="run-the-test">
 <h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/cardinality.one_or_more.feature
 <span class="ansi-bold ansi-black">Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span><span class="ansi-white">   # ../datatype.features/cardinality.one_or_more.feature:1</span>
@@ -290,12 +306,12 @@ $ behave ../datatype.features/cardinality.one_or_more.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 7 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.003s
+Took 0m0.002s
 </pre>
 </div>
 <div class="section" id="the-complete-picture">
 <h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_one_or_more.py</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Feature: Data Type with Cardinality one or more (MANY, List&lt;T&gt;)</span>
@@ -325,7 +341,7 @@ Took 0m0.003s
 <span class="c1"># DOMAIN MODEL:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="k">class</span> <span class="nc">Meeting</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">persons</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 
@@ -404,8 +420,8 @@ Took 0m0.003s
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-10-22.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

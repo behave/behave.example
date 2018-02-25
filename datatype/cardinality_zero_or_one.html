@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Cardinality: Zero or One (Optional) &#8212; behave 1.2.6: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="behave 1.2.6: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Cardinality: One or More (List of Type)" href="cardinality_one_or_more.html" />
     <link rel="prev" title="Predefined Data Types in parse" href="builtin_types.html" />
 <meta charset='utf-8'>
@@ -41,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -121,7 +104,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/datatype/cardinality_zero_or_one.txt"
+  <a href="../_sources/datatype/cardinality_zero_or_one.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -143,13 +126,46 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Cardinality: Zero or One (Optional)</a><ul>
+<li><a class="reference internal" href="#feature-example">Feature Example</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="builtin_types.html" title="Previous Chapter: Predefined Data Types in parse"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Predefined Da...</span>
+    </a>
+  </li>
+  <li>
+    <a href="cardinality_one_or_more.html" title="Next Chapter: Cardinality: One or More (List of Type)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cardinality: ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/datatype/cardinality_zero_or_one.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="cardinality-zero-or-one-optional">
 <span id="id-datatype-cardinality-zero-or-one"></span><h1>Cardinality: Zero or One (Optional)<a class="headerlink" href="#cardinality-zero-or-one-optional" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">There are some cases, when a text part may be present or not.
 Therefore, this text part is an optional and has cardinality zero or one (0..1).</p>
-<p>The <code class="xref py py-class docutils literal"><span class="pre">parse_type.TypeBuilder</span></code> can be used to compute the type with
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">parse_type.TypeBuilder</span></code> can be used to compute the type with
 cardinality zero or one based on data type with cardinality one.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -159,7 +175,7 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 <div class="section" id="feature-example">
 <h2>Feature Example<a class="headerlink" href="#feature-example" title="Permalink to this headline">¶</a></h2>
 <p>Assuming you want to write something like this:</p>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:datatype.features/cardinality.zero_or_one.feature</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="c"># file:datatype.features/cardinality.zero_or_one.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Data Type with Cardinality 0..1 (Optional Part)</span>
 
 <span class="nf">  </span><span class="k">Scenario:</span><span class="nf"> Case1 &quot;When attacked by a ...&quot;</span>
@@ -178,7 +194,7 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 </div>
 <div class="section" id="define-the-data-type">
 <h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
@@ -186,7 +202,7 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -201,15 +217,15 @@ to this problem by using the <strong>cardinality field</strong> in parse express
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="xref py py-meth docutils literal"><span class="pre">TypeBuilder.with_optional()</span></code> function performs the magic.
+<p class="last">The <code class="xref py py-meth docutils literal notranslate"><span class="pre">TypeBuilder.with_optional()</span></code> function performs the magic.
 It computes a regular expression pattern for the given choice of
-words/strings and stores them in <code class="xref py py-attr docutils literal"><span class="pre">parse_optional_word_a.pattern</span></code>
+words/strings and stores them in <code class="xref py py-attr docutils literal notranslate"><span class="pre">parse_optional_word_a.pattern</span></code>
 attribute.</p>
 </div>
 </div>
 <div class="section" id="provide-the-step-definitions">
 <h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -242,7 +258,7 @@ attribute.</p>
 </div>
 <div class="section" id="run-the-test">
 <h2>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h2>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../datatype.features/cardinality.zero_or_one.feature
 <span class="ansi-bold ansi-black">Feature: Data Type with Cardinality 0..1 (Optional Part)</span><span class="ansi-white">   # ../datatype.features/cardinality.zero_or_one.feature:1</span>
@@ -258,12 +274,12 @@ $ behave ../datatype.features/cardinality.zero_or_one.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 4 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.002s
+Took 0m0.001s
 </pre>
 </div>
 <div class="section" id="the-complete-picture">
 <h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:datatype.features/steps/step_cardinality_zero_or_one.py</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Feature: Use Optional Part in Step Definitions</span>
@@ -285,7 +301,7 @@ Took 0m0.002s
 <span class="kn">from</span> <span class="nn">parse_type</span> <span class="kn">import</span> <span class="n">TypeBuilder</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -342,8 +358,8 @@ Took 0m0.002s
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-10-22.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>
