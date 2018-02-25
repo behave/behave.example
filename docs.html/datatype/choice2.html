@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Choice2 (Word/String Alternatives) &#8212; behave 1.2.6: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="behave 1.2.6: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Data Types and User-defined Types" href="index.html" />
     <link rel="next" title="Enumeration (String-to-Value Mapping)" href="enum.html" />
     <link rel="prev" title="Choice (Word/String Alternatives)" href="choice.html" />
 <meta charset='utf-8'>
@@ -41,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -118,7 +101,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/datatype/choice2.txt"
+  <a href="../_sources/datatype/choice2.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -140,22 +123,52 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Choice2 (Word/String Alternatives)</a><ul>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="choice.html" title="Previous Chapter: Choice (Word/String Alternatives)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Choice (Word/...</span>
+    </a>
+  </li>
+  <li>
+    <a href="enum.html" title="Next Chapter: Enumeration (String-to-Value Mapping)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Enumeration (... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/datatype/choice2.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="choice2-word-string-alternatives">
 <span id="id-datatype-choice2"></span><h1>Choice2 (Word/String Alternatives)<a class="headerlink" href="#choice2-word-string-alternatives" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">This basically the same as <a class="reference internal" href="choice.html#id-datatype-choice"><span class="std std-ref">Choice (Word/String Alternatives)</span></a>,
 but the generated type-converter function (parse_choice2) returns a
 tuple:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">selected_index</span><span class="p">,</span> <span class="n">selected_text</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">selected_index</span><span class="p">,</span> <span class="n">selected_text</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>instead of <code class="docutils literal"><span class="pre">selected_text</span></code> (as string).
+<p>instead of <code class="docutils literal notranslate"><span class="pre">selected_text</span></code> (as string).
 This is sometimes useful in step definitions if you need to use the
 selected item index for other operations.</p>
 <div class="section" id="define-the-data-type">
 <h2>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/environment.py (location 1, global types)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/environment.py (location 1, global types)</span>
 <span class="c1">#    FILE: features/steps/step.py  (location 2, more locally used types)</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
@@ -171,13 +184,13 @@ selected item index for other operations.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="xref py py-func docutils literal"><span class="pre">TypeBuilder.make_choice2()</span></code> function performs the magic,
+<p class="last">The <code class="xref py py-func docutils literal notranslate"><span class="pre">TypeBuilder.make_choice2()</span></code> function performs the magic,
 as before.</p>
 </div>
 </div>
 <div class="section" id="provide-the-step-definitions">
 <h2>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/steps/step.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/steps/step.py</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
@@ -208,8 +221,8 @@ as before.</p>
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-10-22.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

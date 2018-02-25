@@ -1,39 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Tutorial 12: Use another Spoken Language &#8212; behave 1.2.6: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.6',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="top" title="behave 1.2.6: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Tutorials" href="index.html" />
     <link rel="next" title="Data Types and User-defined Types" href="../datatype/index.html" />
     <link rel="prev" title="Tutorial 11: Use Tags" href="tutorial11.html" />
 <meta charset='utf-8'>
@@ -41,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -105,7 +88,7 @@
               
                 
   <li>
-    <a href="tutorial11.html" title="Previous Chapter: Tutorial 11: Use Tags"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 11: ...</span>
+    <a href="tutorial11.html" title="Previous Chapter: Tutorial 11: Use Tags"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 11: Use Tags</span>
     </a>
   </li>
   <li>
@@ -119,7 +102,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/tutorials/tutorial12.txt"
+  <a href="../_sources/tutorials/tutorial12.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -141,7 +124,38 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Tutorial 12: Use another Spoken Language</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="tutorial11.html" title="Previous Chapter: Tutorial 11: Use Tags"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 11: Use Tags</span>
+    </a>
+  </li>
+  <li>
+    <a href="../datatype/index.html" title="Next Chapter: Data Types and User-defined Types"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Data Types an... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/tutorials/tutorial12.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="tutorial-12-use-another-spoken-language">
 <span id="id-tutorial12"></span><h1>Tutorial 12: Use another Spoken Language<a class="headerlink" href="#tutorial-12-use-another-spoken-language" title="Permalink to this headline">¶</a></h1>
@@ -154,18 +168,18 @@
 </tbody>
 </table>
 <p>Most <a class="reference internal" href="../glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> frameworks provide internationalisation support.
-The key part (but only the first step) is that the <code class="docutils literal"><span class="pre">Given</span> <span class="pre">...</span> <span class="pre">When</span> <span class="pre">...</span> <span class="pre">Then</span></code>
+The key part (but only the first step) is that the <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">...</span> <span class="pre">When</span> <span class="pre">...</span> <span class="pre">Then</span></code>
 keywords are provided in the native language, for example French or German.
 If this is the case, a developer can provide step definitions in another
 spoken language.</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
 <p>The list of supported languages can be displayed via:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">behave</span> <span class="o">--</span><span class="n">lang</span><span class="o">-</span><span class="nb">list</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">behave</span> <span class="o">--</span><span class="n">lang</span><span class="o">-</span><span class="nb">list</span>
 </pre></div>
 </div>
 <p>Feature files can be tagged for a specific language, like:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># language: de</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># language: de</span>
 <span class="c1"># -- file:*.feature</span>
 <span class="o">...</span>
 </pre></div>
@@ -173,9 +187,9 @@ spoken language.</p>
 <p>When this happens, the <a class="reference internal" href="../glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> framework selects the keywords for
 this language.
 The default language can be defined in the configuration file.
-<a class="reference external" href="http://pythonhosted.org/behave/">behave</a> uses either <code class="docutils literal"><span class="pre">behave.ini</span></code> or <code class="docutils literal"><span class="pre">.behaverc</span></code> as
+<a class="reference external" href="http://pythonhosted.org/behave/">behave</a> uses either <code class="docutils literal notranslate"><span class="pre">behave.ini</span></code> or <code class="docutils literal notranslate"><span class="pre">.behaverc</span></code> as
 configuration file:</p>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="c1"># -- file:behave.ini</span>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- file:behave.ini</span>
 <span class="p">[</span><span class="n">behave</span><span class="p">]</span>
 <span class="n">lang</span> <span class="o">=</span> <span class="n">de</span>
 </pre></div>
@@ -183,7 +197,7 @@ configuration file:</p>
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial12_spoken_language.feature</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial12_spoken_language.feature</span><span class="nf"></span>
 <span class="c"># language: de</span><span class="nf"></span>
 <span class="k">Funktionalität:</span><span class="nf"> Using Languages other than English (tutorial12)</span>
 
@@ -204,7 +218,7 @@ configuration file:</p>
 </div>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial01.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial01.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -223,7 +237,7 @@ configuration file:</p>
     <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial12.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial12.py</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="c1"># language: de</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -233,15 +247,15 @@ configuration file:</p>
 
 <span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;wir haben &quot;behave&quot; installiert&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s2">u&quot;Angenommen we have behave installed&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Angenommen we have behave installed&quot;</span><span class="p">)</span>
 
 <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;wir einen Test implementieren&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s2">u&quot;Wenn we implement a test&quot;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;Wenn we implement a test&quot;</span><span class="p">)</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s1">u&#39;wird &quot;behave&quot; ihn für uns testen!&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;wird &quot;behave&quot; ihn für uns testen!&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="s1">u&#39;Dann behave will test it for us!&#39;</span><span class="p">)</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;Dann behave will test it for us!&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -269,7 +283,7 @@ $ behave ../features/tutorial12_spoken_language.feature
 6 steps passed, 0 failed, 0 skipped, 0 undefined
 Took 0m0.004s
 </pre>
-<p>Explicit language selection via command-line usage of <code class="docutils literal"><span class="pre">--lang=${lang}</span></code>:</p>
+<p>Explicit language selection via command-line usage of <code class="docutils literal notranslate"><span class="pre">--lang=${lang}</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave --lang=de ../features/tutorial12_spoken_language.feature
 <span class="ansi-bold ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
@@ -307,8 +321,8 @@ Took 0m0.004s
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-10-22.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>
