@@ -23,22 +23,23 @@ from setuptools import find_packages, setup
 # -----------------------------------------------------------------------------
 # CONFIGURATION:
 # -----------------------------------------------------------------------------
-# REQUIRES: behave >= 1.2.5
+# REQUIRES: behave >= 1.2.6
 python_version = float("%s.%s" % sys.version_info[:2])
 requirements = [
-    "behave>=1.2.5",
-    "parse>=1.6.3", "parse_type>=0.3.4", "six",
+    "behave>=1.2.6",
+    "parse>=1.8.2", "parse_type>=0.4.2", "six>=1.11.0",
 ]
 docs_requirements = [
-    "Sphinx",
+    "Sphinx>=1.6",
     "sphinx_bootstrap_theme >= 0.4.12",
     "sphinxcontrib-ansi >= 0.6",
     "sphinxcontrib-programoutput >= 0.8",
-    "PyHamcrest",
+    "PyHamcrest>=1.9",
 ]
 
 # -- BEHAVE REQUIREMENTS:
 behave_requirements = []
+# -- DROP SUPPORT FOR: Python2.6 (soon)
 if python_version < 2.7 or 3.0 <= python_version <= 3.1:
     behave_requirements.append("argparse")
 if python_version < 2.7:
@@ -60,7 +61,7 @@ INSTALL_REQUIRES = requirements
 # -----------------------------------------------------------------------------
 setup(
     name="behave.example",
-    version="1.2.5.1",
+    version="1.2.6",
     url="http://github.com/behave/behave.example",
     author="Jens Engel",
     author_email="Jens_Engel@nowhere.net",

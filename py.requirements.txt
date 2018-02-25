@@ -16,17 +16,17 @@
 # ============================================================================
 
 # -- BEHAVE-RELATED:
-behave >= 1.2.5
+behave >= 1.2.6
 traceback2 >= 1.4.0;    python_version <= '3.0'
-parse >= 1.6.3
-parse_type >= 0.3.4
+parse >= 1.8.2
+parse_type >= 0.4.2
 
 argparse
-PyHamcrest >= 1.8
+PyHamcrest >= 1.9
 
 # -- BUILD-SUPPORT:
-invoke >= 0.13.0
-path.py >= 8.2.1
+invoke >= 0.21.0
+path.py >= 10.1
 pathlib;    python_version <= '3.4'
 # -- DEPRECATING:
 Paver >= 1.2
@@ -37,7 +37,7 @@ watchdog >= 0.6.0
 # -- DOCUMENTATION: Tutorials with examples.
 # MISSING in pypi:
 #   sphinxcontrib-ansi >= 0.6 (and repository setup.py is broken)
-Sphinx >= 1.4
+Sphinx >= 1.6
 sphinx_bootstrap_theme >= 0.4.12
 sphinxcontrib-programoutput >= 0.8
 .extra/packages/sphinxcontrib-ansi-0.6.zip
