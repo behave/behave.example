@@ -37,7 +37,7 @@ Therefore, it should not be installed.
 To prepare the local installation, use the following command to install
 all prerequisites::
 
-    pip install -r requirements.txt
+    pip install -r py.requirements.txt
 
 Snapshots of the `behave`_ and `parse_type`_ implementations
 are provided in the directory ``lib/python/``.  This directory is
