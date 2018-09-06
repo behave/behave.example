@@ -20,9 +20,7 @@ profile=no
 
 # Add <file or directory> to the black list. It should be a base name, not a
 # path. You may set this option multiple times.
-ignore=CVS
-ignore=.bzr
-ignore=.svn
+ignore=.git, .svn, .bzr, CVS
 
 # Pickle collected data for later comparisons.
 persistent=yes
