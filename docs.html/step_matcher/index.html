@@ -1,36 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Step Matchers &mdash; behave 1.2.5: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Step Matchers &#8212; behave 1.2.6: Examples and Tutorials</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.5',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Using the Step Matchers" href="using_matchers.html" />
     <link rel="prev" title="More Complex Data Types" href="../datatype/more_complex_types.html" />
 <meta charset='utf-8'>
@@ -38,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -71,7 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Step Matchers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Step Matchers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -111,7 +97,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/step_matcher/index.txt"
+  <a href="../_sources/step_matcher/index.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -133,19 +119,45 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Step Matchers</a></li>
+</ul>
+
+  <li>
+    <a href="../datatype/more_complex_types.html" title="Previous Chapter: More Complex Data Types"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; More Complex ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="using_matchers.html" title="Next Chapter: Using the Step Matchers"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Using the Ste... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/index.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="step-matchers">
 <span id="id-step-matcher"></span><h1>Step Matchers<a class="headerlink" href="#step-matchers" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://pypi.python.org/pypi/behave">behave</a> provides 3 step matchers:</p>
 <blockquote>
 <div><ol class="arabic simple">
-<li>&#8220;parse&#8221; (ParseMatcher) by using the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module</li>
-<li>&#8220;cfparse&#8221; (extended ParseMatcher) that supports the cardinality field syntax</li>
-<li>&#8220;re&#8221; (RegexMatcher) that uses regular expressions for matching parameters</li>
+<li>“parse” (ParseMatcher) by using the <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> module</li>
+<li>“cfparse” (extended ParseMatcher) that supports the cardinality field syntax</li>
+<li>“re” (RegexMatcher) that uses regular expressions for matching parameters</li>
 </ol>
 </div></blockquote>
-<p>The &#8220;parse&#8221; matcher is the <strong>default step matcher</strong>.
+<p>The “parse” matcher is the <strong>default step matcher</strong>.
 It is more commonly used because it is:</p>
 <blockquote>
 <div><ul class="simple">
@@ -155,8 +167,8 @@ It is more commonly used because it is:</p>
 <li>hides regular expression complexity</li>
 </ul>
 </div></blockquote>
-<p>The &#8220;cfparse&#8221; matcher extends the &#8220;parse&#8221; patcher (and is rather new).
-It is intended to superceed the &#8220;parse&#8221; matcher as default matcher.
+<p>The “cfparse” matcher extends the “parse” patcher (and is rather new).
+It is intended to superceed the “parse” matcher as default matcher.
 It has the following features:</p>
 <blockquote>
 <div><ul class="simple">
@@ -166,12 +178,12 @@ with cardinality field part</li>
 <li>based on <a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a></li>
 </ul>
 </div></blockquote>
-<p>The &#8220;re&#8221; matcher is used for the following reasons. It:</p>
+<p>The “re” matcher is used for the following reasons. It:</p>
 <blockquote>
 <div><ul class="simple">
 <li>addresses some cases that cannot be solved otherwise (currently)</li>
-<li>is backward compatible to <a class="reference external" href="http://cukes.info/">cucumber</a> (uses regular expressions)</li>
-<li>is less ambiguous compared to the &#8220;parse&#8221; matcher (currently)</li>
+<li>is backward compatible to <a class="reference external" href="https://cucumber.io/">cucumber</a> (uses regular expressions)</li>
+<li>is less ambiguous compared to the “parse” matcher (currently)</li>
 </ul>
 </div></blockquote>
 <p>It should be noted that all step matchers use regular expressions.
@@ -204,8 +216,8 @@ by the <a class="reference external" href="https://pypi.python.org/pypi/parse">p
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

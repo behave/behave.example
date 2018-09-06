@@ -1,0 +1,49 @@
+# ============================================================================
+# PYTHON PACKAGE REQUIREMENTS:
+# ============================================================================
+# REQUIRES: Python >= 2.6
+# DESCRIPTION:
+#    pip install -r <THIS_FILE>
+#
+# SPECIFIC DEPENDENCIES:
+#   behave  -- BDD test framework, cucumber-clone for Python.
+#   paver   -- Development and build support (optional)
+#   pyhamcrest -- As assertations matcher library.
+#
+# MAYBE:
+#   nose:       for assertations: eq_(x, y)
+#   pytest:     for assertations
+# ============================================================================
+
+# -- BEHAVE-RELATED:
+behave >= 1.2.6
+traceback2 >= 1.4.0;    python_version <= '3.0'
+parse >= 1.8.2
+parse_type >= 0.4.2
+
+argparse
+PyHamcrest >= 1.9
+
+# -- BUILD-SUPPORT:
+invoke >= 0.21.0
+path.py >= 10.1
+pathlib;    python_version <= '3.4'
+# -- DEPRECATING:
+Paver >= 1.2
+
+tox >= 1.6.1
+watchdog >= 0.6.0
+
+# -- DOCUMENTATION: Tutorials with examples.
+# MISSING in pypi:
+#   sphinxcontrib-ansi >= 0.6 (and repository setup.py is broken)
+Sphinx >= 1.6
+sphinx_bootstrap_theme >= 0.4.12
+sphinxcontrib-programoutput >= 0.8
+.extra/packages/sphinxcontrib-ansi-0.6.zip
+
+# ALTERNATIVE:
+# hg+https://jenisys@bitbucket.org/jenisys/sphinx-contrib#egg=sphinxcontrib-ansi&subdirectory=ansi
+
+# -- OPTIONAL DOCUMENTATION: If PDF docs are needed.
+# rst2pdf

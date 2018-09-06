@@ -11,6 +11,12 @@ from behave.formatter.base import Formatter
 from behave.textutil import indent, make_indentation
 import six
 
+try:
+    # -- SINCE: behave 1.2.6
+    from behave.model_core import Status
+except ImportError:
+    Status = None
+
 
 class ModelPrinter(object):
     SHOW_SCENARIO_DESCRIPTION = True
@@ -335,8 +341,11 @@ class Pretty2Formatter(Formatter):
             lines = self.printer.step_lines + 1
             self.terminal.move_cursor_up(lines)
 
-        self.print_step(result.status, proceed=True)
-        # XXX
+        status_name = result.status
+        if Status:
+            # -- SINCE: behave 1.2.6 with Status enum class
+            status_name = result.status.name
+        self.print_step(status_name, proceed=True)
         if result.error_message:
             error_message = indent(result.error_message.strip(), u'      ')
             self.terminal.write(error_message, style="error")

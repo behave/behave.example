@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tutorial 11: Use Tags &mdash; behave 1.2.5: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Tutorial 11: Use Tags &#8212; behave 1.2.6: Examples and Tutorials</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.5',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Tutorials" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 12: Use another Spoken Language" href="tutorial12.html" />
     <link rel="prev" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" />
 <meta charset='utf-8'>
@@ -39,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -116,7 +101,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/tutorials/tutorial11.txt"
+  <a href="../_sources/tutorials/tutorial11.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -138,7 +123,37 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Tutorial 11: Use Tags</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="tutorial10.html" title="Previous Chapter: Tutorial 10: User-defined Data Type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 10: ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tutorial12.html" title="Next Chapter: Tutorial 12: Use another Spoken Language"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tutorial 12: ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/tutorials/tutorial11.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="tutorial-11-use-tags">
 <span id="id-tutorial11"></span><h1>Tutorial 11: Use Tags<a class="headerlink" href="#tutorial-11-use-tags" title="Permalink to this headline">¶</a></h1>
@@ -151,7 +166,7 @@
 </tbody>
 </table>
 <p>Several test frameworks support a concept of tags to mark a number of tests
-(<a class="reference external" href="http://pytest.org/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="https://github.com/junit-team/junit/wiki/Categories">JUnit Categories</a>,
+(<a class="reference external" href="http://docs.pytest.org/en/latest/example/markers.html">py.test markers</a>, <a class="reference external" href="http://testng.org/">TestNG test groups</a>, <a class="reference external" href="https://github.com/junit-team/junit4/wiki/Categories">JUnit Categories</a>,
 <a class="reference external" href="http://www.nunit.org/index.php?p=category&amp;r=2.4">NUnit CategoryAttribute</a>).
 This provides a simple, flexible and effective mechanism to:</p>
 <blockquote>
@@ -180,11 +195,11 @@ static test package structure.</p>
 <tbody valign="top">
 <tr class="row-even"><td>&#64;wip</td>
 <td>predefined</td>
-<td>&#8220;Work in Process&#8221; (under development).</td>
+<td>“Work in Process” (under development).</td>
 </tr>
 <tr class="row-odd"><td>&#64;skip</td>
 <td>predefined</td>
-<td>Skip/disable a feature, scenario, ...</td>
+<td>Skip/disable a feature, scenario, …</td>
 </tr>
 <tr class="row-even"><td>&#64;slow</td>
 <td>user-defined</td>
@@ -210,19 +225,19 @@ static test package structure.</p>
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>select/enable</td>
-<td><code class="docutils literal"><span class="pre">--tags=&#64;one</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one</span></code></td>
 <td>Only items with this tag.</td>
 </tr>
 <tr class="row-odd"><td>not (tilde/minus)</td>
-<td><code class="docutils literal"><span class="pre">--tags=~&#64;one</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=~&#64;one</span></code></td>
 <td>Only items without this tag.</td>
 </tr>
 <tr class="row-even"><td>logical-or</td>
-<td><code class="docutils literal"><span class="pre">--tags=&#64;one,&#64;two</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one,&#64;two</span></code></td>
 <td>If &#64;one or &#64;two is present.</td>
 </tr>
 <tr class="row-odd"><td>logical-and</td>
-<td><code class="docutils literal"><span class="pre">--tags=&#64;one</span> <span class="pre">--tags=&#64;two</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one</span> <span class="pre">--tags=&#64;two</span></code></td>
 <td>If both &#64;one and &#64;two are present.</td>
 </tr>
 </tbody>
@@ -230,15 +245,15 @@ static test package structure.</p>
 <p>Notes:</p>
 <blockquote>
 <div><ul class="simple">
-<li>The tag name prefix &#8216;&#64;&#8217; (AT) is optional in tag options</li>
-<li>Use <code class="docutils literal"><span class="pre">--tags-help</span></code> for a short description of the tag logic.</li>
+<li>The tag name prefix ‘&#64;’ (AT) is optional in tag options</li>
+<li>Use <code class="docutils literal notranslate"><span class="pre">--tags-help</span></code> for a short description of the tag logic.</li>
 </ul>
 </div></blockquote>
-<p class="last">See also <a class="reference external" href="http://packages.python.org/behave/tutorial.html#controlling-things-with-tags">behave tags documentation</a> for more information on tags.</p>
+<p class="last">See also <a class="reference external" href="https://pythonhosted.org/behave/tutorial.html#controlling-things-with-tags">behave tags documentation</a> for more information on tags.</p>
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial11_tags.feature</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial11_tags.feature</span><span class="nf"></span>
 <span class="nt">@wip</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span>
 
@@ -295,7 +310,7 @@ $ behave --tags=ninja.chuck ../features/tutorial11_tags.feature
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 1 skipped
 3 steps passed, 0 failed, 3 skipped, 0 undefined
-Took 0m0.000s
+Took 0m0.001s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -320,7 +335,7 @@ $ behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 1 skipped
 3 steps passed, 0 failed, 3 skipped, 0 undefined
-Took 0m0.000s
+Took 0m0.001s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -352,7 +367,7 @@ $ behave --tags=&#64;ninja.any,&#64;ninja.chuck ../features/tutorial11_tags.feat
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 6 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
+Took 0m0.002s
 </pre>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -387,8 +402,8 @@ Took 0m0.000s
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

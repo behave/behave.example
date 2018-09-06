@@ -1,0 +1,11 @@
+run:
+    echo: true
+    pty: true
+
+behave_test:
+    scopes:
+      - features
+      - datatype.features
+      - step_matcher.features
+    args: features datatype.features step_matcher.features
+

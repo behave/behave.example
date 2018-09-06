@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Using the Step Matchers &mdash; behave 1.2.5: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Using the Step Matchers &#8212; behave 1.2.6: Examples and Tutorials</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.5',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Step Matchers" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Use the Parse Matcher (parse)" href="parse_matcher.html" />
     <link rel="prev" title="Step Matchers" href="index.html" />
 <meta charset='utf-8'>
@@ -39,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -117,7 +102,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/step_matcher/using_matchers.txt"
+  <a href="../_sources/step_matcher/using_matchers.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -139,19 +124,50 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Using the Step Matchers</a><ul>
+<li><a class="reference internal" href="#default-matcher-strategy">Default Matcher Strategy</a></li>
+<li><a class="reference internal" href="#defining-an-own-default-matcher">Defining an own Default Matcher</a></li>
+<li><a class="reference internal" href="#switch-between-step-matcher-strategy-in-a-step-definition-file">Switch between Step Matcher Strategy in a Step Definition File</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="index.html" title="Previous Chapter: Step Matchers"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Step Matchers</span>
+    </a>
+  </li>
+  <li>
+    <a href="parse_matcher.html" title="Next Chapter: Use the Parse Matcher (parse)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Use the Parse... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/using_matchers.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="using-the-step-matchers">
 <span id="id-step-matcher-using-matchers"></span><h1>Using the Step Matchers<a class="headerlink" href="#using-the-step-matchers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="default-matcher-strategy">
 <span id="index-0"></span><h2>Default Matcher Strategy<a class="headerlink" href="#default-matcher-strategy" title="Permalink to this headline">¶</a></h2>
-<p>The &#8220;parse&#8221; matcher is used per default.</p>
+<p>The “parse” matcher is used per default.</p>
 </div>
 <div class="section" id="defining-an-own-default-matcher">
 <h2>Defining an own Default Matcher<a class="headerlink" href="#defining-an-own-default-matcher" title="Permalink to this headline">¶</a></h2>
-<p>Use the <code class="docutils literal"><span class="pre">environment.py</span></code> file to define an own default matcher
-that is used for all features in the <code class="docutils literal"><span class="pre">features/</span></code> directory.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/environment.py</span>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">environment.py</span></code> file to define an own default matcher
+that is used for all features in the <code class="docutils literal notranslate"><span class="pre">features/</span></code> directory.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/environment.py</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">use_step_matcher</span>
 
 <span class="c1"># -- SELECT DEFAULT STEP MATCHER: Use &quot;re&quot; matcher as default.</span>
@@ -164,14 +180,14 @@ that is used for all features in the <code class="docutils literal"><span class=
 <p class="first admonition-title">Note</p>
 <p class="last">The step matcher strategy is reset to the default step matcher
 before each step is loaded. Therefore, if you use only one step matcher,
-it is sufficient to define it in the &#8220;environment.py&#8221; file.</p>
+it is sufficient to define it in the “environment.py” file.</p>
 </div>
 </div>
 <div class="section" id="switch-between-step-matcher-strategy-in-a-step-definition-file">
 <h2>Switch between Step Matcher Strategy in a Step Definition File<a class="headerlink" href="#switch-between-step-matcher-strategy-in-a-step-definition-file" title="Permalink to this headline">¶</a></h2>
 <p>It is possible to switch the step matcher several times in a <em>step definition</em>.
 But normally you group the step definitions according to their step matcher.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/steps/step.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- FILE: features/steps/step.py</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span><span class="p">,</span> <span class="n">use_step_matcher</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 
@@ -181,7 +197,7 @@ But normally you group the step definitions according to their step matcher.</p>
 <span class="c1"># -- SELECT STEP MATCHER: Before using it in step definitions.</span>
 <span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;re&quot;</span><span class="p">)</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s1">u&#39;I meet with &quot;(?P&lt;person&gt;Alice|Bob)&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;I meet with &quot;(?P&lt;person&gt;Alice|Bob)&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_when_I_meet</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">person</span> <span class="o">=</span> <span class="n">person</span>
 
@@ -190,7 +206,7 @@ But normally you group the step definitions according to their step matcher.</p>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="n">use_step_matcher</span><span class="p">(</span><span class="s2">&quot;parse&quot;</span><span class="p">)</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s1">u&#39;I have a lot of fun with &quot;{person}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;I have a lot of fun with &quot;{person}&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_I_have_fun_with</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">person</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">person</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">person</span><span class="p">))</span>
 </pre></div>
@@ -211,8 +227,8 @@ But normally you group the step definitions according to their step matcher.</p>
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

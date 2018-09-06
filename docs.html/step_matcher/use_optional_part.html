@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Use Optional Part in Step Definitions &mdash; behave 1.2.5: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Use Optional Part in Step Definitions &#8212; behave 1.2.6: Examples and Tutorials</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.5',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Step Matchers" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Use Multi-Methods in Step Definitions" href="use_multi_methods.html" />
     <link rel="prev" title="Use the Regular Expression Matcher (re)" href="re_matcher.html" />
 <meta charset='utf-8'>
@@ -39,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -122,7 +107,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/step_matcher/use_optional_part.txt"
+  <a href="../_sources/step_matcher/use_optional_part.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -144,14 +129,50 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Use Optional Part in Step Definitions</a><ul>
+<li><a class="reference internal" href="#variant-1-use-cardinality-field">Variant 1: Use Cardinality Field</a><ul>
+<li><a class="reference internal" href="#provide-the-step-definitions">Provide the Step Definitions</a></li>
+<li><a class="reference internal" href="#define-the-data-type">Define the Data Type</a></li>
+<li><a class="reference internal" href="#run-the-test">Run the Test</a></li>
+<li><a class="reference internal" href="#the-complete-picture">The Complete Picture</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variant-2-use-data-type-with-cardinality-0-1">Variant 2: Use Data Type with Cardinality 0..1</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="re_matcher.html" title="Previous Chapter: Use the Regular Expression Matcher (re)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Use the Regul...</span>
+    </a>
+  </li>
+  <li>
+    <a href="use_multi_methods.html" title="Next Chapter: Use Multi-Methods in Step Definitions"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Use Multi-Met... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/step_matcher/use_optional_part.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="use-optional-part-in-step-definitions">
 <span id="id-step-matcher-use-optional-part"></span><h1>Use Optional Part in Step Definitions<a class="headerlink" href="#use-optional-part-in-step-definitions" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">It is a common case that optional parts occur in steps and step definitions.
 This happens often when you start writing steps and step definitions.</p>
 <p><strong>EXAMPLE</strong>:</p>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="k">Feature:</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="k">Feature:</span><span class="nf"></span>
 <span class="nf">    </span><span class="k">Scenario:</span><span class="nf"> Case 1</span>
 <span class="k">        When </span><span class="nf">attacked by a samurai</span>
 <span class="nf">        ...</span>
@@ -166,13 +187,13 @@ An other point is that the step definition implementation is also identical.</p>
 <div class="section" id="variant-1-use-cardinality-field">
 <h2>Variant 1: Use Cardinality Field<a class="headerlink" href="#variant-1-use-cardinality-field" title="Permalink to this headline">¶</a></h2>
 <p>The <a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> expression format provides an optional cardinality field part
-after the type field. The &#8216;?&#8217; character is used to mark a step parameter
+after the type field. The ‘?’ character is used to mark a step parameter
 as optional (cardinality: 0..1).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>You need to use the &#8220;cfparse&#8221; step matcher (<a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> with cardinality field
+<p>You need to use the “cfparse” step matcher (<a class="reference external" href="https://pypi.python.org/pypi/parse">parse</a> with cardinality field
 support based on a <a class="reference external" href="https://pypi.python.org/pypi/parse_type">parse_type</a> parser) to use this functionality.
-The cardinality field is optional and follows the type field &#8220;Person&#8221;
+The cardinality field is optional and follows the type field “Person”
 in a parse expression, like:</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -210,7 +231,7 @@ preferred solution for the optional parameter problem.</p>
 </div>
 <div class="section" id="provide-the-step-definitions">
 <h3>Provide the Step Definitions<a class="headerlink" href="#provide-the-step-definitions" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -231,14 +252,14 @@ preferred solution for the optional parameter problem.</p>
 </div>
 <div class="section" id="define-the-data-type">
 <h3>Define the Data Type<a class="headerlink" href="#define-the-data-type" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="c1"># USER-DEFINED TYPES:</span>
 <span class="c1"># ------------------------------------------------------------------------</span>
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -257,7 +278,7 @@ preferred solution for the optional parameter problem.</p>
 </div>
 <div class="section" id="run-the-test">
 <h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
-<p>Now we run this example with <code class="xref py py-mod docutils literal"><span class="pre">behave</span></code>:</p>
+<p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave ../step_matcher.features/use_optional_part.feature
 <span class="ansi-bold ansi-black">Feature: Use Optional Part in Step Definitions</span><span class="ansi-white">   # ../step_matcher.features/use_optional_part.feature:1</span>
@@ -278,7 +299,7 @@ Took 0m0.001s
 </div>
 <div class="section" id="the-complete-picture">
 <h3>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:step_matcher.features/steps/step_optional_part.py</span>
 <span class="c1"># -*- coding: UTF-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Feature: Use Optional Part in Step Definitions</span>
@@ -299,7 +320,7 @@ Took 0m0.001s
 <span class="kn">from</span> <span class="nn">behave</span> <span class="kn">import</span> <span class="n">register_type</span>
 <span class="kn">import</span> <span class="nn">parse</span>
 
-<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="s2">r&quot;a\s+&quot;</span><span class="p">)</span>
+<span class="nd">@parse.with_pattern</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;a\s+&quot;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">parse_word_a</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Type converter for &quot;a &quot; (followed by one/more spaces).&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
@@ -355,7 +376,7 @@ implicitly done by <a class="reference external" href="https://pypi.python.org/p
 (triggered by the cardinality field).</p>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p class="last">See also <a class="reference internal" href="../datatype/cardinality_zero_or_one.html#id-datatype-cardinality-zero-or-one"><span>Cardinality: Zero or One (Optional)</span></a> for more information.</p>
+<p class="last">See also <a class="reference internal" href="../datatype/cardinality_zero_or_one.html#id-datatype-cardinality-zero-or-one"><span class="std std-ref">Cardinality: Zero or One (Optional)</span></a> for more information.</p>
 </div>
 </div>
 </div>
@@ -373,8 +394,8 @@ implicitly done by <a class="reference external" href="https://pypi.python.org/p
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>

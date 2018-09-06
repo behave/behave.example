@@ -1,0 +1,109 @@
+# -*- coding: UTF-8 -*-
+"""
+Invoke test tasks.
+"""
+
+from __future__ import print_function
+from invoke import task, Collection
+import os.path
+import sys
+
+# -- TASK-LIBRARY:
+from .clean import cleanup_tasks, cleanup_dirs, cleanup_files
+
+
+# ---------------------------------------------------------------------------
+# TASKS
+# ---------------------------------------------------------------------------
+@task
+def clean(ctx, dry_run=False):
+    """Cleanup (temporary) test artifacts."""
+    directories = ctx.test.clean.directories or []
+    files = ctx.test.clean.files or []
+    cleanup_dirs(directories, dry_run=dry_run)
+    cleanup_files(files, dry_run=dry_run)
+
+
+@task(help={
+    "args": "Command line args for behave",
+    "format": "Formatter to use (progress, pretty, ...)",
+})
+def behave(ctx, args="", format="", options=""):
+    """Run behave tests."""
+    format  = format or ctx.behave_test.format
+    options = options or ctx.behave_test.options
+    args = args or ctx.behave_test.args
+    if os.path.exists("bin/behave"):
+        behave = "{python} bin/behave".format(python=sys.executable)
+    else:
+        behave = "{python} -m behave".format(python=sys.executable)
+
+    for group_args in grouped_by_prefix(args, ctx.behave_test.scopes):
+        ctx.run("{behave} -f {format} {options} {args}".format(
+            behave=behave, format=format, options=options, args=group_args))
+
+
+# ---------------------------------------------------------------------------
+# UTILITIES:
+# ---------------------------------------------------------------------------
+def select_prefix_for(arg, prefixes):
+    for prefix in prefixes:
+        if arg.startswith(prefix):
+            return prefix
+    return os.path.dirname(arg)
+
+def select_by_prefix(args, prefixes):
+    selected = []
+    for arg in args.strip().split():
+        assert not arg.startswith("-"), "REQUIRE: arg, not options"
+        scope = select_prefix_for(arg, prefixes)
+        if scope:
+            selected.append(arg)
+    return " ".join(selected)
+
+def grouped_by_prefix(args, prefixes):
+    """Group behave args by (directory) scope into multiple test-runs."""
+    group_args = []
+    current_scope = None
+    for arg in args.strip().split():
+        assert not arg.startswith("-"), "REQUIRE: arg, not options"
+        scope = select_prefix_for(arg, prefixes)
+        if scope != current_scope:
+            if group_args:
+                # -- DETECTED GROUP-END:
+                yield " ".join(group_args)
+                group_args = []
+            current_scope = scope
+        group_args.append(arg)
+    if group_args:
+        yield " ".join(group_args)
+
+
+# ---------------------------------------------------------------------------
+# TASK MANAGEMENT / CONFIGURATION
+# ---------------------------------------------------------------------------
+namespace = Collection(clean)
+namespace.add_task(behave, default=True)
+namespace.configure({
+    "test": {
+        "clean": {
+            "directories": [
+                "__WORKDIR__", "reports", "test_results",   # -- BEHAVE test
+            ],
+            "files": [
+                ".coverage", ".coverage.*",
+                "rerun*.txt", "rerun*.featureset", "testrun*.json",
+            ],
+        },
+    },
+    "behave_test": {
+        "scopes":   ["features", "datatype.features", "step_matcher.features"],
+        "args":     "features datatype.features step_matcher.features",
+        "format":   "progress",
+        "options":  "",  # -- NOTE:  Overide in configfile "invoke.yaml"
+    },
+})
+
+# -- ADD CLEANUP TASK:
+cleanup_tasks.add_task(clean, "clean_test")
+cleanup_tasks.configure(namespace.configuration())

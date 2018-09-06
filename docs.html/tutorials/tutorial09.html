@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Tutorial 9: Use Background &mdash; behave 1.2.5: Examples and Tutorials</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
+    <title>Tutorial 9: Use Background &#8212; behave 1.2.6: Examples and Tutorials</title>
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/ansi.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-3.3.4/css/bootstrap-theme.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '1.2.5',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="top" title="behave 1.2.5: Examples and Tutorials" href="../index.html" />
-    <link rel="up" title="Tutorials" href="index.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" />
     <link rel="prev" title="Tutorial 8: Execute Other Steps in a Step" href="tutorial08.html" />
 <meta charset='utf-8'>
@@ -39,8 +25,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
 <meta name="apple-mobile-web-app-capable" content="yes">
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -118,7 +103,7 @@
             
               <li class="hidden-sm">
 <div id="sourcelink">
-  <a href="../_sources/tutorials/tutorial09.txt"
+  <a href="../_sources/tutorials/tutorial09.rst.txt"
      rel="nofollow">Source</a>
 </div></li>
             
@@ -140,7 +125,39 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Tutorial 9: Use Background</a><ul>
+<li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
+<li><a class="reference internal" href="#provide-the-test-automation">Provide the Test Automation</a></li>
+<li><a class="reference internal" href="#provide-the-domain-model">Provide the Domain Model</a></li>
+<li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="tutorial08.html" title="Previous Chapter: Tutorial 8: Execute Other Steps in a Step"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tutorial 8: E...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tutorial10.html" title="Next Chapter: Tutorial 10: User-defined Data Type"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tutorial 10: ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/tutorials/tutorial09.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="tutorial-9-use-background">
 <span id="id-tutorial09"></span><h1>Tutorial 9: Use Background<a class="headerlink" href="#tutorial-9-use-background" title="Permalink to this headline">¶</a></h1>
@@ -148,7 +165,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use the <code class="docutils literal"><span class="pre">Background</span></code> concept to execute a number of steps before each scenario.</td>
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use the <code class="docutils literal notranslate"><span class="pre">Background</span></code> concept to execute a number of steps before each scenario.</td>
 </tr>
 </tbody>
 </table>
@@ -159,7 +176,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-gherkin"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial09_background.feature</span><span class="nf"></span>
+<div class="highlight-gherkin notranslate"><div class="highlight"><pre><span></span><span class="c"># file:features/tutorial09_background.feature</span><span class="nf"></span>
 <span class="k">Feature:</span><span class="nf"> Using Background -- Fight or Flight (Natural Language Part2, tutorial09)</span>
 
 <span class="nf">    </span><span class="k">Background:</span><span class="nf"> Ninja fight setup</span>
@@ -179,7 +196,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 </div>
 <div class="section" id="provide-the-test-automation">
 <h2>Provide the Test Automation<a class="headerlink" href="#provide-the-test-automation" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># BACKGROUND-STEPS: Needed for tutorial09</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -195,7 +212,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="bp">None</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># STEPS:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -224,7 +241,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 </div>
 <div class="section" id="provide-the-domain-model">
 <h2>Provide the Domain Model<a class="headerlink" href="#provide-the-domain-model" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
 <span class="c1"># PROBLEM DOMAIN:</span>
 <span class="c1"># ----------------------------------------------------------------------------</span>
@@ -234,7 +251,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=R0903</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_ninja_level</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_ninja_level</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="o">=</span> <span class="n">with_ninja_level</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="bp">None</span>
 
@@ -278,7 +295,7 @@ $ behave ../features/tutorial09_background.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 8 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
+Took 0m0.002s
 </pre>
 </div>
 </div>
@@ -296,8 +313,8 @@ Took 0m0.001s
     </p>
     <p>
         &copy; Copyright 2012-2016 by Jens Engel.<br/>
-      Last updated on 2016-03-31.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.6.<br/>
+      Last updated on 2018-02-25.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.<br/>
     </p>
   </div>
 </footer>
