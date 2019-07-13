@@ -14,7 +14,7 @@ import sys
 HERE = os.path.dirname(__file__)
 TASKS_VENDOR_DIR = os.path.join(HERE, "_vendor")
 INVOKE_BUNDLE = os.path.join(TASKS_VENDOR_DIR, "invoke.zip")
-INVOKE_BUNDLE_VERSION = "0.13.0"
+INVOKE_BUNDLE_VERSION = "1.2.0"
 
 DEBUG_SYSPATH = False
 
@@ -22,7 +22,9 @@ DEBUG_SYSPATH = False
 # -----------------------------------------------------------------------------
 # EXCEPTIONS:
 # -----------------------------------------------------------------------------
-class VersionRequirementError(SystemExit): pass
+class VersionRequirementError(SystemExit):
+    pass
+
 
 # -----------------------------------------------------------------------------
 # FUNCTIONS:
@@ -79,10 +81,12 @@ def require_invoke_minversion(min_version, verbose=False):
         message += "\nUSE: pip install invoke>=%s" % min_version
         raise VersionRequirementError(message)
 
+    # pylint: disable=invalid-name
     INVOKE_VERSION = os.environ.get("INVOKE_VERSION", None)
     if verbose and not INVOKE_VERSION:
         os.environ["INVOKE_VERSION"] = invoke_version
         print("USING: invoke.version=%s" % invoke_version)
+
 
 def need_vendor_bundles(invoke_minversion=None):
     invoke_minversion = invoke_minversion or "0.0.0"
@@ -100,6 +104,7 @@ def need_vendor_bundles(invoke_minversion=None):
     # return need_bundle1 or need_bundle2
     return any(need_vendor_answers)
 
+
 def need_vendor_bundle_invoke(invoke_minversion="0.0.0"):
     # -- REQUIRE: invoke
     try:
@@ -110,9 +115,10 @@ def need_vendor_bundle_invoke(invoke_minversion="0.0.0"):
             del invoke
     except ImportError:
         need_bundle = True
-    except Exception:
+    except Exception:   # pylint: disable=broad-except
         need_bundle = True
     return need_bundle
+
 
 # -----------------------------------------------------------------------------
 # UTILITY FUNCTIONS:
@@ -123,10 +129,12 @@ def setup_path_for_bundle(bundle_path, pos=0):
         return True
     return False
 
+
 def syspath_insert(pos, path):
     if path in sys.path:
         sys.path.remove(path)
     sys.path.insert(pos, path)
+
 
 def syspath_append(path):
     if path in sys.path:

@@ -1,18 +1,18 @@
 # ============================================================================
-# INVOKE PYTHON PACKAGE REQUIREMENTS: For tasks
+# PYTHON PACKAGE REQUIREMENTS: develop
 # ============================================================================
+# REQUIRES: Python >= 2.7
 # DESCRIPTION:
 #    pip install -r <THIS_FILE>
-#
-# SEE ALSO:
-#  * http://www.pip-installer.org/
 # ============================================================================
 
-invoke >= 1.2.0
-path.py >= 11.5.0
-pycmd
-six >= 1.12.0
+# -- BUILD-SUPPORT: invoke >= 1.2.0
+-r ../tasks/py.requirements.txt
 
-# -- PYTHON2 BACKPORTS:
-pathlib;    python_version <= '3.4'
-backports.shutil_which; python_version <= '3.3'
+tox >= 3.10.0
+watchdog >= 0.6.0
+pylint
+
+# -- DEPENDS ON:
+-r basic.txt
+-r docs.txt

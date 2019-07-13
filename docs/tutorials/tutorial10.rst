@@ -25,7 +25,7 @@ Write the Feature Test
 ------------------------
 
 .. literalinclude:: ../../features/tutorial10_step_usertype.feature
-    :prepend:   # file:features/tutorial10_step_usertype.feature
+    :prepend:  # file:features/tutorial10_step_usertype.feature
     :language: gherkin
 
 
@@ -35,7 +35,7 @@ Provide the Test Automation
 First you need to provide the type converter for ``Number`` and register it:
 
 .. literalinclude:: ../../features/steps/step_tutorial10.py
-    :prepend:   # file:features/steps/step_tutorial10.py
+    :prepend:  # file:features/steps/step_tutorial10.py
     :language: python
     :start-after: @mark.user_defined_types
     :end-before:  @mark.steps
@@ -43,7 +43,7 @@ First you need to provide the type converter for ``Number`` and register it:
 Now you can use ``Number`` as type in step parameters for the step definitions:
 
 .. literalinclude:: ../../features/steps/step_tutorial10.py
-    :prepend:   # file:features/steps/step_tutorial10.py
+    :prepend:  # file:features/steps/step_tutorial10.py
     :language: python
     :start-after: @mark.steps
 
@@ -53,7 +53,7 @@ Provide the Domain Model
 -----------------------------
 
 .. literalinclude:: ../../features/steps/calculator.py
-    :prepend:   # file:features/steps/calculator.py
+    :prepend:  # file:features/steps/calculator.py
     :language: python
     :start-after: @mark.domain_model
 
@@ -78,7 +78,7 @@ The Complete Picture
 -----------------------------
 
 .. literalinclude:: ../../features/steps/step_tutorial10.py
-    :prepend:   # file:features/steps/step_tutorial10.py
+    :prepend:  # file:features/steps/step_tutorial10.py
     :language: python
 
 

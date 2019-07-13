@@ -9,6 +9,7 @@ Tutorial 11: Use Tags
 
 .. index:: tags, use-tags
 
+:TODO: Add description with cucumber tag-expressions
 :Goal: Understand the usage of tags to organize the testsuite and optimize test runs.
 
 Several test frameworks support a concept of tags to mark a number of tests
@@ -16,8 +17,8 @@ Several test frameworks support a concept of tags to mark a number of tests
 `NUnit CategoryAttribute`_).
 This provides a simple, flexible and effective mechanism to:
 
-  * select  a number of tests
-  * exclude a number of tests
+* select  a number of tests
+* exclude a number of tests
 
 for a test run. This mechanism is orthogonal to the
 static test package structure.

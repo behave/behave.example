@@ -30,12 +30,12 @@ Provide the Test Automation
 -----------------------------
 
 .. literalinclude:: ../../features/steps/step_tutorial02.py
-    :prepend:   # file:features/steps/step_tutorial02.py
+    :prepend:  # file:features/steps/step_tutorial02.py
     :language: python
     :start-after: @mark.background_steps
 
 .. literalinclude:: ../../features/steps/step_tutorial02.py
-    :prepend:   # file:features/steps/step_tutorial02.py
+    :prepend:  # file:features/steps/step_tutorial02.py
     :language: python
     :start-after: @mark.steps
     :end-before:  @mark.background_steps
@@ -44,7 +44,7 @@ Provide the Domain Model
 -----------------------------
 
 .. literalinclude:: ../../features/steps/step_tutorial02.py
-    :prepend:   # file:features/steps/step_tutorial02.py
+    :prepend:  # file:features/steps/step_tutorial02.py
     :language: python
     :start-after: @mark.domain_model
     :end-before:  @mark.steps

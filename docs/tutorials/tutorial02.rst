@@ -39,9 +39,9 @@ Provide the Domain Model
 
 Normally, the **domain model** is the
 
-    * *class-under-test* (CUT)
-    * *subsystem-under-test*
-    * *system-under-test* (SUT)
+* *class-under-test* (CUT)
+* *subsystem-under-test*
+* *system-under-test* (SUT)
 
 It contains the *business logic* that describes the behaviour of the system.
 The thin test automation layer from above (step definitions) just interacts

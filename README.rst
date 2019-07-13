@@ -1,7 +1,7 @@
 behave.example: Examples and Tutorials
 ==============================================================================
 
-:Date: 2016-10-22
+:Date: 2019-07-14
 :Category: BDD, testing
 :License:  BSD
 
@@ -10,16 +10,19 @@ This project provides tutorials and examples how to use `behave`_.
 It should extends the excellent documentation of `behave`_.
 
 SEE ALSO:
-  * https://github.com/behave/behave.example
-  * behave:  http://pypi.python.org/pypi/behave/
-  * cucumber: http://cucumber.io/
+
+* https://github.com/behave/behave.example
+* behave:  http://pypi.python.org/pypi/behave/
+* cucumber: http://cucumber.io/
 
 DOCUMENTATION:
-  * http://behave.github.com/behave.example (latest version)
+
+* http://behave.github.com/behave.example (latest version)
 
 REPOSITORIES:
-  * https://github.com/behave/behave
-  * https://github.com/behave/parse_type
+
+* https://github.com/behave/behave
+* https://github.com/behave/parse_type
 
 
 .. _behave: https://github.com/behave/behave
@@ -37,11 +40,18 @@ Therefore, it should not be installed.
 To prepare the local installation, use the following command to install
 all prerequisites::
 
-    pip install -r py.requirements.txt
+    # -- STEP 1: Setup and activate a virtual python environment.
+    $ virtualenv .venv_py
+    $ source .venv_py/bin/activate
+    # -- HINT ON WINDOWS:
+    # call .venv_py/Scripts/activate
 
-Snapshots of the `behave`_ and `parse_type`_ implementations
-are provided in the directory ``lib/python/``.  This directory is
-automatically used when you use ``bin/behave`` to run `behave`_.
+    # -- STEP 2: Install all required python packages with "pip".
+    $ pip install -r py.requirements/all.txt
+
+
+Some extension to `behave`_ are provided in the ``lib/python/`` subdirectory.
+They are used when you use ``bin/behave`` to run `behave`_.
 
 
 HOWTO
@@ -49,7 +59,8 @@ HOWTO
 
 Cleanup local workspace::
 
-    invoke clean
+    invoke cleanup
+    invoke cleanup.all
 
 Run `behave`_ tests::
 

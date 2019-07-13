@@ -4,7 +4,10 @@
 # =============================================================================
 # SPHINX EXTENSIONS:
 #  * https://bitbucket.org/birkenfeld/sphinx-contrib
-#  * http://packages.python.org/sphinxcontrib-programoutput/
+#  * http://packages.python.org/sphinxcontrib-programoutput/  (OLD)
+#  * https://github.com/NextThought/sphinxcontrib-programoutput (NEW)
+#
+#  * XXX: https://github.com/lipro/sphinxcontrib-ansi
 #
 # .. program-output:: command
 #   :ellipsis: 2,-2
@@ -35,10 +38,18 @@ import sys
 # -----------------------------------------------------------------------------
 # -- SETUP PATH: Needed by sphinxcontrib-programoutput (commands)
 HERE  = os.path.dirname(__file__)
-TOP_BINDIR = os.path.normpath(os.path.join(HERE, "..", "bin"))
+TOPDIR = os.path.normpath(os.path.join(HERE, ".."))
+TOP_BINDIR = os.path.join(TOPDIR, "bin")
 os.environ["PATH"] = os.pathsep.join([
-    os.path.abspath(TOP_BINDIR), os.environ.get("PATH", "") ])
+    os.path.abspath(TOP_BINDIR), os.environ.get("PATH", "")
+])
 
+PY_PATH = [
+    ".",
+    os.path.abspath(TOPDIR),
+    os.path.abspath(os.path.join(TOPDIR, "lib/python"))
+]
+os.environ["PYTHONPATH"] = os.pathsep.join(PY_PATH)
 # -- USE LOCAL PACKAGES:
 use_local_packages = not (os.environ.get("TOXRUN", "no") == "yes")
 if use_local_packages:
@@ -110,12 +121,12 @@ extlinks = {
         ("https://github.com/behave/behave/issue/%s", "behave issue #"),
 }
 
+
 def setup(app):
-    """
-    Add own ifconfig configuration parameters to sphinx.
-    """
+    """Add own ifconfig configuration parameters to sphinx."""
     rebuild = True
     app.add_config_value("ansiterm_supported", True, rebuild)
+
 
 # -----------------------------------------------------------------------------
 # GENERAL CONFIGURATION
@@ -123,7 +134,7 @@ def setup(app):
 # General information about the project.
 project = u"behave.example"
 author  = u"Jens Engel"
-copyright = u'2012-2016 by %s' % author
+copyright = u'2012-2019 by %s' % author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

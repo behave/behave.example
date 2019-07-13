@@ -16,6 +16,6 @@ export PIP_INDEX_URL PIP_DOWNLOADS_DIR
 
 # -- EXECUTE STEPS:
 ${HERE}/toxcmd.py mkdir ${PIP_DOWNLOAD_DIR}
-pip install --use-mirrors --download=${PIP_DOWNLOAD_DIR} -r ${TOP}/requirements.txt
+pip install --use-mirrors --download=${PIP_DOWNLOAD_DIR} -r ${TOP}/py.requirements/all.txt
 ${HERE}/make_localpi.py ${PIP_DOWNLOAD_DIR}
 

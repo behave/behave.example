@@ -1,18 +1,16 @@
 # ============================================================================
-# INVOKE PYTHON PACKAGE REQUIREMENTS: For tasks
+# PYTHON PACKAGE REQUIREMENTS: basic
 # ============================================================================
+# REQUIRES: Python >= 2.7
 # DESCRIPTION:
 #    pip install -r <THIS_FILE>
-#
-# SEE ALSO:
-#  * http://www.pip-installer.org/
 # ============================================================================
 
-invoke >= 1.2.0
-path.py >= 11.5.0
-pycmd
-six >= 1.12.0
+# -- BEHAVE-RELATED:
+-r testing.txt
 
-# -- PYTHON2 BACKPORTS:
-pathlib;    python_version <= '3.4'
-backports.shutil_which; python_version <= '3.3'
+# -- DOCUMENTATION: Tutorials with examples.
+-r docs.txt
+
+# -- UNCLEAR WHY:
+argparse

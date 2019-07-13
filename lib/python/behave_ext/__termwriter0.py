@@ -12,6 +12,7 @@ import sys
 
 _platform_windows = (sys.platform == "win32")
 
+
 # -----------------------------------------------------------------------------
 # CLASS: TextStyle
 # -----------------------------------------------------------------------------
@@ -20,8 +21,10 @@ class TextStyle(object):
     Base class (tag) for all text styles.
     """
     # -- STYLE DESCRIPTIONS: For a colored terminal.
-    arg_names = set(["undefined", "pending", "executing",
-                     "failed", "passed", "skipped"])
+    arg_names = set([
+        "undefined", "pending", "executing",
+        "failed", "passed", "skipped"
+    ])
     style_descriptions = {
         "undefined":    "yellow",
         "pending":      "yellow",

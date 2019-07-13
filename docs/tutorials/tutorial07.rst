@@ -15,10 +15,10 @@ The usage of **result tables** come in variations.
 It often depends what you want to compare.
 These variations in the *test automation layer* are:
 
-    * ordered   dataset comparison
-    * unordered dataset comparison
-    * ordered   subset  comparison (result table contains subset)
-    * unordered subset  comparison (result table contains subset)
+* ordered   dataset comparison
+* unordered dataset comparison
+* ordered   subset  comparison (result table contains subset)
+* unordered subset  comparison (result table contains subset)
 
 .. hint::
 

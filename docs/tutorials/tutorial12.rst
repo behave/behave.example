@@ -55,7 +55,7 @@ Provide the Test Automation
 -----------------------------
 
 .. literalinclude:: ../../features/steps/step_tutorial01.py
-    :prepend:   # file:features/steps/step_tutorial01.py
+    :prepend:  # file:features/steps/step_tutorial01.py
     :language: python
     :start-after: @mark.steps
 
