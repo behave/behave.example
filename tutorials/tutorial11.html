@@ -77,6 +77,11 @@
 <li><a class="reference internal" href="#">Tutorial 11: Use Tags</a><ul>
 <li><a class="reference internal" href="#write-the-feature-test">Write the Feature Test</a></li>
 <li><a class="reference internal" href="#run-the-feature-test">Run the Feature Test</a></li>
+<li><a class="reference internal" href="#case-select-by-tag">Case: Select-by-tag</a></li>
+<li><a class="reference internal" href="#case-exclude-by-tag-logical-not">Case: Exclude-by-tag (Logical-not)</a></li>
+<li><a class="reference internal" href="#case-select-combinations-logical-or">Case: Select Combinations (Logical-or)</a></li>
+<li><a class="reference internal" href="#case-logical-and">Case: Logical-and</a></li>
+<li><a class="reference internal" href="#case-match-tag-names-by-using-wildcards">Case: Match Tag Names by using Wildcards</a></li>
 </ul>
 </li>
 </ul>
@@ -132,9 +137,7 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">TODO:</th><td class="field-body">Add description with cucumber tag-expressions</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite and optimize test runs.</td>
+<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Understand the usage of tags to organize the testsuite and optimize test runs.</td>
 </tr>
 </tbody>
 </table>
@@ -153,9 +156,9 @@ static test package structure.</p>
 <p>Predefined or often used tags:</p>
 <table border="1" class="last docutils">
 <colgroup>
-<col width="11%" />
 <col width="23%" />
-<col width="67%" />
+<col width="19%" />
+<col width="58%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Tag</th>
@@ -168,25 +171,33 @@ static test package structure.</p>
 <td>predefined</td>
 <td>“Work in Process” (under development).</td>
 </tr>
-<tr class="row-odd"><td>&#64;skip</td>
+<tr class="row-odd"><td>&#64;xfail</td>
 <td>predefined</td>
-<td>Skip/disable a feature, scenario, …</td>
+<td>Tests that are (currently) expected to fail.</td>
 </tr>
-<tr class="row-even"><td>&#64;slow</td>
+<tr class="row-even"><td>&#64;not_implemented</td>
+<td>user-defined</td>
+<td>Marks a test that is not implemented yet.</td>
+</tr>
+<tr class="row-odd"><td>&#64;slow</td>
 <td>user-defined</td>
 <td>Mark slow, long-running tests.</td>
+</tr>
+<tr class="row-even"><td>&#64;glacier</td>
+<td>user-defined</td>
+<td>Mark even slower, longer running tests.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Hint</p>
-<p>Tag Logic:</p>
+<p>Tag Logic v2: Using <a class="reference external" href="https://pypi.org/project/cucumber-tag-expressions">cucumber-tag-expressions</a></p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="35%" />
-<col width="43%" />
+<col width="21%" />
+<col width="33%" />
+<col width="47%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Logic Operation</th>
@@ -199,27 +210,30 @@ static test package structure.</p>
 <td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one</span></code></td>
 <td>Only items with this tag.</td>
 </tr>
-<tr class="row-odd"><td>not (tilde/minus)</td>
-<td><code class="docutils literal notranslate"><span class="pre">--tags=~&#64;one</span></code></td>
+<tr class="row-odd"><td>not</td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&quot;not</span> <span class="pre">&#64;one&quot;</span></code></td>
 <td>Only items without this tag.</td>
 </tr>
 <tr class="row-even"><td>logical-or</td>
-<td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one,&#64;two</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&quot;&#64;one</span> <span class="pre">or</span> <span class="pre">&#64;two&quot;</span></code></td>
 <td>If &#64;one or &#64;two is present.</td>
 </tr>
 <tr class="row-odd"><td>logical-and</td>
-<td><code class="docutils literal notranslate"><span class="pre">--tags=&#64;one</span> <span class="pre">--tags=&#64;two</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&quot;&#64;one</span> <span class="pre">and</span> <span class="pre">&#64;two&quot;</span></code></td>
 <td>If both &#64;one and &#64;two are present.</td>
+</tr>
+<tr class="row-even"><td>match-substring</td>
+<td><code class="docutils literal notranslate"><span class="pre">--tags=&quot;&#64;one.*&quot;</span></code></td>
+<td>Matches all tags that start with “one.”</td>
 </tr>
 </tbody>
 </table>
 <p>Notes:</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>The tag name prefix ‘&#64;’ (AT) is optional in tag options</li>
 <li>Use <code class="docutils literal notranslate"><span class="pre">--tags-help</span></code> for a short description of the tag logic.</li>
+<li>Use parenthesis to group tag expressions, like: <code class="docutils literal notranslate"><span class="pre">&#64;one</span> <span class="pre">and</span> <span class="pre">(&#64;two</span> <span class="pre">or</span> <span class="pre">&#64;three)</span></code></li>
 </ul>
-</div></blockquote>
 <p class="last">See also <a class="reference external" href="https://behave.readthedocs.io/en/latest/tutorial.html#controlling-things-with-tags">behave tags documentation</a> for more information on tags.</p>
 </div>
 <div class="section" id="write-the-feature-test">
@@ -249,10 +263,10 @@ static test package structure.</p>
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
-<p>When you run the feature file by excluding the tag &#64;wip,
+<p>When you run the feature file by <strong>excluding</strong> the tag <code class="docutils literal notranslate"><span class="pre">&#64;wip</span></code>,
 then any feature marked with this tag is skipped as well as all of its scenarios.</p>
 <pre class="ansi-block literal-block">
-$ behave --tags=-wip ../features/tutorial11_tags.feature
+$ behave --tags=&quot;not wip&quot; ../features/tutorial11_tags.feature
 0 features passed, 0 failed, 1 skipped
 0 scenarios passed, 0 failed, 2 skipped
 0 steps passed, 0 failed, 6 skipped, 0 undefined
@@ -262,7 +276,10 @@ Took 0m0.000s
 <p class="first admonition-title">Note</p>
 <p class="last">Check the test summary for the skipped count for features and scenarios.</p>
 </div>
-<p>When you <strong>enable the tag</strong> &#64;ninja.chuck:</p>
+</div>
+<div class="section" id="case-select-by-tag">
+<h2>Case: Select-by-tag<a class="headerlink" href="#case-select-by-tag" title="Permalink to this headline">¶</a></h2>
+<p>When you <strong>enable the tag</strong> <code class="docutils literal notranslate"><span class="pre">&#64;ninja.chuck</span></code>:</p>
 <pre class="ansi-block literal-block">
 $ behave --tags=ninja.chuck ../features/tutorial11_tags.feature
 <span class="ansi-bold ansi-blue">&#64;wip
@@ -287,9 +304,12 @@ Took 0m0.001s
 <p class="first admonition-title">Note</p>
 <p class="last">Now only the second scenario is executed and the first one is skipped.</p>
 </div>
-<p>When you <strong>disable the tag</strong> &#64;ninja.chuck:</p>
+</div>
+<div class="section" id="case-exclude-by-tag-logical-not">
+<h2>Case: Exclude-by-tag (Logical-not)<a class="headerlink" href="#case-exclude-by-tag-logical-not" title="Permalink to this headline">¶</a></h2>
+<p>When you <strong>disable the tag</strong> <code class="docutils literal notranslate"><span class="pre">&#64;ninja.chuck</span></code>:</p>
 <pre class="ansi-block literal-block">
-$ behave --tags=-ninja.chuck ../features/tutorial11_tags.feature
+$ behave --tags=&quot;not ninja.chuck&quot; ../features/tutorial11_tags.feature
 <span class="ansi-bold ansi-blue">&#64;wip
 </span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
 <span class="ansi-white">  In order to increase the ninja survival rate,
@@ -312,10 +332,13 @@ Took 0m0.001s
 <p class="first admonition-title">Note</p>
 <p class="last">Now only the first scenario is executed and the second one is now skipped.</p>
 </div>
-<p>When you select items with <strong>either tag</strong> &#64;ninja.any <strong>or</strong> the tag
-&#64;ninja.chuck (<strong>tag-or</strong>):</p>
+</div>
+<div class="section" id="case-select-combinations-logical-or">
+<h2>Case: Select Combinations (Logical-or)<a class="headerlink" href="#case-select-combinations-logical-or" title="Permalink to this headline">¶</a></h2>
+<p>When you select items with <strong>either tag</strong> <code class="docutils literal notranslate"><span class="pre">&#64;ninja.any</span></code> <strong>or</strong> the tag
+<code class="docutils literal notranslate"><span class="pre">&#64;ninja.chuck</span></code> (<strong>tag-or</strong>):</p>
 <pre class="ansi-block literal-block">
-$ behave --tags=&#64;ninja.any,&#64;ninja.chuck ../features/tutorial11_tags.feature
+$ behave --tags=&quot;&#64;ninja.any or &#64;ninja.chuck&quot; ../features/tutorial11_tags.feature
 <span class="ansi-bold ansi-blue">&#64;wip
 </span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
 <span class="ansi-white">  In order to increase the ninja survival rate,
@@ -344,10 +367,13 @@ Took 0m0.002s
 <p class="first admonition-title">Note</p>
 <p class="last">Now both scenarios are executed.</p>
 </div>
-<p>When you select items that have the <strong>tag</strong> &#64;ninja.any <strong>and</strong> the
-tag &#64;ninja.chuck (<strong>tag-and</strong>):</p>
+</div>
+<div class="section" id="case-logical-and">
+<h2>Case: Logical-and<a class="headerlink" href="#case-logical-and" title="Permalink to this headline">¶</a></h2>
+<p>When you select items that have the <strong>tag</strong> <code class="docutils literal notranslate"><span class="pre">&#64;ninja.any</span></code>
+<strong>and</strong> the tag <code class="docutils literal notranslate"><span class="pre">&#64;ninja.chuck</span></code> (<strong>tag-and</strong>):</p>
 <pre class="ansi-block literal-block">
-$ behave --tags=&#64;ninja.any --tags=&#64;ninja.chuck ../features/tutorial11_tags.feature
+$ behave --tags=&quot;&#64;ninja.any and &#64;ninja.chuck&quot; ../features/tutorial11_tags.feature
 0 features passed, 0 failed, 1 skipped
 0 scenarios passed, 0 failed, 2 skipped
 0 steps passed, 0 failed, 6 skipped, 0 undefined
@@ -356,6 +382,40 @@ Took 0m0.000s
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Now no scenario is executed, all are skipped.</p>
+</div>
+</div>
+<div class="section" id="case-match-tag-names-by-using-wildcards">
+<h2>Case: Match Tag Names by using Wildcards<a class="headerlink" href="#case-match-tag-names-by-using-wildcards" title="Permalink to this headline">¶</a></h2>
+<p>When you select items that have a <strong>tag</strong> that starts with “<code class="docutils literal notranslate"><span class="pre">&#64;ninja.</span></code>” prefix:</p>
+<pre class="ansi-block literal-block">
+$ behave --tags=&quot;&#64;ninja.*&quot; ../features/tutorial11_tags.feature
+<span class="ansi-bold ansi-blue">&#64;wip
+</span><span class="ansi-bold ansi-black">Feature: Using Tags with Features and Scenarios (tutorial11 := tutorial2)</span><span class="ansi-white">   # ../features/tutorial11_tags.feature:2</span>
+<span class="ansi-white">  In order to increase the ninja survival rate,
+  As a ninja commander
+  I want my ninjas to decide whether to take on an opponent
+  based on their skill levels.</span>
+
+<span class="ansi-bold ansi-blue">  &#64;ninja.any
+</span><span class="ansi-bold ansi-black">  Scenario: Weaker opponent </span><span class="ansi-white">                     # ../features/tutorial11_tags.feature:10</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by a </span><span class="ansi-bold ansi-green">samurai</span><span class="ansi-white">                   # ../features/steps/step_tutorial02.py:61</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">engage the opponent</span><span class="ansi-white">    # ../features/steps/step_tutorial02.py:69</span>
+
+<span class="ansi-bold ansi-blue">  &#64;ninja.chuck
+</span><span class="ansi-bold ansi-black">  Scenario: Stronger opponent </span><span class="ansi-white">                   # ../features/tutorial11_tags.feature:16</span>
+    <span class="ansi-green">Given </span><span class="ansi-green">the ninja has a </span><span class="ansi-bold ansi-green">third level black-belt</span><span class="ansi-white"> # ../features/steps/step_tutorial02.py:57</span>
+    <span class="ansi-green">When </span><span class="ansi-green">attacked by </span><span class="ansi-bold ansi-green">Chuck Norris</span><span class="ansi-white">                # ../features/steps/step_tutorial02.py:65</span>
+    <span class="ansi-green">Then </span><span class="ansi-green">the ninja should </span><span class="ansi-bold ansi-green">run for his life</span><span class="ansi-white">       # ../features/steps/step_tutorial02.py:69</span>
+
+1 feature passed, 0 failed, 0 skipped
+2 scenarios passed, 0 failed, 0 skipped
+6 steps passed, 0 failed, 0 skipped, 0 undefined
+Took 0m0.003s
+</pre>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Again, both scenarios marked with <code class="docutils literal notranslate"><span class="pre">&#64;ninja.any</span></code> and <code class="docutils literal notranslate"><span class="pre">&#64;ninja.chuck</span></code> are executed.</p>
 </div>
 </div>
 </div>
