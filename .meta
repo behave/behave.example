@@ -1,6 +1,0 @@
-{
-  "projects": {
-    "parts/sphinxcontrib-ansi": "https://github.com/jenisys/sphinxcontrib-ansi.git",
-    "parts/sphinxcontrib-programoutput": "https://github.com/jenisys/sphinxcontrib-programoutput.git"
-  }
-}
