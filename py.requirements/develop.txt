@@ -12,6 +12,8 @@
 tox >= 3.10.0
 watchdog >= 0.6.0
 pylint
+twine
+modernize
 
 # -- DEPENDS ON:
 -r basic.txt

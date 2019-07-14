@@ -14,3 +14,5 @@ PyHamcrest >= 1.9
 traceback2 >= 1.4.0;    python_version <= '3.0'
 parse >= 1.8.2
 parse_type >= 0.4.2
+
+-r behave_ext.txt
