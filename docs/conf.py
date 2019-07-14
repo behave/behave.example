@@ -1,13 +1,15 @@
-# -*- coding: utf-8 -*-
+# -*- coding: UTF-8 -*-
 # =============================================================================
 # SPHINX CONFIGURATION FOR: behave.example docs
 # =============================================================================
 # SPHINX EXTENSIONS:
-#  * https://bitbucket.org/birkenfeld/sphinx-contrib
+#  * https://github.com/sphinx-contrib
+#    (former: https://bitbucket.org/birkenfeld/sphinx-contrib )
 #  * http://packages.python.org/sphinxcontrib-programoutput/  (OLD)
 #  * https://github.com/NextThought/sphinxcontrib-programoutput (NEW)
 #
-#  * XXX: https://github.com/lipro/sphinxcontrib-ansi
+#  * https://github.com/sphinx-contrib/ansi
+#  * https://github.com/jenisys/sphinxcontrib-ansi (v0.6.1: Fix setup.py README)
 #
 # .. program-output:: command
 #   :ellipsis: 2,-2
