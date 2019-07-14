@@ -40,7 +40,7 @@ spoken language.
         lang = de
 
 
-.. _behave: http://pythonhosted.org/behave/
+.. _behave: http://behave.readthedocs.io/
 
 Write the Feature Test
 ------------------------

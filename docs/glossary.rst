@@ -30,7 +30,7 @@ Glossary
 .. _cucumber: https://cucumber.io
 .. _Gherkin:  https://github.com/cucumber/cucumber/wiki/Gherkin
 .. _Gherkin3: https://github.com/cucumber/gherkin
-.. _jbehave:  http://jbehave.org/
+.. _jbehave:  https://jbehave.org/
 .. _`wikipedia:Gherkin`: https://en.wikipedia.org/wiki/Gherkin
 
 .. broken:

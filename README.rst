@@ -12,24 +12,25 @@ It should extends the excellent documentation of `behave`_.
 SEE ALSO:
 
 * https://github.com/behave/behave.example
-* behave:  http://pypi.python.org/pypi/behave/
-* cucumber: http://cucumber.io/
+* behave:  https://pypi.org/project/behave/
+* cucumber: https://cucumber.io/
 
 DOCUMENTATION:
 
-* http://behave.github.com/behave.example (latest version)
+* https://behave.github.com/behave.example (latest version)
 
 REPOSITORIES:
 
 * https://github.com/behave/behave
-* https://github.com/behave/parse_type
+* https://github.com/jenisys/parse_type
 
 
 .. _behave: https://github.com/behave/behave
 .. _parse_type:  https://github.com/jenisys/parse_type
-.. _invoke: http://www.pyinvoke.org
-.. _sphinxcontrib-ansi: http://bitbucket.org/birkenfeld/sphinx-contrib
-.. _sphinxcontrib-programoutput: https://github.com/lunaryorn/sphinxcontrib-programoutput
+.. _invoke: https://www.pyinvoke.org
+.. _sphinx-contrib: https://github.com/sphinx-contrib
+.. _sphinxcontrib-ansi: https://github.com/jenisys/sphinxcontrib-ansi
+.. _sphinxcontrib-programoutput: https://github.com/NextThought/sphinxcontrib-programoutput
 
 
 INSTALL

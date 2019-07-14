@@ -29,7 +29,7 @@ It has the following features:
   * extended parser that understands the cardinality field syntax
   * automatically creates missing type converters for fields
     with cardinality field part
-  * based on :pypi:`parse_type`
+  * based on :pypi:`parse-type`
 
 The "re" matcher is used for the following reasons. It:
 

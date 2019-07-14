@@ -32,7 +32,7 @@ Some tutorials and examples to explore behave, a BDD test tool for Python.
 setup(
     name="behave.example",
     version="1.2.7",
-    url="http://github.com/behave/behave.example",
+    url="https://github.com/behave/behave.example",
     author="Jens Engel",
     author_email="Jens_Engel@nowhere.net",
     license="BSD",

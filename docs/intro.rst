@@ -59,14 +59,14 @@ Native assert           Starting point, but not enough information when assert f
                         Supports several programming languages:
                         :github:`hamcrest/PyHamcrest`
 :pypi:`behave-pytest`   Enables `pytest`_ assertions in behave:
-                        :github:`ribozz/behave-pytest`
+                        (old repo: :github:`ribozz/behave-pytest` currently not usable)
 `nose.tools`_           Part of the :pypi:`nose` test framework
-`should-dsl`_           An interesting small matcher library,
-                        https://pypi.python.org/pypi/should_dsl
+:pypi:`should_dsl`      An interesting small matcher library,
+                        https://pypi.org/project/should_dsl
 :pypi:`sure`            Provided by the maker of :pypi:`lettuce`,
                         :github:`gabrielfalcao/sure`
-:pypi:`compare`         https://pypi.python.org/pypi/compare
-:pypi:`describe`        https://pypi.python.org/pypi/describe
+:pypi:`compare`         https://pypi.org/project/compare
+:pypi:`describe`        https://pypi.org/project/describe
 ======================= ===============================================================
 
 .. note::
@@ -74,12 +74,12 @@ Native assert           Starting point, but not enough information when assert f
     `hamcrest`_ is used as *assertion matcher library* in the examples
     presented here.
 
-.. _behave documentation:  http://pythonhosted.org/behave/
+.. _behave documentation:  http://behave.readthedocs.io/
 .. _hamcrest:   https://github.com/hamcrest/
-.. _JUnit4:     http://junit.org/
-.. _nose.tools: http://nose.readthedocs.io/en/latest/testing_tools.html
-.. _should-dsl: https://pypi.python.org/pypi/should_dsl
+.. _JUnit4:     https://junit.org/junit4
+.. _nose.tools: https://nose.readthedocs.io/en/latest/testing_tools.html
+.. _should-dsl: https://pypi.org/project/should_dsl
 
 .. _cucumber:   https://cucumber.io/
-.. _jbehave:    http://jbehave.org/
-.. _pytest:     http://pytest.org/
+.. _jbehave:    https://jbehave.org/
+.. _pytest:     https://docs.pytest.org/

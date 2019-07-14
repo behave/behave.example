@@ -9,8 +9,8 @@ Setuptools command for behave.
 
 .. seealso::
 
-    * http://pypi.python.org/pypi/behave
-    * http://github.com/behave/behave
+    * https://pypi.org/project/behave
+    * https://github.com/behave/behave
 """
 
 from setuptools import Command
