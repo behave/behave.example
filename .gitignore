@@ -18,3 +18,7 @@ build/
 dist/
 downloads/
 tmp/
+
+# -- IGNORE: GIT MULTI-REPO SUBPROJECTS
+parts/sphinxcontrib-ansi/
+parts/sphinxcontrib-programoutput/
