@@ -21,7 +21,7 @@ Write the Feature Test
 ------------------------
 
 .. literalinclude:: ../../features/tutorial08_step_executes_steps.feature
-    :prepend:   # file:features/tutorial08_step_executes_steps.feature
+    :prepend:  # file:features/tutorial08_step_executes_steps.feature
     :language: gherkin
 
 

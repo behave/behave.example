@@ -37,7 +37,7 @@ as optional (cardinality: 0..1).
 .. note::
 
     You need to use the "cfparse" step matcher (:pypi:`parse` with cardinality field
-    support based on a :pypi:`parse_type` parser) to use this functionality.
+    support based on a :pypi:`parse-type` parser) to use this functionality.
     The cardinality field is optional and follows the type field "Person"
     in a parse expression, like:
 

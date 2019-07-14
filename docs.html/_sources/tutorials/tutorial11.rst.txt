@@ -9,6 +9,7 @@ Tutorial 11: Use Tags
 
 .. index:: tags, use-tags
 
+:TODO: Add description with cucumber tag-expressions
 :Goal: Understand the usage of tags to organize the testsuite and optimize test runs.
 
 Several test frameworks support a concept of tags to mark a number of tests
@@ -16,8 +17,8 @@ Several test frameworks support a concept of tags to mark a number of tests
 `NUnit CategoryAttribute`_).
 This provides a simple, flexible and effective mechanism to:
 
-  * select  a number of tests
-  * exclude a number of tests
+* select  a number of tests
+* exclude a number of tests
 
 for a test run. This mechanism is orthogonal to the
 static test package structure.
@@ -150,9 +151,9 @@ tag @ninja.chuck (**tag-and**):
 
 
 .. _py.test markers:    http://docs.pytest.org/en/latest/example/markers.html
-.. _TestNG test groups: http://testng.org/
+.. _TestNG test groups: https://testng.org/
 .. _JUnit Categories:   https://github.com/junit-team/junit4/wiki/Categories
-.. _NUnit CategoryAttribute:   http://www.nunit.org/index.php?p=category&r=2.4
+.. _NUnit CategoryAttribute:   https://nunit.org/index.php?p=category&r=2.4
 .. _JUnit:  http://junit.org/
-.. _behave tags documentation: https://pythonhosted.org/behave/tutorial.html#controlling-things-with-tags
+.. _behave tags documentation: https://behave.readthedocs.io/en/latest/tutorial.html#controlling-things-with-tags
 

@@ -15,7 +15,7 @@ are used in :pypi:`behave`. The type converter functionality, that is described 
 is only supported by the:
 
   * "parse" matcher (based on: :pypi:`parse` module)
-  * "cfparse" matcher (based on: :pypi:`parse_type` module)
+  * "cfparse" matcher (based on: :pypi:`parse-type` module)
 
 ----
 
@@ -37,10 +37,10 @@ is only supported by the:
 .. important::
 
     Part of the functionality, that is described here, is based on
-    :pypi:`parse_type`, an extension of the excellent :pypi:`parse` module.
+    :pypi:`parse-type`, an extension of the excellent :pypi:`parse` module.
 
     The :pypi:`parse` module is the inverse of Python `string.format`_ function.
-    The :pypi:`parse_type` module extends it to simplify the generation of types
+    The :pypi:`parse-type` module extends it to simplify the generation of types
     (actually type converter functions for types).
 
     .. index:: parse extensions
@@ -50,7 +50,7 @@ is only supported by the:
       * Optional :py:attr:`pattern` attribute (for regex) in user-defined type converters.
       * The :py:func:`with_pattern()` decorator for type-converters.
 
-    :pypi:`parse_type` *features*:
+    :pypi:`parse-type` *features*:
 
       * Simplifies the creation of type converters for some common cases
       * Creates type converter variants based on cardinality
