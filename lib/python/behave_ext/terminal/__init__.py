@@ -34,7 +34,7 @@ def select_terminal_class(colored=True):
     if colored:
         if sys.platform.startswith("win"):     # pragma: no cover
             from behave_ext.terminal import winterm
-            return winterm.Terminal
+            return winterm.WindowsTerminalWriter
         elif os.name == "posix":        # pragma: no cover
             # -- PLATFORM-GROUP: POSIX/UNIX SYSTEMS
             from behave_ext.terminal import ansiterm
