@@ -2,6 +2,18 @@ run:
     echo: true
     pty: true
 
+cleanup:
+    extra_directories:
+      - "build/"
+      - "docs/build/"
+    extra_files:
+      - "*.output"
+
+cleanup.all:
+    extra_directories:
+      - ".tox"
+      - ".venv*"
+
 behave_test:
     scopes:
       - features

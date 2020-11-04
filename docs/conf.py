@@ -93,6 +93,7 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.extlinks",
     "sphinxcontrib.programoutput",
+    # DISABLED: "sphinxcontrib.ansi",
     # 'sphinx.ext.autodoc',
     # 'sphinx.ext.doctest',
     # 'sphinx.ext.coverage',
@@ -129,6 +130,12 @@ def setup(app):
     rebuild = True
     app.add_config_value("ansiterm_supported", True, rebuild)
 
+    if hasattr(app, 'add_css_file'):
+        app.add_css_file(html_ansi_stylesheet)
+    else:
+        # -- SUPPORTS: sphinx < 2.0 ?
+        app.add_stylesheet(html_ansi_stylesheet)
+
 
 # -----------------------------------------------------------------------------
 # GENERAL CONFIGURATION
@@ -136,7 +143,7 @@ def setup(app):
 # General information about the project.
 project = u"behave.example"
 author  = u"Jens Engel"
-copyright = u'2012-2019 by %s' % author
+copyright = u'2012-2020 by %s' % author
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -146,7 +153,7 @@ copyright = u'2012-2019 by %s' % author
 version = '1.2'
 # The full version, including alpha/beta/rc tags.
 release = open(os.path.join(HERE, "../VERSION.txt")).read().strip()
-release = '1.2.6'
+release = '1.2.6.1'
 
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -157,7 +164,7 @@ templates_path = [ '_templates' ]
 
 # The suffix of source filenames.
 source_suffix = '.rst'
-# source_suffix = '.txt'
+# FOR DIAG: source_suffix = '.txt'
 
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'

@@ -12,22 +12,26 @@
 # ============================================================================
 
 # -- BEHAVE-RELATED:
-behave >= 1.2.6
-PyHamcrest >= 2.0.2
--r behave_ext.txt
+-r basic.txt
 
 # -- DOCUMENTATION: Tutorials with examples.
-# PROBLEMS:
-#   sphinxcontrib-ansi: Sphinx < 2.0
+# NOTE: sphinxcontrib-programoutput and sphinxcontrib-ansi 
 #   sphinxcontrib-programoutput: < 0.10.0 (ansi-support was removed)
 #
-# MISSING in pypi:
-#   sphinxcontrib-ansi >= 0.6 (and repository setup.py is broken)
+# SOLVED-PROBLEMS: sphinxcontrib-ansi: Sphinx < 2.0
+# * JE_v0.7.0: Using own repo: https://github.com/jenisys/sphinxcontrib-ansi.git
 #
-sphinx >=1.6,<2.0
-sphinx_bootstrap_theme >= 0.4.12
+# MAYBE: bootstrap4
+
+sphinx >=2.0
+sphinx-autobuild
+sphinx_bootstrap_theme >= 0.6.0
+
 sphinxcontrib-programoutput >=0.8,<0.10.0
-git+https://github.com/jenisys/sphinxcontrib-ansi.git
+git+https://github.com/jenisys/sphinxcontrib-ansi.git@JE_v0.7.0
+
+# -- SUPPORT: sphinx-doc translations (prepared)
+sphinx-intl >= 0.9.11
 
 # -- OPTIONAL DOCUMENTATION: If PDF docs are needed.
 # rst2pdf

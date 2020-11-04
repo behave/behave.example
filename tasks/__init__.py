@@ -20,7 +20,7 @@ from __future__ import absolute_import
 from . import _setup    # pylint: disable=wrong-import-order
 import os.path
 import sys
-INVOKE_MINVERSION = "1.2.0"
+INVOKE_MINVERSION = "1.4.0"
 _setup.setup_path()
 _setup.require_invoke_minversion(INVOKE_MINVERSION)
 
@@ -35,7 +35,8 @@ import sys
 from invoke import Collection
 
 # -- TASK-LIBRARY:
-from . import _tasklet_cleanup as cleanup
+# PREPARED: import invoke_cleanup as cleanup
+from . import invoke_cleanup as cleanup
 from . import docs
 from . import test
 

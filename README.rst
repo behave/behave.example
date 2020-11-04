@@ -1,7 +1,7 @@
 behave.example: Examples and Tutorials
 ==============================================================================
 
-:Date: 2019-07-14
+:Date: 2020-11-04
 :Category: BDD, testing
 :License:  BSD
 
@@ -13,7 +13,7 @@ SEE ALSO:
 
 * https://github.com/behave/behave.example
 * behave:  https://pypi.org/project/behave/
-* cucumber: https://cucumber.io/
+* cucumber: https://docs.cucumber.io/
 
 DOCUMENTATION:
 
@@ -33,7 +33,7 @@ REPOSITORIES:
 .. _sphinxcontrib-programoutput: https://github.com/NextThought/sphinxcontrib-programoutput
 
 
-INSTALL
+INSTALL and BOOTSTRAP
 ------------------------------------------------------------------------------
 
 The project provides tutorials and examples.
@@ -42,10 +42,11 @@ To prepare the local installation, use the following command to install
 all prerequisites::
 
     # -- STEP 1: Setup and activate a virtual python environment.
-    $ virtualenv .venv_py
-    $ source .venv_py/bin/activate
+    $ virtualenv --python python3 .venv
+    $ source .venv/bin/activate
+
     # -- HINT ON WINDOWS:
-    # call .venv_py/Scripts/activate
+    # call .venv/Scripts/activate
 
     # -- STEP 2: Install all required python packages with "pip".
     $ pip install -r py.requirements/all.txt
