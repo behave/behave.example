@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Use the Regular Expression Matcher (re) &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use the Regular Expression Matcher (re) &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Use Optional Part in Step Definitions" href="use_optional_part.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -145,8 +150,8 @@
 The named parameter syntax <code class="docutils literal notranslate"><span class="pre">(?P&lt;name&gt;...)</span></code> should be used to extract
 parameters from the step definition.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><span class="std std-ref">Regular Expressions</span></a> for more information
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="regular_expressions.html#id-step-matcher-regular-expressions"><span class="std std-ref">Regular Expressions</span></a> for more information
 on regular expressions.</p>
 </div>
 <div class="section" id="simple-parameters">
@@ -186,14 +191,14 @@ on regular expressions.</p>
 <span class="k">def</span> <span class="nf">step_given_I_use_regex_matcher</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;{name}&quot; is &quot;{expected_value}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;</span><span class="si">{name}</span><span class="s1">&quot; is &quot;</span><span class="si">{expected_value}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_parameter_is_equal_to</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected_value</span><span class="p">))</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;{name}&quot; is none&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;</span><span class="si">{name}</span><span class="s1">&quot; is none&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_parameter_is_none</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">is_</span><span class="p">(</span><span class="n">none</span><span class="p">()))</span>
 </pre></div>
 </div>
@@ -201,8 +206,7 @@ on regular expressions.</p>
 <div class="section" id="run-the-test">
 <h3>Run the Test<a class="headerlink" href="#run-the-test" title="Permalink to this headline">¶</a></h3>
 <p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
+<pre class="ansi-block literal-block">$ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
 <span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Simple Parameters</span>
 
 <span class="ansi-bold ansi-black">  Scenario: Match simple parameter </span>
@@ -221,8 +225,7 @@ $ behave --no-source ../step_matcher.features/re_matcher.simple_param.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 9 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.002s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 <div class="section" id="optional-parameters">
@@ -252,8 +255,7 @@ Took 0m0.002s
 <div class="section" id="id2">
 <h3>Run the Test<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
+<pre class="ansi-block literal-block">$ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
 <span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Optional Parameters</span>
 
 <span class="ansi-bold ansi-black">  Scenario: Optional parameter 1 is missing </span>
@@ -281,8 +283,7 @@ $ behave --no-source ../step_matcher.features/re_matcher.optional_param.feature
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
 14 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.004s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 <div class="section" id="nested-parameters">
@@ -312,8 +313,7 @@ Took 0m0.004s
 <div class="section" id="id4">
 <h3>Run the Test<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>Now we run this example with <code class="xref py py-mod docutils literal notranslate"><span class="pre">behave</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave ../step_matcher.features/re_matcher.nested_param.feature
+<pre class="ansi-block literal-block">$ behave ../step_matcher.features/re_matcher.nested_param.feature
 <span class="ansi-bold ansi-black">Feature: Use &quot;re&quot; Step Matcher with Nested Parameters</span><span class="ansi-white">   # ../step_matcher.features/re_matcher.nested_param.feature:1</span>
 
 <span class="ansi-bold ansi-black">  Scenario: Nested parameter with nested match </span><span class="ansi-white">     # ../step_matcher.features/re_matcher.nested_param.feature:3</span>
@@ -333,8 +333,7 @@ $ behave ../step_matcher.features/re_matcher.nested_param.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 10 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.003s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 </div>
@@ -351,9 +350,9 @@ Took 0m0.003s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 8: Execute Other Steps in a Step &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 8: Execute Other Steps in a Step &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 9: Use Background" href="tutorial09.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -129,18 +134,15 @@
       
   <div class="section" id="tutorial-8-execute-other-steps-in-a-step">
 <span id="id-tutorial08"></span><h1>Tutorial 8: Execute Other Steps in a Step<a class="headerlink" href="#tutorial-8-execute-other-steps-in-a-step" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" id="index-0" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Reuse a sequence of existing steps as a step-macro.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple" id="index-0">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Reuse a sequence of existing steps as a step-macro.</p>
+</dd>
+</dl>
 <p>In some case, you want to replace a number of steps in a scenario
 by one simple <strong>macro step</strong> (<em>macro functionality</em>).
 To avoid code duplication in the <em>test automation layer</em>,
-the <a class="reference internal" href="../glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> framework normally provides a functionality to easily call
+the <a class="reference internal" href="../glossary.html#term-BDD"><span class="xref std std-term">BDD</span></a> framework normally provides a functionality to easily call
 these steps from within a step defintion.</p>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
@@ -185,7 +187,7 @@ these steps from within a step defintion.</p>
 <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;I do the same thing as before&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">execute_steps</span><span class="p">(</span><span class="sa">u</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">        when I press the big {button_color} button</span>
+<span class="s2">        when I press the big </span><span class="si">{button_color}</span><span class="s2"> button</span>
 <span class="s2">         and I duck</span>
 <span class="s2">    &quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">button_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">))</span>
 
@@ -199,8 +201,7 @@ these steps from within a step defintion.</p>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>When you run the feature file from above:</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial08_step_executes_steps.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial08_step_executes_steps.feature
 <span class="ansi-bold ansi-black">Feature: Step executes other Steps (tutorial08)</span><span class="ansi-white">   # ../features/tutorial08_step_executes_steps.feature:1</span>
 
 <span class="ansi-bold ansi-black">  Scenario: Step by Step </span><span class="ansi-white">           # ../features/tutorial08_step_executes_steps.feature:3</span>
@@ -217,8 +218,7 @@ $ behave ../features/tutorial08_step_executes_steps.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 7 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.006s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 
@@ -234,9 +234,9 @@ Took 0m0.006s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

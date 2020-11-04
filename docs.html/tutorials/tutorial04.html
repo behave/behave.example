@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 4: Scenario Outline &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 4: Scenario Outline &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 5: Multi-line Text (Step Data)" href="tutorial05.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -130,14 +135,11 @@
       
   <div class="section" id="tutorial-4-scenario-outline">
 <span id="id-tutorial04"></span><h1>Tutorial 4: Scenario Outline<a class="headerlink" href="#tutorial-4-scenario-outline" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" id="index-0" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use scenario outline as a parametrized template (avoid too many similar scenarios).</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple" id="index-0">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Use scenario outline as a parametrized template (avoid too many similar scenarios).</p>
+</dd>
+</dl>
 <p>A <code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">Outline</span></code> provides a <code class="docutils literal notranslate"><span class="pre">parametrized</span> <span class="pre">scenario</span> <span class="pre">script</span></code> (or template)
 for the feature file writer. The <code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">Outline</span></code> is executed for each
 example row in the <code class="docutils literal notranslate"><span class="pre">Examples</span></code> section below the <code class="docutils literal notranslate"><span class="pre">Scenario</span> <span class="pre">Outline</span></code>.</p>
@@ -173,7 +175,7 @@ example row in the <code class="docutils literal notranslate"><span class="pre">
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span>
 <span class="kn">from</span> <span class="nn">blender</span>  <span class="kn">import</span> <span class="n">Blender</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I put &quot;{thing}&quot; in a blender&#39;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;I put &quot;</span><span class="si">{thing}</span><span class="s1">&quot; in a blender&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_given_put_thing_into_blender</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span> <span class="o">=</span> <span class="n">Blender</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
@@ -182,14 +184,14 @@ example row in the <code class="docutils literal notranslate"><span class="pre">
 <span class="k">def</span> <span class="nf">step_when_switch_blender_on</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">switch_on</span><span class="p">()</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;it should transform into &quot;{other_thing}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;it should transform into &quot;</span><span class="si">{other_thing}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_should_transform_into</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">other_thing</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">blender</span><span class="o">.</span><span class="n">result</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">other_thing</span><span class="p">))</span>
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Test automation layer reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span class="std std-ref">Tutorial 3: Step Parameters</span></a>.</p>
+<p class="admonition-title">Note</p>
+<p>Test automation layer reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span class="std std-ref">Tutorial 3: Step Parameters</span></a>.</p>
 </div>
 </div>
 <div class="section" id="provide-the-domain-model">
@@ -206,8 +208,8 @@ example row in the <code class="docutils literal notranslate"><span class="pre">
         <span class="s2">&quot;Galaxy Nexus&quot;</span><span class="p">:</span> <span class="s2">&quot;toxic waste&quot;</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">thing</span>  <span class="o">=</span> <span class="bp">None</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">thing</span>  <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">select_result_for</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">thing</span><span class="p">):</span>
@@ -222,15 +224,14 @@ example row in the <code class="docutils literal notranslate"><span class="pre">
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Domain model reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span class="std std-ref">Tutorial 3: Step Parameters</span></a>.</p>
+<p class="admonition-title">Note</p>
+<p>Domain model reused from <a class="reference internal" href="tutorial03.html#id-tutorial03"><span class="std std-ref">Tutorial 3: Step Parameters</span></a>.</p>
 </div>
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>When you run the feature file from above (with plain formatting):</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial04_scenario_outline.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial04_scenario_outline.feature
 <span class="ansi-bold ansi-black">Feature: Scenario Outline (tutorial04)</span><span class="ansi-white">   # ../features/tutorial04_scenario_outline.feature:1</span>
 
 <span class="ansi-bold ansi-black">  Scenario Outline: Use Blender with Red Tree Frog -- &#64;1.1 Amphibians </span><span class="ansi-white"> # ../features/tutorial04_scenario_outline.feature:10</span>
@@ -256,8 +257,7 @@ $ behave ../features/tutorial04_scenario_outline.feature
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
 12 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.003s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 
@@ -273,9 +273,9 @@ Took 0m0.003s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

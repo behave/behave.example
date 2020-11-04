@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 10: User-defined Data Type &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 10: User-defined Data Type &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 11: Use Tags" href="tutorial11.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -131,20 +136,17 @@
       
   <div class="section" id="tutorial-10-user-defined-data-type">
 <span id="id-tutorial10"></span><h1>Tutorial 10: User-defined Data Type<a class="headerlink" href="#tutorial-10-user-defined-data-type" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" id="index-0" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Show how user-defined data types can be used in step parameters.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple" id="index-0">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Show how user-defined data types can be used in step parameters.</p>
+</dd>
+</dl>
 <p>User-defined data types simplify the processing in step definitions.
 The string parameters are automatically parsed and converted into
 specific data types.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Besides conversion into a user-defined type,
+<p class="admonition-title">Note</p>
+<p>Besides conversion into a user-defined type,
 this mechanism can also be used for text transformations
 that occurs before the parameter is handed to the step definition function.</p>
 </div>
@@ -241,8 +243,7 @@ that occurs before the parameter is handed to the step definition function.</p>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>When you run the feature file from above:</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial10_step_usertype.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial10_step_usertype.feature
 <span class="ansi-bold ansi-black">Feature: User-Defined Datatype as Step Parameter (tutorial10)</span><span class="ansi-white">   # ../features/tutorial10_step_usertype.feature:1</span>
 <span class="ansi-white">  As a test writer
   I want that a step parameter is converted into a specific datatype
@@ -271,8 +272,7 @@ $ behave ../features/tutorial10_step_usertype.feature
 1 feature passed, 0 failed, 0 skipped
 4 scenarios passed, 0 failed, 0 skipped
 12 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.003s
-</pre>
+Took 0m0.001s</pre>
 </div>
 <div class="section" id="the-complete-picture">
 <h2>The Complete Picture<a class="headerlink" href="#the-complete-picture" title="Permalink to this headline">¶</a></h2>
@@ -337,12 +337,12 @@ Took 0m0.003s
 </pre></div>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p><strong>Predefined Types</strong></p>
 <p><a class="reference external" href="https://pypi.org/project/behave">behave</a> uses the <a class="reference external" href="https://pypi.org/project/parse">parse</a> module (inverse of Python <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">string.format</a>)
 under the hoods to parse parameters in step definitions.
 This leads to rather simple and readable parse expressions for step parameters.</p>
-<p class="last">See also <a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span class="std std-ref">Predefined Data Types in parse</span></a> for more information.
+<p>See also <a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span class="std std-ref">Predefined Data Types in parse</span></a> for more information.
 In addition, see also <a class="reference internal" href="../datatype/index.html#id-datatype"><span class="std std-ref">Data Types and User-defined Types</span></a> for more information on
 defining and using user-defined data types.</p>
 </div>
@@ -361,9 +361,9 @@ defining and using user-defined data types.</p>
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

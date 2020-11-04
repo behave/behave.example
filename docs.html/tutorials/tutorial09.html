@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 9: Use Background &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 9: Use Background &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 10: User-defined Data Type" href="tutorial10.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -130,18 +135,15 @@
       
   <div class="section" id="tutorial-9-use-background">
 <span id="id-tutorial09"></span><h1>Tutorial 9: Use Background<a class="headerlink" href="#tutorial-9-use-background" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" id="index-0" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use the <code class="docutils literal notranslate"><span class="pre">Background</span></code> concept to execute a number of steps before each scenario.</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple" id="index-0">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Use the <code class="docutils literal notranslate"><span class="pre">Background</span></code> concept to execute a number of steps before each scenario.</p>
+</dd>
+</dl>
 <div class="admonition hint">
-<p class="first admonition-title">Hint</p>
-<p class="last">This example is based on the <a class="reference external" href="https://github.com/davedf/cuke4ninja/tree/master/src/ruby/NinjaSurvivalRate/features">Ninja Survival Rate</a> examples
-from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[SecretNinja10]</a>.</p>
+<p class="admonition-title">Hint</p>
+<p>This example is based on the <a class="reference external" href="https://github.com/davedf/cuke4ninja/tree/master/src/ruby/NinjaSurvivalRate/features">Ninja Survival Rate</a> examples
+from <a class="reference internal" href="../refs.html#secretninja10" id="id1"><span>[SecretNinja10]</span></a>.</p>
 </div>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
@@ -177,8 +179,8 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
     <span class="c1"># -- SETUP/TEARDOWN:</span>
     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="s2">&quot;ninja_fight&quot;</span><span class="p">):</span>
         <span class="c1"># -- VERIFY: Double-call does not occur.</span>
-        <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="p">,</span> <span class="n">is_not</span><span class="p">(</span><span class="n">equal_to</span><span class="p">(</span><span class="bp">None</span><span class="p">)))</span>
-    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">assert_that</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="p">,</span> <span class="n">is_not</span><span class="p">(</span><span class="n">equal_to</span><span class="p">(</span><span class="kc">None</span><span class="p">)))</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="kc">None</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial02.py</span>
@@ -188,19 +190,19 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <span class="kn">from</span> <span class="nn">behave</span>   <span class="kn">import</span> <span class="n">given</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">then</span>
 <span class="kn">from</span> <span class="nn">hamcrest</span> <span class="kn">import</span> <span class="n">assert_that</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">,</span> <span class="n">is_not</span>
 
-<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;the ninja has a {achievement_level}&#39;</span><span class="p">)</span>
+<span class="nd">@given</span><span class="p">(</span><span class="s1">&#39;the ninja has a </span><span class="si">{achievement_level}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_the_ninja_has_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">achievement_level</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span> <span class="o">=</span> <span class="n">NinjaFight</span><span class="p">(</span><span class="n">achievement_level</span><span class="p">)</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by a {opponent_role}&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by a </span><span class="si">{opponent_role}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_attacked_by_a</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">opponent_role</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent_role</span>
 
-<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by {opponent}&#39;</span><span class="p">)</span>
+<span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;attacked by </span><span class="si">{opponent}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_attacked_by</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">opponent</span><span class="p">):</span>
     <span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="n">opponent</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;the ninja should {reaction}&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;the ninja should </span><span class="si">{reaction}</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_the_ninja_should</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">reaction</span><span class="p">):</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">reaction</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">ninja_fight</span><span class="o">.</span><span class="n">decision</span><span class="p">()))</span>
 
@@ -220,16 +222,16 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># pylint: disable=R0903</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_ninja_level</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">with_ninja_level</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="o">=</span> <span class="n">with_ninja_level</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">decision</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Business logic how a Ninja should react to increase his survival rate.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
-        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opponent</span> <span class="o">==</span> <span class="s2">&quot;Chuck Norris&quot;</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;run for his life&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;black-belt&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">with_ninja_level</span><span class="p">:</span>
@@ -243,8 +245,7 @@ from <a class="reference internal" href="../refs.html#secretninja10" id="id1">[S
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>When you run this feature test with the background functionality:</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial09_background.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial09_background.feature
 <span class="ansi-bold ansi-black">Feature: Using Background -- Fight or Flight (Natural Language Part2, tutorial09)</span><span class="ansi-white">   # ../features/tutorial09_background.feature:1</span>
 
 <span class="ansi-bold ansi-black">  Background: Ninja fight setup </span><span class="ansi-white"> # ../features/tutorial09_background.feature:3</span>
@@ -264,8 +265,7 @@ $ behave ../features/tutorial09_background.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 8 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.002s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 
@@ -281,9 +281,9 @@ Took 0m0.002s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>
