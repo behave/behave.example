@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 1: First Steps &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 1: First Steps &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Tutorial 2: Natural Language" href="tutorial02.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -129,14 +134,11 @@
       
   <div class="section" id="tutorial-1-first-steps">
 <span id="id-tutorial01"></span><h1>Tutorial 1: First Steps<a class="headerlink" href="#tutorial-1-first-steps" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Show basics, make first steps</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Show basics, make first steps</p>
+</dd>
+</dl>
 <div class="section" id="write-the-feature-test">
 <h2>Write the Feature Test<a class="headerlink" href="#write-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>The following feature file provides a simple feature with one scenario
@@ -169,19 +171,18 @@ with Python functions. These step functions provide the test automation layer
 
 <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;we implement a test&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="bp">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span>
+    <span class="k">assert</span> <span class="kc">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;behave will test it for us!&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="kc">False</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>When you run the feature file from above (with coloring enabled):</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial01_basics.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial01_basics.feature
 <span class="ansi-bold ansi-black">Feature: Showing off behave (tutorial01)</span><span class="ansi-white">   # ../features/tutorial01_basics.feature:1</span>
 
 <span class="ansi-bold ansi-black">  Scenario: Run a simple test </span><span class="ansi-white">       # ../features/tutorial01_basics.feature:3</span>
@@ -192,12 +193,10 @@ $ behave ../features/tutorial01_basics.feature
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
-</pre>
+Took 0m0.000s</pre>
 <p>As alternative you can run the feature with plain formatting
 (or another formatter):</p>
-<pre class="ansi-block literal-block">
-$ behave --format=plain --show-timings ../features/tutorial01_basics.feature
+<pre class="ansi-block literal-block">$ behave --format=plain --show-timings ../features/tutorial01_basics.feature
 Feature: Showing off behave (tutorial01)
 
   Scenario: Run a simple test
@@ -208,8 +207,7 @@ Feature: Showing off behave (tutorial01)
 1 feature passed, 0 failed, 0 skipped
 1 scenario passed, 0 failed, 0 skipped
 3 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.001s
-</pre>
+Took 0m0.000s</pre>
 </div>
 </div>
 
@@ -225,9 +223,9 @@ Took 0m0.001s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

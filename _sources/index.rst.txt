@@ -24,15 +24,19 @@ Contents:
     tutorials/index
     datatype/index
     step_matcher/index
+
+
+.. toctree::
+    :hidden:
+
     glossary
     refs
 
 
-Indices and tables
-==================
+----
 
-* :ref:`genindex`
-* :ref:`search`
+:ref:`search` -- :ref:`genindex` -- :doc:`glossary` -- :doc:`refs`
+
 
 .. |behave_logo| image:: _static/behave_logo1.png
 .. _behave:   https://pypi.org/project/behave

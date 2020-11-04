@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tutorial 12: Use another Spoken Language &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tutorial 12: Use another Spoken Language &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Data Types and User-defined Types" href="../datatype/index.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -129,21 +134,18 @@
       
   <div class="section" id="tutorial-12-use-another-spoken-language">
 <span id="id-tutorial12"></span><h1>Tutorial 12: Use another Spoken Language<a class="headerlink" href="#tutorial-12-use-another-spoken-language" title="Permalink to this headline">¶</a></h1>
-<table class="docutils field-list" frame="void" id="index-0" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Goal:</th><td class="field-body">Use another spoken language for testing (other than English)</td>
-</tr>
-</tbody>
-</table>
-<p>Most <a class="reference internal" href="../glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> frameworks provide internationalisation support.
+<dl class="field-list simple" id="index-0">
+<dt class="field-odd">Goal</dt>
+<dd class="field-odd"><p>Use another spoken language for testing (other than English)</p>
+</dd>
+</dl>
+<p>Most <a class="reference internal" href="../glossary.html#term-BDD"><span class="xref std std-term">BDD</span></a> frameworks provide internationalisation support.
 The key part (but only the first step) is that the <code class="docutils literal notranslate"><span class="pre">Given</span> <span class="pre">...</span> <span class="pre">When</span> <span class="pre">...</span> <span class="pre">Then</span></code>
 keywords are provided in the native language, for example French or German.
 If this is the case, a developer can provide step definitions in another
 spoken language.</p>
 <div class="admonition hint">
-<p class="first admonition-title">Hint</p>
+<p class="admonition-title">Hint</p>
 <p>The list of supported languages can be displayed via:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">behave</span> <span class="o">--</span><span class="n">lang</span><span class="o">-</span><span class="nb">list</span>
 </pre></div>
@@ -154,12 +156,12 @@ spoken language.</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>When this happens, the <a class="reference internal" href="../glossary.html#term-bdd"><span class="xref std std-term">BDD</span></a> framework selects the keywords for
+<p>When this happens, the <a class="reference internal" href="../glossary.html#term-BDD"><span class="xref std std-term">BDD</span></a> framework selects the keywords for
 this language.
 The default language can be defined in the configuration file.
 <a class="reference external" href="http://behave.readthedocs.io/">behave</a> uses either <code class="docutils literal notranslate"><span class="pre">behave.ini</span></code> or <code class="docutils literal notranslate"><span class="pre">.behaverc</span></code> as
 configuration file:</p>
-<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- file:behave.ini</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># -- file:behave.ini</span>
 <span class="p">[</span><span class="n">behave</span><span class="p">]</span>
 <span class="n">lang</span> <span class="o">=</span> <span class="n">de</span>
 </pre></div>
@@ -200,11 +202,11 @@ configuration file:</p>
 
 <span class="nd">@when</span><span class="p">(</span><span class="s1">&#39;we implement a test&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="bp">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span>
+    <span class="k">assert</span> <span class="kc">True</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span>
 
 <span class="nd">@then</span><span class="p">(</span><span class="s1">&#39;behave will test it for us!&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_impl</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="bp">False</span>
+    <span class="k">assert</span> <span class="n">context</span><span class="o">.</span><span class="n">failed</span> <span class="ow">is</span> <span class="kc">False</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># file:features/steps/step_tutorial12.py</span>
@@ -232,8 +234,7 @@ configuration file:</p>
 <div class="section" id="run-the-feature-test">
 <h2>Run the Feature Test<a class="headerlink" href="#run-the-feature-test" title="Permalink to this headline">¶</a></h2>
 <p>Automatic language selection (via feature-file language marker):</p>
-<pre class="ansi-block literal-block">
-$ behave ../features/tutorial12_spoken_language.feature
+<pre class="ansi-block literal-block">$ behave ../features/tutorial12_spoken_language.feature
 <span class="ansi-bold ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
 <span class="ansi-white">  Als Deutscher
   will ich BDD-Tests auch in Deutsch schreiben und ausführen.</span>
@@ -251,11 +252,9 @@ $ behave ../features/tutorial12_spoken_language.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 6 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.006s
-</pre>
+Took 0m0.001s</pre>
 <p>Explicit language selection via command-line usage of <code class="docutils literal notranslate"><span class="pre">--lang=${lang}</span></code>:</p>
-<pre class="ansi-block literal-block">
-$ behave --lang=de ../features/tutorial12_spoken_language.feature
+<pre class="ansi-block literal-block">$ behave --lang=de ../features/tutorial12_spoken_language.feature
 <span class="ansi-bold ansi-black">Funktionalität: Using Languages other than English (tutorial12)</span><span class="ansi-white">   # ../features/tutorial12_spoken_language.feature:2</span>
 <span class="ansi-white">  Als Deutscher
   will ich BDD-Tests auch in Deutsch schreiben und ausführen.</span>
@@ -273,8 +272,7 @@ $ behave --lang=de ../features/tutorial12_spoken_language.feature
 1 feature passed, 0 failed, 0 skipped
 2 scenarios passed, 0 failed, 0 skipped
 6 steps passed, 0 failed, 0 skipped, 0 undefined
-Took 0m0.006s
-</pre>
+Took 0m0.001s</pre>
 </div>
 </div>
 
@@ -290,9 +288,9 @@ Took 0m0.006s
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

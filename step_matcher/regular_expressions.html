@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Regular Expressions &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Expressions &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Glossary" href="../glossary.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -126,141 +131,141 @@
 <span id="id-step-matcher-regular-expressions"></span><h1>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h1>
 <p id="index-0">The following tables provide a overview of the <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> syntax.
 See also <a class="reference external" href="https://docs.python.org/2/library/re.html#module-re">Python regular expressions</a> description in the Python <a class="reference external" href="https://docs.python.org/2/library/re.html#module-re">re module</a>.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col style="width: 27%" />
+<col style="width: 73%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Special Characters</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Special Characters</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">.</span></code></td>
-<td>Matches any character (dot).</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.</span></code></p></td>
+<td><p>Matches any character (dot).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">^</span></code></td>
-<td>“^…”, matches start-of-string (caret).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>“^…”, matches start-of-string (caret).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">$</span></code></td>
-<td>“…$”, matches end-of-string (dollar sign).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$</span></code></p></td>
+<td><p>“…$”, matches end-of-string (dollar sign).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">|</span></code></td>
-<td>“A|B”, matches “A” or “B”.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p>“A|B”, matches “A” or “B”.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">\</span></code></td>
-<td>Escape character.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\</span></code></p></td>
+<td><p>Escape character.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">\.</span></code></td>
-<td>EXAMPLE: Matches character ‘.’ (dot).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\.</span></code></p></td>
+<td><p>EXAMPLE: Matches character ‘.’ (dot).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">\\</span></code></td>
-<td>EXAMPLE: Matches character ‘<code class="docutils literal notranslate"><span class="pre">\</span></code>’ (backslash).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\\</span></code></p></td>
+<td><p>EXAMPLE: Matches character ‘<code class="docutils literal notranslate"><span class="pre">\</span></code>’ (backslash).</p></td>
 </tr>
 </tbody>
 </table>
 <p>To select or match characters from a special set of characters,
 a character set must be defined.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col style="width: 27%" />
+<col style="width: 73%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Character sets</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Character sets</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">[...]</span></code></td>
-<td>Define a character set, like <code class="docutils literal notranslate"><span class="pre">[A-Za-z]</span></code>.</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">[...]</span></code></p></td>
+<td><p>Define a character set, like <code class="docutils literal notranslate"><span class="pre">[A-Za-z]</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">\d</span></code></td>
-<td>Matches digit character: [0-9]</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\d</span></code></p></td>
+<td><p>Matches digit character: [0-9]</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">\D</span></code></td>
-<td>Matches non-digit character.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\D</span></code></p></td>
+<td><p>Matches non-digit character.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">\s</span></code></td>
-<td>Matches whitespace character: <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">\t\n\r\f\v]</span></code></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\s</span></code></p></td>
+<td><p>Matches whitespace character: <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">\t\n\r\f\v]</span></code></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">\S</span></code></td>
-<td>Matches non-whitespace character</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\S</span></code></p></td>
+<td><p>Matches non-whitespace character</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">\w</span></code></td>
-<td>Matches alphanumeric character: <code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9_]</span></code></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\w</span></code></p></td>
+<td><p>Matches alphanumeric character: <code class="docutils literal notranslate"><span class="pre">[a-zA-Z0-9_]</span></code></p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">\W</span></code></td>
-<td>Matches non-alphanumeric character.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\W</span></code></p></td>
+<td><p>Matches non-alphanumeric character.</p></td>
 </tr>
 </tbody>
 </table>
 <p>A text part must be group to extract it as part (parameter).</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="27%" />
-<col width="73%" />
+<col style="width: 27%" />
+<col style="width: 73%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Grouping</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Grouping</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(...)</span></code></td>
-<td>Group a regular expression pattern (anonymous group).</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">(...)</span></code></p></td>
+<td><p>Group a regular expression pattern (anonymous group).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">\number</span></code></td>
-<td>Matches text of earlier group by index, like: “<code class="docutils literal notranslate"><span class="pre">\1</span></code>”.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\number</span></code></p></td>
+<td><p>Matches text of earlier group by index, like: “<code class="docutils literal notranslate"><span class="pre">\1</span></code>”.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(?P&lt;name&gt;...)</span></code></td>
-<td>Matches pattern and stores it in parameter “name”.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">(?P&lt;name&gt;...)</span></code></p></td>
+<td><p>Matches pattern and stores it in parameter “name”.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">(?P=name)</span></code></td>
-<td>Match whatever text was matched by earlier group “name”.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(?P=name)</span></code></p></td>
+<td><p>Match whatever text was matched by earlier group “name”.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(?:...)</span></code></td>
-<td>Matches pattern, but does non capture any text.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">(?:...)</span></code></p></td>
+<td><p>Matches pattern, but does non capture any text.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">(?!...)</span></code></td>
-<td>Matches not-pattern: Ignores anything with this pattern.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">(?!...)</span></code></p></td>
+<td><p>Matches not-pattern: Ignores anything with this pattern.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">(?#...)</span></code></td>
-<td>Comment (is ignored), describes pattern details.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">(?#...)</span></code></p></td>
+<td><p>Comment (is ignored), describes pattern details.</p></td>
 </tr>
 </tbody>
 </table>
 <p>If a <em>group</em>, <em>character</em> or <em>character set</em> should be repeated several times,
 it is necessary to specify the cardinality of the regular expression pattern.</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="25%" />
-<col width="75%" />
+<col style="width: 25%" />
+<col style="width: 75%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Cardinality</th>
-<th class="head">Description</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Cardinality</p></th>
+<th class="head"><p>Description</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">?</span></code></td>
-<td>Pattern with cardinality 0..1: optional part (question mark).</td>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">?</span></code></p></td>
+<td><p>Pattern with cardinality 0..1: optional part (question mark).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">*</span></code></td>
-<td>Pattern with cardinality zero or more, 0.. (asterisk).</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Pattern with cardinality zero or more, 0.. (asterisk).</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">+</span></code></td>
-<td>Pattern with cardinality one or more, 1.. (plus sign).</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Pattern with cardinality one or more, 1.. (plus sign).</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">{m}</span></code></td>
-<td>Matches <code class="docutils literal notranslate"><span class="pre">m</span></code> repetitions of a pattern.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">{m}</span></code></p></td>
+<td><p>Matches <code class="docutils literal notranslate"><span class="pre">m</span></code> repetitions of a pattern.</p></td>
 </tr>
-<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">{m,n}</span></code></td>
-<td>Matches from <code class="docutils literal notranslate"><span class="pre">m</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span></code> repetitions of a pattern.</td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">{m,n}</span></code></p></td>
+<td><p>Matches from <code class="docutils literal notranslate"><span class="pre">m</span></code> to <code class="docutils literal notranslate"><span class="pre">n</span></code> repetitions of a pattern.</p></td>
 </tr>
-<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">[A-Za-z]+</span></code></td>
-<td>EXAMPLE: Matches one or more alphabetical characters.</td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">[A-Za-z]+</span></code></p></td>
+<td><p>EXAMPLE: Matches one or more alphabetical characters.</p></td>
 </tr>
 </tbody>
 </table>
@@ -278,9 +283,9 @@ it is necessary to specify the cardinality of the regular expression pattern.</p
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

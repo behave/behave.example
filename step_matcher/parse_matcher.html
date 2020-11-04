@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Use the Parse Matcher (parse) &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use the Parse Matcher (parse) &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Use the Regular Expression Matcher (re)" href="re_matcher.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../datatype/index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -132,15 +137,15 @@ It uses the <a class="reference external" href="https://pypi.org/project/parse">
 It provides:</p>
 <blockquote>
 <div><ul class="simple">
-<li>predefined types</li>
-<li>used-defined types and type-converters</li>
+<li><p>predefined types</p></li>
+<li><p>used-defined types and type-converters</p></li>
 </ul>
 </div></blockquote>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<ul class="last simple">
-<li><a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span class="std std-ref">Predefined Data Types in parse</span></a></li>
-<li><a class="reference internal" href="../datatype/index.html#id-datatype"><span class="std std-ref">Data Types and User-defined Types</span></a></li>
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../datatype/builtin_types.html#id-datatype-builtin-types"><span class="std std-ref">Predefined Data Types in parse</span></a></p></li>
+<li><p><a class="reference internal" href="../datatype/index.html#id-datatype"><span class="std std-ref">Data Types and User-defined Types</span></a></p></li>
 </ul>
 </div>
 <div class="section" id="step-definitions-example">
@@ -161,14 +166,14 @@ It provides:</p>
 <span class="k">def</span> <span class="nf">step_given_I_use_regex_matcher</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
     <span class="k">pass</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;{name}&quot; is &quot;{expected_value}&quot;&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;</span><span class="si">{name}</span><span class="s1">&quot; is &quot;</span><span class="si">{expected_value}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_parameter_is_equal_to</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">equal_to</span><span class="p">(</span><span class="n">expected_value</span><span class="p">))</span>
 
-<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;{name}&quot; is none&#39;</span><span class="p">)</span>
+<span class="nd">@then</span><span class="p">(</span><span class="sa">u</span><span class="s1">&#39;the parameter &quot;</span><span class="si">{name}</span><span class="s1">&quot; is none&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">step_then_parameter_is_none</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+    <span class="n">actual_value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">assert_that</span><span class="p">(</span><span class="n">actual_value</span><span class="p">,</span> <span class="n">is_</span><span class="p">(</span><span class="n">none</span><span class="p">()))</span>
 </pre></div>
 </div>
@@ -187,9 +192,9 @@ It provides:</p>
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>

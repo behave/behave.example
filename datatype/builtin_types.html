@@ -1,18 +1,21 @@
+
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Predefined Data Types in parse &#8212; behave 1.2.6: Examples and Tutorials</title>
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Predefined Data Types in parse &#8212; behave 1.2.6.1: Examples and Tutorials</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="/Users/jens/se/_topic.behave/behave.example_main/docs/_static/ansi_gherkin.css" />
     <link rel="stylesheet" type="text/css" href="../_static/ansi.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="stylesheet" href="../_static/my-styles.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cardinality: Zero or One (Optional)" href="cardinality_zero_or_one.html" />
@@ -59,6 +62,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Data Types and User-defined Types</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../step_matcher/index.html">Step Matchers</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../refs.html">References</a></li>
 </ul>
@@ -129,110 +134,110 @@ under the hoods to parse parameters in step definitions.
 This leads to rather simple and readable parse expressions for step parameters.</p>
 <p>Therefore, the following <code class="docutils literal notranslate"><span class="pre">parse</span> <span class="pre">types</span></code> are already supported
 in step definitions without registration of any <em>user-defined type</em>:</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="9%" />
-<col width="77%" />
-<col width="14%" />
+<col style="width: 9%" />
+<col style="width: 77%" />
+<col style="width: 14%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Type</th>
-<th class="head">Characters Matched</th>
-<th class="head">Output</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Characters Matched</p></th>
+<th class="head"><p>Output</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>w</td>
-<td>Letters and underscore</td>
-<td>str</td>
+<tbody>
+<tr class="row-even"><td><p>w</p></td>
+<td><p>Letters and underscore</p></td>
+<td><p>str</p></td>
 </tr>
-<tr class="row-odd"><td>W</td>
-<td>Non-letter and underscore</td>
-<td>str</td>
+<tr class="row-odd"><td><p>W</p></td>
+<td><p>Non-letter and underscore</p></td>
+<td><p>str</p></td>
 </tr>
-<tr class="row-even"><td>s</td>
-<td>Whitespace</td>
-<td>str</td>
+<tr class="row-even"><td><p>s</p></td>
+<td><p>Whitespace</p></td>
+<td><p>str</p></td>
 </tr>
-<tr class="row-odd"><td>S</td>
-<td>Non-whitespace</td>
-<td>str</td>
+<tr class="row-odd"><td><p>S</p></td>
+<td><p>Non-whitespace</p></td>
+<td><p>str</p></td>
 </tr>
-<tr class="row-even"><td>d</td>
-<td>Digits (effectively integer numbers)</td>
-<td>int</td>
+<tr class="row-even"><td><p>d</p></td>
+<td><p>Digits (effectively integer numbers)</p></td>
+<td><p>int</p></td>
 </tr>
-<tr class="row-odd"><td>D</td>
-<td>Non-digit</td>
-<td>str</td>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p>Non-digit</p></td>
+<td><p>str</p></td>
 </tr>
-<tr class="row-even"><td>n</td>
-<td>Numbers with thousands separators (, or .)</td>
-<td>int</td>
+<tr class="row-even"><td><p>n</p></td>
+<td><p>Numbers with thousands separators (, or .)</p></td>
+<td><p>int</p></td>
 </tr>
-<tr class="row-odd"><td>%</td>
-<td>Percentage (converted to value/100.0)</td>
-<td>float</td>
+<tr class="row-odd"><td><p>%</p></td>
+<td><p>Percentage (converted to value/100.0)</p></td>
+<td><p>float</p></td>
 </tr>
-<tr class="row-even"><td>f</td>
-<td>Fixed-point numbers</td>
-<td>float</td>
+<tr class="row-even"><td><p>f</p></td>
+<td><p>Fixed-point numbers</p></td>
+<td><p>float</p></td>
 </tr>
-<tr class="row-odd"><td>e</td>
-<td>Floating-point numbers with exponent
-e.g. 1.1e-10, NAN (all case insensitive)</td>
-<td>float</td>
+<tr class="row-odd"><td><p>e</p></td>
+<td><p>Floating-point numbers with exponent
+e.g. 1.1e-10, NAN (all case insensitive)</p></td>
+<td><p>float</p></td>
 </tr>
-<tr class="row-even"><td>g</td>
-<td>General number format (either d, f or e)</td>
-<td>float</td>
+<tr class="row-even"><td><p>g</p></td>
+<td><p>General number format (either d, f or e)</p></td>
+<td><p>float</p></td>
 </tr>
-<tr class="row-odd"><td>b</td>
-<td>Binary numbers</td>
-<td>int</td>
+<tr class="row-odd"><td><p>b</p></td>
+<td><p>Binary numbers</p></td>
+<td><p>int</p></td>
 </tr>
-<tr class="row-even"><td>o</td>
-<td>Octal numbers</td>
-<td>int</td>
+<tr class="row-even"><td><p>o</p></td>
+<td><p>Octal numbers</p></td>
+<td><p>int</p></td>
 </tr>
-<tr class="row-odd"><td>x</td>
-<td>Hexadecimal numbers (lower and upper case)</td>
-<td>int</td>
+<tr class="row-odd"><td><p>x</p></td>
+<td><p>Hexadecimal numbers (lower and upper case)</p></td>
+<td><p>int</p></td>
 </tr>
-<tr class="row-even"><td>ti</td>
-<td>ISO 8601 format date/time
-e.g. 1972-01-20T10:21:36Z</td>
-<td>datetime</td>
+<tr class="row-even"><td><p>ti</p></td>
+<td><p>ISO 8601 format date/time
+e.g. 1972-01-20T10:21:36Z</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-odd"><td>te</td>
-<td>RFC2822 e-mail format date/time
-e.g. Mon, 20 Jan 1972 10:21:36 +1000</td>
-<td>datetime</td>
+<tr class="row-odd"><td><p>te</p></td>
+<td><p>RFC2822 e-mail format date/time
+e.g. Mon, 20 Jan 1972 10:21:36 +1000</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-even"><td>tg</td>
-<td>Global (day/month) format date/time
-e.g. 20/1/1972 10:21:36 AM +1:00</td>
-<td>datetime</td>
+<tr class="row-even"><td><p>tg</p></td>
+<td><p>Global (day/month) format date/time
+e.g. 20/1/1972 10:21:36 AM +1:00</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-odd"><td>ta</td>
-<td>US (month/day) format date/time
-e.g. 1/20/1972 10:21:36 PM +10:30</td>
-<td>datetime</td>
+<tr class="row-odd"><td><p>ta</p></td>
+<td><p>US (month/day) format date/time
+e.g. 1/20/1972 10:21:36 PM +10:30</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-even"><td>tc</td>
-<td>ctime() format date/time
-e.g. Sun Sep 16 01:03:52 1973</td>
-<td>datetime</td>
+<tr class="row-even"><td><p>tc</p></td>
+<td><p>ctime() format date/time
+e.g. Sun Sep 16 01:03:52 1973</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-odd"><td>th</td>
-<td>HTTP log format date/time
-e.g. 21/Nov/2011:00:07:11 +0000</td>
-<td>datetime</td>
+<tr class="row-odd"><td><p>th</p></td>
+<td><p>HTTP log format date/time
+e.g. 21/Nov/2011:00:07:11 +0000</p></td>
+<td><p>datetime</p></td>
 </tr>
-<tr class="row-even"><td>tt</td>
-<td>Time
-e.g. 10:21:36 PM -5:30</td>
-<td>time</td>
+<tr class="row-even"><td><p>tt</p></td>
+<td><p>Time
+e.g. 10:21:36 PM -5:30</p></td>
+<td><p>time</p></td>
 </tr>
 </tbody>
 </table>
@@ -250,9 +255,9 @@ e.g. 10:21:36 PM -5:30</td>
       
     </p>
     <p>
-        &copy; Copyright 2012-2019 by Jens Engel.<br/>
-      Last updated on 2019-07-14.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.<br/>
+        &copy; Copyright 2012-2020 by Jens Engel.&nbsp;&nbsp;
+      Last updated on 2020-11-04.&nbsp;&nbsp;
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.3.0.<br/>
     </p>
   </div>
 </footer>
