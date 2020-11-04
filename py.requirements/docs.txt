@@ -13,7 +13,7 @@
 
 # -- BEHAVE-RELATED:
 behave >= 1.2.6
-PyHamcrest >= 1.9
+PyHamcrest >= 2.0.2
 -r behave_ext.txt
 
 # -- DOCUMENTATION: Tutorials with examples.
@@ -24,7 +24,7 @@ PyHamcrest >= 1.9
 # MISSING in pypi:
 #   sphinxcontrib-ansi >= 0.6 (and repository setup.py is broken)
 #
-Sphinx >=1.6,<2.0
+sphinx >=1.6,<2.0
 sphinx_bootstrap_theme >= 0.4.12
 sphinxcontrib-programoutput >=0.8,<0.10.0
 git+https://github.com/jenisys/sphinxcontrib-ansi.git
