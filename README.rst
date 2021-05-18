@@ -17,7 +17,7 @@ SEE ALSO:
 
 DOCUMENTATION:
 
-* https://behave.github.com/behave.example (latest version)
+* https://behave.github.io/behave.example (latest version)
 
 REPOSITORIES:
 
