@@ -27,7 +27,7 @@ sphinx >=2.0
 sphinx-autobuild
 sphinx_bootstrap_theme >= 0.6.0
 
-sphinxcontrib-programoutput >=0.8,<0.10.0
+sphinxcontrib-programoutput==0.17
 git+https://github.com/jenisys/sphinxcontrib-ansi.git@JE_v0.7.0
 
 # -- SUPPORT: sphinx-doc translations (prepared)
