@@ -16,8 +16,8 @@ PyHamcrest >= 2.0.2;  python_version >= '3.5'
 
 # -- MAYBE: behave requirements
 traceback2 >= 1.4.0;    python_version <= '3.0'
-parse >= 1.18.0
-parse_type >= 0.5.2
+parse ==1.19.0
+parse_type ==0.5.2
 
 # -- UNCLEAR WHY:
 # argparse;  python_version <= '3.3'
