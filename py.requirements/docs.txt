@@ -23,15 +23,15 @@
 #
 # MAYBE: bootstrap4
 
-sphinx >=2.0
+sphinx ==5.2.0.post0
 sphinx-autobuild
-sphinx_bootstrap_theme >= 0.6.0
+sphinx_bootstrap_theme ==0.8.1
 
-sphinxcontrib-programoutput >=0.8,<0.10.0
+sphinxcontrib-programoutput ==0.8
 git+https://github.com/jenisys/sphinxcontrib-ansi.git@JE_v0.7.0
 
 # -- SUPPORT: sphinx-doc translations (prepared)
-sphinx-intl >= 0.9.11
+sphinx-intl ==2.0.1
 
 # -- OPTIONAL DOCUMENTATION: If PDF docs are needed.
 # rst2pdf

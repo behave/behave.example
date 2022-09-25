@@ -10,14 +10,14 @@
 # behave >= 1.2.6
 git+https://github.com/behave/behave.git@v1.2.7.dev1
 
-PyHamcrest <2.0.0;    python_version <  '3.5'
-PyHamcrest >= 2.0.2;  python_version >= '3.5'
+PyHamcrest ==1.10.1;    python_version <  '3.5'
+PyHamcrest ==2.0.4;  python_version >= '3.5'
 -r behave_ext.txt
 
 # -- MAYBE: behave requirements
-traceback2 >= 1.4.0;    python_version <= '3.0'
-parse >= 1.18.0
-parse_type >= 0.5.2
+traceback2 ==1.4.0;    python_version <= '3.0'
+parse ==1.19.0
+parse_type ==0.6.0
 
 # -- UNCLEAR WHY:
 # argparse;  python_version <= '3.3'
