@@ -25,7 +25,7 @@ from hamcrest import assert_that, equal_to
 from testutil import NamedNumber
 from company_model import CompanyModel
 
-@given('a set of specific users')
+@given('a set of specific users:')
 def step_impl(context):
     model = getattr(context, "model", None)
     if not model:

@@ -80,7 +80,7 @@ from hamcrest import assert_that, contains
 def step_given_I_go_to_meeting(context):
     context.meeting = Meeting()
 
-@then('the following persons are present')
+@then('the following persons are present:')
 def step_following_persons_are_present(context):
     assert context.table, "table<Person> is required"
     actual_persons   = sorted(context.meeting.persons)

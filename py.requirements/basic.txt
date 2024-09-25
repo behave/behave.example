@@ -4,20 +4,29 @@
 # REQUIRES: Python >= 2.7
 # DESCRIPTION:
 #    pip install -r <THIS_FILE>
+#
+# SEE ALSO:
+#  * https://pip.pypa.io/en/stable/user_guide/
 # ============================================================================
 
 # -- BEHAVE-RELATED:
 # behave >= 1.2.6
-git+https://github.com/behave/behave.git@v1.2.7.dev1
+# git+https://github.com/behave/behave.git@v1.2.7.dev6
+behave == 1.2.7.dev6
 
 PyHamcrest <2.0.0;    python_version <  '3.5'
 PyHamcrest >= 2.0.2;  python_version >= '3.5'
 -r behave_ext.txt
 
-# -- MAYBE: behave requirements
-traceback2 >= 1.4.0;    python_version <= '3.0'
+enum34; python_version < '3.4'
 parse >= 1.18.0
-parse_type >= 0.5.2
+parse_type >= 0.6.0
 
+# -- MAYBE: behave requirements
+# traceback2 >= 1.4.0;    python_version < '3.0'
+traceback2;  python_version < '3.0'
+contextlib2; python_version < '3.5'
+win_unicode_console >= 0.5;  python_version < '3.6'
+colorama >= 0.3.7
 # -- UNCLEAR WHY:
 # argparse;  python_version <= '3.3'

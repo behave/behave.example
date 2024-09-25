@@ -23,15 +23,57 @@
 #
 # MAYBE: bootstrap4
 
-sphinx >=2.0
+sphinx >= 7.3.7;   python_version >= '3.7'
+sphinx >=1.6,<4.4; python_version < '3.7'
 sphinx-autobuild
-sphinx_bootstrap_theme >= 0.6.0
 
 sphinxcontrib-programoutput >=0.8,<0.10.0
 git+https://github.com/jenisys/sphinxcontrib-ansi.git@JE_v0.7.0
 
+
+# -- SPHINX-THEMES:
+# SEE: https://www.sphinx-doc.org/en/master/usage/theming.html
+# SEE: https://sphinx-themes.org
+furo >= 2024.04.27; python_version >= '3.8'
+# DISABLED: sphinx-nefertiti >= 0.3.3; python_version >= '3.9'
+# DISABLED: sphinx_bootstrap_theme >= 0.6.0
+
+# -- SPHINX-EXTENSIONS:
+# SPHINX-COPYBUTTON:
+#   SEE: https://github.com/executablebooks/sphinx-copybutton
+sphinx-copybutton >= 0.5.2; python_version >= '3.7'
+
+# -- NEEDED FOR: RTD (as temporary fix)
+urllib3 < 2.0.0; python_version < '3.8'
+
 # -- SUPPORT: sphinx-doc translations (prepared)
 sphinx-intl >= 0.9.11
 
+# -- CONSTRAINTS UNTIL: sphinx > 5.0 can be used
+# PROBLEM: sphinxcontrib-applehelp v1.0.8 requires sphinx > 5.0
+# SEE: https://stackoverflow.com/questions/77848565/sphinxcontrib-applehelp-breaking-sphinx-builds-with-sphinx-version-less-than-5-0
+# DISABLED: sphinxcontrib-applehelp==1.0.4; python_version >= '3.7'
+# DISABLED: sphinxcontrib-devhelp==1.0.2;   python_version >= '3.7'
+# DISABLED: sphinxcontrib-htmlhelp==2.0.1;  python_version >= '3.7'
+# DISABLED: sphinxcontrib-qthelp==1.0.3;    python_version >= '3.7'
+# DISABLED: sphinxcontrib-serializinghtml==1.1.5; python_version >= '3.7'
+
+sphinxcontrib-applehelp >= 1.0.8; python_version >= '3.7'
+sphinxcontrib-htmlhelp >= 2.0.5;  python_version >= '3.7'
+
 # -- OPTIONAL DOCUMENTATION: If PDF docs are needed.
 # rst2pdf
+
+
+# ---------------------------------------------------------------------------
+# DOCUMENTATION WRITING HELPERS:
+# ---------------------------------------------------------------------------
+# SEE: https://github.com/codespell-project/codespell
+codespell >= 2.3.0; python_version >= '3.8'
+
+
+# ---------------------------------------------------------------------------
+# EXPERIMENTAL:
+# ---------------------------------------------------------------------------
+# SEE: https://github.com/amperser/proselint
+proselint >= 0.14.0; python_version >= '3.8'

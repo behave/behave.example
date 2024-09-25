@@ -78,7 +78,7 @@ def step_given_I_am_a_painter(context):
 def step_then_no_colors_are_used(context):
     assert_that(context.used_colors, has_length(0))
 
-@then('the following colors are used')
+@then('the following colors are used:')
 def step_then_following_colors_are_used(context):
     assert context.table, "table<color> is required"
     used_colors     = sorted(context.used_colors)

@@ -140,4 +140,3 @@ def syspath_append(path):
     if path in sys.path:
         sys.path.remove(path)
     sys.path.append(path)
-

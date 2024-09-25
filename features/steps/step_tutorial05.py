@@ -44,7 +44,7 @@ class Frobulator(object):
 from behave   import given, when, then
 from hamcrest import assert_that, equal_to
 
-@given('a sample text loaded into the frobulator')
+@given('a sample text loaded into the frobulator:')
 def step_impl(context):
     frobulator = getattr(context, "frobulator", None)
     if not frobulator:

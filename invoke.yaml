@@ -20,4 +20,4 @@ behave_test:
       - datatype.features
       - step_matcher.features
     args: features datatype.features step_matcher.features
-
+    format: progress3

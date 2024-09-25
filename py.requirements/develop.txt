@@ -9,15 +9,15 @@
 # -- BUILD-SUPPORT: invoke >= 1.2.0
 -r ../tasks/py.requirements.txt
 
-tox >= 3.10.0
+tox >= 3.13.0
 pylint
-twine
-modernize
+twine >= 1.13.0
+modernize >= 0.5
 
 # -- DISABLED:
 # watchdog >= 0.6.0
 
 # -- DEPENDS ON:
 -r basic.txt
--r docs.txt
 -r testing.txt
+-r docs.txt

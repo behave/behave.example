@@ -28,6 +28,11 @@ TOPDIR = os.path.join(os.path.dirname(__file__), "..")
 TOPDIR = os.path.abspath(TOPDIR)
 sys.path.insert(0, TOPDIR)
 
+# -- MONKEYPATCH: path module
+from ._path import monkeypatch_path_if_needed
+monkeypatch_path_if_needed()
+
+
 # -----------------------------------------------------------------------------
 # IMPORTS:
 # -----------------------------------------------------------------------------
