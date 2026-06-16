@@ -27,7 +27,7 @@ sphinx >= 7.3.7;   python_version >= '3.7'
 sphinx >=1.6,<4.4; python_version < '3.7'
 sphinx-autobuild
 
-sphinxcontrib-programoutput >=0.8,<0.10.0
+sphinxcontrib-programoutput >=0.20,<0.21
 git+https://github.com/jenisys/sphinxcontrib-ansi.git@JE_v0.7.0
 
 
